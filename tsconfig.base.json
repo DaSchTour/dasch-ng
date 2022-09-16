@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@dasch-ng/material-right-sheet": [
+        "libs/material/right-sheet/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

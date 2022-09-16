@@ -1,0 +1,47 @@
+{
+  "name": "@dasch-ng/material-right-sheet",
+  "version": "0.0.1",
+  "keywords": [
+    "angular",
+    "ng",
+    "material",
+    "material design",
+    "angular material",
+    "components",
+    "sheet",
+    "ng2",
+    "angular2",
+    "web components"
+  ],
+  "homepage": "https://github.com/daschtour/dasch-ng",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daschtour/dasch-ng.git"
+  },
+  "peerDependencies": {
+    "@angular/common": "^14.2.0",
+    "@angular/core": "^14.2.0",
+    "@angular/cdk": "^14.2.0",
+    "@angular/material": "^14.2.0",
+    "@angular/animations": "^14.2.0",
+    "@angular/platform-browser": "^14.2.0",
+    "@angular/platform-browser-dynamic": "^14.2.0",
+    "rxjs": "^7.5.0",
+    "zone.js": "~0.11.4"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "exports": {
+    ".": {
+      "sass": "./_right-sheet-theme.scss"
+    },
+    "./theming": {
+      "sass": "./_right-sheet-theme.scss"
+    },
+    "./right-sheet-theme": {
+      "sass": "./_right-sheet-theme.scss"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/material/right-sheet/src",
+  "prefix": "mat",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/material/right-sheet"],
+      "options": {
+        "project": "libs/material/right-sheet/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/material/right-sheet/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/material/right-sheet/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "libs/material/right-sheet/src/test.ts",
+        "tsConfig": "libs/material/right-sheet/tsconfig.spec.json",
+        "karmaConfig": "libs/material/right-sheet/karma.conf.js"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/material/right-sheet/**/*.ts",
+          "libs/material/right-sheet/**/*.html"
+        ]
+      }
+    },
+    "publish": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    },
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "tag": "${tag}",
+        "notes": "${notes}"
+      }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional",
+        "push": true,
+        "tagPrefix": "${projectName}/",
+        "postTargets": ["material-right-sheet:publish", "material-right-sheet:github"]
+      }
+    }
+  },
+  "tags": []
+}

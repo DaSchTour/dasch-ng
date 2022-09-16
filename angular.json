@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "app": "apps/app",
-    "app-e2e": "apps/app-e2e"
+    "app-e2e": "apps/app-e2e",
+    "material-right-sheet": "libs/material/right-sheet"
   }
 }
