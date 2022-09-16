@@ -1,10 +1,10 @@
-import {Directionality} from '@angular/cdk/bidi';
-import {A, ESCAPE} from '@angular/cdk/keycodes';
-import {OverlayContainer, ScrollStrategy} from '@angular/cdk/overlay';
-import {_supportsShadowDom} from '@angular/cdk/platform';
-import {ViewportRuler} from '@angular/cdk/scrolling';
-import {Location} from '@angular/common';
-import {SpyLocation} from '@angular/common/testing';
+import { Directionality } from '@angular/cdk/bidi';
+import { A, ESCAPE } from '@angular/cdk/keycodes';
+import { OverlayContainer, ScrollStrategy } from '@angular/cdk/overlay';
+import { _supportsShadowDom } from '@angular/cdk/platform';
+import { ViewportRuler } from '@angular/cdk/scrolling';
+import { Location } from '@angular/common';
+import { SpyLocation } from '@angular/common/testing';
 import {
   Component,
   Directive,
@@ -15,14 +15,25 @@ import {
   ViewContainerRef,
   ViewEncapsulation,
 } from '@angular/core';
-import {ComponentFixture, fakeAsync, flush, flushMicrotasks, inject, TestBed, tick} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  ComponentFixture,
+  fakeAsync,
+  flush,
+  flushMicrotasks,
+  inject,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MAT_RIGHT_SHEET_DEFAULT_OPTIONS, MatRightSheet} from './right-sheet';
-import {MAT_RIGHT_SHEET_DATA, MatRightSheetConfig} from './right-sheet.config';
-import {MatRightSheetModule} from './right-sheet.module';
-import {MatRightSheetRef} from './right-sheet.ref';
+import { MAT_RIGHT_SHEET_DEFAULT_OPTIONS, MatRightSheet } from './right-sheet';
+import {
+  MAT_RIGHT_SHEET_DATA,
+  MatRightSheetConfig,
+} from './right-sheet.config';
+import { MatRightSheetModule } from './right-sheet.module';
+import { MatRightSheetRef } from './right-sheet.ref';
 
 /**
  * @license
@@ -31,7 +42,7 @@ import {MatRightSheetRef} from './right-sheet.ref';
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {ModifierKeys} from '@angular/cdk/testing';
+import { ModifierKeys } from '@angular/cdk/testing';
 
 /** Used to generate unique IDs for events. */
 let uniqueIds = 0;
@@ -47,7 +58,7 @@ export function createMouseEvent(
   offsetX = 1,
   offsetY = 1,
   button = 0,
-  modifiers: ModifierKeys = {},
+  modifiers: ModifierKeys = {}
 ) {
   // Note: We cannot determine the position of the mouse event based on the screen
   // because the dimensions and position of the browser window are not available
@@ -104,7 +115,7 @@ export function createPointerEvent(
   clientY = 0,
   offsetX?: number,
   offsetY?: number,
-  options: PointerEventInit = {isPrimary: true},
+  options: PointerEventInit = { isPrimary: true }
 ) {
   const event = new PointerEvent(type, {
     bubbles: true,
@@ -131,11 +142,23 @@ export function createPointerEvent(
  * Creates a browser TouchEvent with the specified pointer coordinates.
  * @docs-private
  */
-export function createTouchEvent(type: string, pageX = 0, pageY = 0, clientX = 0, clientY = 0) {
+export function createTouchEvent(
+  type: string,
+  pageX = 0,
+  pageY = 0,
+  clientX = 0,
+  clientY = 0
+) {
   // We cannot use the `TouchEvent` or `Touch` because Firefox and Safari lack support.
   // TODO: Switch to the constructor API when it is available for Firefox and Safari.
   const event = document.createEvent('UIEvent');
-  const touchDetails = {pageX, pageY, clientX, clientY, identifier: uniqueIds++};
+  const touchDetails = {
+    pageX,
+    pageY,
+    clientX,
+    clientY,
+    identifier: uniqueIds++,
+  };
 
   // TS3.6 removes the initUIEvent method and suggests porting to "new UIEvent()".
   (event as any).initUIEvent(type, true, true, window, 0);
@@ -157,7 +180,7 @@ export function createKeyboardEvent(
   type: string,
   keyCode: number = 0,
   key: string = '',
-  modifiers: ModifierKeys = {},
+  modifiers: ModifierKeys = {}
 ) {
   return new KeyboardEvent(type, {
     bubbles: true,
@@ -177,16 +200,28 @@ export function createKeyboardEvent(
  * Creates a fake event object with any desired event type.
  * @docs-private
  */
-export function createFakeEvent(type: string, bubbles = false, cancelable = true, composed = true) {
-  return new Event(type, {bubbles, cancelable, composed});
+export function createFakeEvent(
+  type: string,
+  bubbles = false,
+  cancelable = true,
+  composed = true
+) {
+  return new Event(type, { bubbles, cancelable, composed });
 }
 
 /**
  * Defines a readonly property on the given event object. Readonly properties on an event object
  * are always set as configurable as that matches default readonly properties for DOM event objects.
  */
-function defineReadonlyEventProperty(event: Event, propertyName: string, value: any) {
-  Object.defineProperty(event, propertyName, {get: () => value, configurable: true});
+function defineReadonlyEventProperty(
+  event: Event,
+  propertyName: string,
+  value: any
+) {
+  Object.defineProperty(event, propertyName, {
+    get: () => value,
+    configurable: true,
+  });
 }
 
 /**
@@ -396,12 +431,19 @@ describe('MatRightSheet', () => {
     // 8 is the scrollbar width
     expect(Math.floor(containerRect.left)).toBe(8);
     expect(Math.floor(containerRect.right)).toBe(428);
-    expect(Math.floor(containerRect.bottom) - Math.floor(containerRect.top)).toBe(Math.floor(viewportRect.bottom));
-    expect(Math.floor(containerRect.height)).toBe(Math.floor(viewportSize.height));
+    expect(
+      Math.floor(containerRect.bottom) - Math.floor(containerRect.top)
+    ).toBe(Math.floor(viewportRect.bottom));
+    expect(Math.floor(containerRect.height)).toBe(
+      Math.floor(viewportSize.height)
+    );
   });
 
   it('should have the width provided with config', () => {
-    rightSheet.open(PizzaMsg, { viewContainerRef: testViewContainerRef, width: '220px' });
+    rightSheet.open(PizzaMsg, {
+      viewContainerRef: testViewContainerRef,
+      width: '220px',
+    });
 
     viewContainerFixture.detectChanges();
 
@@ -415,8 +457,12 @@ describe('MatRightSheet', () => {
     // 8 is the scrollbar width
     expect(Math.floor(containerRect.left)).toBe(8);
     expect(Math.floor(containerRect.right)).toBe(228);
-    expect(Math.floor(containerRect.bottom) - Math.floor(containerRect.top)).toBe(Math.floor(viewportRect.bottom));
-    expect(Math.floor(containerRect.height)).toBe(Math.floor(viewportSize.height));
+    expect(
+      Math.floor(containerRect.bottom) - Math.floor(containerRect.top)
+    ).toBe(Math.floor(viewportRect.bottom));
+    expect(Math.floor(containerRect.height)).toBe(
+      Math.floor(viewportSize.height)
+    );
   });
 
   it('should emit when the right sheet opening animation is complete', fakeAsync(() => {

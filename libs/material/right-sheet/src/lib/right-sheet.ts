@@ -6,14 +6,26 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Overlay} from '@angular/cdk/overlay';
-import {ComponentType,} from '@angular/cdk/portal';
-import {Inject, Injectable, InjectionToken, Injector, OnDestroy, Optional, SkipSelf, TemplateRef,} from '@angular/core';
-import {MAT_RIGHT_SHEET_DATA, MatRightSheetConfig,} from './right-sheet.config';
-import {MatRightSheetContainer} from './right-sheet.container';
-import {MatRightSheetModule} from './right-sheet.module';
-import {MatRightSheetRef} from './right-sheet.ref';
-import {Dialog} from '@angular/cdk/dialog';
+import { Overlay } from '@angular/cdk/overlay';
+import { ComponentType } from '@angular/cdk/portal';
+import {
+  Inject,
+  Injectable,
+  InjectionToken,
+  Injector,
+  OnDestroy,
+  Optional,
+  SkipSelf,
+  TemplateRef,
+} from '@angular/core';
+import {
+  MAT_RIGHT_SHEET_DATA,
+  MatRightSheetConfig,
+} from './right-sheet.config';
+import { MatRightSheetContainer } from './right-sheet.container';
+import { MatRightSheetModule } from './right-sheet.module';
+import { MatRightSheetRef } from './right-sheet.ref';
+import { Dialog } from '@angular/cdk/dialog';
 
 /** Injection token that can be used to specify default right sheet options. */
 export const MAT_RIGHT_SHEET_DEFAULT_OPTIONS =

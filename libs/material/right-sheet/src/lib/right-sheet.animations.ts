@@ -5,8 +5,15 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import {animate, AnimationTriggerMetadata, state, style, transition, trigger,} from '@angular/animations';
-import {AnimationCurves, AnimationDurations} from '@angular/material/core';
+import {
+  animate,
+  AnimationTriggerMetadata,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import { AnimationCurves, AnimationDurations } from '@angular/material/core';
 
 /** Animations used by the Material bottom sheet. */
 export const matRightSheetAnimations: {

@@ -33,16 +33,11 @@
       "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
     },
     "version": {
-      "dependsOn": [
-        "^version",
-        "^build"
-      ],
+      "dependsOn": ["^version", "^build"],
       "inputs": ["production", "^production"]
     },
     "publish": {
-      "dependsOn": [
-        "^build"
-      ],
+      "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
     }
   },

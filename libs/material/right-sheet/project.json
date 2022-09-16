@@ -55,7 +55,10 @@
         "preset": "conventional",
         "push": true,
         "tagPrefix": "${projectName}/",
-        "postTargets": ["material-right-sheet:publish", "material-right-sheet:github"]
+        "postTargets": [
+          "material-right-sheet:publish",
+          "material-right-sheet:github"
+        ]
       }
     }
   },

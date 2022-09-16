@@ -6,12 +6,12 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {ESCAPE, hasModifierKey} from '@angular/cdk/keycodes';
-import {merge, Observable, Subject} from 'rxjs';
-import {filter, take} from 'rxjs/operators';
-import {MatRightSheetContainer} from './right-sheet.container';
-import {DialogRef} from '@angular/cdk/dialog';
-import {MatRightSheetConfig} from './right-sheet.config';
+import { ESCAPE, hasModifierKey } from '@angular/cdk/keycodes';
+import { merge, Observable, Subject } from 'rxjs';
+import { filter, take } from 'rxjs/operators';
+import { MatRightSheetContainer } from './right-sheet.container';
+import { DialogRef } from '@angular/cdk/dialog';
+import { MatRightSheetConfig } from './right-sheet.config';
 
 /**
  * Reference to a bottom sheet dispatched from the bottom sheet service.

@@ -6,10 +6,14 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {AnimationEvent} from '@angular/animations';
-import {FocusMonitor, FocusTrapFactory, InteractivityChecker,} from '@angular/cdk/a11y';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
-import {DOCUMENT} from '@angular/common';
+import { AnimationEvent } from '@angular/animations';
+import {
+  FocusMonitor,
+  FocusTrapFactory,
+  InteractivityChecker,
+} from '@angular/cdk/a11y';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { DOCUMENT } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -22,10 +26,10 @@ import {
   Optional,
   ViewEncapsulation,
 } from '@angular/core';
-import {Subscription} from 'rxjs';
-import {matRightSheetAnimations} from './right-sheet.animations';
-import {CdkDialogContainer, DialogConfig} from '@angular/cdk/dialog';
-import {OverlayRef} from '@angular/cdk/overlay';
+import { Subscription } from 'rxjs';
+import { matRightSheetAnimations } from './right-sheet.animations';
+import { CdkDialogContainer, DialogConfig } from '@angular/cdk/dialog';
+import { OverlayRef } from '@angular/cdk/overlay';
 
 // TODO(crisbeto): consolidate some logic between this, MatDialog and MatSnackBar
 
