@@ -1,11 +1,13 @@
 {
+  "name": "material-right-sheet",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/material/right-sheet/src",
   "prefix": "mat",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/material/right-sheet"],
+      "outputs": ["{workspaceRoot}/dist/libs/material/right-sheet"],
       "options": {
         "project": "libs/material/right-sheet/ng-package.json"
       },
