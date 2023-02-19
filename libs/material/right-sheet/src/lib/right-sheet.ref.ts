@@ -148,4 +148,12 @@ export class MatRightSheetRef<T = any, R = any> {
   keydownEvents(): Observable<KeyboardEvent> {
     return this._ref.keydownEvents;
   }
+
+  /**
+   * Updates the right sheet width.
+   * @param width
+   */
+  public updateWidth(width: string) {
+    this._ref.updateSize(width);
+  }
 }
