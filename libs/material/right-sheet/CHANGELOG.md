@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+### [1.0.1](https://github.com/DaSchTour/dasch-ng/compare/material-right-sheet/1.0.0...material-right-sheet/1.0.1) (2023-02-19)
+
+
+### Bug Fixes
+
+* **material-right-sheet:** restore updateWidth ([06b0c8b](https://github.com/DaSchTour/dasch-ng/commit/06b0c8b8cccc460ea84d55e667bd7492384d84ff))
+
 ## 1.0.0 (2023-02-19)
 
 
