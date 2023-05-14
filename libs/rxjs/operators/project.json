@@ -11,10 +11,6 @@
         "outputPath": "dist/libs/rxjs/operators"
       }
     },
-    "publish": {
-      "command": "node tools/scripts/publish.mjs rxjs-operators {args.ver} {args.tag}",
-      "dependsOn": ["build"]
-    },
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
@@ -34,6 +30,31 @@
           "ci": true,
           "codeCoverage": true
         }
+      }
+    },
+    "publish": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    },
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "tag": "${tag}",
+        "notes": "${notes}"
+      }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional",
+        "push": true,
+        "tagPrefix": "${projectName}/",
+        "postTargets": [
+          "rxjs-operators:publish",
+          "rxjs-operators:github"
+        ]
       }
     }
   },

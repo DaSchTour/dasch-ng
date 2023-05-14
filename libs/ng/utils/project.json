@@ -33,6 +33,9 @@
         "ci": {
           "ci": true,
           "codeCoverage": true
+        },
+        "update": {
+          "updateSnapshot": true
         }
       }
     },
@@ -42,6 +45,31 @@
       "options": {
         "lintFilePatterns": ["libs/ng/utils/**/*.ts", "libs/ng/utils/**/*.html"]
       }
+    }
+  },
+  "publish": {
+    "executor": "ngx-deploy-npm:deploy",
+    "options": {
+      "access": "public"
+    }
+  },
+  "github": {
+    "executor": "@jscutlery/semver:github",
+    "options": {
+      "tag": "${tag}",
+      "notes": "${notes}"
+    }
+  },
+  "version": {
+    "executor": "@jscutlery/semver:version",
+    "options": {
+      "preset": "conventional",
+      "push": true,
+      "tagPrefix": "${projectName}/",
+      "postTargets": [
+        "ng-utils:publish",
+        "ng-utils:github"
+      ]
     }
   }
 }

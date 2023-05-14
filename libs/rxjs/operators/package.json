@@ -1,5 +1,15 @@
 {
   "name": "@dasch-ng/rxjs-operators",
   "version": "0.0.1",
-  "type": "commonjs"
+  "type": "module",
+  "main": "./index.cjs",
+  "module": "./index.mjs",
+  "typings": "./index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.cjs"
+    }
+  }
 }

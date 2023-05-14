@@ -36,14 +36,17 @@ export default defineConfig({
       // Could also be a dictionary or array of multiple entry points.
       entry: 'src/index.ts',
       name: 'rxjs-operators',
-      fileName: 'index',
+      fileName: '[name]',
       // Change this to the formats you want to support.
-      // Don't forgot to update your package.json as well.
+      // Don't forget to update your package.json as well.
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
       // External packages that should not be bundled into your library.
-      external: [],
+      external: ['@fxts/core', 'rxjs', 'rxjs/operators'],
+      output: {
+        preserveModules: true,
+      },
     },
   },
 });
