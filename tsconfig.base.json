@@ -19,6 +19,7 @@
         "libs/material/right-sheet/src/index.ts"
       ],
       "@dasch-ng/rxjs-operators": ["libs/rxjs/operators/src/index.ts"],
+      "@dasch-ng/utils": ["libs/ng/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
