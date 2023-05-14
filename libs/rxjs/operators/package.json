@@ -6,6 +6,9 @@
   "module": "./index.mjs",
   "typings": "./index.d.ts",
   "sideEffects": false,
+  "dependencies": {
+    "@fxts/core": "^0.15.0"
+  },
   "exports": {
     ".": {
       "import": "./index.mjs",
