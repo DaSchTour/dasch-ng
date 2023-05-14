@@ -20,13 +20,13 @@
     "url": "https://github.com/daschtour/dasch-ng.git"
   },
   "peerDependencies": {
-    "@angular/common": "^15.0.0",
-    "@angular/core": "^15.0.0",
+    "@angular/common": "^15.0.0 || ^16.0.0",
+    "@angular/core": "^15.0.0 || ^16.0.0",
     "@angular/cdk": "^15.0.0 || ^16.0.0",
     "@angular/material": "^15.0.0 || ^16.0.0",
-    "@angular/animations": "^15.0.0",
-    "@angular/platform-browser": "^15.0.0",
-    "@angular/platform-browser-dynamic": "^15.0.0",
+    "@angular/animations": "^15.0.0 || ^16.0.0",
+    "@angular/platform-browser": "^15.0.0 || ^16.0.0",
+    "@angular/platform-browser-dynamic": "^15.0.0 || ^16.0.0",
     "rxjs": "^7.5.0",
     "zone.js": "~0.11.4 || ~0.12.0 || ~0.13.0"
   },
