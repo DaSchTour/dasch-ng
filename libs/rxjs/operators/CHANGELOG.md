@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+### [0.1.1](https://github.com/DaSchTour/dasch-ng/compare/rxjs-operators/0.1.0...rxjs-operators/0.1.1) (2023-05-14)
+
+
+### Bug Fixes
+
+* **rxjs-operators:** add missing dependency ([96c3235](https://github.com/DaSchTour/dasch-ng/commit/96c3235e90cddcac6e8f9cc10dfd63f769b58d35))
+
 ## 0.1.0 (2023-05-14)
 
 
