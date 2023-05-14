@@ -6,7 +6,7 @@
   "prefix": "mat",
   "targets": {
     "build": {
-      "executor": "@nrwl/angular:package",
+      "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/libs/material/right-sheet"],
       "options": {
         "project": "libs/material/right-sheet/ng-package.json"
@@ -30,7 +30,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/material/right-sheet/**/*.ts",
