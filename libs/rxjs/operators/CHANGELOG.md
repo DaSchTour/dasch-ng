@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+### [0.1.2](https://github.com/DaSchTour/dasch-ng/compare/rxjs-operators/0.1.1...rxjs-operators/0.1.2) (2023-05-15)
+
+
+### Bug Fixes
+
+* **rxjs-operators:** correct import path ([bdb5f57](https://github.com/DaSchTour/dasch-ng/commit/bdb5f576eda7643739cee5adf12f94db6930eb89))
+
 ### [0.1.1](https://github.com/DaSchTour/dasch-ng/compare/rxjs-operators/0.1.0...rxjs-operators/0.1.1) (2023-05-14)
 
 
