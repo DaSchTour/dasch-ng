@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "type": "module",
   "main": "./index.cjs",
-  "module": "./index.mjs",
+  "module": "./index.js",
   "typings": "./index.d.ts",
   "sideEffects": false,
   "dependencies": {
@@ -11,7 +11,7 @@
   },
   "exports": {
     ".": {
-      "import": "./index.mjs",
+      "import": "./index.js",
       "require": "./index.cjs"
     }
   }
