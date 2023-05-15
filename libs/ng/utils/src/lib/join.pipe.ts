@@ -3,7 +3,7 @@ import { isArray, isString } from '@fxts/core';
 
 @Pipe({
   name: 'join',
-  standalone: true
+  standalone: true,
 })
 export class JoinPipe implements PipeTransform {
   public transform(value: unknown, separator = ', '): string {

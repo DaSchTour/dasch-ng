@@ -65,10 +65,7 @@
         "preset": "conventional",
         "push": true,
         "tagPrefix": "${projectName}/",
-        "postTargets": [
-          "ng-utils:publish",
-          "ng-utils:github"
-        ]
+        "postTargets": ["ng-utils:publish", "ng-utils:github"]
       }
     }
   }

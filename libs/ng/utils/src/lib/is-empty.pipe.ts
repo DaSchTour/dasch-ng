@@ -3,7 +3,7 @@ import { isEmpty } from '@fxts/core';
 
 @Pipe({
   name: 'isEmpty',
-  standalone: true
+  standalone: true,
 })
 export class IsEmptyPipe implements PipeTransform {
   public transform(value: unknown): boolean {

@@ -3,7 +3,7 @@ import { isNil } from '@fxts/core';
 
 @Pipe({
   name: 'isNil',
-  standalone: true
+  standalone: true,
 })
 export class IsNilPipe implements PipeTransform {
   public transform<T>(value: T): ReturnType<typeof isNil<T>> {

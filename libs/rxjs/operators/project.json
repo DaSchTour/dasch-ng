@@ -51,10 +51,7 @@
         "preset": "conventional",
         "push": true,
         "tagPrefix": "${projectName}/",
-        "postTargets": [
-          "rxjs-operators:publish",
-          "rxjs-operators:github"
-        ]
+        "postTargets": ["rxjs-operators:publish", "rxjs-operators:github"]
       }
     }
   },
