@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+### [1.0.2](https://github.com/DaSchTour/dasch-ng/compare/material-right-sheet/1.0.1...material-right-sheet/1.0.2) (2023-08-13)
+
+
+### Bug Fixes
+
+* **material-right-sheet:** add full height ([44907a4](https://github.com/DaSchTour/dasch-ng/commit/44907a40040954fbc7375e96708eae427b2678c9))
+
 ### [1.0.1](https://github.com/DaSchTour/dasch-ng/compare/material-right-sheet/1.0.0...material-right-sheet/1.0.1) (2023-02-19)
 
 
