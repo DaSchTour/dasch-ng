@@ -10,6 +10,7 @@ import { SortByPipe } from './sort-by.pipe';
 import { PropPipe } from './prop.pipe';
 import { ReversePipe } from './reverse.pipe';
 import { SizePipe } from './size.pipe';
+import { SymbolKeyForPipe } from './symbol-key-for.pipe';
 
 const pipes = [
   DecimalBytesPipe,
@@ -22,6 +23,7 @@ const pipes = [
   ReversePipe,
   SizePipe,
   SortByPipe,
+  SymbolKeyForPipe,
 ];
 @NgModule({
   imports: [...pipes],

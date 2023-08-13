@@ -9,3 +9,4 @@ export * from './lib/prop.pipe';
 export * from './lib/reverse.pipe';
 export * from './lib/size.pipe';
 export * from './lib/sort-by.pipe';
+export * from './lib/symbol-key-for.pipe';
