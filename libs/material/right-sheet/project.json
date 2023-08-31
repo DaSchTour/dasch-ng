@@ -9,7 +9,8 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/libs/material/right-sheet"],
       "options": {
-        "project": "libs/material/right-sheet/ng-package.json"
+        "project": "libs/material/right-sheet/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": true
       },
       "configurations": {
         "production": {
