@@ -20,7 +20,7 @@
     "@angular/platform-browser": "16.0.6",
     "@angular/platform-browser-dynamic": "16.0.6",
     "@angular/router": "16.0.6",
-    "@fxts/core": "^0.15.0",
+    "@fxts/core": "^0.19.0",
     "@nx/angular": "16.1.4",
     "rxjs": "7.8.1",
     "tslib": "^2.3.0",
