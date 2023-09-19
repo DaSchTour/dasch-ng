@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { isArray, isString } from '@fxts/core';
 
 @Pipe({
   name: 'join',
@@ -7,9 +6,9 @@ import { isArray, isString } from '@fxts/core';
 })
 export class JoinPipe implements PipeTransform {
   public transform(value: unknown, separator = ', '): string {
-    if (isArray(value)) {
+    if (Array.isArray(value)) {
       return value.join(separator);
-    } else if (isString(value)) {
+    } else if (typeof value === 'string') {
       return value;
     } else {
       return '';

@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@dasch-ng/gravatar": ["libs/gravatar/src/index.ts"],
       "@dasch-ng/material-right-sheet": [
         "libs/material/right-sheet/src/index.ts"
       ],
