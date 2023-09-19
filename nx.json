@@ -56,7 +56,7 @@
     "sharedGlobals": []
   },
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "yarn"
   },
   "generators": {
     "@nx/angular:application": {
