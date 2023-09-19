@@ -57,7 +57,7 @@
       "executor": "@jscutlery/semver:github",
       "options": {
         "tag": "{tag}",
-        "notes": "${notes}"
+        "notes": "{notes}"
       }
     },
     "version": {
@@ -65,7 +65,7 @@
       "options": {
         "preset": "conventional",
         "push": true,
-        "tagPrefix": "${projectName}/",
+        "tagPrefix": "{projectName}/",
         "postTargets": ["ng-utils:publish", "ng-utils:github"]
       }
     }
