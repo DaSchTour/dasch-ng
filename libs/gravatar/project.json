@@ -1,0 +1,51 @@
+{
+  "name": "gravatar",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/gravatar/src",
+  "prefix": "dasch-ng",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/gravatar/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/gravatar/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/gravatar/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/gravatar/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/gravatar/**/*.ts",
+          "libs/gravatar/**/*.html",
+          "libs/gravatar/package.json"
+        ]
+      }
+    }
+  }
+}
