@@ -2,6 +2,19 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.2.0](https://github.com/DaSchTour/dasch-ng/compare/rxjs-operators/0.1.2...rxjs-operators/0.2.0) (2023-11-21)
+
+
+### Features
+
+* **rxjs-operators:** add string and error filter ([4ee4d65](https://github.com/DaSchTour/dasch-ng/commit/4ee4d652a5f3c41605e2126892e9665ac78f42b0))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @fxts/core to ^0.19.0 ([7729278](https://github.com/DaSchTour/dasch-ng/commit/7729278f867e35e609203e7b81e3581909a56f4e))
+* **deps:** update dependency @fxts/core to ^0.20.0 ([2e370bf](https://github.com/DaSchTour/dasch-ng/commit/2e370bf1a1c77d0447536bfbc3318dad09e40e40))
+
 ### [0.1.2](https://github.com/DaSchTour/dasch-ng/compare/rxjs-operators/0.1.1...rxjs-operators/0.1.2) (2023-05-15)
 
 
