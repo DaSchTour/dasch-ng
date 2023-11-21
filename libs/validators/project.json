@@ -1,0 +1,51 @@
+{
+  "name": "validators",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/validators/src",
+  "prefix": "dasch-ng",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/validators/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/validators/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/validators/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/validators/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/validators/**/*.ts",
+          "libs/validators/**/*.html",
+          "libs/validators/package.json"
+        ]
+      }
+    }
+  }
+}
