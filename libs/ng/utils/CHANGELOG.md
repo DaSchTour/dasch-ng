@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.2.1](https://github.com/DaSchTour/dasch-ng/compare/ng-utils/0.2.0...ng-utils/0.2.1) (2023-11-21)
+
+
+### Bug Fixes
+
+* **ng-utils:** support angular 17 ([70907fa](https://github.com/DaSchTour/dasch-ng/commit/70907fa730a744132a0b98ab4238ad4184f9c94b))
+
 ## 0.2.0 (2023-09-19)
 
 
