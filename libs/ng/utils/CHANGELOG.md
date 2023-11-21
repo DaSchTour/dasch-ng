@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.2.2](https://github.com/DaSchTour/dasch-ng/compare/ng-utils/0.2.1...ng-utils/0.2.2) (2023-11-21)
+
+
+### Bug Fixes
+
+* change @fxts/core to peerDependency ([e90c745](https://github.com/DaSchTour/dasch-ng/commit/e90c745965100ffa38fe59560de47a08cf693127))
+
 ## [0.2.1](https://github.com/DaSchTour/dasch-ng/compare/ng-utils/0.2.0...ng-utils/0.2.1) (2023-11-21)
 
 
