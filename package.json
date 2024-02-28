@@ -74,7 +74,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "ng-packagr": "16.2.3",
-    "ngx-deploy-npm": "~7.0.1",
+    "ngx-deploy-npm": "~7.1.0",
     "nx": "16.10.0",
     "nx-cloud": "16.4.0",
     "postcss": "^8.4.5",
