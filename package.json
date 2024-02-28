@@ -76,7 +76,7 @@
     "ng-packagr": "16.2.3",
     "ngx-deploy-npm": "~7.0.1",
     "nx": "16.10.0",
-    "nx-cloud": "16.4.0",
+    "nx-cloud": "16.5.2",
     "postcss": "^8.4.5",
     "postcss-import": "~15.1.0",
     "postcss-preset-env": "~9.1.0",
