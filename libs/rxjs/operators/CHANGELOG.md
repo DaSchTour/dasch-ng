@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.0](https://github.com/DaSchTour/dasch-ng/compare/rxjs-operators/0.2.0...rxjs-operators/0.3.0) (2024-03-19)
+
+
+### Features
+
+* **rxjs-operators:** add tap catch operator ([d1e0d7d](https://github.com/DaSchTour/dasch-ng/commit/d1e0d7ddc98c5be5b0be04d411da91052aa95202))
+
+
+### Bug Fixes
+
+* change @fxts/core to peerDependency ([e90c745](https://github.com/DaSchTour/dasch-ng/commit/e90c745965100ffa38fe59560de47a08cf693127))
+
 ## [0.2.0](https://github.com/DaSchTour/dasch-ng/compare/rxjs-operators/0.1.2...rxjs-operators/0.2.0) (2023-11-21)
 
 
