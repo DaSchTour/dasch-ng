@@ -1761,3 +1761,5 @@ Thumbs.db
 /.yarn/cache/z-schema-npm-5.0.5-94fb0e21a9-8a1d66817a.zip
 /.yarn/cache/zone.js-npm-0.13.3-0a6320caca-73888a51b0.zip
 /.yarn/install-state.gz
+
+.nx/cache

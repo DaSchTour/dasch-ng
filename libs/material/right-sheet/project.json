@@ -9,8 +9,7 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/libs/material/right-sheet"],
       "options": {
-        "project": "libs/material/right-sheet/ng-package.json",
-        "updateBuildableProjectDepsInPackageJson": true
+        "project": "libs/material/right-sheet/ng-package.json"
       },
       "configurations": {
         "production": {
@@ -31,19 +30,15 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/material/right-sheet/**/*.ts",
-          "libs/material/right-sheet/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "publish": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "access": "public"
-      }
+        "access": "public",
+        "distFolderPath": "dist/libs/material/right-sheet"
+      },
+      "dependsOn": ["build"]
     },
     "github": {
       "executor": "@jscutlery/semver:github",

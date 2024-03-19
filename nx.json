@@ -1,22 +1,10 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "dasch-ng",
-  "affected": {
-    "defaultBase": "main"
-  },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx-cloud",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
-        "accessToken": "ZTMzMTUwMmMtNTZkYy00MDg1LWE3NTctNTI4MmVjYTk1NzdifHJlYWQtd3JpdGU="
-      }
-    }
-  },
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "inputs": ["production", "^production"],
+      "cache": true
     },
     "test": {
       "inputs": [
@@ -24,13 +12,12 @@
         "^production",
         "{workspaceRoot}/jest.preset.js",
         "{workspaceRoot}/karma.conf.js"
-      ]
+      ],
+      "cache": true
     },
     "e2e": {
-      "inputs": ["default", "^production"]
-    },
-    "lint": {
-      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+      "inputs": ["default", "^production"],
+      "cache": true
     },
     "version": {
       "dependsOn": ["^version", "^build"],
@@ -39,6 +26,41 @@
     "publish": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
+    },
+    "@nx/jest:jest": {
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/jest.preset.js",
+        "{workspaceRoot}/karma.conf.js"
+      ],
+      "cache": true,
+      "options": {
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "@jscutlery/semver:github": {
+      "options": {
+        "tag": "{tag}",
+        "notes": "{notes}"
+      }
+    },
+    "@jscutlery/semver:version": {
+      "options": {
+      "preset": "conventional",
+      "push": true,
+      "tagPrefix": "{projectName}/"
+      }
+    },
+    "@nx/eslint:lint": {
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"],
+      "cache": true
     }
   },
   "namedInputs": {
@@ -73,5 +95,8 @@
       "style": "scss"
     }
   },
-  "defaultProject": "app"
+  "defaultProject": "app",
+  "nxCloudAccessToken": "ZTMzMTUwMmMtNTZkYy00MDg1LWE3NTctNTI4MmVjYTk1NzdifHJlYWQtd3JpdGU=",
+  "useInferencePlugins": false,
+  "defaultBase": "main"
 }
