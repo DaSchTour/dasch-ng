@@ -10,7 +10,7 @@ module.exports = () => {
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
       require('karma-jasmine'),
-      require('karma-chrome-launcher'),
+      require('karma-jsdom-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma'),
@@ -37,7 +37,7 @@ module.exports = () => {
     colors: true,
     logLevel: constants.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['jsdom'],
     singleRun: true,
     restartOnFileChange: true,
   };

@@ -37,9 +37,9 @@
     "@angular/cli": "~17.2.0",
     "@angular/compiler-cli": "17.2.4",
     "@angular/language-service": "17.2.4",
-    "@commitlint/cli": "^17.6.3",
-    "@commitlint/config-conventional": "^17.6.3",
-    "@commitlint/config-nx-scopes": "^17.6.4",
+    "@commitlint/cli": "19.2.1",
+    "@commitlint/config-conventional": "19.1.0",
+    "@commitlint/config-nx-scopes": "19.2.1",
     "@jscutlery/semver": "5.2.0",
     "@ngneat/spectator": "^15.0.0",
     "@nx/cypress": "18.1.2",
@@ -56,7 +56,7 @@
     "@types/spark-md5": "^3.0.2",
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
-    "@vitest/ui": "0.34.7",
+    "@vitest/ui": "1.4.0",
     "autoprefixer": "^10.4.0",
     "cypress": "^13.6.6",
     "eslint": "8.48.0",
@@ -67,13 +67,13 @@
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
     "jest-preset-angular": "14.0.3",
-    "jsdom": "22.1.0",
+    "jsdom": "^22.1.0",
     "jsonc-eslint-parser": "^2.1.0",
     "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "karma-jsdom-launcher": "^17.0.0",
     "ng-packagr": "17.2.1",
     "ngx-deploy-npm": "8.0.1",
     "nx": "18.1.2",
@@ -89,7 +89,7 @@
     "vite-plugin-dts": "~3.5.0",
     "vite-plugin-eslint": "^1.8.1",
     "vite-tsconfig-paths": "^4.0.2",
-    "vitest": "0.34.6"
+    "vitest": "1.4.0"
   }
 }
 

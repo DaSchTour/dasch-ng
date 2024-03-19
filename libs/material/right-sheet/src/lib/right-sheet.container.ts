@@ -30,6 +30,7 @@ import { Subscription } from 'rxjs';
 import { matRightSheetAnimations } from './right-sheet.animations';
 import { CdkDialogContainer, DialogConfig } from '@angular/cdk/dialog';
 import { OverlayRef } from '@angular/cdk/overlay';
+import { CdkPortalOutlet } from '@angular/cdk/portal';
 
 // TODO(crisbeto): consolidate some logic between this, MatDialog and MatSnackBar
 
@@ -50,14 +51,16 @@ import { OverlayRef } from '@angular/cdk/overlay';
   // eslint-disable-next-line @angular-eslint/no-host-metadata-property
   host: {
     class: 'mat-right-sheet-container',
-    tabindex: '-1',
+    'tabindex': '-1',
     '[attr.role]': '_config.role',
-    '[attr.aria-modal]': '_config.isModal',
+    '[attr.aria-modal]': '_config.ariaModal',
     '[attr.aria-label]': '_config.ariaLabel',
     '[@state]': '_animationState',
     '(@state.start)': '_onAnimationStart($event)',
     '(@state.done)': '_onAnimationDone($event)',
   },
+  standalone: true,
+  imports: [CdkPortalOutlet],
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class MatRightSheetContainer
@@ -84,7 +87,6 @@ export class MatRightSheetContainer
     ngZone: NgZone,
     overlayRef: OverlayRef,
     breakpointObserver: BreakpointObserver,
-    private _changeDetectorRef: ChangeDetectorRef,
     focusMonitor?: FocusMonitor
   ) {
     super(
