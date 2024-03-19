@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.1](https://github.com/DaSchTour/dasch-ng/compare/rxjs-operators/0.3.0...rxjs-operators/0.3.1) (2024-03-19)
+
+
+### Bug Fixes
+
+* **rxjs-operators:** expose tapCatch ([71bd587](https://github.com/DaSchTour/dasch-ng/commit/71bd587eee86c525e516865c973db4595ab31b6b))
+
 ## [0.3.0](https://github.com/DaSchTour/dasch-ng/compare/rxjs-operators/0.2.0...rxjs-operators/0.3.0) (2024-03-19)
 
 
