@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { not, size } from '@fxts/core';
+import { size } from '@fxts/core';
 
 @Pipe({
   name: 'size',

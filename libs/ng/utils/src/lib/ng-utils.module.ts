@@ -11,10 +11,12 @@ import { PropPipe } from './prop.pipe';
 import { ReversePipe } from './reverse.pipe';
 import { SizePipe } from './size.pipe';
 import { SymbolKeyForPipe } from './symbol-key-for.pipe';
+import { IncludedInPipe } from './included-in.pipe';
 
 const pipes = [
   DecimalBytesPipe,
   IncludesPipe,
+  IncludedInPipe,
   IsEmptyPipe,
   IsNilPipe,
   JoinPipe,

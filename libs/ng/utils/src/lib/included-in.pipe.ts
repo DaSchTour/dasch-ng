@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'includes',
+  name: 'includedIn',
   standalone: true,
 })
-export class IncludesPipe implements PipeTransform {
-  public transform<T>(list?: Array<T>, value?: T): boolean {
+export class IncludedInPipe implements PipeTransform {
+  public transform<T>(value?: T, list?: Array<T>): boolean {
     if (value) {
       return list?.includes(value) ?? false;
     } else {

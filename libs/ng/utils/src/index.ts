@@ -1,5 +1,6 @@
 export * from './lib/decimal-bytes.pipe';
 export * from './lib/includes.pipe';
+export * from './lib/included-in.pipe';
 export * from './lib/is-empty.pipe';
 export * from './lib/is-nil.pipe';
 export * from './lib/join.pipe';
