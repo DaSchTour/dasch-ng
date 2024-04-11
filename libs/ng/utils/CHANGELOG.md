@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.0](https://github.com/DaSchTour/dasch-ng/compare/ng-utils/0.2.2...ng-utils/0.3.0) (2024-04-11)
+
+
+### Features
+
+* **ng-utils:** add more pipes ([4673423](https://github.com/DaSchTour/dasch-ng/commit/467342395e93fb2430b06c9d33a4b9710bc67c0f))
+
 ## [0.2.2](https://github.com/DaSchTour/dasch-ng/compare/ng-utils/0.2.1...ng-utils/0.2.2) (2023-11-21)
 
 
