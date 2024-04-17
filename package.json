@@ -37,7 +37,7 @@
     "@angular/cli": "~17.2.0",
     "@angular/compiler-cli": "17.2.4",
     "@angular/language-service": "17.2.4",
-    "@commitlint/cli": "19.2.1",
+    "@commitlint/cli": "19.2.2",
     "@commitlint/config-conventional": "19.1.0",
     "@commitlint/config-nx-scopes": "19.2.1",
     "@jscutlery/semver": "5.2.2",
