@@ -44,7 +44,7 @@
         "access": "public",
         "distFolderPath": "dist/libs/ng/utils"
       },
-      "dependsOn": ["build"]
+      "dependsOn": ["build:production"]
     },
     "github": {
       "executor": "@jscutlery/semver:github"
