@@ -59,7 +59,7 @@
     "@vitest/ui": "1.4.0",
     "autoprefixer": "^10.4.0",
     "cypress": "^13.6.6",
-    "eslint": "8.48.0",
+    "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-cypress": "2.14.0",
     "jasmine-core": "~4.6.0",
