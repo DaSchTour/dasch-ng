@@ -53,14 +53,23 @@
     },
     "@jscutlery/semver:version": {
       "options": {
-      "preset": "conventional",
-      "push": true,
-      "tagPrefix": "{projectName}/"
+        "preset": "conventional",
+        "push": true,
+        "tagPrefix": "{projectName}/"
       }
     },
     "@nx/eslint:lint": {
       "inputs": ["default", "{workspaceRoot}/.eslintrc.json"],
       "cache": true
+    },
+    "@nx/vite:build": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
+    "@nx/vite:test": {
+      "cache": true,
+      "inputs": ["default", "^production"]
     }
   },
   "namedInputs": {
@@ -98,5 +107,10 @@
   "defaultProject": "app",
   "nxCloudAccessToken": "ZTMzMTUwMmMtNTZkYy00MDg1LWE3NTctNTI4MmVjYTk1NzdifHJlYWQtd3JpdGU=",
   "useInferencePlugins": false,
-  "defaultBase": "main"
+  "defaultBase": "main",
+  "release": {
+    "version": {
+      "preVersionCommand": "npx nx run-many -t build"
+    }
+  }
 }

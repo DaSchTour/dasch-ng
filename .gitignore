@@ -1763,3 +1763,4 @@ Thumbs.db
 /.yarn/install-state.gz
 
 .nx/cache
+.nx/workspace-data
