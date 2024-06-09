@@ -2,6 +2,19 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.0.0](https://github.com/DaSchTour/dasch-ng/compare/material-right-sheet/1.0.2...material-right-sheet/2.0.0) (2024-06-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **material-right-sheet:** adjust dependencies
+* **material-right-sheet:** use changed material mixins
+
+### Bug Fixes
+
+* **material-right-sheet:** adjust dependencies ([5fcc806](https://github.com/DaSchTour/dasch-ng/commit/5fcc80604ae2a38a46c426082ba8687bd2144936))
+* **material-right-sheet:** use changed material mixins ([2cdb2f7](https://github.com/DaSchTour/dasch-ng/commit/2cdb2f78c88b7f9e2a8557d7ae53bc79b3f74a52))
+
 ### [1.0.2](https://github.com/DaSchTour/dasch-ng/compare/material-right-sheet/1.0.1...material-right-sheet/1.0.2) (2023-08-13)
 
 
