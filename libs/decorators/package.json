@@ -1,7 +1,10 @@
 {
   "name": "@dasch-ng/decorators",
   "version": "0.0.1",
-  "dependencies": {},
+  "dependencies": {
+    "@fxts/core": "^0.28.0",
+    "rxjs": "7.8.1"
+  },
   "main": "./index.js",
   "module": "./index.mjs",
   "typings": "./index.d.ts"

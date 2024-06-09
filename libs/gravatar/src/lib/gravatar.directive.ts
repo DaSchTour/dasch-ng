@@ -5,7 +5,8 @@ import {
   Input,
   numberAttribute,
 } from '@angular/core';
-import { generateGravatarLink, GravatarFallback } from '@dasch-ng/gravatar';
+import { generateGravatarLink } from './generate-gravatar-link';
+import { GravatarFallback } from './gravatar';
 
 @Directive({ selector: 'img[gravatar]', standalone: true })
 export class GravatarDirective {

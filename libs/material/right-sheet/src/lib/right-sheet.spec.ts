@@ -178,8 +178,8 @@ export function createTouchEvent(
  */
 export function createKeyboardEvent(
   type: string,
-  keyCode: number = 0,
-  key: string = '',
+  keyCode = 0,
+  key = '',
   modifiers: ModifierKeys = {}
 ) {
   return new KeyboardEvent(type, {
