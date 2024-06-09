@@ -1,4 +1,5 @@
-import { debounce as _debounce } from '@fxts/core';
+// TODO find alternative
+import _debounce from 'lodash.debounce';
 
 export function debounce(milliseconds = 0, options = {}): any {
   return function (
@@ -8,7 +9,7 @@ export function debounce(milliseconds = 0, options = {}): any {
   ) {
     const map = new WeakMap();
     const originalMethod = descriptor.value;
-    descriptor.value = function (...params) {
+    descriptor.value = function (...params: Array<any>) {
       let debounced = map.get(this);
       if (!debounced) {
         debounced = _debounce(originalMethod, milliseconds, options).bind(this);

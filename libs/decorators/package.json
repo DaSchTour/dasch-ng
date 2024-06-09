@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "@fxts/core": "^0.28.0",
+    "lodash.debounce": "^4.0.8",
     "rxjs": "7.8.1"
   },
   "main": "./index.js",
