@@ -1,6 +1,10 @@
 import { isAsyncFunction } from './utils';
 
-export function measure(target: any, propertyKey: string, descriptor: PropertyDescriptor): PropertyDescriptor {
+export function measure(
+  target: any,
+  propertyKey: string,
+  descriptor: PropertyDescriptor
+): PropertyDescriptor {
   const originalMethod = descriptor.value;
   let name: string;
   if (target && target.constructor && target.constructor.name) {
@@ -14,7 +18,11 @@ export function measure(target: any, propertyKey: string, descriptor: PropertyDe
       const start = performance.now();
       const result = await originalMethod.apply(this, args);
       const end = performance.now();
-      console.debug(`Call to ${name}.${propertyKey} took ${(end - start).toFixed(2)} milliseconds.`);
+      console.debug(
+        `Call to ${name}.${propertyKey} took ${(end - start).toFixed(
+          2
+        )} milliseconds.`
+      );
       return result;
     };
   } else {
@@ -22,7 +30,11 @@ export function measure(target: any, propertyKey: string, descriptor: PropertyDe
       const start = performance.now();
       const result = originalMethod.apply(this, args);
       const end = performance.now();
-      console.debug(`Call to ${name}.${propertyKey} took ${(end - start).toFixed(2)} milliseconds.`);
+      console.debug(
+        `Call to ${name}.${propertyKey} took ${(end - start).toFixed(
+          2
+        )} milliseconds.`
+      );
       return result;
     };
   }

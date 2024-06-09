@@ -34,7 +34,7 @@ export const MAT_RIGHT_SHEET_DEFAULT_OPTIONS =
 /**
  * Service to trigger Material Design right sheets.
  */
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class MatRightSheet implements OnDestroy {
   private _rightSheetRefAtThisLevel: MatRightSheetRef<any> | null = null;
   private _dialog!: Dialog;

@@ -51,7 +51,7 @@ import { CdkPortalOutlet } from '@angular/cdk/portal';
   // eslint-disable-next-line @angular-eslint/no-host-metadata-property
   host: {
     class: 'mat-right-sheet-container',
-    'tabindex': '-1',
+    tabindex: '-1',
     '[attr.role]': '_config.role',
     '[attr.aria-modal]': '_config.ariaModal',
     '[attr.aria-label]': '_config.ariaLabel',
