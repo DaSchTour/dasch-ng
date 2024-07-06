@@ -29,9 +29,9 @@
     "zone.js": "0.14.7"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "18.0.6",
-    "@angular-devkit/core": "18.0.6",
-    "@angular-devkit/schematics": "18.0.6",
+    "@angular-devkit/build-angular": "18.0.7",
+    "@angular-devkit/core": "18.0.7",
+    "@angular-devkit/schematics": "18.0.7",
     "@angular-eslint/eslint-plugin": "18.0.1",
     "@angular-eslint/eslint-plugin-template": "18.0.1",
     "@angular-eslint/template-parser": "18.0.1",
@@ -51,7 +51,7 @@
     "@nx/vite": "19.3.2",
     "@nx/web": "19.3.2",
     "@nx/workspace": "19.3.2",
-    "@schematics/angular": "18.0.6",
+    "@schematics/angular": "18.0.7",
     "@swc-node/register": "1.9.2",
     "@swc/core": "1.5.29",
     "@swc/helpers": "0.5.11",
