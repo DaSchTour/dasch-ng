@@ -92,7 +92,7 @@
     "prettier": "^2.6.2",
     "ts-jest": "29.1.5",
     "ts-node": "10.9.2",
-    "typescript": "5.4.5",
+    "typescript": "5.5.4",
     "verdaccio": "^5.0.4",
     "vite": "5.2.13",
     "vite-plugin-dts": "~3.5.0",
