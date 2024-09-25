@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.2](https://github.com/DaSchTour/dasch-ng/compare/rxjs-operators/0.3.1...rxjs-operators/0.3.2) (2024-09-25)
+
 ## [0.3.1](https://github.com/DaSchTour/dasch-ng/compare/rxjs-operators/0.3.0...rxjs-operators/0.3.1) (2024-03-19)
 
 
