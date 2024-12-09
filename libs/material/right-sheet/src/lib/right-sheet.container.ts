@@ -39,28 +39,27 @@ import { CdkPortalOutlet } from '@angular/cdk/portal';
  * @docs-private
  */
 @Component({
-  selector: 'mat-right-sheet-container',
-  templateUrl: './right-sheet.container.html',
-  styleUrls: ['./right-sheet.container.scss'],
-  // In Ivy embedded views will be change detected from their declaration place, rather than where
-  // they were stamped out. This means that we can't have the bottom sheet container be OnPush,
-  // because it might cause the sheets that were opened from a template not to be out of date.
-  changeDetection: ChangeDetectionStrategy.Default,
-  encapsulation: ViewEncapsulation.None,
-  animations: [matRightSheetAnimations.rightSheetState],
-  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
-  host: {
-    class: 'mat-right-sheet-container',
-    tabindex: '-1',
-    '[attr.role]': '_config.role',
-    '[attr.aria-modal]': '_config.ariaModal',
-    '[attr.aria-label]': '_config.ariaLabel',
-    '[@state]': '_animationState',
-    '(@state.start)': '_onAnimationStart($event)',
-    '(@state.done)': '_onAnimationDone($event)',
-  },
-  standalone: true,
-  imports: [CdkPortalOutlet],
+    selector: 'mat-right-sheet-container',
+    templateUrl: './right-sheet.container.html',
+    styleUrls: ['./right-sheet.container.scss'],
+    // In Ivy embedded views will be change detected from their declaration place, rather than where
+    // they were stamped out. This means that we can't have the bottom sheet container be OnPush,
+    // because it might cause the sheets that were opened from a template not to be out of date.
+    changeDetection: ChangeDetectionStrategy.Default,
+    encapsulation: ViewEncapsulation.None,
+    animations: [matRightSheetAnimations.rightSheetState],
+    // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+    host: {
+        class: 'mat-right-sheet-container',
+        tabindex: '-1',
+        '[attr.role]': '_config.role',
+        '[attr.aria-modal]': '_config.ariaModal',
+        '[attr.aria-label]': '_config.ariaLabel',
+        '[@state]': '_animationState',
+        '(@state.start)': '_onAnimationStart($event)',
+        '(@state.done)': '_onAnimationDone($event)',
+    },
+    imports: [CdkPortalOutlet]
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class MatRightSheetContainer

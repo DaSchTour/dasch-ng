@@ -23,7 +23,6 @@ import {
   MatRightSheetConfig,
 } from './right-sheet.config';
 import { MatRightSheetContainer } from './right-sheet.container';
-import { MatRightSheetModule } from './right-sheet.module';
 import { MatRightSheetRef } from './right-sheet.ref';
 import { Dialog } from '@angular/cdk/dialog';
 

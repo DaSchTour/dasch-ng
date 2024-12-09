@@ -27,7 +27,8 @@
             "prefix": "validate",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/prefer-standalone": "off"
       }
     },
     {

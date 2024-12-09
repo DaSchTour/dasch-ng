@@ -11,7 +11,7 @@ describe('ObserveResizeDirective', () => {
   let spectator: SpectatorDirective<ObserveMutationDirective>;
   const createDirective = createDirectiveFactory({
     directive: ObserveMutationDirective,
-    template: `<div observeResize>Testing Directive Providers</div>`,
+    template: `<div observeMutation>Testing Directive Providers</div>`,
     providers: [mockProvider(MutationObserverService)],
   });
 
