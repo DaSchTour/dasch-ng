@@ -80,7 +80,7 @@
     "karma-chrome-launcher": "^3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.0.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
     "karma-jsdom-launcher": "^17.0.0",
     "ng-packagr": "19.0.1",
     "ngx-deploy-npm": "8.3.1",
