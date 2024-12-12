@@ -2,6 +2,8 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.3.3](https://github.com/DaSchTour/dasch-ng/compare/ng-utils/0.3.2...ng-utils/0.3.3) (2024-12-12)
+
 ## [0.3.2](https://github.com/DaSchTour/dasch-ng/compare/ng-utils/0.3.1...ng-utils/0.3.2) (2024-09-25)
 
 ## [0.3.1](https://github.com/DaSchTour/dasch-ng/compare/ng-utils/0.3.0...ng-utils/0.3.1) (2024-06-19)
