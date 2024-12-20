@@ -7,15 +7,20 @@ import { Observable, Subject, finalize, map } from 'rxjs';
 })
 export class ResizeObserverService {
   private readonly entries = new Subject<Array<ResizeObserverEntry>>();
-  private readonly observer: ResizeObserver = new ResizeObserver((entries) => this.entries.next(entries));
+  private readonly observer: ResizeObserver = new ResizeObserver((entries) =>
+    this.entries.next(entries)
+  );
 
-  public observe(element: HTMLElement, options?: ResizeObserverOptions): Observable<ResizeObserverEntry> {
+  public observe(
+    element: HTMLElement,
+    options?: ResizeObserverOptions
+  ): Observable<ResizeObserverEntry> {
     const subject = new Subject<ResizeObserverEntry>();
     this.observer.observe(element, options);
     this.entries
       .pipe(
         map((entries) => entries.find((entry) => entry.target === element)),
-        filterNil(),
+        filterNil()
       )
       .subscribe(subject);
     return subject.pipe(finalize(() => this.observer.unobserve(element)));

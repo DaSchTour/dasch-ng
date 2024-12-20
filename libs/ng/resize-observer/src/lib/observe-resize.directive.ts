@@ -8,6 +8,11 @@ import { ResizeObserverService } from './resize-observer.service';
   standalone: true,
 })
 export class ObserveResizeDirective {
-  @Output() public readonly entries = this.resizeObserver.observe(this.elementRef.nativeElement);
-  constructor(private readonly elementRef: ElementRef, private readonly resizeObserver: ResizeObserverService) {}
+  @Output() public readonly entries = this.resizeObserver.observe(
+    this.elementRef.nativeElement
+  );
+  constructor(
+    private readonly elementRef: ElementRef,
+    private readonly resizeObserver: ResizeObserverService
+  ) {}
 }
