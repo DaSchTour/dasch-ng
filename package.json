@@ -63,7 +63,7 @@
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
     "@typescript-eslint/utils": "7.18.0",
-    "@vitest/ui": "1.6.0",
+    "@vitest/ui": "1.6.1",
     "autoprefixer": "^10.4.0",
     "cypress": "13.17.0",
     "eslint": "8.57.1",
@@ -98,7 +98,7 @@
     "vite-plugin-dts": "~3.5.0",
     "vite-plugin-eslint": "^1.8.1",
     "vite-tsconfig-paths": "^4.0.2",
-    "vitest": "1.6.0"
+    "vitest": "1.6.1"
   },
   "nx": {
     "includedScripts": []
