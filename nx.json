@@ -19,10 +19,6 @@
       "inputs": ["default", "^production"],
       "cache": true
     },
-    "version": {
-      "dependsOn": ["^version", "^build"],
-      "inputs": ["production", "^production"]
-    },
     "publish": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
@@ -43,19 +39,6 @@
           "ci": true,
           "codeCoverage": true
         }
-      }
-    },
-    "@jscutlery/semver:github": {
-      "options": {
-        "tag": "{tag}",
-        "notes": "{notes}"
-      }
-    },
-    "@jscutlery/semver:version": {
-      "options": {
-        "preset": "conventional",
-        "push": true,
-        "tagPrefix": "{projectName}/"
       }
     },
     "@nx/eslint:lint": {
@@ -114,8 +97,28 @@
   "useInferencePlugins": false,
   "defaultBase": "main",
   "release": {
+    "releaseTagPattern": "{projectName}/{version}",
+    "projects": [
+      "gravatar",
+      "material-right-sheet",
+      "ng-utils",
+      "rxjs-operators",
+      "sharp-operators"
+    ],
+    "projectsRelationship": "independent",
     "version": {
-      "preVersionCommand": "npx nx run-many -t build"
+      "preVersionCommand": "npx nx run-many -t build",
+      "conventionalCommits": true
+    },
+    "git": {
+      "commit": true,
+      "commitMessage": "chore({projectName}): {version}"
+    },
+    "changelog": {
+      "automaticFromRef": true,
+      "projectChangelogs": {
+        "createRelease": "github"
+      }
     }
   },
   "useLegacyCache": true

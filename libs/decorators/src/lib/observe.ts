@@ -1,5 +1,3 @@
-// TODO
-// eslint-disable-next-line @nx/enforce-module-boundaries
 import { BehaviorSubject, Observable } from 'rxjs';
 
 /**

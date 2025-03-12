@@ -3,8 +3,8 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/gravatar/src",
   "prefix": "dasch-ng",
-  "tags": [],
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/angular:package",
@@ -43,12 +43,6 @@
     },
     "github": {
       "executor": "@jscutlery/semver:github"
-    },
-    "version": {
-      "executor": "@jscutlery/semver:version",
-      "options": {
-        "postTargets": ["gravatar:publish", "gravatar:github"]
-      }
     }
   }
 }

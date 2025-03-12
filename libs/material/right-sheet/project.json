@@ -4,6 +4,7 @@
   "projectType": "library",
   "sourceRoot": "libs/material/right-sheet/src",
   "prefix": "mat",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/angular:package",
@@ -46,19 +47,6 @@
         "tag": "{tag}",
         "notes": "{notes}"
       }
-    },
-    "version": {
-      "executor": "@jscutlery/semver:version",
-      "options": {
-        "preset": "conventional",
-        "push": true,
-        "tagPrefix": "{projectName}/",
-        "postTargets": [
-          "material-right-sheet:publish",
-          "material-right-sheet:github"
-        ]
-      }
     }
-  },
-  "tags": []
+  }
 }

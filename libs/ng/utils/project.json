@@ -3,8 +3,8 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/ng/utils/src",
   "prefix": "dasch-ng",
-  "tags": [],
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/angular:package",
@@ -48,12 +48,6 @@
     },
     "github": {
       "executor": "@jscutlery/semver:github"
-    },
-    "version": {
-      "executor": "@jscutlery/semver:version",
-      "options": {
-        "postTargets": ["ng-utils:publish", "ng-utils:github"]
-      }
     }
   }
 }

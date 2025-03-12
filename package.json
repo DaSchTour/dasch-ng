@@ -24,6 +24,7 @@
     "@nx/angular": "20.3.4",
     "lodash.debounce": "^4.0.8",
     "rxjs": "7.8.2",
+    "sharp": "^0.33.5",
     "spark-md5": "^3.0.2",
     "tslib": "^2.6.1",
     "zone.js": "0.15.0"
@@ -63,6 +64,7 @@
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
     "@typescript-eslint/utils": "7.18.0",
+    "@vitest/coverage-v8": "^1.0.4",
     "@vitest/ui": "1.6.1",
     "autoprefixer": "^10.4.0",
     "cypress": "13.17.0",
@@ -83,7 +85,6 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "karma-jsdom-launcher": "^17.0.0",
     "ng-packagr": "19.0.1",
-    "ngx-deploy-npm": "8.4.0",
     "nx": "20.3.4",
     "postcss": "^8.4.5",
     "postcss-import": "~15.1.0",
@@ -95,7 +96,7 @@
     "typescript": "5.6.3",
     "verdaccio": "^5.0.4",
     "vite": "5.2.14",
-    "vite-plugin-dts": "~3.5.0",
+    "vite-plugin-dts": "~3.8.1",
     "vite-plugin-eslint": "^1.8.1",
     "vite-tsconfig-paths": "^4.0.2",
     "vitest": "1.6.1"

@@ -3,6 +3,7 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/rxjs/operators/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/vite:build",
@@ -32,13 +33,6 @@
     },
     "github": {
       "executor": "@jscutlery/semver:github"
-    },
-    "version": {
-      "executor": "@jscutlery/semver:version",
-      "options": {
-        "postTargets": ["rxjs-operators:publish", "rxjs-operators:github"]
-      }
     }
-  },
-  "tags": []
+  }
 }
