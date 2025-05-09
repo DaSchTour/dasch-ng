@@ -82,7 +82,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "karma-jsdom-launcher": "^17.0.0",
-    "ng-packagr": "19.0.1",
+    "ng-packagr": "19.2.2",
     "ngx-deploy-npm": "8.4.0",
     "nx": "20.3.4",
     "postcss": "^8.4.5",
