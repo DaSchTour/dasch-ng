@@ -7,12 +7,7 @@
       "cache": true
     },
     "test": {
-      "inputs": [
-        "default",
-        "^production",
-        "{workspaceRoot}/jest.preset.js",
-        "{workspaceRoot}/karma.conf.js"
-      ],
+      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js", "{workspaceRoot}/karma.conf.js"],
       "cache": true
     },
     "e2e": {
@@ -24,12 +19,7 @@
       "inputs": ["production", "^production"]
     },
     "@nx/jest:jest": {
-      "inputs": [
-        "default",
-        "^production",
-        "{workspaceRoot}/jest.preset.js",
-        "{workspaceRoot}/karma.conf.js"
-      ],
+      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js", "{workspaceRoot}/karma.conf.js"],
       "cache": true,
       "options": {
         "passWithNoTests": true
@@ -92,19 +82,12 @@
       "style": "scss"
     }
   },
-  "defaultProject": "app",
   "nxCloudAccessToken": "ZTMzMTUwMmMtNTZkYy00MDg1LWE3NTctNTI4MmVjYTk1NzdifHJlYWQtd3JpdGU=",
   "useInferencePlugins": false,
   "defaultBase": "main",
   "release": {
     "releaseTagPattern": "{projectName}/{version}",
-    "projects": [
-      "gravatar",
-      "material-right-sheet",
-      "ng-utils",
-      "rxjs-operators",
-      "sharp-operators"
-    ],
+    "projects": ["gravatar", "material-right-sheet", "ng-utils", "rxjs-operators", "sharp-operators", "prime-supplements"],
     "projectsRelationship": "independent",
     "version": {
       "preVersionCommand": "npx nx run-many -t build",
@@ -120,6 +103,5 @@
         "createRelease": "github"
       }
     }
-  },
-  "useLegacyCache": true
+  }
 }

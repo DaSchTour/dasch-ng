@@ -17,9 +17,7 @@
     "paths": {
       "@dasch-ng/decorators": ["libs/decorators/src/index.ts"],
       "@dasch-ng/gravatar": ["libs/gravatar/src/index.ts"],
-      "@dasch-ng/material-right-sheet": [
-        "libs/material/right-sheet/src/index.ts"
-      ],
+      "@dasch-ng/material-right-sheet": ["libs/material/right-sheet/src/index.ts"],
       "@dasch-ng/mutation-observer": ["libs/ng/mutation-observer/src/index.ts"],
       "@dasch-ng/resize-observer": ["libs/ng/resize-observer/src/index.ts"],
       "@dasch-ng/rxjs-operators": ["libs/rxjs/operators/src/index.ts"],
