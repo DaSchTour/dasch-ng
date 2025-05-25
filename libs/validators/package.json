@@ -2,8 +2,8 @@
   "name": "@dasch-ng/validators",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/core": "19.2.12",
-    "@angular/forms": "19.2.12"
+    "@angular/core": "19.2.13",
+    "@angular/forms": "19.2.13"
   },
   "dependencies": {},
   "sideEffects": false
