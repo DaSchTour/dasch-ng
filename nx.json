@@ -147,7 +147,7 @@
     },
     "git": {
       "commit": true,
-      "commitMessage": "chore({projectName}): {version}"
+      "commitMessage": "chore({projectName}): release version {version} 🚀"
     },
     "changelog": {
       "automaticFromRef": true,
