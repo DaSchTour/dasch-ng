@@ -1,3 +1,13 @@
+## 0.4.0 (2025-06-13)
+
+### 🚀 Features
+
+- add sharp operators ([8a8894f](https://github.com/DaSchTour/dasch-ng/commit/8a8894f))
+
+### ❤️ Thank You
+
+- Daniel Schuba @DaSchTour
+
 ## [0.3.3](https://github.com/DaSchTour/dasch-ng/compare/ng-utils/0.3.2...ng-utils/0.3.3) (2024-12-12)
 
 ## [0.3.2](https://github.com/DaSchTour/dasch-ng/compare/ng-utils/0.3.1...ng-utils/0.3.2) (2024-09-25)
