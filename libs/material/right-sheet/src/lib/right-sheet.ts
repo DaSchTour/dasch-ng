@@ -8,16 +8,7 @@
 
 import { Overlay } from '@angular/cdk/overlay';
 import { ComponentType } from '@angular/cdk/portal';
-import {
-  Inject,
-  Injectable,
-  InjectionToken,
-  Injector,
-  OnDestroy,
-  Optional,
-  SkipSelf,
-  TemplateRef,
-} from '@angular/core';
+import { Injectable, InjectionToken, Injector, OnDestroy, TemplateRef, inject } from '@angular/core';
 import {
   MAT_RIGHT_SHEET_DATA,
   MatRightSheetConfig,
@@ -35,6 +26,10 @@ export const MAT_RIGHT_SHEET_DEFAULT_OPTIONS =
  */
 @Injectable({ providedIn: 'root' })
 export class MatRightSheet implements OnDestroy {
+  private readonly _overlay = inject(Overlay);
+  private readonly _parentRightSheet = inject(MatRightSheet, { optional: true, skipSelf: true });
+  private readonly _defaultOptions = inject<MatRightSheetConfig>(MAT_RIGHT_SHEET_DEFAULT_OPTIONS, { optional: true });
+
   private _rightSheetRefAtThisLevel: MatRightSheetRef<any> | null = null;
   private _dialog!: Dialog;
 
@@ -54,16 +49,9 @@ export class MatRightSheet implements OnDestroy {
     }
   }
 
-  constructor(
-    private readonly _overlay: Overlay,
-    injector: Injector,
-    @Optional()
-    @SkipSelf()
-    private readonly _parentRightSheet: MatRightSheet,
-    @Optional()
-    @Inject(MAT_RIGHT_SHEET_DEFAULT_OPTIONS)
-    private readonly _defaultOptions?: MatRightSheetConfig
-  ) {
+  constructor() {
+    const injector = inject(Injector);
+
     this._dialog = injector.get(Dialog);
   }
 

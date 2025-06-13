@@ -13,19 +13,8 @@ import {
   InteractivityChecker,
 } from '@angular/cdk/a11y';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { DOCUMENT } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  EventEmitter,
-  Inject,
-  NgZone,
-  OnDestroy,
-  Optional,
-  ViewEncapsulation,
-} from '@angular/core';
+
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, NgZone, OnDestroy, ViewEncapsulation, DOCUMENT, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { matRightSheetAnimations } from './right-sheet.animations';
 import { CdkDialogContainer, DialogConfig } from '@angular/cdk/dialog';
@@ -76,17 +65,17 @@ export class MatRightSheetContainer
   /** Whether the component has been destroyed. */
   private _destroyed?: boolean;
 
-  constructor(
-    elementRef: ElementRef,
-    focusTrapFactory: FocusTrapFactory,
-    @Optional() @Inject(DOCUMENT) document: any,
-    config: DialogConfig,
-    checker: InteractivityChecker,
-    ngZone: NgZone,
-    overlayRef: OverlayRef,
-    breakpointObserver: BreakpointObserver,
-    focusMonitor?: FocusMonitor
-  ) {
+  constructor() {
+    const elementRef = inject(ElementRef);
+    const focusTrapFactory = inject(FocusTrapFactory);
+    const document = inject(DOCUMENT, { optional: true });
+    const config = inject(DialogConfig);
+    const checker = inject(InteractivityChecker);
+    const ngZone = inject(NgZone);
+    const overlayRef = inject(OverlayRef);
+    const breakpointObserver = inject(BreakpointObserver);
+    const focusMonitor = inject(FocusMonitor);
+
     super(
       elementRef,
       focusTrapFactory,

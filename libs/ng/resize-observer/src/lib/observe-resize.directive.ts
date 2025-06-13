@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Output } from '@angular/core';
+import { Directive, ElementRef, Output, inject } from '@angular/core';
 
 import { ResizeObserverService } from './resize-observer.service';
 
@@ -8,11 +8,10 @@ import { ResizeObserverService } from './resize-observer.service';
   standalone: true,
 })
 export class ObserveResizeDirective {
+  private readonly elementRef = inject(ElementRef);
+  private readonly resizeObserver = inject(ResizeObserverService);
+
   @Output() public readonly entries = this.resizeObserver.observe(
     this.elementRef.nativeElement
   );
-  constructor(
-    private readonly elementRef: ElementRef,
-    private readonly resizeObserver: ResizeObserverService
-  ) {}
 }

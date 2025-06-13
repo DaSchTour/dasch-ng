@@ -5,7 +5,8 @@
     "strict": true,
     "types": ["jasmine", "node"],
     "target": "ES2022",
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "moduleResolution": "bundler"
   },
   "files": ["src/test.ts"],
   "include": ["**/*.spec.ts", "**/*.test.ts", "**/*.d.ts"]

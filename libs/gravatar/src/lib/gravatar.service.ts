@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { generateGravatarLink } from './generate-gravatar-link';
 import { hashEmail } from './hash-email';
@@ -9,7 +9,8 @@ import { GravatarResponse } from './gravatar';
   providedIn: 'root',
 })
 export class GravatarService {
-  constructor(private readonly http: HttpClient) {}
+  private readonly http = inject(HttpClient);
+
   public generateLink(email: string, size = 16, fallback = 'identicon') {
     return generateGravatarLink(email, size, fallback);
   }
