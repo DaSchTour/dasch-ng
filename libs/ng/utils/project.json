@@ -37,17 +37,6 @@
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]
-    },
-    "publish": {
-      "executor": "ngx-deploy-npm:deploy",
-      "options": {
-        "access": "public",
-        "distFolderPath": "dist/libs/ng/utils"
-      },
-      "dependsOn": ["build:production"]
-    },
-    "github": {
-      "executor": "@jscutlery/semver:github"
     }
   }
 }
