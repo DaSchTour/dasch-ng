@@ -88,7 +88,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "karma-jsdom-launcher": "^17.0.0",
     "ng-packagr": "20.0.1",
-    "nx": "21.2.4",
+    "nx": "999.9.9",
     "postcss": "^8.4.5",
     "postcss-import": "~15.1.0",
     "postcss-preset-env": "~10.1.0",
