@@ -73,7 +73,7 @@
     "eslint": "8.57.1",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-cypress": "2.14.0",
-    "jasmine-core": "~5.5.0",
+    "jasmine-core": "~5.10.0",
     "jasmine-spec-reporter": "~7.0.0",
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
