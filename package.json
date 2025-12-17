@@ -44,7 +44,7 @@
     "@commitlint/cli": "19.8.1",
     "@commitlint/config-conventional": "19.8.1",
     "@commitlint/config-nx-scopes": "19.8.1",
-    "@jscutlery/semver": "5.6.1",
+    "@jscutlery/semver": "5.7.1",
     "@ngneat/spectator": "19.6.2",
     "@nx/cypress": "21.2.4",
     "@nx/eslint": "21.2.4",
