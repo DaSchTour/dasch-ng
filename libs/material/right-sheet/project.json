@@ -10,15 +10,14 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/libs/material/right-sheet"],
       "options": {
-        "project": "libs/material/right-sheet/ng-package.json"
+        "project": "libs/material/right-sheet/ng-package.json",
+        "tsConfig": "libs/material/right-sheet/tsconfig.lib.json"
       },
       "configurations": {
         "production": {
           "tsConfig": "libs/material/right-sheet/tsconfig.lib.prod.json"
         },
-        "development": {
-          "tsConfig": "libs/material/right-sheet/tsconfig.lib.json"
-        }
+        "development": {}
       },
       "defaultConfiguration": "production"
     },

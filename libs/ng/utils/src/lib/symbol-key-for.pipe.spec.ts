@@ -33,7 +33,7 @@ describe('SymbolKeyForPipe', () => {
   // Tests that the transform method throws an error for non-symbol input
   xit('test_non_symbol_input_throws_error', () => {
     const pipe = new SymbolKeyForPipe();
-    expect(() => pipe.transform('test')).toThrowError();
+    expect(() => pipe.transform('test')).toThrow();
   });
 
   // Tests that the transform method returns the correct string for a symbol with an empty key

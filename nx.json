@@ -40,10 +40,6 @@
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
     },
-    "@nx/vite:test": {
-      "cache": true,
-      "inputs": ["default", "^production"]
-    },
     "@nx/angular:package": {
       "cache": true,
       "dependsOn": ["^build"],
@@ -53,6 +49,10 @@
       "options": {
         "packageRoot": "{workspaceRoot}/dist/{projectRoot}"
       }
+    },
+    "@nx/vitest:test": {
+      "cache": true,
+      "inputs": ["default", "^production"]
     }
   },
   "namedInputs": {
@@ -143,16 +143,12 @@
   "useInferencePlugins": false,
   "defaultBase": "main",
   "release": {
-    "releaseTagPattern": "{projectName}/{version}",
     "projects": ["gravatar", "material-right-sheet", "ng-utils", "rxjs-operators", "sharp-operators", "prime-supplements"],
     "projectsRelationship": "independent",
     "version": {
       "preVersionCommand": "npx nx run-many -t build",
       "conventionalCommits": true,
-      "manifestRootsToUpdate": [
-        "{projectRoot}",
-        "dist/{projectRoot}"
-      ]
+      "manifestRootsToUpdate": ["{projectRoot}", "dist/{projectRoot}"]
     },
     "git": {
       "commit": true,
@@ -163,6 +159,9 @@
       "projectChangelogs": {
         "createRelease": "github"
       }
+    },
+    "releaseTag": {
+      "pattern": "{projectName}/{version}"
     }
   }
 }

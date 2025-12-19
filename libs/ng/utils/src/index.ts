@@ -7,6 +7,8 @@ export * from './lib/join.pipe';
 export * from './lib/ng-utils.module';
 export * from './lib/nth.pipe';
 export * from './lib/prop.pipe';
+export * from './lib/provide-helpers';
+export * from './lib/resource-value-guard';
 export * from './lib/reverse.pipe';
 export * from './lib/size.pipe';
 export * from './lib/sort-by.pipe';
