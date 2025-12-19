@@ -6,10 +6,7 @@ import { prop } from '@fxts/core';
   standalone: true,
 })
 export class PropPipe implements PipeTransform {
-  public transform<K extends string | number | symbol, V>(
-    value: Record<K, V>,
-    key: K
-  ) {
+  public transform<K extends string | number | symbol, V>(value: Record<K, V>, key: K) {
     return prop(key, value);
   }
 }

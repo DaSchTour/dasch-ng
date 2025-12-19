@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'mutation-observer',
   preset: '../../../jest.preset.js',

@@ -7,20 +7,15 @@ import { Observable, Subject, finalize, map } from 'rxjs';
 })
 export class MutationObserverService {
   private readonly records = new Subject<Array<MutationRecord>>();
-  private readonly observer: MutationObserver = new MutationObserver((record) =>
-    this.records.next(record)
-  );
+  private readonly observer: MutationObserver = new MutationObserver((record) => this.records.next(record));
 
-  public observe(
-    element: HTMLElement,
-    options?: MutationObserverInit
-  ): Observable<MutationRecord> {
+  public observe(element: HTMLElement, options?: MutationObserverInit): Observable<MutationRecord> {
     const subject = new Subject<MutationRecord>();
     this.observer.observe(element, options);
     this.records
       .pipe(
         map((records) => records.find((entry) => entry.target === element)),
-        filterNil()
+        filterNil(),
       )
       .subscribe(subject);
     return subject;

@@ -17,13 +17,4 @@ export interface GravatarListEntry<T = string> {
   type: T;
 }
 
-export type GravatarFallback =
-  | '404'
-  | 'mp'
-  | 'identicon'
-  | 'monsterid'
-  | 'monster'
-  | 'wavatar'
-  | 'retro'
-  | 'robohash'
-  | 'blank';
+export type GravatarFallback = '404' | 'mp' | 'identicon' | 'monsterid' | 'monster' | 'wavatar' | 'retro' | 'robohash' | 'blank';

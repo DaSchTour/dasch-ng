@@ -1,10 +1,5 @@
 import { Directive } from '@angular/core';
-import {
-  AbstractControl,
-  NG_VALIDATORS,
-  ValidationErrors,
-  Validator,
-} from '@angular/forms';
+import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@angular/forms';
 
 export const NUMBER_REGEX = /^[-]?([\d,.' ]+)$/;
 

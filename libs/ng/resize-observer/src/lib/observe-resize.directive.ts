@@ -11,7 +11,5 @@ export class ObserveResizeDirective {
   private readonly elementRef = inject(ElementRef);
   private readonly resizeObserver = inject(ResizeObserverService);
 
-  @Output() public readonly entries = this.resizeObserver.observe(
-    this.elementRef.nativeElement
-  );
+  @Output() public readonly entries = this.resizeObserver.observe(this.elementRef.nativeElement);
 }

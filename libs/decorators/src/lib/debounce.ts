@@ -2,11 +2,7 @@
 import _debounce from 'lodash.debounce';
 
 export function debounce(milliseconds = 0, options = {}): any {
-  return function (
-    target: any,
-    propertyKey: string,
-    descriptor: PropertyDescriptor
-  ) {
+  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     const map = new WeakMap();
     const originalMethod = descriptor.value;
     descriptor.value = function (...params: Array<any>) {

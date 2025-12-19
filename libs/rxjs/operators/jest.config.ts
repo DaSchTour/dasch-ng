@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'rxjs-operators',
   preset: '../../../jest.preset.js',

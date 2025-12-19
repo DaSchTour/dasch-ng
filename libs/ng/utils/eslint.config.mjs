@@ -1,61 +1,38 @@
-import { FlatCompat } from '@eslint/eslintrc';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import js from '@eslint/js';
+import nx from '@nx/eslint-plugin';
+
 import baseConfig from '../../../eslint.config.mjs';
 
-const compat = new FlatCompat({
-  baseDirectory: dirname(fileURLToPath(import.meta.url)),
-  recommendedConfig: js.configs.recommended,
-});
-
 export default [
+  ...baseConfig,
+  ...nx.configs['flat/angular'],
+  ...nx.configs['flat/angular-template'],
   {
     ignores: ['**/dist', '**/out-tsc'],
   },
-  ...baseConfig,
-  ...compat
-    .config({
-      extends: ['plugin:@nx/angular', 'plugin:@angular-eslint/template/process-inline-templates'],
-    })
-    .map((config) => ({
-      ...config,
-      files: ['**/*.ts'],
-      rules: {
-        ...config.rules,
-        '@angular-eslint/directive-selector': [
-          'error',
-          {
-            type: 'attribute',
-            prefix: 'daschNg',
-            style: 'camelCase',
-          },
-        ],
-        '@angular-eslint/component-selector': [
-          'error',
-          {
-            type: 'element',
-            prefix: 'dasch-ng',
-            style: 'kebab-case',
-          },
-        ],
-        '@angular-eslint/prefer-standalone': 'off',
-      },
-      languageOptions: {
-        parserOptions: {
-          project: ['libs/ng/utils/tsconfig.*?.json'],
+  {
+    files: ['**/*.ts'],
+    rules: {
+      '@angular-eslint/directive-selector': [
+        'error',
+        {
+          type: 'attribute',
+          prefix: 'daschNg',
+          style: 'camelCase',
         },
-      },
-    })),
-  ...compat
-    .config({
-      extends: ['plugin:@nx/angular-template'],
-    })
-    .map((config) => ({
-      ...config,
-      files: ['**/*.html'],
-      rules: {
-        ...config.rules,
-      },
-    })),
+      ],
+      '@angular-eslint/component-selector': [
+        'error',
+        {
+          type: 'element',
+          prefix: 'dasch-ng',
+          style: 'kebab-case',
+        },
+      ],
+    },
+  },
+  {
+    files: ['**/*.html'],
+    // Override or add rules here
+    rules: {},
+  },
 ];

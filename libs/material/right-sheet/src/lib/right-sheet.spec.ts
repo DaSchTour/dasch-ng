@@ -98,7 +98,7 @@ export function createPointerEvent(
   clientY = 0,
   offsetX?: number,
   offsetY?: number,
-  options: PointerEventInit = { isPrimary: true }
+  options: PointerEventInit = { isPrimary: true },
 ) {
   const event = new PointerEvent(type, {
     bubbles: true,
@@ -225,7 +225,7 @@ export function dispatchMouseEvent(
   offsetX?: number,
   offsetY?: number,
   button?: number,
-  modifiers?: ModifierKeys
+  modifiers?: ModifierKeys,
 ): MouseEvent {
   return dispatchEvent(node, createMouseEvent(type, clientX, clientY, offsetX, offsetY, button, modifiers));
 }
@@ -241,7 +241,7 @@ export function dispatchPointerEvent(
   clientY = 0,
   offsetX?: number,
   offsetY?: number,
-  options?: PointerEventInit
+  options?: PointerEventInit,
 ): PointerEvent {
   return dispatchEvent(node, createPointerEvent(type, clientX, clientY, offsetX, offsetY, options)) as PointerEvent;
 }
@@ -1258,7 +1258,7 @@ class ComponentWithTemplateRef {
 }
 
 @Component({
-  template: '<p>Pizza</p> <input #input tabindex="0" autofocus> <button>Close</button>',
+  template: '<p>Pizza</p> <input #input tabindex="0"> <button>Close</button>',
   standalone: false,
 })
 class PizzaMsg implements AfterViewInit {

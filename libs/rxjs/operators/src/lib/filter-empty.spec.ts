@@ -90,9 +90,7 @@ describe('filterEmpty()', () => {
       next: jest.fn(),
       complete: jest.fn(),
     };
-    from(['one', '', null, 'two', 'three'])
-      .pipe(filterEmpty())
-      .subscribe(observerSpy);
+    from(['one', '', null, 'two', 'three']).pipe(filterEmpty()).subscribe(observerSpy);
     expect(observerSpy.next).toHaveBeenCalledTimes(3);
     expect(observerSpy.complete).toHaveBeenCalledTimes(1);
   });

@@ -1,13 +1,8 @@
-import {
-  Directive,
-  Host,
-  HostBinding,
-  Input,
-  numberAttribute,
-} from '@angular/core';
+import { Directive, Host, HostBinding, Input, numberAttribute } from '@angular/core';
 import { generateGravatarLink } from './generate-gravatar-link';
 import { GravatarFallback } from './gravatar';
 
+// eslint-disable-next-line @angular-eslint/directive-selector
 @Directive({ selector: 'img[gravatar]', standalone: true })
 export class GravatarDirective {
   @Input({ required: true }) email!: string;
@@ -20,9 +15,7 @@ export class GravatarDirective {
   @Input()
   @HostBinding('src')
   get src() {
-    return (
-      this._src ?? generateGravatarLink(this.email, this.size, this.fallback)
-    );
+    return this._src ?? generateGravatarLink(this.email, this.size, this.fallback);
   }
 
   set src(value: string | null | undefined) {

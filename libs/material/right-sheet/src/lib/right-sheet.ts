@@ -9,17 +9,13 @@
 import { Overlay } from '@angular/cdk/overlay';
 import { ComponentType } from '@angular/cdk/portal';
 import { Injectable, InjectionToken, Injector, OnDestroy, TemplateRef, inject } from '@angular/core';
-import {
-  MAT_RIGHT_SHEET_DATA,
-  MatRightSheetConfig,
-} from './right-sheet.config';
+import { MAT_RIGHT_SHEET_DATA, MatRightSheetConfig } from './right-sheet.config';
 import { MatRightSheetContainer } from './right-sheet.container';
 import { MatRightSheetRef } from './right-sheet.ref';
 import { Dialog } from '@angular/cdk/dialog';
 
 /** Injection token that can be used to specify default right sheet options. */
-export const MAT_RIGHT_SHEET_DEFAULT_OPTIONS =
-  new InjectionToken<MatRightSheetConfig>('mat-right-sheet-default-options');
+export const MAT_RIGHT_SHEET_DEFAULT_OPTIONS = new InjectionToken<MatRightSheetConfig>('mat-right-sheet-default-options');
 
 /**
  * Service to trigger Material Design right sheets.
@@ -36,9 +32,7 @@ export class MatRightSheet implements OnDestroy {
   /** Reference to the currently opened right sheet. */
   get _openedRightSheetRef(): MatRightSheetRef<any> | null {
     const parent = this._parentRightSheet;
-    return parent
-      ? parent._openedRightSheetRef
-      : this._rightSheetRefAtThisLevel;
+    return parent ? parent._openedRightSheetRef : this._rightSheetRefAtThisLevel;
   }
 
   set _openedRightSheetRef(value: MatRightSheetRef<any> | null) {
@@ -61,10 +55,7 @@ export class MatRightSheet implements OnDestroy {
    * @param config Extra configuration options.
    * @returns Reference to the newly-opened right sheet.
    */
-  open<T, D = any, R = any>(
-    component: ComponentType<T>,
-    config?: MatRightSheetConfig<D>
-  ): MatRightSheetRef<T, R>;
+  open<T, D = any, R = any>(component: ComponentType<T>, config?: MatRightSheetConfig<D>): MatRightSheetRef<T, R>;
 
   /**
    * Opens a right sheet containing the given template.
@@ -72,15 +63,9 @@ export class MatRightSheet implements OnDestroy {
    * @param config Extra configuration options.
    * @returns Reference to the newly-opened right sheet.
    */
-  open<T, D = any, R = any>(
-    template: TemplateRef<T>,
-    config?: MatRightSheetConfig<D>
-  ): MatRightSheetRef<T, R>;
+  open<T, D = any, R = any>(template: TemplateRef<T>, config?: MatRightSheetConfig<D>): MatRightSheetRef<T, R>;
 
-  open<T, D = any, R = any>(
-    componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
-    config?: MatRightSheetConfig<D>
-  ): MatRightSheetRef<T, R> {
+  open<T, D = any, R = any>(componentOrTemplateRef: ComponentType<T> | TemplateRef<T>, config?: MatRightSheetConfig<D>): MatRightSheetRef<T, R> {
     const _config = {
       ...(this._defaultOptions || new MatRightSheetConfig()),
       ...config,
@@ -94,21 +79,11 @@ export class MatRightSheet implements OnDestroy {
       width: _config.width || '420px',
       height: '100vh',
       container: MatRightSheetContainer,
-      scrollStrategy:
-        _config.scrollStrategy || this._overlay.scrollStrategies.block(),
-      positionStrategy: this._overlay
-        .position()
-        .global()
-        .top('0')
-        .right('0')
-        .bottom('0'),
+      scrollStrategy: _config.scrollStrategy || this._overlay.scrollStrategies.block(),
+      positionStrategy: this._overlay.position().global().top('0').right('0').bottom('0'),
       templateContext: () => ({ rightSheetRef: ref }),
       providers: (cdkRef, _cdkConfig, container) => {
-        ref = new MatRightSheetRef(
-          cdkRef,
-          _config,
-          container as MatRightSheetContainer
-        );
+        ref = new MatRightSheetRef(cdkRef, _config, container as MatRightSheetContainer);
         return [
           { provide: MatRightSheetRef, useValue: ref },
           { provide: MAT_RIGHT_SHEET_DATA, useValue: _config.data },
@@ -127,9 +102,7 @@ export class MatRightSheet implements OnDestroy {
     if (this._openedRightSheetRef) {
       // If a right sheet is already in view, dismiss it and enter the
       // new right sheet after exit animation is complete.
-      this._openedRightSheetRef
-        .afterDismissed()
-        .subscribe(() => ref.containerInstance?.enter());
+      this._openedRightSheetRef.afterDismissed().subscribe(() => ref.containerInstance?.enter());
       this._openedRightSheetRef.dismiss();
     } else {
       // If no right sheet is in view, enter the new right sheet.

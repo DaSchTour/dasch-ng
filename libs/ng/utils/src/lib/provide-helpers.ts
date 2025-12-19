@@ -11,7 +11,7 @@ export function provideValue<T>(provide: InjectionToken<T> | Type<T>, useValue: 
 export function provideFactory<T, U extends Array<any> = []>(
   provide: InjectionToken<T> | Type<T>,
   useFactory: (...args: U) => T,
-  { deps, multi }: { deps?: any[]; multi?: boolean } = {}
+  { deps, multi }: { deps?: any[]; multi?: boolean } = {},
 ): FactoryProvider {
   return {
     provide,

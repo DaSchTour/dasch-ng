@@ -1,46 +1,14 @@
-import { FlatCompat } from '@eslint/eslintrc';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import js from '@eslint/js';
 import baseConfig from '../../eslint.config.mjs';
 
-const compat = new FlatCompat({
-  baseDirectory: dirname(fileURLToPath(import.meta.url)),
-  recommendedConfig: js.configs.recommended,
-});
-
 export default [
-  {
-    ignores: ['**/dist', '**/out-tsc'],
-  },
   ...baseConfig,
-  {
-    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-    // Override or add rules here
-    rules: {},
-    languageOptions: {
-      parserOptions: {
-        project: ['libs/decorators/tsconfig.*?.json'],
-      },
-    },
-  },
-  {
-    files: ['**/*.ts', '**/*.tsx'],
-    // Override or add rules here
-    rules: {},
-  },
-  {
-    files: ['**/*.js', '**/*.jsx'],
-    // Override or add rules here
-    rules: {},
-  },
   {
     files: ['**/*.json'],
     rules: {
       '@nx/dependency-checks': [
         'error',
         {
-          ignoredFiles: ['{projectRoot}/vite.config.{js,ts,mjs,mts}'],
+          ignoredFiles: ['{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}', '{projectRoot}/vite.config.{js,ts,mjs,mts}'],
         },
       ],
     },
@@ -49,6 +17,6 @@ export default [
     },
   },
   {
-    ignores: ['**/vite.config.*.timestamp*', '**/vitest.config.*.timestamp*'],
+    ignores: ['**/dist', '**/out-tsc', '**/vite.config.*.timestamp*', '**/vitest.config.*.timestamp*'],
   },
 ];

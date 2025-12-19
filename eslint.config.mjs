@@ -1,19 +1,22 @@
-import { FlatCompat } from '@eslint/eslintrc';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import js from '@eslint/js';
-import nxEslintPlugin from '@nx/eslint-plugin';
-
-const compat = new FlatCompat({
-  baseDirectory: dirname(fileURLToPath(import.meta.url)),
-  recommendedConfig: js.configs.recommended,
-});
+import nx from '@nx/eslint-plugin';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import jsoncParser from 'jsonc-eslint-parser';
 
 export default [
   {
-    ignores: ['**/dist', '**/out-tsc'],
+    files: ['**/*.json'],
+    // Override or add rules here
+    rules: {},
+    languageOptions: {
+      parser: jsoncParser,
+    },
   },
-  { plugins: { '@nx': nxEslintPlugin } },
+  ...nx.configs['flat/base'],
+  ...nx.configs['flat/typescript'],
+  ...nx.configs['flat/javascript'],
+  {
+    ignores: ['**/dist', '**/out-tsc', '**/vitest.config.*.timestamp*'],
+  },
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
     rules: {
@@ -32,52 +35,8 @@ export default [
       ],
     },
   },
-  ...compat
-    .config({
-      extends: ['plugin:@nx/typescript'],
-    })
-    .map((config) => ({
-      ...config,
-      files: ['**/*.ts', '**/*.tsx', '**/*.cts', '**/*.mts'],
-      rules: {
-        ...config.rules,
-        '@typescript-eslint/no-extra-semi': 'error',
-        'no-extra-semi': 'off',
-      },
-    })),
-  ...compat
-    .config({
-      extends: ['plugin:@nx/javascript'],
-    })
-    .map((config) => ({
-      ...config,
-      files: ['**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'],
-      rules: {
-        ...config.rules,
-        '@typescript-eslint/no-extra-semi': 'error',
-        'no-extra-semi': 'off',
-      },
-    })),
-  ...compat
-    .config({
-      env: {
-        jest: true,
-      },
-    })
-    .map((config) => ({
-      ...config,
-      files: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.spec.js', '**/*.spec.jsx'],
-      rules: {
-        ...config.rules,
-      },
-    })),
   {
-    files: ['**/*.ts'],
-    rules: {
-      '@angular-eslint/prefer-standalone': 'off',
-    },
-  },
-  {
-    ignores: ['/**/vite.config.ts'],
+    files: ['**/*.{js,ts,mjs,mts,cjs,cts,jsx,tsx}'],
+    ...eslintPluginPrettierRecommended,
   },
 ];

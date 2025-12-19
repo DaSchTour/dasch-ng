@@ -16,25 +16,13 @@ export class DecimalBytesPipe implements PipeTransform {
       return 'Invalid Number';
     } else {
       const k = 1000;
-      const sizes: Array<string> = [
-        'B',
-        'KB',
-        'MB',
-        'GB',
-        'TB',
-        'PB',
-        'EB',
-        'ZB',
-        'YB',
-      ];
+      const sizes: Array<string> = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
       const i: number = Math.floor(Math.log(bytes) / Math.log(k));
       // if less than 1
       if (i < 0) {
         return 'Invalid Number';
       }
-      return `${Number.parseFloat(
-        (bytes / Math.pow(k, i)).toFixed(precision)
-      )} ${sizes[i]}`;
+      return `${Number.parseFloat((bytes / Math.pow(k, i)).toFixed(precision))} ${sizes[i]}`;
     }
   }
 }

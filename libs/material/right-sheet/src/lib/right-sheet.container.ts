@@ -7,14 +7,21 @@
  */
 
 import { AnimationEvent } from '@angular/animations';
-import {
-  FocusMonitor,
-  FocusTrapFactory,
-  InteractivityChecker,
-} from '@angular/cdk/a11y';
+import { FocusMonitor, FocusTrapFactory, InteractivityChecker } from '@angular/cdk/a11y';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, NgZone, OnDestroy, ViewEncapsulation, DOCUMENT, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  NgZone,
+  OnDestroy,
+  ViewEncapsulation,
+  DOCUMENT,
+  inject,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { matRightSheetAnimations } from './right-sheet.animations';
 import { CdkDialogContainer, DialogConfig } from '@angular/cdk/dialog';
@@ -49,11 +56,7 @@ import { CdkPortalOutlet } from '@angular/cdk/portal';
   },
   imports: [CdkPortalOutlet],
 })
-// eslint-disable-next-line @angular-eslint/component-class-suffix
-export class MatRightSheetContainer
-  extends CdkDialogContainer
-  implements OnDestroy
-{
+export class MatRightSheetContainer extends CdkDialogContainer implements OnDestroy {
   private _breakpointSubscription: Subscription;
 
   /** The state of the bottom sheet animations. */
@@ -76,33 +79,13 @@ export class MatRightSheetContainer
     const breakpointObserver = inject(BreakpointObserver);
     const focusMonitor = inject(FocusMonitor);
 
-    super(
-      elementRef,
-      focusTrapFactory,
-      document,
-      config,
-      checker,
-      ngZone,
-      overlayRef,
-      focusMonitor
-    );
+    super(elementRef, focusTrapFactory, document, config, checker, ngZone, overlayRef, focusMonitor);
 
-    this._breakpointSubscription = breakpointObserver
-      .observe([Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge])
-      .subscribe(() => {
-        this._toggleClass(
-          'mat-right-sheet-container-medium',
-          breakpointObserver.isMatched(Breakpoints.Medium)
-        );
-        this._toggleClass(
-          'mat-right-sheet-container-large',
-          breakpointObserver.isMatched(Breakpoints.Large)
-        );
-        this._toggleClass(
-          'mat-right-sheet-container-xlarge',
-          breakpointObserver.isMatched(Breakpoints.XLarge)
-        );
-      });
+    this._breakpointSubscription = breakpointObserver.observe([Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge]).subscribe(() => {
+      this._toggleClass('mat-right-sheet-container-medium', breakpointObserver.isMatched(Breakpoints.Medium));
+      this._toggleClass('mat-right-sheet-container-large', breakpointObserver.isMatched(Breakpoints.Large));
+      this._toggleClass('mat-right-sheet-container-xlarge', breakpointObserver.isMatched(Breakpoints.XLarge));
+    });
   }
 
   /** Begin animation of bottom sheet entrance into view. */

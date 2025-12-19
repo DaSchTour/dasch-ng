@@ -12,7 +12,5 @@ export class ObserveMutationDirective {
   private readonly elementRef = inject(ElementRef);
   private readonly mutationObserverService = inject(MutationObserverService);
 
-  public readonly records = outputFromObservable(
-    this.mutationObserverService.observe(this.elementRef.nativeElement)
-  );
+  public readonly records = outputFromObservable(this.mutationObserverService.observe(this.elementRef.nativeElement));
 }

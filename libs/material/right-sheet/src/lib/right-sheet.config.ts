@@ -14,9 +14,7 @@ import { InjectionToken, ViewContainerRef } from '@angular/core';
 export type AutoFocusTarget = 'dialog' | 'first-tabbable' | 'first-heading';
 
 /** Injection token that can be used to access the data that was passed in to a bottom sheet. */
-export const MAT_RIGHT_SHEET_DATA = new InjectionToken<any>(
-  'MatRightSheetData'
-);
+export const MAT_RIGHT_SHEET_DATA = new InjectionToken<any>('MatRightSheetData');
 
 /**
  * Configuration used when opening a right sheet.

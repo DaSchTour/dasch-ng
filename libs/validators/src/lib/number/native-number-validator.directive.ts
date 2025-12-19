@@ -14,12 +14,9 @@ import { NG_VALIDATORS, ValidationErrors, Validator } from '@angular/forms';
   ],
 })
 export class NativeNumberValidatorDirective implements Validator {
-  private readonly elementRef: ElementRef<HTMLInputElement> =
-    inject(ElementRef);
+  private readonly elementRef: ElementRef<HTMLInputElement> = inject(ElementRef);
 
   validate(): ValidationErrors | null {
-    return this.elementRef.nativeElement.checkValidity()
-      ? null
-      : { invalidNumber: true };
+    return this.elementRef.nativeElement.checkValidity() ? null : { invalidNumber: true };
   }
 }

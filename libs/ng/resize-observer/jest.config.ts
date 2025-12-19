@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'resize-observer',
   preset: '../../../jest.preset.js',

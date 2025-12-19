@@ -14,12 +14,7 @@ import { MatRightSheetContainer } from './right-sheet.container';
 import { MatRightSheet } from './right-sheet';
 
 @NgModule({
-  imports: [
-    DialogModule,
-    MatCommonModule,
-    PortalModule,
-    MatRightSheetContainer,
-  ],
+  imports: [DialogModule, MatCommonModule, PortalModule, MatRightSheetContainer],
   exports: [MatRightSheetContainer, MatCommonModule],
   providers: [MatRightSheet],
 })

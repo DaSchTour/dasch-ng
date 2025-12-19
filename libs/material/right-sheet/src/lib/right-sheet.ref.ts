@@ -43,7 +43,7 @@ export class MatRightSheetRef<T = any, R = any> {
   constructor(
     private _ref: DialogRef<R, T>,
     config: MatRightSheetConfig,
-    containerInstance: MatRightSheetContainer
+    containerInstance: MatRightSheetContainer,
   ) {
     this.containerInstance = containerInstance;
     this.disableClose = config.disableClose;
@@ -51,10 +51,8 @@ export class MatRightSheetRef<T = any, R = any> {
     // Emit when opening animation completes
     containerInstance._animationStateChanged
       .pipe(
-        filter(
-          (event) => event.phaseName === 'done' && event.toState === 'visible'
-        ),
-        take(1)
+        filter((event) => event.phaseName === 'done' && event.toState === 'visible'),
+        take(1),
       )
       .subscribe(() => {
         this._afterOpened.next();
@@ -64,10 +62,8 @@ export class MatRightSheetRef<T = any, R = any> {
     // Dispose overlay when closing animation is complete
     containerInstance._animationStateChanged
       .pipe(
-        filter(
-          (event) => event.phaseName === 'done' && event.toState === 'hidden'
-        ),
-        take(1)
+        filter((event) => event.phaseName === 'done' && event.toState === 'hidden'),
+        take(1),
       )
       .subscribe(() => {
         clearTimeout(this._closeFallbackTimeout);
@@ -78,14 +74,8 @@ export class MatRightSheetRef<T = any, R = any> {
       this._ref.close(this._result);
     });
 
-    merge(
-      this.backdropClick(),
-      this.keydownEvents().pipe(filter((event) => event.keyCode === ESCAPE))
-    ).subscribe((event) => {
-      if (
-        !this.disableClose &&
-        (event.type !== 'keydown' || !hasModifierKey(event as KeyboardEvent))
-      ) {
+    merge(this.backdropClick(), this.keydownEvents().pipe(filter((event) => event.keyCode === ESCAPE))).subscribe((event) => {
+      if (!this.disableClose && (event.type !== 'keydown' || !hasModifierKey(event as KeyboardEvent))) {
         event.preventDefault();
         this.dismiss();
       }
@@ -105,7 +95,7 @@ export class MatRightSheetRef<T = any, R = any> {
     this.containerInstance._animationStateChanged
       .pipe(
         filter((event) => event.phaseName === 'start'),
-        take(1)
+        take(1),
       )
       .subscribe((event) => {
         // The logic that disposes of the overlay depends on the exit animation completing, however

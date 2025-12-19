@@ -16,8 +16,6 @@ export class GravatarService {
   }
 
   public getContact(email: string) {
-    return this.http.get<GravatarResponse>(
-      `https://www.gravatar.com/${hashEmail(email)}.json`
-    );
+    return this.http.get<GravatarResponse>(`https://www.gravatar.com/${hashEmail(email)}.json`);
   }
 }

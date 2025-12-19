@@ -8,9 +8,7 @@ describe('filterNil()', () => {
       next: jest.fn(),
       complete: jest.fn(),
     };
-    from([1, null, undefined, 2, 3, 4])
-      .pipe(filterNil())
-      .subscribe(observerSpy);
+    from([1, null, undefined, 2, 3, 4]).pipe(filterNil()).subscribe(observerSpy);
     expect(observerSpy.next).toHaveBeenCalledTimes(4);
     expect(observerSpy.complete).toHaveBeenCalledTimes(1);
   });

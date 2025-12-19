@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'gravatar',
   preset: '../../jest.preset.js',
