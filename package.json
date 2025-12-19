@@ -70,8 +70,8 @@
     "@typescript-eslint/eslint-plugin": "8.50.0",
     "@typescript-eslint/parser": "8.50.0",
     "@typescript-eslint/utils": "8.50.0",
-    "@vitest/coverage-v8": "4.0.9",
-    "@vitest/ui": "4.0.9",
+    "@vitest/coverage-v8": "4.0.16",
+    "@vitest/ui": "4.0.16",
     "angular-eslint": "^21.1.0",
     "autoprefixer": "^10.4.0",
     "cypress": "15.8.1",
@@ -110,7 +110,7 @@
     "vite-plugin-dts": "4.5.4",
     "vite-plugin-eslint": "^1.8.1",
     "vite-tsconfig-paths": "^5.0.0",
-    "vitest": "4.0.9"
+    "vitest": "4.0.16"
   },
   "overrides": {
     "@nx/devkit": "$@nx/devkit"
