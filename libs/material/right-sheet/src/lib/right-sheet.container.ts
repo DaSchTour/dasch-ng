@@ -74,32 +74,19 @@ export class MatRightSheetContainer extends CdkDialogContainer implements OnDest
   /** Whether the component has been destroyed. */
   private _destroyed = false;
 
-  constructor(...args: unknown[]);
-
   constructor() {
     super();
 
     const elementRef = inject(ElementRef);
     const breakpointObserver = inject(BreakpointObserver);
 
-    this._breakpointSubscription = breakpointObserver
-      .observe([Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge])
-      .subscribe(() => {
-        const classList = (elementRef.nativeElement as HTMLElement).classList;
+    this._breakpointSubscription = breakpointObserver.observe([Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge]).subscribe(() => {
+      const classList = (elementRef.nativeElement as HTMLElement).classList;
 
-        classList.toggle(
-          'mat-right-sheet-container-medium',
-          breakpointObserver.isMatched(Breakpoints.Medium),
-        );
-        classList.toggle(
-          'mat-right-sheet-container-large',
-          breakpointObserver.isMatched(Breakpoints.Large),
-        );
-        classList.toggle(
-          'mat-right-sheet-container-xlarge',
-          breakpointObserver.isMatched(Breakpoints.XLarge),
-        );
-      });
+      classList.toggle('mat-right-sheet-container-medium', breakpointObserver.isMatched(Breakpoints.Medium));
+      classList.toggle('mat-right-sheet-container-large', breakpointObserver.isMatched(Breakpoints.Large));
+      classList.toggle('mat-right-sheet-container-xlarge', breakpointObserver.isMatched(Breakpoints.XLarge));
+    });
   }
 
   /** Begin animation of bottom sheet entrance into view. */

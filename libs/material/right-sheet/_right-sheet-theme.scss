@@ -36,11 +36,7 @@
 // all of the values between them.
 
 @function _get-umbra-map($color, $opacity) {
-  $shadow-color: if(
-    meta.type-of($color) == color,
-    rgba($color, $opacity * 0.2),
-    $color
-  );
+  $shadow-color: if(meta.type-of($color) == color, rgba($color, $opacity * 0.2), $color);
 
   @return (
     0: '0px 0px 0px 0px #{$shadow-color}',
@@ -72,11 +68,7 @@
 }
 
 @function _get-penumbra-map($color, $opacity) {
-  $shadow-color: if(
-    meta.type-of($color) == color,
-    rgba($color, $opacity * 0.14),
-    $color
-  );
+  $shadow-color: if(meta.type-of($color) == color, rgba($color, $opacity * 0.14), $color);
 
   @return (
     0: '0px 0px 0px 0px #{$shadow-color}',
@@ -108,11 +100,7 @@
 }
 
 @function _get-ambient-map($color, $opacity) {
-  $shadow-color: if(
-    meta.type-of($color) == color,
-    rgba($color, $opacity * 0.12),
-    $color
-  );
+  $shadow-color: if(meta.type-of($color) == color, rgba($color, $opacity * 0.12), $color);
 
   @return (
     0: '0px 0px 0px 0px #{$shadow-color}',
@@ -151,7 +139,8 @@
     @error '$zValue must be between 0 and 24';
   }
 
-  box-shadow: #{map.get(_get-umbra-map($color, $opacity), $zValue)},
+  box-shadow:
+    #{map.get(_get-umbra-map($color, $opacity), $zValue)},
     #{map.get(_get-penumbra-map($color, $opacity), $zValue)},
     #{map.get(_get-ambient-map($color, $opacity), $zValue)};
 }
@@ -166,11 +155,7 @@ $opacity: 1 !default;
 @mixin private-theme-elevation($zValue, $config, $opacity: $opacity) {
   $foreground: map.get($config, foreground);
   $elevation-color: map.get($foreground, elevation);
-  $elevation-color-or-default: if(
-    $elevation-color == null,
-    $color,
-    $elevation-color
-  );
+  $elevation-color-or-default: if($elevation-color == null, $color, $elevation-color);
 
   @include elevation($zValue, $elevation-color-or-default, $opacity);
 }

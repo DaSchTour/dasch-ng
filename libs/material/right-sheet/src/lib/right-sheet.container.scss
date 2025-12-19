@@ -28,8 +28,7 @@ $mat-bottom-sheet-container-horizontal-padding: 16px !default;
 }
 
 .mat-right-sheet-container {
-  padding: $mat-bottom-sheet-container-vertical-padding
-    $mat-bottom-sheet-container-horizontal-padding;
+  padding: $mat-bottom-sheet-container-vertical-padding $mat-bottom-sheet-container-horizontal-padding;
   height: 100%;
   width: 100%;
   min-height: 100vh;

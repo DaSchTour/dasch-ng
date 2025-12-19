@@ -4,10 +4,6 @@ const {
 
 module.exports = {
   rules: {
-    'scope-enum': async (ctx) => [
-      2,
-      'always',
-      ['deps', 'deps-dev', ...(await getProjects(ctx))],
-    ],
+    'scope-enum': async (ctx) => [2, 'always', ['deps', 'deps-dev', ...(await getProjects(ctx))]],
   },
 };

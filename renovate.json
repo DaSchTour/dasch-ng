@@ -1,10 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base",
-    "npm:unpublishSafe",
-    ":prConcurrentLimitNone",
-    ":prHourlyLimitNone",
-    ":automergePatch"
-  ]
+  "extends": ["config:base", "npm:unpublishSafe", ":prConcurrentLimitNone", ":prHourlyLimitNone", ":automergePatch"]
 }

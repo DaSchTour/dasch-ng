@@ -9,6 +9,7 @@ This is an Nx monorepo containing Angular libraries and utilities. The repositor
 ## Common Commands
 
 ### Build
+
 ```bash
 # Build all projects
 nx run-many -t build
@@ -23,6 +24,7 @@ nx build gravatar
 ### Test
 
 The repository uses **both Jest and Vitest** depending on the project:
+
 - **Jest**: Used by Angular libraries (gravatar, ng-utils, validators, decorators, material-right-sheet)
 - **Vitest**: Used by non-Angular libraries (rxjs-operators, sharp-operators)
 
@@ -46,6 +48,7 @@ nx test <project-name> --testFile=<file-name>
 ```
 
 ### Lint
+
 ```bash
 # Lint all projects
 nx run-many -t lint
@@ -58,6 +61,7 @@ nx lint <project-name> --fix
 ```
 
 ### Release
+
 ```bash
 # Preview version bump and changelog
 nx release --dry-run
@@ -95,12 +99,14 @@ libs/
 ### Library Types
 
 **Angular Libraries** (using `@nx/angular:package`):
+
 - Built with ng-packagr
 - Use Jest for testing
 - Have `ng-package.json` configuration
 - Examples: gravatar, ng-utils, material-right-sheet, validators, decorators
 
 **Vite Libraries** (using `@nx/vite:build`):
+
 - Built with Vite
 - Use Jest or Vitest for testing
 - Standalone TypeScript/JavaScript utilities
@@ -116,6 +122,7 @@ libs/
 ### Release Process
 
 The repository uses Nx Release with independent versioning:
+
 - Each library maintains its own version
 - Releases are tagged as `{projectName}/{version}`
 - Conventional commits determine version bumps
@@ -131,6 +138,7 @@ Uses **npm** as the package manager (configured in `nx.json`).
 ### Project Configuration
 
 Each library has a `project.json` that defines:
+
 - Build executor (Angular package or Vite)
 - Test executor and configuration
 - Lint settings
@@ -139,6 +147,7 @@ Each library has a `project.json` that defines:
 ### TypeScript Configuration
 
 Libraries follow this tsconfig pattern:
+
 - `tsconfig.json`: Base configuration
 - `tsconfig.lib.json`: Library build configuration
 - `tsconfig.spec.json`: Test configuration
@@ -155,6 +164,7 @@ Libraries follow this tsconfig pattern:
 ### Nx Module Boundaries
 
 The ESLint configuration enforces buildable library dependencies:
+
 - Libraries can only depend on buildable libraries
 - Prevents circular dependencies
 - Ensures clean module boundaries
