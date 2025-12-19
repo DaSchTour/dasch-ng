@@ -68,7 +68,7 @@
       "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/eslint.config.mjs"
     ],
-    "sharedGlobals": []
+    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
   "cli": {
     "packageManager": "npm"
