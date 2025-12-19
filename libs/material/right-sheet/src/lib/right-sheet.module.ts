@@ -9,13 +9,12 @@
 import { DialogModule } from '@angular/cdk/dialog';
 import { PortalModule } from '@angular/cdk/portal';
 import { NgModule } from '@angular/core';
-import { MatCommonModule } from '@angular/material/core';
 import { MatRightSheetContainer } from './right-sheet.container';
 import { MatRightSheet } from './right-sheet';
 
 @NgModule({
-  imports: [DialogModule, MatCommonModule, PortalModule, MatRightSheetContainer],
-  exports: [MatRightSheetContainer, MatCommonModule],
+  imports: [DialogModule, PortalModule, MatRightSheetContainer],
+  exports: [MatRightSheetContainer],
   providers: [MatRightSheet],
 })
 export class MatRightSheetModule {}

@@ -51,7 +51,7 @@ export class MatRightSheetRef<T = any, R = any> {
     // Emit when opening animation completes
     containerInstance._animationStateChanged
       .pipe(
-        filter((event) => event.phaseName === 'done' && event.toState === 'visible'),
+        filter((event) => event.phase === 'done' && event.toState === 'visible'),
         take(1),
       )
       .subscribe(() => {
@@ -62,7 +62,7 @@ export class MatRightSheetRef<T = any, R = any> {
     // Dispose overlay when closing animation is complete
     containerInstance._animationStateChanged
       .pipe(
-        filter((event) => event.phaseName === 'done' && event.toState === 'hidden'),
+        filter((event) => event.phase === 'done' && event.toState === 'hidden'),
         take(1),
       )
       .subscribe(() => {
@@ -94,10 +94,10 @@ export class MatRightSheetRef<T = any, R = any> {
     // Transition the backdrop in parallel to the bottom sheet.
     this.containerInstance._animationStateChanged
       .pipe(
-        filter((event) => event.phaseName === 'start'),
+        filter((event) => event.phase === 'start'),
         take(1),
       )
-      .subscribe((event) => {
+      .subscribe(() => {
         // The logic that disposes of the overlay depends on the exit animation completing, however
         // it isn't guaranteed if the parent view is destroyed while it's running. Add a fallback
         // timeout which will clean everything up if the animation hasn't fired within the specified
@@ -105,7 +105,7 @@ export class MatRightSheetRef<T = any, R = any> {
         // vast majority of cases the timeout will have been cleared before it has fired.
         this._closeFallbackTimeout = window.setTimeout(() => {
           this._ref.close(this._result);
-        }, event.totalTime + 100);
+        }, 375 + 100);
 
         this._ref.overlayRef.detachBackdrop();
       });

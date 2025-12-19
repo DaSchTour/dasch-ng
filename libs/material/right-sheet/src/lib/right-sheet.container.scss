@@ -7,6 +7,26 @@ $_mat-bottom-sheet-width-increment: 64px;
 $mat-bottom-sheet-container-vertical-padding: 8px !default;
 $mat-bottom-sheet-container-horizontal-padding: 16px !default;
 
+@keyframes _mat-right-sheet-enter {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@keyframes _mat-right-sheet-exit {
+  from {
+    transform: none;
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
 .mat-right-sheet-container {
   padding: $mat-bottom-sheet-container-vertical-padding
     $mat-bottom-sheet-container-horizontal-padding;
@@ -17,9 +37,22 @@ $mat-bottom-sheet-container-horizontal-padding: 16px !default;
   display: block;
   outline: 0;
   overflow: auto;
+  position: relative;
 
   @include cdk.high-contrast {
     outline: 1px solid;
+  }
+}
+
+.mat-right-sheet-container-animations-enabled {
+  transform: translateX(100%);
+
+  &.mat-right-sheet-container-enter {
+    animation: _mat-right-sheet-enter 195ms cubic-bezier(0, 0, 0.2, 1) forwards;
+  }
+
+  &.mat-right-sheet-container-exit {
+    animation: _mat-right-sheet-exit 375ms cubic-bezier(0.4, 0, 1, 1) backwards;
   }
 }
 

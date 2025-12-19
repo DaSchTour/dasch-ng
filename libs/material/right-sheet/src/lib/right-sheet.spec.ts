@@ -335,7 +335,7 @@ describe('MatRightSheet', () => {
     expect(containerRect?.right).toBeGreaterThan(containerRect?.left ?? 0);
   });
 
-  xit('should have the width provided with config', () => {
+  it('should have the width provided with config', () => {
     rightSheet.open(PizzaMsg, {
       viewContainerRef: testViewContainerRef,
       width: '220px',
@@ -346,13 +346,13 @@ describe('MatRightSheet', () => {
     const containerElement = overlayContainerElement.querySelector('mat-right-sheet-container')!;
     const containerRect = containerElement.getBoundingClientRect();
     const viewportSize = viewportRuler.getViewportSize();
-    const viewportRect = viewportRuler.getViewportRect();
 
+    // Right sheet should be positioned at the right edge
     expect(Math.floor(containerRect.width)).toBe(220);
-    // 8 ist die Scrollbar-Breite
-    expect(Math.floor(containerRect.left)).toBe(8);
-    expect(Math.floor(containerRect.right)).toBe(8);
-    expect(Math.floor(containerRect.bottom)).toBe(0);
+    expect(Math.floor(containerRect.right)).toBe(Math.floor(viewportSize.width));
+    expect(Math.floor(containerRect.left)).toBe(Math.floor(viewportSize.width - 220));
+    expect(Math.floor(containerRect.top)).toBe(0);
+    expect(Math.floor(containerRect.bottom)).toBe(Math.floor(viewportSize.height));
     expect(Math.floor(containerRect.height)).toBe(Math.floor(viewportSize.height));
   });
 
@@ -368,7 +368,7 @@ describe('MatRightSheet', () => {
     // callback should not be called before animation is complete
     expect(spy).not.toHaveBeenCalled();
 
-    flushMicrotasks();
+    flush();
     expect(spy).toHaveBeenCalled();
   }));
 
@@ -971,41 +971,6 @@ describe('MatRightSheet', () => {
       expect(document.activeElement?.id).not.toBe('right-sheet-trigger', 'Expected the trigger not to be refocused on close.');
 
       button.remove();
-    }));
-
-    xit('should not move focus if it was moved outside the sheet while animating', fakeAsync(() => {
-      // Create a element that has focus before the right sheet is opened.
-      const button = document.createElement('button');
-      const otherButton = document.createElement('button');
-      const body = document.body;
-      button.id = 'right-sheet-trigger';
-      otherButton.id = 'other-button';
-      body.appendChild(button);
-      body.appendChild(otherButton);
-      button.focus();
-
-      const rightSheetRef = rightSheet.open(PizzaMsg, {
-        viewContainerRef: testViewContainerRef,
-      });
-
-      flushMicrotasks();
-      viewContainerFixture.detectChanges();
-      flushMicrotasks();
-
-      // Start the closing sequence and move focus out of right sheet.
-      rightSheetRef.dismiss();
-      otherButton.focus();
-
-      expect(document.activeElement?.id).withContext('Expected focus to be on the alternate button.').toBe('other-button');
-
-      flushMicrotasks();
-      viewContainerFixture.detectChanges();
-      flush();
-
-      expect(document.activeElement?.id).withContext('Expected focus to stay on the alternate button.').toBe('other-button');
-
-      button.remove();
-      otherButton.remove();
     }));
 
     it('should re-focus trigger element inside the shadow DOM when the right sheet is dismissed', fakeAsync(() => {
