@@ -27,14 +27,6 @@
         "main": "libs/material/right-sheet/src/test.ts",
         "tsConfig": "libs/material/right-sheet/tsconfig.spec.json",
         "karmaConfig": "libs/material/right-sheet/karma.conf.js"
-      },
-      "configurations": {
-        "ci": {
-          "karmaConfig": "libs/material/right-sheet/karma-ci.conf.js",
-          "browsers": "ChromeHeadless",
-          "watch": false,
-          "codeCoverage": true
-        }
       }
     },
     "lint": {
