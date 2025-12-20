@@ -31,6 +31,17 @@
         }
       }
     },
+    "@angular-devkit/build-angular:karma": {
+      "inputs": ["default", "^production", "{workspaceRoot}/karma.conf.js"],
+      "cache": true,
+      "configurations": {
+        "ci": {
+          "browsers": "ChromeHeadless",
+          "watch": false,
+          "codeCoverage": true
+        }
+      }
+    },
     "@nx/eslint:lint": {
       "inputs": ["default", "{workspaceRoot}/.eslintrc.json", "{workspaceRoot}/eslint.config.mjs"],
       "cache": true
