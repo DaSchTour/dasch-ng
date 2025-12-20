@@ -32,7 +32,7 @@
       }
     },
     "@angular-devkit/build-angular:karma": {
-      "inputs": ["default", "^production", "{workspaceRoot}/karma.conf.js", "{workspaceRoot}/karma-ci.conf.js"],
+      "inputs": ["default", "^production", "{workspaceRoot}/karma.conf.js"],
       "cache": true,
       "configurations": {
         "ci": {
@@ -158,7 +158,7 @@
     "projects": ["gravatar", "material-right-sheet", "ng-utils", "rxjs-operators", "sharp-operators", "prime-supplements"],
     "projectsRelationship": "independent",
     "version": {
-      "preVersionCommand": "npx nx run-many -t build",
+      "preVersionCommand": "npx nx run-many -t build -c production",
       "conventionalCommits": true,
       "manifestRootsToUpdate": ["{projectRoot}", "dist/{projectRoot}"]
     },
