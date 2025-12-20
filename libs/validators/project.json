@@ -4,6 +4,13 @@
   "sourceRoot": "libs/validators/src",
   "prefix": "dasch-ng",
   "projectType": "library",
+  "release": {
+    "version": {
+      "currentVersionResolver": "git-tag",
+      "preserveLocalDependencyProtocols": false,
+      "manifestRootsToUpdate": ["dist/{projectRoot}"]
+    }
+  },
   "tags": [],
   "targets": {
     "build": {

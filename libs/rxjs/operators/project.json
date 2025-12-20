@@ -4,7 +4,19 @@
   "sourceRoot": "libs/rxjs/operators/src",
   "projectType": "library",
   "tags": [],
+  "release": {
+    "version": {
+      "currentVersionResolver": "git-tag",
+      "preserveLocalDependencyProtocols": false,
+      "manifestRootsToUpdate": ["dist/{projectRoot}"]
+    }
+  },
   "targets": {
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}"
+      }
+    },
     "build": {
       "executor": "@nx/vite:build",
       "outputs": ["{options.outputPath}"],
@@ -28,17 +40,6 @@
       "options": {
         "jestConfig": "libs/rxjs/operators/jest.config.ts"
       }
-    },
-    "publish": {
-      "executor": "ngx-deploy-npm:deploy",
-      "options": {
-        "access": "public",
-        "distFolderPath": "dist/libs/rxjs/operators"
-      },
-      "dependsOn": ["build"]
-    },
-    "github": {
-      "executor": "@jscutlery/semver:github"
     }
   }
 }
