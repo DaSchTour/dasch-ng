@@ -110,7 +110,7 @@
     "vite": "7.3.0",
     "vite-plugin-dts": "4.5.4",
     "vite-plugin-eslint": "^1.8.1",
-    "vite-tsconfig-paths": "^5.0.0",
+    "vite-tsconfig-paths": "^6.0.0",
     "vitest": "4.0.16"
   },
   "overrides": {
