@@ -60,6 +60,16 @@ nx lint <project-name>
 nx lint <project-name> --fix
 ```
 
+### Format
+
+```bash
+# Format all files (respects .prettierignore)
+nx format:write
+
+# Format specific files
+nx format:write --files=path/to/file.ts
+```
+
 ### Release
 
 ```bash
@@ -182,3 +192,41 @@ The ESLint configuration enforces buildable library dependencies:
 - If the user needs help with an Nx configuration or project graph error, use the `nx_workspace` tool to get any errors
 
 <!-- nx configuration end-->
+
+## Best Practices for Claude Code
+
+### Pre-Commit Checklist
+
+**IMPORTANT**: Before committing any code changes, ALWAYS run the following commands:
+
+```bash
+# 1. Run lint with auto-fix on all projects
+npx nx run-many -t lint --fix
+
+# 2. Format all files
+npx nx format:write
+
+# 3. Then commit your changes
+git add .
+git commit -m "your commit message"
+git push
+```
+
+**Why this is critical**:
+- The CI pipeline will fail if code is not properly linted and formatted
+- Running these commands locally catches issues before they reach CI
+- Ensures code quality and consistency across the repository
+
+### CI Test Configuration
+
+When working with Karma-based tests (Angular projects):
+- Use the `:ci` configuration for CI environments
+- CI configuration automatically uses headless Chrome
+- Example: `nx test material-right-sheet:ci`
+- The GitHub Actions workflow uses `nx affected -t lint test:ci build`
+
+### Testing Strategy
+
+- **Local development**: Use `nx test <project-name>` (opens browser)
+- **CI/headless**: Use `nx test <project-name>:ci` (headless Chrome)
+- Always verify tests pass locally before pushing
