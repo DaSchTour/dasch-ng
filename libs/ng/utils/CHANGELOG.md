@@ -1,3 +1,7 @@
+## 0.5.0 (2025-12-20)
+
+This was a version bump only for ng-utils to align it with other projects, there were no code changes.
+
 ## 0.4.1 (2025-06-17)
 
 This was a version bump only for ng-utils to align it with other projects, there were no code changes.

@@ -1,3 +1,17 @@
+## 2.1.0 (2025-12-20)
+
+### 🚀 Features
+
+- **material-right-sheet:** add CI test configuration with headless Chrome ([e463dfa](https://github.com/DaSchTour/dasch-ng/commit/e463dfa))
+- **material-right-sheet:** migrate to Angular 21 with CSS animations ([0c6bf13](https://github.com/DaSchTour/dasch-ng/commit/0c6bf13))
+- add sharp operators ([8a8894f](https://github.com/DaSchTour/dasch-ng/commit/8a8894f))
+
+### ❤️ Thank You
+
+- Claude
+- Claude Sonnet 4.5
+- Daniel Schuba @DaSchTour
+
 ## [2.0.0](https://github.com/DaSchTour/dasch-ng/compare/material-right-sheet/1.0.2...material-right-sheet/2.0.0) (2024-06-09)
 
 ### ⚠ BREAKING CHANGES
