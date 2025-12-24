@@ -1,6 +1,6 @@
 # Getting Started
 
-Welcome to the dasch-ng monorepo documentation! This guide will help you get started with using the libraries in your projects.
+Welcome to dasch.ng! This guide will help you get started with using the libraries from the dasch-ng monorepo in your projects.
 
 ## Installation
 
@@ -121,4 +121,4 @@ nx format:write
 
 - 🐛 [Report Issues](https://github.com/DaSchTour/dasch-ng/issues)
 - 💬 [Discussions](https://github.com/DaSchTour/dasch-ng/discussions)
-- 📖 [Documentation](https://dasch-ng.dev)
+- 📖 [Documentation](https://dasch.ng)

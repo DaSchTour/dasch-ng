@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: 'dasch-ng',
+  title: 'dasch.ng',
   description: 'Angular & TypeScript Utilities Monorepo',
   base: '/',
   ignoreDeadLinks: true,

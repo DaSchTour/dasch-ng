@@ -1,6 +1,6 @@
 # Architecture
 
-This document describes the architecture and organization of the dasch-ng monorepo.
+This document describes the architecture and organization of the dasch.ng monorepo.
 
 ## Monorepo Structure
 

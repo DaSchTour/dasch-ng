@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is an Nx monorepo containing Angular libraries and utilities. The repository uses independent versioning for publishable packages with automated releases to npm.
 
+**Documentation Site:** [dasch.ng](https://dasch.ng) - VitePress documentation with TypeDoc API reference
+
 ## Common Commands
 
 ### Build
@@ -82,6 +84,24 @@ nx release
 # Skip publish step
 nx release --skip-publish
 ```
+
+### Documentation
+
+```bash
+# Start documentation dev server
+npm run docs:dev
+
+# Build documentation for production
+npm run docs:build
+
+# Preview production build
+npm run docs:preview
+
+# Generate TypeDoc API documentation
+nx run docs:typedoc
+```
+
+The documentation site (dasch.ng) is built with VitePress and TypeDoc, located in `apps/docs/`.
 
 ## Architecture
 

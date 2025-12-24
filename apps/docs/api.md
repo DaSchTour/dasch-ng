@@ -1,6 +1,6 @@
 # API Reference
 
-Complete API documentation for all libraries in the dasch-ng monorepo, automatically generated from TypeScript/JSDoc comments.
+Complete API documentation for all libraries in the dasch.ng monorepo, automatically generated from TypeScript/JSDoc comments.
 
 ## Angular Libraries
 

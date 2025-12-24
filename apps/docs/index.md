@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: 'dasch-ng'
+  name: 'dasch.ng'
   text: 'Angular & TypeScript Utilities'
   tagline: 'A collection of reusable Angular libraries and TypeScript utilities for modern web development'
   actions:
