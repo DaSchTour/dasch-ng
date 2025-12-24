@@ -13,7 +13,12 @@ npm install @dasch-ng/rxjs-operators
 
 ### Peer Dependencies
 
-This library requires the following peer dependencies:
+This library requires the following peer dependencies with these version ranges:
+
+- `rxjs` ^7.0.0
+- `@fxts/core` >= 0.20.0
+
+You can install compatible versions with:
 
 ```bash
 npm install rxjs @fxts/core
@@ -36,11 +41,11 @@ import { of } from 'rxjs';
 import { debug } from '@dasch-ng/rxjs-operators';
 
 of(1, 2, 3).pipe(debug('my-stream')).subscribe();
-// Console output:
-// my-stream { kind: 'N', value: 1 }
-// my-stream { kind: 'N', value: 2 }
-// my-stream { kind: 'N', value: 3 }
-// my-stream { kind: 'C' }
+// Console output (RxJS Notification objects):
+// my-stream Notification { kind: 'N', value: 1, error: undefined, hasValue: true }
+// my-stream Notification { kind: 'N', value: 2, error: undefined, hasValue: true }
+// my-stream Notification { kind: 'N', value: 3, error: undefined, hasValue: true }
+// my-stream Notification { kind: 'C', value: undefined, error: undefined, hasValue: false }
 ```
 
 ---

@@ -16,11 +16,11 @@ import { Observable, dematerialize, map, materialize } from 'rxjs';
  * of(1, 2, 3)
  *   .pipe(debug('my-stream'))
  *   .subscribe();
- * // Console output:
- * // my-stream { kind: 'N', value: 1 }
- * // my-stream { kind: 'N', value: 2 }
- * // my-stream { kind: 'N', value: 3 }
- * // my-stream { kind: 'C' }
+ * // Console output (RxJS Notification objects):
+ * // my-stream Notification { kind: 'N', value: 1, error: undefined, hasValue: true }
+ * // my-stream Notification { kind: 'N', value: 2, error: undefined, hasValue: true }
+ * // my-stream Notification { kind: 'N', value: 3, error: undefined, hasValue: true }
+ * // my-stream Notification { kind: 'C', value: undefined, error: undefined, hasValue: false }
  * ```
  */
 export function debug<T>(label?: string): (source: Observable<T>) => Observable<T> {
