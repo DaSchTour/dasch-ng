@@ -94,4 +94,4 @@ Contributions are welcome! Please check our [contributing guidelines](https://gi
 
 ## License
 
-MIT © DaSchTour
+MIT © [Daniel Schuba](https://daniel-schuba.de)
