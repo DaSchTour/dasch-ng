@@ -16,14 +16,10 @@ common-bun-init-steps: &common-bun-init-steps
       base-branch: 'main'
   - name: Install Bun
     script: |
-      curl -fsSL https://bun.sh/install | bash
-      export BUN_INSTALL="$HOME/.bun"
-      export PATH="$BUN_INSTALL/bin:$PATH"
+      # Install bun via npm (since Node is already available in the image)
+      npm install -g bun
   - name: Install Node Modules
-    script: |
-      export BUN_INSTALL="$HOME/.bun"
-      export PATH="$BUN_INSTALL/bin:$PATH"
-      bun install --frozen-lockfile
+    script: bun install --frozen-lockfile
   - name: Install Browsers (if needed)
     uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/install-browsers/main.yaml'
 
