@@ -29,43 +29,9 @@ Dieser Plan beschreibt die Implementierung einer zentralen Dokumentationsseite f
 
 ## Tool-Evaluierung
 
-### Option 1: Storybook (Empfohlen für Komponentenbibliotheken)
+### Option 1: VitePress + TypeDoc (✅ EMPFOHLEN)
 
-#### Vorteile
-
-- ✅ Native Nx-Integration über `@nx/storybook`
-- ✅ Ausgezeichnet für Angular-Komponenten
-- ✅ Kann mehrere Libraries in einer Instanz zusammenführen
-- ✅ Interaktive Komponentenvorschau
-- ✅ Hot-Reload während der Entwicklung
-- ✅ MDX-Support für zusätzliche Dokumentation
-- ✅ Beispielrepository verfügbar: [nx-shared-storybook](https://github.com/juristr/nx-shared-storybook)
-
-#### Nachteile
-
-- ❌ Primär für UI-Komponenten, weniger für reine Utility-Libraries
-- ❌ Nicht ideal für Non-Angular Libraries (rxjs-operators, sharp-operators)
-
-#### Nx-Integration
-
-```bash
-# Installation
-nx add @nx/storybook
-
-# Konfiguration für jede Library
-nx g @nx/angular:storybook-configuration <library-name>
-
-# Automatische Story-Generierung möglich
-nx g @nx/angular:storybook-configuration <library-name> --generateStories
-```
-
-**Quellen:**
-
-- [Nx Storybook Plugin Overview](https://nx.dev/docs/technologies/test-tools/storybook/introduction)
-- [Set up Storybook for Angular Projects](https://nx.dev/storybook/overview-angular)
-- [Nx Shared Storybook Example](https://github.com/juristr/nx-shared-storybook)
-
-### Option 2: VitePress (Empfohlen für umfassende Dokumentation)
+Diese Kombination ist **ideal für Utility-Libraries, Pipes, Direktiven und Hilfsfunktionen**.
 
 #### Vorteile
 
@@ -74,36 +40,29 @@ nx g @nx/angular:storybook-configuration <library-name> --generateStories
 - ✅ Exzellentes SEO und Performance
 - ✅ Versionierung möglich
 - ✅ Funktioniert für alle Library-Typen (Angular & Non-Angular)
-- ✅ TypeScript API-Dokumentation möglich
+- ✅ **TypeDoc generiert automatisch Parameter-Dokumentation**
+- ✅ **Perfekt für Funktionen, Decorators, Operators**
 - ✅ Gut für Tutorials, Guides und API-Docs
+- ✅ Code-Beispiele direkt in Markdown
+- ✅ Syntax-Highlighting für TypeScript/Angular
 
-#### Nachteile
+#### Warum kein Storybook?
 
-- ❌ Keine native Nx-Integration (manuelle Setup erforderlich)
-- ❌ Keine interaktive Komponentenvorschau
+Storybook ist primär für UI-Komponenten gedacht. Da das Monorepo hauptsächlich **Hilfsfunktionen, Decorators, Pipes, Direktiven und Operators** enthält, ist eine klassische API-Dokumentation mit TypeDoc deutlich besser geeignet:
+
+- Parameter-Typen werden automatisch dokumentiert
+- JSDoc-Kommentare werden übernommen
+- Beispiele können in Markdown-Code-Blöcken gezeigt werden
+- Einfacher zu warten als interaktive Komponenten
 
 #### Setup-Ansatz
 
 - Als eigenständige App in `apps/docs` erstellen
-- Manuell TypeDoc/API Extractor einbinden
-- Markdown-Files pro Library pflegen
+- TypeDoc für automatische API-Dokumentation
+- Markdown-Files pro Library mit Verwendungsbeispielen
+- Code-Beispiele für Pipes, Direktiven und Funktionen
 
-### Option 3: Docusaurus (Alternative zu VitePress)
-
-#### Vorteile
-
-- ✅ React-basiert (ähnlich wie Angular Ökosystem)
-- ✅ Sehr feature-reich (Versioning, i18n, Search)
-- ✅ Große Community
-- ✅ Plugin-Ökosystem
-
-#### Nachteile
-
-- ❌ Schwerer als VitePress
-- ❌ Keine native Nx-Integration
-- ❌ Längere Build-Zeiten
-
-### Option 4: TypeDoc + Custom Site
+### Option 2: TypeDoc Standalone
 
 #### Vorteile
 
@@ -114,14 +73,14 @@ nx g @nx/angular:storybook-configuration <library-name> --generateStories
 
 - ❌ Komplexe Konfiguration für Nx Monorepos
 - ❌ Limitiert auf API-Dokumentation
-- ❌ Keine Guide/Tutorial-Seiten
+- ❌ Keine Guide/Tutorial-Seiten ohne zusätzliches Tool
 
 **Quellen:**
 
 - [TypeDoc Nx Monorepo Issues](https://github.com/TypeStrong/typedoc/issues/2005)
 - [@enio.ai/typedoc Nx Plugin](https://www.npmjs.com/package/@enio.ai/typedoc)
 
-### Option 5: Compodoc (Angular-spezifisch)
+### Option 3: Compodoc (Angular-spezifisch)
 
 #### Vorteile
 
@@ -133,29 +92,53 @@ nx g @nx/angular:storybook-configuration <library-name> --generateStories
 - ❌ Schwierig, mehrere Libraries in einer Site zu vereinen
 - ❌ Funktioniert nicht für Non-Angular Libraries
 - ❌ Bekannte Probleme mit Nx Workspaces
+- ❌ Nicht ideal für Utility-Funktionen
 
 **Quellen:**
 
-- [Compodoc Nx Integration Guide](https://nx.dev/docs/technologies/test-tools/storybook/guides/angular-storybook-compodoc)
+- [Compodoc Nx Integration](https://nx.dev/docs/technologies/test-tools/storybook/guides/angular-storybook-compodoc)
 - [Compodoc Multiple Apps Issue](https://github.com/compodoc/compodoc/issues/719)
 
-## Empfohlene Lösung: Hybrid-Ansatz
+### Option 4: Storybook (Nicht empfohlen für diesen Use-Case)
 
-### Kombination: VitePress (Hauptdokumentation) + Storybook (Komponenten-Showcase)
+#### Vorteile
 
-Dieser Ansatz bietet das Beste aus beiden Welten:
+- ✅ Native Nx-Integration über `@nx/storybook`
+- ✅ Interaktive Komponentenvorschau
 
-#### 1. **VitePress für zentrale Dokumentation** (`apps/docs`)
+#### Nachteile
+
+- ❌ **Primär für UI-Komponenten, nicht für Utility-Libraries**
+- ❌ **Overhead für einfache Funktionen/Pipes/Direktiven**
+- ❌ Nicht ideal für Non-Angular Libraries (rxjs-operators, sharp-operators)
+
+**Quellen:**
+
+- [Nx Storybook Plugin Overview](https://nx.dev/docs/technologies/test-tools/storybook/introduction)
+
+## Empfohlene Lösung: VitePress + TypeDoc
+
+### VitePress als zentrale Dokumentationsplattform mit integrierter TypeDoc API-Dokumentation
+
+Diese Lösung ist **optimal für Utility-Libraries** mit Fokus auf:
+
+- Hilfsfunktionen und Utilities
+- TypeScript Decorators
+- RxJS und Sharp Operators
+- Angular Pipes und Direktiven
+- Form Validators
+
+#### **VitePress Dokumentation** (`apps/docs`)
 
 **Inhalte:**
 
 - Hauptseite mit Repository-Überblick
-- Getting Started Guide
+- Getting Started Guide pro Library
 - Architektur-Dokumentation
-- API-Dokumentation (generiert via TypeDoc)
+- **API-Dokumentation (automatisch generiert via TypeDoc)**
+- **Code-Beispiele für Pipes, Direktiven und Funktionen**
 - Tutorials und Best Practices
 - Changelog und Migration Guides
-- Links zu Storybook
 
 **Struktur:**
 
@@ -168,33 +151,64 @@ apps/docs/
 │   ├── getting-started.md
 │   └── architecture.md
 ├── libraries/
-│   ├── gravatar.md
-│   ├── ng-utils.md
+│   ├── gravatar.md        # Verwendungsbeispiele + Link zu API
+│   ├── ng-utils.md        # Pipe/Direktiven-Beispiele
 │   ├── material-right-sheet.md
-│   ├── rxjs-operators.md
-│   ├── sharp-operators.md
-│   ├── validators.md
-│   ├── decorators.md
+│   ├── rxjs-operators.md  # Operator-Beispiele
+│   ├── sharp-operators.md # Operator-Beispiele
+│   ├── validators.md      # Validator-Beispiele
+│   ├── decorators.md      # Decorator-Beispiele
 │   ├── mutation-observer.md
 │   └── resize-observer.md
-├── api/                   # Auto-generierte API Docs
+├── api/                   # Auto-generierte TypeDoc API-Docs
+│   ├── gravatar/
+│   ├── ng-utils/
+│   ├── rxjs-operators/
+│   └── ...
 └── index.md              # Hauptseite
 ```
 
-#### 2. **Storybook für Angular-Komponenten** (`apps/storybook`)
+**Beispiel für Library-Seite (z.B. `libraries/decorators.md`):**
 
-**Inhalte:**
+````markdown
+# Decorators
 
-- Interaktive Beispiele für alle Angular-Komponenten
-- Material Right Sheet Showcase
-- Angular Utils (Pipes, etc.) mit Live-Beispielen
-- Gravatar Komponente mit verschiedenen Konfigurationen
+Sammlung von nützlichen TypeScript Decorators.
 
-**Shared Storybook Setup:**
+## Installation
 
-- Eine zentrale Storybook-Instanz
-- Importiert Stories aus allen Angular Libraries
-- Organisiert nach Library-Namen
+\`\`\`bash
+npm install @dasch-ng/decorators
+\`\`\`
+
+## @Debounce
+
+Verzögert die Ausführung einer Methode.
+
+### Verwendung
+
+\`\`\`typescript
+import { Debounce } from '@dasch-ng/decorators';
+
+class SearchComponent {
+@Debounce(300)
+onSearch(query: string) {
+// Wird erst nach 300ms Inaktivität ausgeführt
+this.searchService.search(query);
+}
+}
+\`\`\`
+
+### API-Referenz
+
+Siehe [Debounce API-Dokumentation](../api/decorators/functions/Debounce.html)
+
+## @Memoize
+
+Cached Rückgabewerte von Funktionen.
+
+[... weitere Beispiele]
+\`\`\`
 
 ## Detaillierter Implementierungsplan
 
@@ -209,6 +223,7 @@ nx g @nx/vite:app docs --directory=apps/docs
 # VitePress Dependencies installieren
 npm install -D vitepress vue
 ```
+````
 
 #### Schritt 1.2: VitePress konfigurieren
 
@@ -289,55 +304,9 @@ Konfiguration in `typedoc.json`:
 }
 ```
 
-### Phase 2: Storybook Setup (Shared Instance)
+### Phase 2: Automatisierung und CI/CD
 
-#### Schritt 2.1: Storybook hinzufügen
-
-```bash
-# Nx Storybook Plugin installieren
-nx add @nx/storybook
-
-# Storybook für Angular Libraries konfigurieren
-nx g @nx/angular:storybook-configuration gravatar --generateStories
-nx g @nx/angular:storybook-configuration ng-utils --generateStories
-nx g @nx/angular:storybook-configuration material-right-sheet --generateStories
-nx g @nx/angular:storybook-configuration validators --generateStories
-nx g @nx/angular:storybook-configuration decorators --generateStories
-nx g @nx/angular:storybook-configuration mutation-observer --generateStories
-nx g @nx/angular:storybook-configuration resize-observer --generateStories
-```
-
-#### Schritt 2.2: Shared Storybook erstellen (Optional)
-
-Falls gewünscht, eine zentrale Storybook-App:
-
-```bash
-# Shared Storybook App
-nx g @nx/angular:application storybook-host --standalone=false
-```
-
-Konfiguration in `.storybook/main.ts`:
-
-```typescript
-const config = {
-  stories: ['../libs/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-interactions'],
-  framework: {
-    name: '@storybook/angular',
-    options: {},
-  },
-};
-```
-
-#### Schritt 2.3: Stories organisieren
-
-- Auto-generierte Stories überprüfen und verbessern
-- MDX-Dateien für Library-Übersichten hinzufügen
-- Controls und Actions konfigurieren
-
-### Phase 3: Automatisierung und CI/CD
-
-#### Schritt 3.1: Nx Targets für Dokumentation
+#### Schritt 2.1: Nx Targets für Dokumentation
 
 Root-Level Target in `nx.json` oder `package.json`:
 
@@ -346,14 +315,12 @@ Root-Level Target in `nx.json` oder `package.json`:
   "scripts": {
     "docs:dev": "nx run docs:serve",
     "docs:build": "nx run docs:docs:generate",
-    "docs:preview": "nx run docs:preview",
-    "storybook:dev": "nx run storybook:storybook",
-    "storybook:build": "nx run storybook:build-storybook"
+    "docs:preview": "nx run docs:preview"
   }
 }
 ```
 
-#### Schritt 3.2: GitHub Actions Workflow
+#### Schritt 2.2: GitHub Actions Workflow
 
 `.github/workflows/docs.yml`:
 
@@ -378,21 +345,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Generate TypeDoc API docs
+        run: npx typedoc
+
       - name: Build VitePress docs
         run: npm run docs:build
-
-      - name: Build Storybook
-        run: npm run storybook:build
 
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: |
-            apps/docs/.vitepress/dist
-            dist/storybook
+          path: apps/docs/.vitepress/dist
 ```
 
-#### Schritt 3.3: Deployment
+#### Schritt 2.3: Deployment
 
 **Option A: GitHub Pages**
 
@@ -414,56 +379,110 @@ deploy:
 
 **Option B: Netlify/Vercel**
 
-- Build Command: `npm run docs:build && npm run storybook:build`
+- Build Command: `npx typedoc && npm run docs:build`
 - Publish Directory: `apps/docs/.vitepress/dist`
 
-### Phase 4: Content-Erstellung
+### Phase 3: Content-Erstellung
 
-#### Schritt 4.1: README Migration
+#### Schritt 3.1: README Migration & Library-Seiten
 
 - Bestehende README.md Dateien in VitePress Markdown konvertieren
 - Konsistente Struktur für alle Library-Seiten
+- **Code-Beispiele für Pipes:**
 
-#### Schritt 4.2: API-Dokumentation
+  ```markdown
+  ## IsNullPipe
 
-- TypeDoc-Kommentare in Source-Code hinzufügen
-- JSDoc für alle öffentlichen APIs
-- Beispiele in Code-Kommentaren
+  \`\`\`html
 
-#### Schritt 4.3: Tutorials erstellen
+  <div *ngIf="user$ | async | isNull">Kein User geladen</div>
+  \`\`\`
+  ```
 
-- Getting Started Guide
-- Common Use Cases pro Library
+- **Code-Beispiele für Direktiven:**
+
+  ```markdown
+  ## GravatarDirective
+
+  \`\`\`html
+  <img [gravatarEmail]="user.email" alt="Avatar">
+  \`\`\`
+  ```
+
+#### Schritt 3.2: TypeDoc Integration & JSDoc-Kommentare
+
+- **TypeDoc-Kommentare in Source-Code hinzufügen**
+- **JSDoc für alle öffentlichen APIs mit Parameter-Beschreibungen:**
+  ````typescript
+  /**
+   * Debounces a method call by the specified time.
+   *
+   * @param delay - The delay in milliseconds
+   * @returns Method decorator
+   *
+   * @example
+   * ```typescript
+   * class Component {
+   *   @Debounce(300)
+   *   onSearch(query: string) {
+   *     this.search(query);
+   *   }
+   * }
+   * ```
+   */
+  export function Debounce(delay: number) { ... }
+  ````
+- Beispiele in JSDoc-Kommentaren (werden von TypeDoc übernommen)
+
+#### Schritt 3.3: Tutorials & Guides erstellen
+
+- Getting Started Guide pro Library
+- Common Use Cases:
+  - Wie verwendet man RxJS Operators?
+  - Wie nutzt man Decorators?
+  - Validator-Beispiele für Forms
 - Integration Guides
 - Migration Guides (bei Breaking Changes)
 
-#### Schritt 4.4: Maintenance
+#### Schritt 3.4: Maintenance-Strategie
 
 - CONTRIBUTING.md für Dokumentations-Updates
 - Automatische Changelog-Integration aus nx release
 - Versioning-Strategy für Docs
+- **Regel: Bei jedem neuen Export JSDoc hinzufügen**
 
 ## Projektstruktur (Finale Ansicht)
 
 ```
 dasch-ng/
 ├── apps/
-│   ├── docs/                       # VitePress Dokumentation
-│   │   ├── .vitepress/
-│   │   │   ├── config.ts
-│   │   │   └── theme/
-│   │   ├── guide/
-│   │   ├── libraries/
-│   │   ├── api/                    # Auto-generiert via TypeDoc
-│   │   ├── index.md
-│   │   └── project.json
-│   └── storybook/                  # (Optional) Shared Storybook
+│   └── docs/                       # VitePress Dokumentation
+│       ├── .vitepress/
+│       │   ├── config.ts          # Navigation & Sidebar
+│       │   └── theme/             # Custom Theme (optional)
+│       ├── guide/
+│       │   ├── getting-started.md
+│       │   └── architecture.md
+│       ├── libraries/
+│       │   ├── gravatar.md        # Mit Code-Beispielen
+│       │   ├── ng-utils.md        # Pipe/Direktiven-Beispiele
+│       │   ├── rxjs-operators.md  # Operator-Beispiele
+│       │   ├── decorators.md      # Decorator-Beispiele
+│       │   └── ...
+│       ├── api/                    # Auto-generiert via TypeDoc
+│       │   ├── gravatar/
+│       │   ├── ng-utils/
+│       │   ├── rxjs-operators/
+│       │   └── ...
+│       ├── index.md               # Hauptseite
 │       └── project.json
 ├── libs/
 │   ├── gravatar/
-│   │   └── .storybook/            # Library-spezifische Stories
+│   │   └── src/
+│   │       └── *.ts               # Mit JSDoc-Kommentaren
 │   ├── ng/utils/
-│   │   └── .storybook/
+│   │   └── src/
+│   │       └── *.ts               # Mit JSDoc-Kommentaren
 │   └── ...
 ├── typedoc.json                    # TypeDoc Konfiguration
 └── nx.json
@@ -471,39 +490,54 @@ dasch-ng/
 
 ## Nx-Integration Score
 
-| Tool       | Nx-Integration | Bewertung                                           |
-| ---------- | -------------- | --------------------------------------------------- |
-| Storybook  | ⭐⭐⭐⭐⭐     | Native Plugin, Generator verfügbar                  |
-| VitePress  | ⭐⭐⭐         | Manuelles Setup, aber als Vite-App gut integrierbar |
-| TypeDoc    | ⭐⭐⭐         | Plugin verfügbar (@enio.ai/typedoc)                 |
-| Compodoc   | ⭐⭐           | Eingeschränkt, keine Multi-Library Support          |
-| Docusaurus | ⭐⭐           | Manuelles Setup erforderlich                        |
+| Tool                | Nx-Integration | Bewertung                                  | Für Utility-Libs |
+| ------------------- | -------------- | ------------------------------------------ | ---------------- |
+| VitePress + TypeDoc | ⭐⭐⭐⭐       | Gute Integration, TypeDoc Plugin verfügbar | ✅ Empfohlen     |
+| TypeDoc Standalone  | ⭐⭐⭐         | Plugin verfügbar (@enio.ai/typedoc)        | ⚠️ Nur API       |
+| Compodoc            | ⭐⭐           | Eingeschränkt, keine Multi-Library Support | ❌ Nicht ideal   |
+| Storybook           | ⭐⭐⭐⭐⭐     | Native Plugin, aber für UI-Komponenten     | ❌ Overhead      |
 
 ## Zeitaufwand-Schätzung
 
-- **Phase 1 (VitePress Setup):** 1-2 Tage
-- **Phase 2 (Storybook Setup):** 1 Tag
-- **Phase 3 (CI/CD):** 0.5 Tage
-- **Phase 4 (Content):** 2-3 Tage (je nach Umfang)
+- **Phase 1 (VitePress + TypeDoc Setup):** 1-2 Tage
+- **Phase 2 (CI/CD):** 0.5 Tage
+- **Phase 3 (Content & JSDoc):** 2-3 Tage (je nach Umfang)
 
-**Gesamt:** 4.5 - 6.5 Tage
+**Gesamt:** 3.5 - 5.5 Tage
+
+**Vereinfachung gegenüber Hybrid-Ansatz:** -1 Tag (kein Storybook Setup nötig)
 
 ## Wartung und Updates
 
 ### Automatisierung
 
-- TypeDoc läuft vor jedem Docs-Build
-- Storybook Stories werden automatisch generiert bei neuen Komponenten
+- TypeDoc läuft automatisch vor jedem Docs-Build
+- API-Dokumentation wird bei jedem Deployment aktualisiert
 - Changelog wird aus Git-Tags generiert (bereits via nx release vorhanden)
+- JSDoc-Beispiele werden direkt in API-Docs übernommen
 
 ### Developer Workflow
 
-1. Code in Library schreiben
-2. JSDoc/TypeDoc Kommentare hinzufügen
-3. Storybook Stories erstellen (für UI-Komponenten)
-4. Markdown-Seite in VitePress aktualisieren (optional)
-5. Commit & Push
-6. CI baut automatisch Dokumentation
+1. **Code in Library schreiben** (Funktion, Pipe, Direktive, Decorator, etc.)
+2. **JSDoc-Kommentare mit @param, @returns, @example hinzufügen:**
+   ````typescript
+   /**
+    * Validates email addresses.
+    * @param control - The form control to validate
+    * @returns Validation error or null
+    * @example
+    * ```typescript
+    * this.form = new FormGroup({
+    *   email: new FormControl('', [emailValidator])
+    * });
+    * ```
+    */
+   export function emailValidator(control: AbstractControl) { ... }
+   ````
+3. **Markdown-Seite in VitePress mit Verwendungsbeispielen aktualisieren** (optional, aber empfohlen)
+4. **Commit & Push**
+5. **CI generiert automatisch TypeDoc und baut VitePress**
+6. **Dokumentation wird deployed**
 
 ## Weitere Empfehlungen
 
@@ -527,44 +561,64 @@ dasch-ng/
 - VitePress unterstützt Multi-Version-Docs
 - Nützlich wenn Libraries unterschiedliche Major Versions haben
 
-## Beispiel-Repositories
+## Beispiel-Repositories für VitePress + TypeDoc
 
-- [Nx Shared Storybook](https://github.com/juristr/nx-shared-storybook) - Shared Storybook Setup
-- [Nx Official Docs](https://github.com/nrwl/nx) - VitePress + TypeDoc Beispiel
-- [Vue.js Docs](https://github.com/vuejs/docs) - VitePress Best Practice
+- [Nx Official Docs](https://github.com/nrwl/nx) - VitePress Setup in Nx Monorepo
+- [Vue.js Docs](https://github.com/vuejs/docs) - VitePress Best Practices
+- [TypeDoc Examples](https://github.com/TypeStrong/typedoc) - TypeDoc mit Monorepo-Support
+- [Vite Docs](https://github.com/vitejs/vite) - VitePress mit API-Dokumentation
 
 ## Quellen
 
-### Storybook
+### VitePress
 
-- [Nx Storybook Plugin Overview](https://nx.dev/docs/technologies/test-tools/storybook/introduction)
-- [Set up Storybook for Angular Projects](https://nx.dev/storybook/overview-angular)
-- [Build your design system with Storybook + Nx](https://blog.nrwl.io/build-your-design-system-with-storybook-nx-e3bde4087ad8)
-- [Nx Shared Storybook Example](https://github.com/juristr/nx-shared-storybook)
+- [VitePress Official Documentation](https://vitepress.dev/)
+- [VitePress Guide](https://vitepress.dev/guide/what-is-vitepress)
+- [VitePress Markdown Extensions](https://vitepress.dev/guide/markdown)
 
 ### TypeDoc
 
+- [TypeDoc Official Documentation](https://typedoc.org/)
 - [TypeDoc Nx Monorepo Issues](https://github.com/TypeStrong/typedoc/issues/2005)
 - [@enio.ai/typedoc Nx Plugin](https://www.npmjs.com/package/@enio.ai/typedoc)
-
-### Compodoc
-
-- [Compodoc Nx Integration](https://nx.dev/docs/technologies/test-tools/storybook/guides/angular-storybook-compodoc)
-- [Compodoc Multiple Apps Issue](https://github.com/compodoc/compodoc/issues/719)
+- [TypeDoc JSDoc @example Tag](https://typedoc.org/guides/tags/)
 
 ### Nx General
 
 - [Nx Official Documentation](https://nx.dev/)
 - [Enterprise Angular Monorepo Patterns](https://nx.dev/blog/enterprise-angular-book)
+- [Nx Vite Plugin](https://nx.dev/nx-api/vite)
 
 ## Nächste Schritte
 
-1. **Entscheidung treffen:** VitePress, Storybook oder Hybrid-Ansatz?
-2. **Prototyp erstellen:** Kleines Setup mit 1-2 Libraries testen
-3. **Team-Review:** Feedback zur Struktur einholen
-4. **Vollständige Implementierung:** Alle Libraries einbinden
-5. **Deployment konfigurieren:** GitHub Pages, Netlify oder Vercel
-6. **Continuous Improvement:** Regelmäßige Updates basierend auf Feedback
+1. ✅ **Entscheidung getroffen:** VitePress + TypeDoc (optimal für Utility-Libraries)
+2. **Prototyp erstellen:**
+   - VitePress App in `apps/docs` anlegen
+   - TypeDoc konfigurieren
+   - 1-2 Libraries als Beispiel dokumentieren (z.B. decorators, rxjs-operators)
+3. **JSDoc-Kommentare hinzufügen:**
+   - Mit einer Library starten (z.B. decorators)
+   - Alle Exports mit JSDoc versehen
+   - @example Tags für Verwendungsbeispiele
+4. **Vollständige Implementierung:**
+   - Alle 9 Libraries einbinden
+   - Markdown-Seiten mit Code-Beispielen erstellen
+5. **CI/CD konfigurieren:** GitHub Actions für automatisches Deployment
+6. **Deployment:** GitHub Pages, Netlify oder Vercel
+7. **Continuous Improvement:** Regelmäßige Updates basierend auf Feedback
+
+## Vorteile für dieses Monorepo
+
+Diese Lösung ist besonders gut geeignet, weil:
+
+- ✅ **Hauptsächlich Utility-Funktionen:** TypeDoc dokumentiert Parameter automatisch
+- ✅ **Pipes & Direktiven:** Code-Beispiele in Markdown sind übersichtlicher als Storybook
+- ✅ **Decorators:** JSDoc @example perfekt für Decorator-Verwendung
+- ✅ **RxJS/Sharp Operators:** TypeDoc generiert Typ-Informationen automatisch
+- ✅ **Validators:** Formular-Beispiele in Markdown sind verständlicher
+- ✅ **Wartbarkeit:** JSDoc im Code ist näher an der Implementierung
+- ✅ **Performance:** VitePress ist schneller als Storybook
+- ✅ **SEO:** Bessere Auffindbarkeit durch statische HTML-Seiten
 
 ---
 
