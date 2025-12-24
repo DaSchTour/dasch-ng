@@ -30,7 +30,7 @@
         "commands": ["typedoc", "vitepress build apps/docs"],
         "parallel": false
       },
-      "outputs": ["apps/docs/.vitepress/dist", "apps/docs/api"],
+      "outputs": ["{workspaceRoot}/apps/docs/.vitepress/dist", "{workspaceRoot}/apps/docs/api"],
       "dependsOn": ["^build"]
     }
   },
