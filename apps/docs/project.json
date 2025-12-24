@@ -13,10 +13,9 @@
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "vitepress build apps/docs",
-        "outputPath": "apps/docs/.vitepress/dist"
+        "command": "vitepress build apps/docs"
       },
-      "outputs": ["{options.outputPath}"]
+      "outputs": ["{projectRoot}/.vitepress/dist"]
     },
     "preview": {
       "executor": "nx:run-commands",
@@ -27,10 +26,10 @@
     "docs:generate": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["typedoc", "vitepress build apps/docs"],
+        "commands": ["typedoc", "cp apps/docs/api-readme-template.md apps/docs/api/README.md", "vitepress build apps/docs"],
         "parallel": false
       },
-      "outputs": ["{workspaceRoot}/apps/docs/.vitepress/dist", "{workspaceRoot}/apps/docs/api"],
+      "outputs": ["{projectRoot}/.vitepress/dist", "{projectRoot}/api"],
       "dependsOn": ["^build"]
     }
   },
