@@ -14,27 +14,27 @@ hero:
       link: https://github.com/DaSchTour/dasch-ng
 
 features:
-  - icon: 🎨
+  - icon: <i class="fa-brands fa-angular"></i>
     title: Angular Utilities
     details: Powerful pipes, directives, and utilities for Angular applications including Gravatar support, observers, and form validators.
 
-  - icon: ⚡
+  - icon: <i class="fa-slab fa-bolt"></i>
     title: RxJS Operators
     details: Custom RxJS operators to enhance your reactive programming workflow with specialized stream transformations.
 
-  - icon: 🎯
+  - icon: <i class="fa-slab fa-at"></i>
     title: TypeScript Decorators
     details: Useful decorators for debouncing, memoization, logging, and performance measurement.
 
-  - icon: 🖼️
+  - icon: <i class="fa-slab fa-images"></i>
     title: Sharp Operators
     details: Image processing operators built on Sharp for efficient image transformations.
 
-  - icon: 📦
+  - icon: <i class="fa-slab fa-box"></i>
     title: Nx Monorepo
     details: Organized as an Nx monorepo with independent versioning and automated releases to npm.
 
-  - icon: 📚
+  - icon: <i class="fa-slab fa-book"></i>
     title: Well Documented
     details: Comprehensive API documentation with TypeDoc and practical usage examples for every library.
 ---
@@ -94,4 +94,4 @@ Contributions are welcome! Please check our [contributing guidelines](https://gi
 
 ## License
 
-MIT © DaSchTour
+MIT © [Daniel Schuba](https://daniel-schuba.de)

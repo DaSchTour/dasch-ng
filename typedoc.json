@@ -1,25 +1,33 @@
 {
   "$schema": "https://typedoc.org/schema.json",
   "entryPoints": [
-    "libs/rxjs/operators/src/index.ts",
-    "libs/sharp/operators/src/index.ts",
-    "libs/decorators/src/index.ts",
-    "libs/gravatar/src/index.ts",
-    "libs/ng/utils/src/index.ts",
-    "libs/material/right-sheet/src/index.ts",
-    "libs/ng/mutation-observer/src/index.ts",
-    "libs/ng/resize-observer/src/index.ts",
-    "libs/validators/src/index.ts"
+    "libs/rxjs/operators/",
+    "libs/sharp/operators/",
+    "libs/decorators/",
+    "libs/gravatar/",
+    "libs/ng/utils/",
+    "libs/material/right-sheet/",
+    "libs/ng/mutation-observer/",
+    "libs/ng/resize-observer/",
+    "libs/validators/"
   ],
-  "entryPointStrategy": "expand",
-  "out": "apps/docs/api",
+  "packageOptions": {
+    "entryPoints": ["src/index.ts"]
+  },
+  "entryPointStrategy": "packages",
+  "outputs": [
+    {
+      "name": "markdown",
+      "path": "apps/docs/api"
+    }
+  ],
   "plugin": ["typedoc-plugin-markdown"],
   "readme": "none",
   "excludePrivate": true,
   "excludeProtected": false,
   "excludeInternal": true,
-  "includeVersion": true,
-  "name": "dasch-ng API Reference",
+  "includeVersion": false,
+  "name": "API Reference",
   "tsconfig": "tsconfig.typedoc.json",
   "navigation": {
     "includeCategories": true,

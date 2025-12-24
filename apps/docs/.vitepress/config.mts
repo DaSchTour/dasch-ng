@@ -7,6 +7,16 @@ export default defineConfig({
   base: '/',
   ignoreDeadLinks: true,
 
+  head: [
+    [
+      'script',
+      {
+        src: 'https://kit.fontawesome.com/0763483c5e.js',
+        crossorigin: 'anonymous',
+      },
+    ],
+  ],
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -55,30 +65,28 @@ export default defineConfig({
         {
           text: 'Angular Libraries',
           items: [
-            { text: 'Gravatar', link: '/api/gravatar/src/README' },
-            { text: 'NG Utils', link: '/api/ng/utils/src/README' },
-            { text: 'Material Right Sheet', link: '/api/material/right-sheet/src/README' },
-            { text: 'Mutation Observer', link: '/api/ng/mutation-observer/src/README' },
-            { text: 'Resize Observer', link: '/api/ng/resize-observer/src/README' },
-            { text: 'Validators', link: '/api/validators/src/README' },
+            { text: 'Gravatar', link: '/api/@dasch-ng/gravatar/README' },
+            { text: 'NG Utils', link: '/api/@dasch-ng/utils/README' },
+            { text: 'Material Right Sheet', link: '/api/@dasch-ng/material-right-sheet/README' },
+            { text: 'Mutation Observer', link: '/api/@dasch-ng/mutation-observer/README' },
+            { text: 'Resize Observer', link: '/api/@dasch-ng/resize-observer/README' },
+            { text: 'Validators', link: '/api/@dasch-ng/validators/README' },
           ],
         },
         {
           text: 'TypeScript Libraries',
           items: [
-            { text: 'Decorators', link: '/api/decorators/src/README' },
-            { text: 'RxJS Operators', link: '/api/rxjs/operators/src/README' },
-            { text: 'Sharp Operators', link: '/api/sharp/operators/src/README' },
+            { text: 'Decorators', link: '/api/@dasch-ng/decorators/README' },
+            { text: 'RxJS Operators', link: '/api/@dasch-ng/rxjs-operators/README' },
+            { text: 'Sharp Operators', link: '/api/@dasch-ng/sharp-operators/README' },
           ],
         },
       ],
     },
 
-    socialLinks: [{ icon: 'github', link: 'https://github.com/DaSchTour/dasch-ng' }],
-
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2024-present DaSchTour',
+      copyright: 'Copyright © 2024-present <a href="https://daniel-schuba.de" target="_blank" rel="noopener noreferrer">Daniel Schuba</a>',
     },
   },
 });

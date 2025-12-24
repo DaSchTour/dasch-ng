@@ -1,0 +1,76 @@
+/**
+ * Custom theme with Angular red as primary color
+ * Angular brand color: #DD0031
+ */
+
+:root {
+  /* Primary brand color (Angular red) */
+  --vp-c-brand-1: #DD0031;
+  --vp-c-brand-2: #C3002F;
+  --vp-c-brand-3: #A8002A;
+  --vp-c-brand-soft: rgba(221, 0, 49, 0.14);
+
+  /* Light mode */
+  --vp-c-brand: #DD0031;
+  --vp-c-brand-light: #E91E63;
+  --vp-c-brand-lighter: #F06292;
+  --vp-c-brand-dark: #C3002F;
+  --vp-c-brand-darker: #A8002A;
+  --vp-c-brand-dim: rgba(221, 0, 49, 0.08);
+}
+
+.dark {
+  /* Dark mode adjustments for better visibility */
+  --vp-c-brand-1: #E91E63;
+  --vp-c-brand-2: #DD0031;
+  --vp-c-brand-3: #C3002F;
+  --vp-c-brand-soft: rgba(233, 30, 99, 0.16);
+}
+
+/**
+ * Component: Button
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-text: var(--vp-c-white);
+  --vp-button-brand-bg: var(--vp-c-brand-3);
+  --vp-button-brand-hover-border: transparent;
+  --vp-button-brand-hover-text: var(--vp-c-white);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+  --vp-button-brand-active-border: transparent;
+  --vp-button-brand-active-text: var(--vp-c-white);
+  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+}
+
+/**
+ * Component: Home
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    #DD0031 30%,
+    #E91E63
+  );
+
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    #DD0031 50%,
+    #E91E63 50%
+  );
+  --vp-home-hero-image-filter: blur(44px);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(68px);
+  }
+}

@@ -4,7 +4,7 @@ Complete API documentation for all libraries in the dasch.ng monorepo, automatic
 
 ## Angular Libraries
 
-### [Gravatar](api/gravatar/src/README)
+### [Gravatar](api/@dasch-ng/gravatar/README)
 
 Generate Gravatar hashes and URLs for Angular applications.
 

@@ -119,6 +119,6 @@ nx format:write
 
 ## Support
 
-- 🐛 [Report Issues](https://github.com/DaSchTour/dasch-ng/issues)
-- 💬 [Discussions](https://github.com/DaSchTour/dasch-ng/discussions)
-- 📖 [Documentation](https://dasch.ng)
+- <i class="fa-slab fa-bug"></i> [Report Issues](https://github.com/DaSchTour/dasch-ng/issues)
+- <i class="fa-slab fa-comment"></i> [Discussions](https://github.com/DaSchTour/dasch-ng/discussions)
+- <i class="fa-slab fa-book-open"></i> [Documentation](https://dasch.ng)
