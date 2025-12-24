@@ -213,6 +213,7 @@ git push
 ```
 
 **Why this is critical**:
+
 - The CI pipeline will fail if code is not properly linted and formatted
 - Running these commands locally catches issues before they reach CI
 - Ensures code quality and consistency across the repository
@@ -220,6 +221,7 @@ git push
 ### CI Test Configuration
 
 When working with Karma-based tests (Angular projects):
+
 - Use the `:ci` configuration for CI environments
 - CI configuration automatically uses headless Chrome
 - Example: `nx test material-right-sheet:ci`
