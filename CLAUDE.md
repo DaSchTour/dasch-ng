@@ -89,13 +89,13 @@ nx release --skip-publish
 
 ```bash
 # Start documentation dev server
-npm run docs:dev
+bun run docs:dev
 
 # Build documentation for production
-npm run docs:build
+bun run docs:build
 
 # Preview production build
-npm run docs:preview
+bun run docs:preview
 
 # Generate TypeDoc API documentation
 nx run docs:typedoc
@@ -161,7 +161,7 @@ The repository uses Nx Release with independent versioning:
 
 ### Package Manager
 
-Uses **npm** as the package manager (configured in `nx.json`).
+Uses **bun** as the package manager (configured in `nx.json`).
 
 ## Development Patterns
 
@@ -221,10 +221,10 @@ The ESLint configuration enforces buildable library dependencies:
 
 ```bash
 # 1. Run lint with auto-fix on all projects
-npx nx run-many -t lint --fix
+bunx nx run-many -t lint --fix
 
 # 2. Format all files
-npx nx format:write
+bunx nx format:write
 
 # 3. Then commit your changes
 git add .
