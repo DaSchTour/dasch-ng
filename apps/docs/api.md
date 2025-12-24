@@ -14,11 +14,33 @@ Generate Gravatar hashes and URLs for Angular applications.
 - `GravatarDirective` - Directive for adding Gravatar images
 - `hashEmail()` - Function to hash email addresses
 
-[View full documentation →](api/gravatar/src/README)
+[View full documentation →](api/@dasch-ng/gravatar/README)
 
 ---
 
-### [NG Utils](api/ng/utils/src/README)
+### [JSON Viewer](api/@dasch-ng/json-viewer/README)
+
+Interactive JSON viewer component with syntax highlighting and circular reference detection.
+
+**Main exports:**
+
+- `JsonViewerComponent` - Standalone component for displaying JSON data
+- `Segment` - Interface representing a key-value pair in the tree
+- `SegmentType` - Type alias for different value types
+
+**Key features:**
+
+- 🌲 Interactive tree view with expand/collapse
+- 🎨 Type-specific syntax highlighting
+- 🔄 Automatic circular reference detection
+- 📦 Standalone component (no module required)
+- 🚀 Signal-based inputs for optimal performance
+
+[View full documentation →](api/@dasch-ng/json-viewer/README)
+
+---
+
+### [NG Utils](api/@dasch-ng/utils/README)
 
 Angular utilities including pipes, directives, and helper functions.
 
@@ -28,11 +50,11 @@ Angular utilities including pipes, directives, and helper functions.
 - `ReversePipe` - Reverse arrays
 - Helper functions for Angular applications
 
-[View full documentation →](api/ng/utils/src/README)
+[View full documentation →](api/@dasch-ng/utils/README)
 
 ---
 
-### [Material Right Sheet](api/material/right-sheet/src/README)
+### [Material Right Sheet](api/@dasch-ng/material-right-sheet/README)
 
 Angular Material right-side sheet component.
 
@@ -42,11 +64,11 @@ Angular Material right-side sheet component.
 - `MatRightSheetRef` - Reference to an opened sheet
 - `MatRightSheetConfig` - Configuration options
 
-[View full documentation →](api/material/right-sheet/src/README)
+[View full documentation →](api/@dasch-ng/material-right-sheet/README)
 
 ---
 
-### [Mutation Observer](api/ng/mutation-observer/src/README)
+### [Mutation Observer](api/@dasch-ng/mutation-observer/README)
 
 Angular wrapper for the MutationObserver API.
 
@@ -55,11 +77,11 @@ Angular wrapper for the MutationObserver API.
 - `MutationObserverService` - Service for observing DOM mutations
 - `ObserveMutationDirective` - Directive for mutation observation
 
-[View full documentation →](api/ng/mutation-observer/src/README)
+[View full documentation →](api/@dasch-ng/mutation-observer/README)
 
 ---
 
-### [Resize Observer](api/ng/resize-observer/src/README)
+### [Resize Observer](api/@dasch-ng/resize-observer/README)
 
 Angular wrapper for the ResizeObserver API.
 
@@ -67,11 +89,11 @@ Angular wrapper for the ResizeObserver API.
 
 - `ResizeObserverService` - Service for observing element resizing
 
-[View full documentation →](api/ng/resize-observer/src/README)
+[View full documentation →](api/@dasch-ng/resize-observer/README)
 
 ---
 
-### [Validators](api/validators/src/README)
+### [Validators](api/@dasch-ng/validators/README)
 
 Form validators for Angular applications.
 
@@ -80,11 +102,11 @@ Form validators for Angular applications.
 - Various form validation functions
 - Custom validators for common scenarios
 
-[View full documentation →](api/validators/src/README)
+[View full documentation →](api/@dasch-ng/validators/README)
 
 ## TypeScript Libraries
 
-### [Decorators](api/decorators/src/README)
+### [Decorators](api/@dasch-ng/decorators/README)
 
 Useful TypeScript decorators for common patterns.
 
@@ -94,11 +116,11 @@ Useful TypeScript decorators for common patterns.
 - `@Memoize()` - Cache function results
 - `@LogGroup()`, `@Measure()` - Logging and performance measurement
 
-[View full documentation →](api/decorators/src/README)
+[View full documentation →](api/@dasch-ng/decorators/README)
 
 ---
 
-### [RxJS Operators](api/rxjs/operators/src/README)
+### [RxJS Operators](api/@dasch-ng/rxjs-operators/README)
 
 Custom RxJS operators for reactive programming.
 
@@ -109,11 +131,11 @@ Custom RxJS operators for reactive programming.
 - `tapCatch()` - Combine tap and catchError
 - `debugOperator()` - Debug observable streams
 
-[View full documentation →](api/rxjs/operators/src/README)
+[View full documentation →](api/@dasch-ng/rxjs-operators/README)
 
 ---
 
-### [Sharp Operators](api/sharp/operators/src/README)
+### [Sharp Operators](api/@dasch-ng/sharp-operators/README)
 
 Image processing operators built on Sharp.
 
@@ -122,7 +144,7 @@ Image processing operators built on Sharp.
 - Image transformation operators
 - Sharp-based utilities
 
-[View full documentation →](api/sharp/operators/src/README)
+[View full documentation →](api/@dasch-ng/sharp-operators/README)
 
 ## How to Read the API Documentation
 

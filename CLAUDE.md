@@ -27,7 +27,7 @@ nx build gravatar
 
 The repository uses **both Jest and Vitest** depending on the project:
 
-- **Jest**: Used by Angular libraries (gravatar, ng-utils, validators, decorators, material-right-sheet)
+- **Jest**: Used by Angular libraries (gravatar, json-viewer, ng-utils, validators, decorators, material-right-sheet)
 - **Vitest**: Used by non-Angular libraries (rxjs-operators, sharp-operators)
 
 ```bash
@@ -116,6 +116,7 @@ libs/
 ├── material/
 │   └── right-sheet/     # Angular Material right-side sheet component
 ├── ng/
+│   ├── json-viewer/        # JSON viewer component (Angular)
 │   ├── mutation-observer/  # Angular MutationObserver wrapper
 │   ├── resize-observer/    # Angular ResizeObserver wrapper
 │   └── utils/              # Angular utilities (pipes, helpers)
@@ -133,7 +134,7 @@ libs/
 - Built with ng-packagr
 - Use Jest for testing
 - Have `ng-package.json` configuration
-- Examples: gravatar, ng-utils, material-right-sheet, validators, decorators
+- Examples: gravatar, json-viewer, ng-utils, material-right-sheet, validators, decorators
 
 **Vite Libraries** (using `@nx/vite:build`):
 
@@ -185,8 +186,13 @@ Libraries follow this tsconfig pattern:
 
 ### Angular Conventions
 
-- Component prefix for ng libraries: `dasch-ng`
-- Component prefix for material libraries: `mat`
+- **Component Prefixes**: Use library-specific prefixes that describe the library's purpose, not generic repository prefixes
+  - ✅ Preferred: Library-specific prefixes (e.g., `json` for json-viewer, `gravatar` for gravatar library)
+  - ⚠️ Avoid: Generic repository prefixes (e.g., `dasch-ng`) - only use for generic/shared libraries
+  - Examples:
+    - `json-viewer` library → prefix: `json` → selector: `<json-viewer>`
+    - `gravatar` library → prefix: `gravatar` → selector: `<gravatar-avatar>`
+    - Material extensions → prefix: `mat` → selector: `<mat-right-sheet>`
 - Style: SCSS
 - Type separator: `.` (e.g., `auth.guard.ts`)
 - Standalone components preference is disabled (`@angular-eslint/prefer-standalone: off`)
@@ -252,3 +258,70 @@ When working with Karma-based tests (Angular projects):
 - **Local development**: Use `nx test <project-name>` (opens browser)
 - **CI/headless**: Use `nx test <project-name>:ci` (headless Chrome)
 - Always verify tests pass locally before pushing
+
+### Documentation Requirements
+
+**CRITICAL**: When creating new libraries or adding new functionality, you MUST update the documentation:
+
+#### For New Libraries
+
+When creating a new library, you must:
+
+1. **Create a library documentation page** in `apps/docs/libraries/<library-name>.md`
+   - Follow the structure of existing library docs (e.g., `rxjs-operators.md`, `json-viewer.md`)
+   - Include: Installation, Features, Basic Usage, API Reference, Examples, Credits/License
+   - Add code examples with proper syntax highlighting
+   - Include links to the TypeDoc API reference
+
+2. **Update VitePress navigation** in `apps/docs/.vitepress/config.mts`
+   - Add the library to the appropriate sidebar section (`/libraries/` and `/api/`)
+   - Place it alphabetically within its category (Angular Libraries or TypeScript Libraries)
+   - Ensure both the user guide link and API reference link are added
+
+3. **Generate TypeDoc documentation**
+   - Run `nx run docs:typedoc` to generate API documentation
+   - Verify that TypeDoc files are created in `apps/docs/api/@dasch-ng/<library-name>/`
+
+4. **Update this CLAUDE.md file**
+   - Add the library to the monorepo structure diagram if it's a new category
+   - Update the library types section with examples if applicable
+   - Update any relevant testing information (Jest vs Vitest)
+
+#### For New Features/Functions
+
+When adding new functionality to existing libraries:
+
+1. **Update the library documentation page**
+   - Add examples for the new feature
+   - Update the API tables with new parameters/options
+   - Add use case examples if applicable
+
+2. **Regenerate TypeDoc**
+   - Run `nx run docs:typedoc` to update API documentation
+   - Verify the new features appear in the generated docs
+
+3. **Update README files**
+   - Keep the library's `README.md` in sync with the documentation site
+   - README should have basic usage; full docs go on the site
+
+#### Documentation Standards
+
+- Use TypeScript code blocks with proper syntax highlighting
+- Include realistic, runnable examples
+- Document all public APIs with JSDoc comments in code
+- Use clear, concise language
+- Include "Why" and "When to use" sections for features
+- Cross-reference related features and libraries
+- Always include links to API reference and source code
+
+#### Verification Checklist
+
+Before committing documentation changes:
+
+- [ ] Library appears in VitePress navigation
+- [ ] Documentation page follows established patterns
+- [ ] All code examples are tested and valid
+- [ ] TypeDoc API documentation is generated and linked
+- [ ] Cross-references are correct and not broken
+- [ ] Documentation builds without errors (`bun run docs:build`)
+- [ ] Preview documentation locally (`bun run docs:dev`) to verify

@@ -7,6 +7,7 @@
     "libs/gravatar/",
     "libs/ng/utils/",
     "libs/material/right-sheet/",
+    "libs/ng/json-viewer/",
     "libs/ng/mutation-observer/",
     "libs/ng/resize-observer/",
     "libs/validators/"

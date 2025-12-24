@@ -1,0 +1,35 @@
+<section class="ngx-json-viewer">
+  @for (segment of segments(); track segment.key) {
+    @let _isExpandable = segment | isExpandable;
+    <section [ngClass]="['segment', 'segment-type-' + segment.type]">
+      <section
+        (click)="toggle(segment)"
+        (keydown.enter)="toggle(segment)"
+        (keydown.space)="toggle(segment); $event.preventDefault()"
+        [attr.role]="_isExpandable ? 'button' : null"
+        [attr.tabindex]="_isExpandable ? 0 : null"
+        [attr.aria-expanded]="_isExpandable ? segment.expanded : null"
+        [attr.aria-label]="_isExpandable ? 'Toggle ' + segment.key : null"
+        [ngClass]="{
+          'segment-main': true,
+          expandable: _isExpandable,
+          expanded: segment.expanded,
+        }"
+      >
+        @if (_isExpandable) {
+          <div class="toggler" aria-hidden="true"></div>
+        }
+        <span class="segment-key">{{ segment.key }}</span>
+        <span class="segment-separator">: </span>
+        @if (!segment.expanded || !_isExpandable) {
+          <span class="segment-value">{{ segment.description }}</span>
+        }
+      </section>
+      @if (segment.expanded && _isExpandable) {
+        <section class="children">
+          <json-viewer [json]="segment.value" [expanded]="expanded()" [depth]="depth()" [_currentDepth]="_currentDepth() + 1" />
+        </section>
+      }
+    </section>
+  }
+</section>

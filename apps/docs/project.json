@@ -7,7 +7,7 @@
     "dev": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "vitepress dev apps/docs"
+        "commands": ["vitepress dev apps/docs"]
       },
       "dependsOn": ["typedoc"]
     },
