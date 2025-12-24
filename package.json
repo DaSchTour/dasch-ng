@@ -6,7 +6,10 @@
     "ng": "nx",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "docs:dev": "nx run docs:dev",
+    "docs:build": "nx run docs:docs:generate",
+    "docs:preview": "nx run docs:preview"
   },
   "private": true,
   "dependencies": {
@@ -104,6 +107,8 @@
     "prettier": "^3.0.0",
     "ts-jest": "29.4.6",
     "ts-node": "10.9.2",
+    "typedoc": "^0.28.15",
+    "typedoc-plugin-markdown": "^4.9.0",
     "typescript": "5.9.3",
     "typescript-eslint": "^8.40.0",
     "verdaccio": "6.2.4",
@@ -111,7 +116,9 @@
     "vite-plugin-dts": "4.5.4",
     "vite-plugin-eslint": "^1.8.1",
     "vite-tsconfig-paths": "^6.0.0",
-    "vitest": "4.0.16"
+    "vitepress": "^1.6.4",
+    "vitest": "4.0.16",
+    "vue": "^3.5.26"
   },
   "overrides": {
     "@nx/devkit": "$@nx/devkit"

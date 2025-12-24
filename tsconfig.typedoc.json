@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "bundler",
+    "module": "esnext",
+    "target": "es2022",
+    "lib": ["es2022", "dom"]
+  },
+  "include": ["libs/**/src/**/*.ts", "libs/**/src/index.ts"],
+  "exclude": ["**/*.spec.ts", "**/*.test.ts", "**/test-setup.ts", "**/test.ts", "**/*.config.ts", "**/vite.config.ts"]
+}

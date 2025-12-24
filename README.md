@@ -2,6 +2,8 @@
 
 Monorepo for all angular related stuff
 
+📖 **Documentation:** [dasch.ng](https://dasch.ng)
+
 ## Packages
 
 This project is a mono repo and hosts multiple packages:

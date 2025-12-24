@@ -39,6 +39,11 @@ testem.log
 Thumbs.db
 
 .angular
+
+# VitePress
+apps/docs/.vitepress/dist
+apps/docs/.vitepress/cache
+apps/docs/api
 /.yarn/cache/@aashutoshrathi-word-wrap-npm-1.2.6-5b1d95e487-ada901b9e7.zip
 /.yarn/cache/@adobe-css-tools-npm-4.3.1-8afe87e987-ad43456379.zip
 /.yarn/cache/@ampproject-remapping-npm-2.2.1-3da3d624be-03c04fd526.zip

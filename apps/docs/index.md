@@ -1,0 +1,97 @@
+---
+layout: home
+
+hero:
+  name: 'dasch.ng'
+  text: 'Angular & TypeScript Utilities'
+  tagline: 'A collection of reusable Angular libraries and TypeScript utilities for modern web development'
+  actions:
+    - theme: brand
+      text: Get Started
+      link: /guide/getting-started
+    - theme: alt
+      text: View on GitHub
+      link: https://github.com/DaSchTour/dasch-ng
+
+features:
+  - icon: 🎨
+    title: Angular Utilities
+    details: Powerful pipes, directives, and utilities for Angular applications including Gravatar support, observers, and form validators.
+
+  - icon: ⚡
+    title: RxJS Operators
+    details: Custom RxJS operators to enhance your reactive programming workflow with specialized stream transformations.
+
+  - icon: 🎯
+    title: TypeScript Decorators
+    details: Useful decorators for debouncing, memoization, logging, and performance measurement.
+
+  - icon: 🖼️
+    title: Sharp Operators
+    details: Image processing operators built on Sharp for efficient image transformations.
+
+  - icon: 📦
+    title: Nx Monorepo
+    details: Organized as an Nx monorepo with independent versioning and automated releases to npm.
+
+  - icon: 📚
+    title: Well Documented
+    details: Comprehensive API documentation with TypeDoc and practical usage examples for every library.
+---
+
+## Quick Start
+
+Install any library from the monorepo:
+
+```bash
+# Angular utilities
+npm install @dasch-ng/gravatar
+npm install @dasch-ng/ng-utils
+npm install @dasch-ng/material-right-sheet
+
+# TypeScript utilities
+npm install @dasch-ng/decorators
+npm install @dasch-ng/rxjs-operators
+npm install @dasch-ng/sharp-operators
+```
+
+## Libraries Overview
+
+### Angular Libraries
+
+- **[Gravatar](/libraries/gravatar)** - Generate Gravatar hashes and URLs
+- **[NG Utils](/libraries/ng-utils)** - Angular pipes, directives, and helper functions
+- **[Material Right Sheet](/libraries/material-right-sheet)** - Right-side sheet component for Angular Material
+- **[Mutation Observer](/libraries/mutation-observer)** - Angular wrapper for MutationObserver API
+- **[Resize Observer](/libraries/resize-observer)** - Angular wrapper for ResizeObserver API
+- **[Validators](/libraries/validators)** - Form validators for Angular applications
+
+### TypeScript Libraries
+
+- **[Decorators](/libraries/decorators)** - Useful TypeScript decorators for common patterns
+- **[RxJS Operators](/libraries/rxjs-operators)** - Custom RxJS operators for reactive programming
+- **[Sharp Operators](/libraries/sharp-operators)** - Image processing operators using Sharp
+
+## Development
+
+This is an Nx monorepo. Common commands:
+
+```bash
+# Build all projects
+nx run-many -t build
+
+# Test all projects
+nx run-many -t test
+
+# Lint and format
+nx run-many -t lint --fix
+nx format:write
+```
+
+## Contributing
+
+Contributions are welcome! Please check our [contributing guidelines](https://github.com/DaSchTour/dasch-ng/blob/main/CONTRIBUTING.md).
+
+## License
+
+MIT © DaSchTour
