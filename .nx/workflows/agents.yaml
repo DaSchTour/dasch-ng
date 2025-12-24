@@ -4,13 +4,13 @@ common-bun-init-steps: &common-bun-init-steps
   - name: Restore Node Modules Cache
     uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/cache/main.yaml'
     inputs:
-      key: 'bun.lockb|patches/**'
+      key: 'bun.lock|patches/**'
       paths: 'node_modules'
       base-branch: 'main'
   - name: Restore Browser Binary Cache
     uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/cache/main.yaml'
     inputs:
-      key: 'bun.lockb|"browsers"'
+      key: 'bun.lock|"browsers"'
       paths: |
         '../.cache/Cypress'
       base-branch: 'main'
