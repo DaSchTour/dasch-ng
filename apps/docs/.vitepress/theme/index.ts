@@ -6,6 +6,6 @@ import './custom.css';
 export default {
   extends: DefaultTheme,
   Layout: () => {
-    return h(DefaultTheme.Layout, null, {});
+    return h(DefaultTheme.Layout, null);
   },
 } satisfies Theme;
