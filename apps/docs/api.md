@@ -4,7 +4,7 @@ Complete API documentation for all libraries in the dasch-ng monorepo, automatic
 
 ## Angular Libraries
 
-### [Gravatar](gravatar/src/README)
+### [Gravatar](api/gravatar/src/README)
 
 Generate Gravatar hashes and URLs for Angular applications.
 
@@ -14,11 +14,11 @@ Generate Gravatar hashes and URLs for Angular applications.
 - `GravatarDirective` - Directive for adding Gravatar images
 - `hashEmail()` - Function to hash email addresses
 
-[View full documentation →](gravatar/src/README)
+[View full documentation →](api/gravatar/src/README)
 
 ---
 
-### [NG Utils](ng/utils/src/README)
+### [NG Utils](api/ng/utils/src/README)
 
 Angular utilities including pipes, directives, and helper functions.
 
@@ -28,11 +28,11 @@ Angular utilities including pipes, directives, and helper functions.
 - `ReversePipe` - Reverse arrays
 - Helper functions for Angular applications
 
-[View full documentation →](ng/utils/src/README)
+[View full documentation →](api/ng/utils/src/README)
 
 ---
 
-### [Material Right Sheet](material/right-sheet/src/README)
+### [Material Right Sheet](api/material/right-sheet/src/README)
 
 Angular Material right-side sheet component.
 
@@ -42,11 +42,11 @@ Angular Material right-side sheet component.
 - `MatRightSheetRef` - Reference to an opened sheet
 - `MatRightSheetConfig` - Configuration options
 
-[View full documentation →](material/right-sheet/src/README)
+[View full documentation →](api/material/right-sheet/src/README)
 
 ---
 
-### [Mutation Observer](ng/mutation-observer/src/README)
+### [Mutation Observer](api/ng/mutation-observer/src/README)
 
 Angular wrapper for the MutationObserver API.
 
@@ -55,11 +55,11 @@ Angular wrapper for the MutationObserver API.
 - `MutationObserverService` - Service for observing DOM mutations
 - `ObserveMutationDirective` - Directive for mutation observation
 
-[View full documentation →](ng/mutation-observer/src/README)
+[View full documentation →](api/ng/mutation-observer/src/README)
 
 ---
 
-### [Resize Observer](ng/resize-observer/src/README)
+### [Resize Observer](api/ng/resize-observer/src/README)
 
 Angular wrapper for the ResizeObserver API.
 
@@ -67,11 +67,11 @@ Angular wrapper for the ResizeObserver API.
 
 - `ResizeObserverService` - Service for observing element resizing
 
-[View full documentation →](ng/resize-observer/src/README)
+[View full documentation →](api/ng/resize-observer/src/README)
 
 ---
 
-### [Validators](validators/src/README)
+### [Validators](api/validators/src/README)
 
 Form validators for Angular applications.
 
@@ -80,11 +80,11 @@ Form validators for Angular applications.
 - Various form validation functions
 - Custom validators for common scenarios
 
-[View full documentation →](validators/src/README)
+[View full documentation →](api/validators/src/README)
 
 ## TypeScript Libraries
 
-### [Decorators](decorators/src/README)
+### [Decorators](api/decorators/src/README)
 
 Useful TypeScript decorators for common patterns.
 
@@ -94,11 +94,11 @@ Useful TypeScript decorators for common patterns.
 - `@Memoize()` - Cache function results
 - `@LogGroup()`, `@Measure()` - Logging and performance measurement
 
-[View full documentation →](decorators/src/README)
+[View full documentation →](api/decorators/src/README)
 
 ---
 
-### [RxJS Operators](rxjs/operators/src/README)
+### [RxJS Operators](api/rxjs/operators/src/README)
 
 Custom RxJS operators for reactive programming.
 
@@ -109,11 +109,11 @@ Custom RxJS operators for reactive programming.
 - `tapCatch()` - Combine tap and catchError
 - `debugOperator()` - Debug observable streams
 
-[View full documentation →](rxjs/operators/src/README)
+[View full documentation →](api/rxjs/operators/src/README)
 
 ---
 
-### [Sharp Operators](sharp/operators/src/README)
+### [Sharp Operators](api/sharp/operators/src/README)
 
 Image processing operators built on Sharp.
 
@@ -122,7 +122,7 @@ Image processing operators built on Sharp.
 - Image transformation operators
 - Sharp-based utilities
 
-[View full documentation →](sharp/operators/src/README)
+[View full documentation →](api/sharp/operators/src/README)
 
 ## How to Read the API Documentation
 
