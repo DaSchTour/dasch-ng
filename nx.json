@@ -82,7 +82,7 @@
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "bun"
   },
   "generators": {
     "@nx/angular:application": {
@@ -158,7 +158,7 @@
     "projects": ["gravatar", "material-right-sheet", "ng-utils", "rxjs-operators", "sharp-operators", "prime-supplements"],
     "projectsRelationship": "independent",
     "version": {
-      "preVersionCommand": "npx nx run-many -t build -c production",
+      "preVersionCommand": "bunx nx run-many -t build -c production",
       "conventionalCommits": true,
       "manifestRootsToUpdate": ["{projectRoot}", "dist/{projectRoot}"]
     },

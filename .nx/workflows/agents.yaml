@@ -1,0 +1,42 @@
+common-bun-init-steps: &common-bun-init-steps
+  - name: Checkout
+    uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/checkout/main.yaml'
+  - name: Restore Node Modules Cache
+    uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/cache/main.yaml'
+    inputs:
+      key: 'bun.lock|patches/**'
+      paths: 'node_modules'
+      base-branch: 'main'
+  - name: Restore Browser Binary Cache
+    uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/cache/main.yaml'
+    inputs:
+      key: 'bun.lock|"browsers"'
+      paths: |
+        '../.cache/Cypress'
+      base-branch: 'main'
+  - name: Install Bun
+    script: |
+      # Install bun via npm (since Node is already available in the image)
+      npm install -g bun
+  - name: Install Node Modules
+    script: bun install --frozen-lockfile
+  - name: Install Browsers (if needed)
+    uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/install-browsers/main.yaml'
+
+launch-templates:
+  linux-small-bun:
+    resource-class: 'docker_linux_amd64/small'
+    image: 'ubuntu22.04-node20.19-v2'
+    init-steps: *common-bun-init-steps
+  linux-medium-bun:
+    resource-class: 'docker_linux_amd64/medium'
+    image: 'ubuntu22.04-node20.19-v2'
+    init-steps: *common-bun-init-steps
+  linux-medium-plus-bun:
+    resource-class: 'docker_linux_amd64/medium+'
+    image: 'ubuntu22.04-node20.19-v2'
+    init-steps: *common-bun-init-steps
+  linux-large-bun:
+    resource-class: 'docker_linux_amd64/large'
+    image: 'ubuntu22.04-node20.19-v2'
+    init-steps: *common-bun-init-steps
