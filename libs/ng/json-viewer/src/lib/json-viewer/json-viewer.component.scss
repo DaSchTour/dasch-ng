@@ -74,7 +74,7 @@ $type-colors: (
       color: var(--ngx-json-undefined-key, #999);
     }
     & > .segment-value {
-      background-color: var(--ngx-json-undefined-key, #999);
+      background-color: var(--ngx-json-undefined-bg, #999);
     }
   }
   .segment-type-object > .segment-main,
