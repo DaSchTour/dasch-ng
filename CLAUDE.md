@@ -25,10 +25,14 @@ nx build gravatar
 
 ### Test
 
-The repository uses **both Jest and Vitest** depending on the project:
+The repository uses **Vitest** as the primary test framework:
 
-- **Jest**: Used by Angular libraries (gravatar, json-viewer, ng-utils, validators, decorators, material-right-sheet)
-- **Vitest**: Used by non-Angular libraries (rxjs-operators, sharp-operators)
+- **Vitest**: Official test framework for Angular 21+ and preferred for all new tests
+  - Used by Angular libraries (route-signals and newer libraries)
+  - Used by non-Angular libraries (rxjs-operators, sharp-operators)
+- **Jest**: Legacy test framework, still used by some older Angular libraries via 3rd party tools
+  - Some older libraries still use Jest (gravatar, json-viewer, ng-utils, validators, decorators, material-right-sheet)
+  - New tests should use Vitest instead of Jest
 
 ```bash
 # Run all tests
@@ -119,6 +123,7 @@ libs/
 │   ├── json-viewer/        # JSON viewer component (Angular)
 │   ├── mutation-observer/  # Angular MutationObserver wrapper
 │   ├── resize-observer/    # Angular ResizeObserver wrapper
+│   ├── route-signals/      # Route state as signals (Angular)
 │   └── utils/              # Angular utilities (pipes, helpers)
 ├── rxjs/
 │   └── operators/       # Custom RxJS operators (Vite-based)
@@ -132,9 +137,11 @@ libs/
 **Angular Libraries** (using `@nx/angular:package`):
 
 - Built with ng-packagr
-- Use Jest for testing
+- Use Vitest for testing (Angular 21+ official framework)
+  - Newer libraries: route-signals
+  - Older libraries may still use Jest: gravatar, json-viewer, ng-utils, material-right-sheet, validators, decorators
 - Have `ng-package.json` configuration
-- Examples: gravatar, json-viewer, ng-utils, material-right-sheet, validators, decorators
+- Examples: route-signals, gravatar, json-viewer, ng-utils, material-right-sheet, validators, decorators
 
 **Vite Libraries** (using `@nx/vite:build`):
 
@@ -145,10 +152,13 @@ libs/
 
 ### Testing Setup
 
-- **Vitest workspace**: Configured in `vitest.workspace.ts` for libraries using Vitest
-- **Jest preset**: Shared Jest configuration in `jest.preset.js`
-- Each library has its own test configuration (`jest.config.ts` or `vitest.config.ts`)
-- Angular component tests use `@ngneat/spectator` for cleaner test setup
+- **Vitest**: Official test framework for Angular 21+ (configured in `vitest.workspace.ts`)
+  - Modern Angular libraries use Vitest with `@analogjs/vite-plugin-angular`
+  - Each library has `vitest.config.ts` and `src/test-setup.ts`
+- **Jest**: Legacy test framework for older Angular libraries
+  - Shared Jest configuration in `jest.preset.js`
+  - Each older library has its own `jest.config.ts`
+- Angular component tests may use `@ngneat/spectator` for cleaner test setup
 
 ### Release Process
 
@@ -258,6 +268,64 @@ When working with Karma-based tests (Angular projects):
 - **Local development**: Use `nx test <project-name>` (opens browser)
 - **CI/headless**: Use `nx test <project-name>:ci` (headless Chrome)
 - Always verify tests pass locally before pushing
+
+#### Angular Router Testing Best Practices
+
+**CRITICAL**: When testing Angular components that use Router or ActivatedRoute:
+
+- ❌ **DO NOT mock ActivatedRoute** - Mocking Angular's router leads to brittle tests that don't reflect real behavior
+- ✅ **DO use RouterTestingHarness** - Use Angular's official testing utilities instead:
+  - Import `provideRouter` from `@angular/router`
+  - Import `RouterTestingHarness` from `@angular/router/testing`
+  - Configure real routes in `TestBed.configureTestingModule` using `provideRouter`
+  - Use `RouterTestingHarness.create()` to navigate to routes
+  - Test components in their natural routing context
+
+**Example:**
+
+```typescript
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { RouterTestingHarness } from '@angular/router/testing';
+
+describe('MyComponent', () => {
+  it('should read route parameter', async () => {
+    await TestBed.configureTestingModule({
+      providers: [
+        provideRouter([
+          { path: 'user/:id', component: MyComponent }
+        ])
+      ]
+    });
+
+    const harness = await RouterTestingHarness.create('/user/123');
+    const component = harness.routeNativeElement!.querySelector('my-component');
+    // Test component behavior with real routing
+  });
+});
+```
+
+**References:**
+- [Angular Router Testing Documentation](https://angular.dev/guide/routing/testing)
+- [Write better tests without Router mocks/stubs](https://blog.angular.dev/write-better-tests-without-router-mocks-stubs-bf5fc95c1c57)
+
+#### Test Configuration Guidelines
+
+**IMPORTANT**: Do NOT modify test configurations without explicit user request or when fixing specific errors:
+
+- Angular 21+ has integrated support for both Jest and Vitest
+- Test configurations (`jest.config.ts`, `vitest.config.ts`, `project.json` test targets) are already correctly set up
+- Angular's testing infrastructure handles configuration automatically
+- Only modify test configuration when:
+  1. The user explicitly requests a configuration change
+  2. You are fixing a specific test configuration error
+  3. You are adding a new library and need to set up testing for the first time
+
+**When writing or updating tests:**
+- Focus on test content and logic, not configuration
+- Use existing test setup patterns in the library
+- Keep test files in the `src/lib/` directory alongside the code they test
+- Follow the naming convention: `*.spec.ts`
 
 ### Documentation Requirements
 

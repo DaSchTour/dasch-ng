@@ -21,6 +21,7 @@ export default [
   ...nx.configs['flat/angular-template'],
   {
     files: ['**/*.ts'],
+    ignores: ['**/*.spec.ts'],
     rules: {
       '@angular-eslint/directive-selector': [
         'error',

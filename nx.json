@@ -63,11 +63,22 @@
     },
     "@nx/vitest:test": {
       "cache": true,
-      "inputs": ["default", "^production"]
+      "inputs": ["default", "^production"],
+      "configurations": {
+        "ci": {
+          "coverage": true
+        }
+      }
     },
     "@nx/angular:unit-test": {
       "cache": true,
-      "inputs": ["default", "^production"]
+      "inputs": ["default", "^production"],
+      "configurations": {
+        "ci": {
+          "coverage": true,
+          "watch": false
+        }
+      }
     }
   },
   "namedInputs": {

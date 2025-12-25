@@ -1,5 +1,7 @@
 # dasch-ng
 
+[![codecov](https://codecov.io/gh/DaSchTour/dasch-ng/graph/badge.svg?token=PF01WR2PPP)](https://codecov.io/gh/DaSchTour/dasch-ng)
+
 Monorepo for all angular related stuff
 
 📖 **Documentation:** [dasch.ng](https://dasch.ng)
