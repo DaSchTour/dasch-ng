@@ -30,7 +30,7 @@ module.exports = () => {
     coverageReporter: {
       dir: join(__dirname, './coverage'),
       subdir: '.',
-      reporters: [{ type: 'html' }, { type: 'text-summary' }],
+      reporters: [{ type: 'text-summary' }, { type: 'lcovonly' }],
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,

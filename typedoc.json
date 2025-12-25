@@ -10,6 +10,7 @@
     "libs/ng/json-viewer/",
     "libs/ng/mutation-observer/",
     "libs/ng/resize-observer/",
+    "libs/ng/route-signals/",
     "libs/validators/"
   ],
   "packageOptions": {

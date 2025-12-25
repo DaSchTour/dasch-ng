@@ -27,7 +27,8 @@
       "configurations": {
         "ci": {
           "ci": true,
-          "codeCoverage": true
+          "codeCoverage": true,
+          "coverageReporters": ["lcovonly"]
         }
       }
     },
@@ -63,11 +64,23 @@
     },
     "@nx/vitest:test": {
       "cache": true,
-      "inputs": ["default", "^production"]
+      "inputs": ["default", "^production"],
+      "configurations": {
+        "ci": {
+          "coverage": true
+        }
+      }
     },
     "@nx/angular:unit-test": {
       "cache": true,
-      "inputs": ["default", "^production"]
+      "inputs": ["default", "^production"],
+      "configurations": {
+        "ci": {
+          "coverage": true,
+          "coverageReporters": ["lcovonly"],
+          "watch": false
+        }
+      }
     }
   },
   "namedInputs": {
@@ -159,7 +172,7 @@
   "useInferencePlugins": false,
   "defaultBase": "main",
   "release": {
-    "projects": ["gravatar", "material-right-sheet", "ng-utils", "rxjs-operators", "sharp-operators", "prime-supplements", "json-viewer"],
+    "projects": ["gravatar", "material-right-sheet", "ng-utils", "rxjs-operators", "sharp-operators", "json-viewer", "route-signals", "validators"],
     "projectsRelationship": "independent",
     "version": {
       "preVersionCommand": "bunx nx run-many -t build -c production",
