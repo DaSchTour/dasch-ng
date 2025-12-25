@@ -19,7 +19,9 @@
  * ```
  */
 export async function convertSvgToImage(svgString: string, format: 'png' | 'jpeg' = 'png'): Promise<Blob | null> {
-  const base64SVG = `data:image/svg+xml;base64,${btoa(svgString)}`;
+  // UTF-8 safe base64 encoding: encodeURIComponent converts to UTF-8 percent-encoding,
+  // unescape converts percent-encoding to Latin1, then btoa encodes to base64
+  const base64SVG = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(svgString)))}`;
   const img = await new Promise<HTMLImageElement>((resolve, reject) => {
     const $img = document.createElement('img');
     $img.src = base64SVG;

@@ -77,7 +77,8 @@ describe('convertSvgToImage()', () => {
     await convertSvgToImage(svgString);
 
     expect(mockImage.src).toContain('data:image/svg+xml;base64,');
-    expect(mockImage.src).toContain(btoa(svgString));
+    // UTF-8 safe encoding
+    expect(mockImage.src).toContain(btoa(unescape(encodeURIComponent(svgString))));
   });
 
   it('should set canvas dimensions to match image natural dimensions', async () => {
@@ -151,6 +152,14 @@ describe('convertSvgToImage()', () => {
     const blob = await convertSvgToImage(svgString);
 
     expect(blob).toBeInstanceOf(Blob);
+  });
+
+  it('should handle SVG with UTF-8 characters', async () => {
+    const svgString = '<svg width="100" height="100"><text>Hello 世界 🌍 Здравствуй мир</text></svg>';
+    const blob = await convertSvgToImage(svgString);
+
+    expect(blob).toBeInstanceOf(Blob);
+    expect(blob?.type).toBe('image/png');
   });
 
   it('should handle small SVG', async () => {

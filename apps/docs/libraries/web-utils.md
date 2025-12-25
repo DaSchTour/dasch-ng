@@ -16,6 +16,8 @@ Converts an SVG string to a raster image (PNG or JPEG) using HTML5 Canvas.
 
 **Use case:** Export SVG graphics (charts, diagrams, icons) as raster images for download or sharing.
 
+**Note:** This function uses UTF-8 safe base64 encoding, so it correctly handles SVG content with international characters (e.g., Chinese, Russian, emoji).
+
 #### Example
 
 ```typescript
