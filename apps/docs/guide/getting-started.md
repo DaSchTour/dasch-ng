@@ -53,7 +53,11 @@ import { IsNullPipe } from '@dasch-ng/ng-utils';
 @Component({
   standalone: true,
   imports: [IsNullPipe],
-  template: ` <div *ngIf="user$ | async | isNull">No user loaded</div> `,
+  template: `
+    @if (user$ | async | isNull) {
+      <div>No user loaded</div>
+    }
+  `,
 })
 export class MyComponent {
   user$ = this.userService.currentUser$;
