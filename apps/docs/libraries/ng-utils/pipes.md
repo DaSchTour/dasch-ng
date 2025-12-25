@@ -41,9 +41,9 @@ import { ReversePipe } from '@dasch-ng/utils';
 @Component({
   imports: [ReversePipe],
   template: `
-    <div *ngFor="let item of items | reverse">
-      {{ item }}
-    </div>
+    @for (item of items | reverse; track item) {
+      <div>{{ item }}</div>
+    }
   `
 })
 ```
@@ -117,9 +117,9 @@ import { SortByPipe } from '@dasch-ng/utils';
 @Component({
   imports: [SortByPipe],
   template: `
-    <div *ngFor="let user of users | sortBy:'name'">
-      {{ user.name }}
-    </div>
+    @for (user of users | sortBy:'name'; track user.name) {
+      <div>{{ user.name }}</div>
+    }
   `
 })
 ```
@@ -175,7 +175,9 @@ import { IncludesPipe } from '@dasch-ng/utils';
 @Component({
   imports: [IncludesPipe],
   template: `
-    <p *ngIf="roles | includes:'admin'">Admin panel</p>
+    @if (roles | includes:'admin') {
+      <p>Admin panel</p>
+    }
   `
 })
 ```
@@ -200,7 +202,9 @@ import { IncludedInPipe } from '@dasch-ng/utils';
 @Component({
   imports: [IncludedInPipe],
   template: `
-    <p *ngIf="currentRole | includedIn:allowedRoles">Authorized</p>
+    @if (currentRole | includedIn:allowedRoles) {
+      <p>Authorized</p>
+    }
   `
 })
 ```
@@ -260,7 +264,9 @@ import { IsNilPipe } from '@dasch-ng/utils';
 @Component({
   imports: [IsNilPipe],
   template: `
-    <div *ngIf="data | isNil">No data available</div>
+    @if (data | isNil) {
+      <div>No data available</div>
+    }
   `
 })
 ```
@@ -286,7 +292,9 @@ import { IsNullPipe } from '@dasch-ng/utils';
 @Component({
   imports: [IsNullPipe],
   template: `
-    <div *ngIf="value | isNull">Value is null</div>
+    @if (value | isNull) {
+      <div>Value is null</div>
+    }
   `
 })
 ```
@@ -310,7 +318,9 @@ import { IsUndefinedPipe } from '@dasch-ng/utils';
 @Component({
   imports: [IsUndefinedPipe],
   template: `
-    <div *ngIf="value | isUndefined">Value is undefined</div>
+    @if (value | isUndefined) {
+      <div>Value is undefined</div>
+    }
   `
 })
 ```
@@ -334,7 +344,9 @@ import { IsEmptyPipe } from '@dasch-ng/utils';
 @Component({
   imports: [IsEmptyPipe],
   template: `
-    <div *ngIf="items | isEmpty">No items</div>
+    @if (items | isEmpty) {
+      <div>No items</div>
+    }
   `
 })
 ```
@@ -360,7 +372,9 @@ import { NotPipe } from '@dasch-ng/utils';
 @Component({
   imports: [NotPipe],
   template: `
-    <div *ngIf="isHidden | not">Content visible</div>
+    @if (isHidden | not) {
+      <div>Content visible</div>
+    }
   `
 })
 ```
@@ -448,7 +462,7 @@ export class ExampleComponent {
 
 ### Conditional Rendering
 
-Type checking pipes work great with `*ngIf`:
+Type checking pipes work great with `@if`:
 
 ```typescript
 import { IsNilPipe, IsEmptyPipe } from '@dasch-ng/utils';
@@ -456,8 +470,12 @@ import { IsNilPipe, IsEmptyPipe } from '@dasch-ng/utils';
 @Component({
   imports: [IsNilPipe, IsEmptyPipe],
   template: `
-    <div *ngIf="data | isNil">Loading...</div>
-    <div *ngIf="items | isEmpty">No items found</div>
+    @if (data | isNil) {
+      <div>Loading...</div>
+    }
+    @if (items | isEmpty) {
+      <div>No items found</div>
+    }
   `
 })
 ```
@@ -472,10 +490,12 @@ import { PropPipe } from '@dasch-ng/utils';
 @Component({
   imports: [PropPipe],
   template: `
-    <div *ngFor="let user of users">
-      <h3>{{ user | prop:'profile.name' }}</h3>
-      <p>{{ user | prop:'profile.email' }}</p>
-    </div>
+    @for (user of users; track user) {
+      <div>
+        <h3>{{ user | prop:'profile.name' }}</h3>
+        <p>{{ user | prop:'profile.email' }}</p>
+      </div>
+    }
   `
 })
 ```

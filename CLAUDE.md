@@ -231,6 +231,37 @@ The ESLint configuration enforces buildable library dependencies:
 
 ## Best Practices for Claude Code
 
+### Angular Best Practices
+
+**CRITICAL**: Before writing or modifying ANY Angular code, ALWAYS use the Angular MCP tools to learn current best practices:
+
+- **`mcp__angular-cli__get_best_practices`** - Get version-specific Angular coding standards
+  - Call with `workspacePath` (from `list_projects`) for project-specific guidance
+  - Call without parameters for general best practices
+  - Covers: components, templates, state management, control flow, etc.
+
+- **`mcp__angular-cli__search_documentation`** - Search official Angular docs
+  - Use when you need specific Angular API documentation
+  - Always prefer official docs over assumed knowledge
+
+- **`mcp__angular-cli__find_examples`** - Find modern Angular code examples
+  - Use for new/updated Angular features
+  - Get ground-truth implementation patterns
+
+**Why this is critical**:
+
+- Angular evolves rapidly with new syntax and patterns
+- Documentation examples must use current best practices (e.g., `@if/@for/@switch` instead of `*ngIf/*ngFor/*ngSwitch`)
+- Version-specific guidance ensures compatibility
+- Outdated patterns confuse users and fail in newer Angular versions
+
+**Example workflow**:
+
+1. Run `mcp__angular-cli__list_projects` to get workspace path
+2. Run `mcp__angular-cli__get_best_practices` with workspace path
+3. Apply the returned best practices to your code
+4. Use `mcp__angular-cli__search_documentation` or `mcp__angular-cli__find_examples` for specific features
+
 ### Pre-Commit Checklist
 
 **IMPORTANT**: Before committing any code changes, ALWAYS run the following commands:
@@ -291,11 +322,7 @@ import { RouterTestingHarness } from '@angular/router/testing';
 describe('MyComponent', () => {
   it('should read route parameter', async () => {
     await TestBed.configureTestingModule({
-      providers: [
-        provideRouter([
-          { path: 'user/:id', component: MyComponent }
-        ])
-      ]
+      providers: [provideRouter([{ path: 'user/:id', component: MyComponent }])],
     });
 
     const harness = await RouterTestingHarness.create('/user/123');
@@ -306,6 +333,7 @@ describe('MyComponent', () => {
 ```
 
 **References:**
+
 - [Angular Router Testing Documentation](https://angular.dev/guide/routing/testing)
 - [Write better tests without Router mocks/stubs](https://blog.angular.dev/write-better-tests-without-router-mocks-stubs-bf5fc95c1c57)
 
@@ -322,6 +350,7 @@ describe('MyComponent', () => {
   3. You are adding a new library and need to set up testing for the first time
 
 **When writing or updating tests:**
+
 - Focus on test content and logic, not configuration
 - Use existing test setup patterns in the library
 - Keep test files in the `src/lib/` directory alongside the code they test

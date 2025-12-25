@@ -71,12 +71,14 @@ import { DecimalBytesPipe, ReversePipe, IsNilPipe } from '@dasch-ng/utils';
     <p>File size: {{ 1536000 | decimalBytes }}</p>
     <!-- Output: "1.54 MB" -->
 
-    <div *ngFor="let item of items | reverse">
-      {{ item }}
-    </div>
+    @for (item of items | reverse; track item) {
+      <div>{{ item }}</div>
+    }
     <!-- Displays items in reverse order -->
 
-    <div *ngIf="data | isNil">No data available</div>
+    @if (data | isNil) {
+      <div>No data available</div>
+    }
   `,
 })
 export class ExampleComponent {
