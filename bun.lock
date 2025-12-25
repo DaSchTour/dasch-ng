@@ -74,7 +74,7 @@
         "cypress": "15.8.1",
         "eslint": "^9.39.2",
         "eslint-config-prettier": "10.1.8",
-        "eslint-plugin-cypress": "2.14.0",
+        "eslint-plugin-cypress": "2.15.2",
         "eslint-plugin-prettier": "^5.5.4",
         "husky": "^9.1.7",
         "jasmine-core": "~5.5.0",
@@ -2232,7 +2232,7 @@
 
     "eslint-config-prettier": ["eslint-config-prettier@10.1.8", "", { "peerDependencies": { "eslint": ">=7.0.0" }, "bin": { "eslint-config-prettier": "bin/cli.js" } }, "sha512-82GZUjRS0p/jganf6q1rEO25VSoHH0hKPCTrgillPjdI/3bgBhAE1QzHrHTizjpRvy6pGAvKjDJtk2pF9NDq8w=="],
 
-    "eslint-plugin-cypress": ["eslint-plugin-cypress@2.14.0", "", { "dependencies": { "globals": "^13.20.0" }, "peerDependencies": { "eslint": ">= 3.2.1" } }, "sha512-eW6tv7iIg7xujleAJX4Ujm649Bf5jweqa4ObPEIuueYRyLZt7qXGWhCY/n4bfeFW/j6nQZwbIBHKZt6EKcL/cg=="],
+    "eslint-plugin-cypress": ["eslint-plugin-cypress@2.15.2", "", { "dependencies": { "globals": "^13.20.0" }, "peerDependencies": { "eslint": ">= 3.2.1" } }, "sha512-CtcFEQTDKyftpI22FVGpx8bkpKyYXBlNge6zSo0pl5/qJvBAnzaD76Vu2AsP16d6mTj478Ldn2mhgrWV+Xr0vQ=="],
 
     "eslint-plugin-prettier": ["eslint-plugin-prettier@5.5.4", "", { "dependencies": { "prettier-linter-helpers": "^1.0.0", "synckit": "^0.11.7" }, "peerDependencies": { "@types/eslint": ">=8.0.0", "eslint": ">=8.0.0", "eslint-config-prettier": ">= 7.0.0 <10.0.0 || >=10.1.0", "prettier": ">=3.0.0" }, "optionalPeers": ["@types/eslint", "eslint-config-prettier"] }, "sha512-swNtI95SToIz05YINMA6Ox5R057IMAmWZ26GqPxusAp1TZzj+IdY9tXNWWD3vkF/wEqydCONcwjTFpxybBqZsg=="],
 
