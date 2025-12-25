@@ -94,8 +94,11 @@ export class ExampleComponent {
 
 **Dependency Injection Helpers:**
 
-- `provideValue` - Create value providers with cleaner syntax
-- `provideFactory` - Create factory providers with type safety
+- `provideValue` - Create type-safe value providers
+- `provideFactory` - Create type-safe factory providers
+- `provideClass` - Create type-safe class providers
+- `provideExisting` - Create type-safe existing providers (aliases)
+- `provideType` - Create type-safe constructor providers
 
 **Resource Utilities:**
 
