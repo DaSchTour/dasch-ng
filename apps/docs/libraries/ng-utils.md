@@ -502,6 +502,263 @@ export class AppComponent {}
 
 ---
 
+#### `provideClass`
+
+Creates a type-safe class provider for Angular dependency injection.
+
+**Use case:** Provide interface implementations, swap implementations for testing.
+
+```typescript
+import { provideClass } from '@dasch-ng/utils';
+import { InjectionToken, Injectable } from '@angular/core';
+
+interface Logger {
+  log(message: string): void;
+}
+
+export const LOGGER = new InjectionToken<Logger>('LOGGER');
+
+@Injectable()
+class ConsoleLogger implements Logger {
+  log(message: string): void {
+    console.log(message);
+  }
+}
+
+@Component({
+  providers: [provideClass(LOGGER, ConsoleLogger)],
+})
+export class AppComponent {}
+```
+
+**Parameters:**
+
+- `provide`: Injection token or class
+- `useClass`: Class to instantiate
+- `options.deps` (optional): Dependencies to inject
+- `options.multi` (optional): Enable multi-provider
+
+**Type Safety:** TypeScript ensures the provided class is compatible with the token type.
+
+[View API Documentation →](../api/@dasch-ng/utils/README)
+
+---
+
+#### `provideExisting`
+
+Creates a type-safe existing provider (alias) for Angular dependency injection.
+
+**Use case:** Create aliases for services, provide the same instance under multiple tokens.
+
+```typescript
+import { provideExisting } from '@dasch-ng/utils';
+import { Injectable, InjectionToken } from '@angular/core';
+
+interface Logger {
+  log(message: string): void;
+}
+
+export const LOGGER = new InjectionToken<Logger>('LOGGER');
+export const CONSOLE_LOGGER = new InjectionToken<Logger>('CONSOLE_LOGGER');
+
+@Injectable()
+class ConsoleLogger implements Logger {
+  log(message: string): void {
+    console.log(message);
+  }
+}
+
+@Component({
+  providers: [ConsoleLogger, provideExisting(LOGGER, ConsoleLogger), provideExisting(CONSOLE_LOGGER, LOGGER)],
+})
+export class AppComponent {
+  // Both LOGGER and CONSOLE_LOGGER inject the same ConsoleLogger instance
+  constructor(@Inject(LOGGER) logger1: Logger, @Inject(CONSOLE_LOGGER) logger2: Logger) {
+    console.log(logger1 === logger2); // true - same instance
+  }
+}
+```
+
+**Parameters:**
+
+- `provide`: New injection token to create
+- `useExisting`: Existing token to alias
+- `multi` (optional): Enable multi-provider
+
+**Type Safety:** Ensures type compatibility between original and alias tokens.
+
+[View API Documentation →](../api/@dasch-ng/utils/README)
+
+---
+
+#### `provideType`
+
+Creates a type-safe constructor provider for Angular dependency injection.
+
+**Use case:** Explicit dependency declaration when automatic DI resolution isn't suitable.
+
+```typescript
+import { provideType } from '@dasch-ng/utils';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable()
+class UserService {
+  constructor(private http: HttpClient) {}
+}
+
+@Component({
+  providers: [
+    // Explicit dependency declaration
+    provideType(UserService, { deps: [HttpClient] }),
+  ],
+})
+export class AppComponent {}
+```
+
+**Parameters:**
+
+- `provide`: Class to provide (used as both token and implementation)
+- `options.deps` (optional): Dependencies to inject
+- `options.multi` (optional): Enable multi-provider
+
+**Note:** Usually you can just provide the class directly. Use `provideType` when you need explicit control over dependency injection.
+
+[View API Documentation →](../api/@dasch-ng/utils/README)
+
+---
+
+### Why Type-Safe Providers?
+
+The DI helper functions provide several advantages over plain provider objects:
+
+#### 1. **Compile-Time Type Safety**
+
+Catch type mismatches at compile time rather than runtime:
+
+```typescript
+import { InjectionToken } from '@angular/core';
+import { provideValue, provideClass } from '@dasch-ng/utils';
+
+const API_URL = new InjectionToken<string>('API_URL');
+
+// ✅ Type-safe: TypeScript enforces the correct type
+provideValue(API_URL, 'https://api.example.com');
+
+// ❌ Type error: number is not assignable to string
+// provideValue(API_URL, 123);
+
+interface Logger {
+  log(message: string): void;
+}
+const LOGGER = new InjectionToken<Logger>('LOGGER');
+
+class ConsoleLogger implements Logger {
+  log(message: string): void {
+    console.log(message);
+  }
+}
+
+// ✅ Type-safe: ConsoleLogger implements Logger
+provideClass(LOGGER, ConsoleLogger);
+
+// ❌ Type error: String does not implement Logger
+// provideClass(LOGGER, String);
+```
+
+Without type-safe helpers, plain provider objects allow type mismatches:
+
+```typescript
+// ⚠️ No type checking - runtime error waiting to happen
+const providers = [
+  { provide: API_URL, useValue: 123 }, // Wrong type, but TypeScript doesn't catch it
+  { provide: LOGGER, useClass: String }, // Incompatible class, no error
+];
+```
+
+#### 2. **Better IDE Support**
+
+Type-safe providers enable superior autocomplete and IntelliSense:
+
+- Parameter types are inferred automatically
+- Factory function signatures are checked
+- Dependency arrays are validated
+- Refactoring is safer (rename detection, find references)
+
+#### 3. **Cleaner Code**
+
+Simplified syntax with better readability:
+
+```typescript
+// ❌ Verbose plain provider
+const providers = [
+  {
+    provide: DATA_SERVICE,
+    useFactory: (http: HttpClient) => new DataService(http),
+    deps: [HttpClient],
+  },
+];
+
+// ✅ Clean type-safe provider
+const providers = [provideFactory(DATA_SERVICE, (http: HttpClient) => new DataService(http), { deps: [HttpClient] })];
+```
+
+#### 4. **Prevent Common Mistakes**
+
+The helpers prevent common DI configuration errors:
+
+```typescript
+import { provideFactory } from '@dasch-ng/utils';
+
+// ❌ This will cause a type error if factory doesn't return the correct type
+provideFactory(
+  LOGGER,
+  () => 'not a logger', // Type error: string is not assignable to Logger
+  { deps: [] },
+);
+
+// ❌ This will cause a type error if deps don't match factory parameters
+provideFactory(
+  DATA_SERVICE,
+  (http: HttpClient, config: Config) => new DataService(http, config),
+  { deps: [HttpClient] }, // Missing Config dependency - TypeScript can help detect this
+);
+```
+
+#### 5. **Multi-Provider Safety**
+
+Multi-providers are more explicit and type-safe:
+
+```typescript
+import { provideValue } from '@dasch-ng/utils';
+
+const VALIDATORS = new InjectionToken<Validator[]>('VALIDATORS');
+
+// ✅ Type-safe multi-provider
+const providers = [
+  provideValue(VALIDATORS, emailValidator, true), // multi: true
+  provideValue(VALIDATORS, phoneValidator, true),
+];
+```
+
+#### When to Use Type-Safe Providers
+
+**Always use them when:**
+
+- Providing values for `InjectionToken`s
+- Creating interface-based providers
+- Complex factory functions with dependencies
+- You want maximum type safety and refactoring support
+
+**Plain providers are fine when:**
+
+- Providing a simple class without configuration
+- The class is used as its own token (`providers: [MyService]`)
+
+**Best Practice:** Use type-safe provider helpers by default for better maintainability and fewer runtime errors.
+
+---
+
 ### Resource Utilities
 
 #### `resourceValueGuard`
