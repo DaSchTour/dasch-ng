@@ -239,6 +239,38 @@ describe('convertSvgToImage()', () => {
     await expect(convertSvgToImage(svgString)).rejects.toThrow();
   });
 
+  it('should throw error when canvas context is not available', async () => {
+    const failingCanvas = {
+      width: 0,
+      height: 0,
+      getContext: vi.fn().mockReturnValue(null),
+      toBlob: vi.fn(),
+    };
+
+    vi.spyOn(document, 'createElement').mockImplementation((tagName: string) => {
+      if (tagName === 'canvas') {
+        return failingCanvas as unknown as HTMLCanvasElement;
+      }
+      if (tagName === 'img') {
+        setTimeout(() => {
+          if (mockImage.onload) {
+            Object.assign(mockImage, {
+              naturalWidth: 100,
+              naturalHeight: 100,
+            });
+            mockImage.onload({} as Event);
+          }
+        }, 0);
+        return mockImage as unknown as HTMLImageElement;
+      }
+      return document.createElement(tagName);
+    });
+
+    const svgString = '<svg width="100" height="100"></svg>';
+
+    await expect(convertSvgToImage(svgString)).rejects.toThrow('Unable to get 2D canvas context');
+  });
+
   it('should return null when toBlob fails', async () => {
     const failingCanvas = {
       width: 0,
