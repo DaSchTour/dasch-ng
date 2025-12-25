@@ -7,6 +7,7 @@
  * @param svgString - The SVG markup as a string
  * @param format - The output image format, either 'png' or 'jpeg'. Defaults to 'png'
  * @returns A Promise that resolves to a Blob containing the raster image data, or null if conversion fails
+ * @throws Error if unable to get 2D canvas context
  *
  * @example
  * ```typescript
@@ -32,7 +33,13 @@ export async function convertSvgToImage(svgString: string, format: 'png' | 'jpeg
   const $canvas = document.createElement('canvas');
   $canvas.width = img.naturalWidth;
   $canvas.height = img.naturalHeight;
-  $canvas.getContext('2d')?.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight);
+
+  const context = $canvas.getContext('2d');
+  if (!context) {
+    throw new Error('Unable to get 2D canvas context');
+  }
+
+  context.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight);
 
   return new Promise<Blob | null>((resolve) => $canvas.toBlob((img) => resolve(img), `image/${format}`));
 }
