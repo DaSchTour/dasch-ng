@@ -11,7 +11,8 @@
     "libs/ng/mutation-observer/",
     "libs/ng/resize-observer/",
     "libs/ng/route-signals/",
-    "libs/validators/"
+    "libs/validators/",
+    "libs/web-utils/"
   ],
   "packageOptions": {
     "entryPoints": ["src/index.ts"]

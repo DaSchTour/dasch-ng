@@ -5,8 +5,8 @@ import { filterNil } from './filter-nil';
 describe('filterNil()', () => {
   it('filter null and undefined, call next for other values', () => {
     const observerSpy = {
-      next: jest.fn(),
-      complete: jest.fn(),
+      next: vi.fn(),
+      complete: vi.fn(),
     };
     from([1, null, undefined, 2, 3, 4]).pipe(filterNil()).subscribe(observerSpy);
     expect(observerSpy.next).toHaveBeenCalledTimes(4);
@@ -15,8 +15,8 @@ describe('filterNil()', () => {
 
   it('filter not filter normal values', () => {
     const observerSpy = {
-      next: jest.fn(),
-      complete: jest.fn(),
+      next: vi.fn(),
+      complete: vi.fn(),
     };
     from([1, 2]).pipe(filterNil()).subscribe(observerSpy);
     expect(observerSpy.next).toHaveBeenCalledTimes(2);
@@ -25,8 +25,8 @@ describe('filterNil()', () => {
 
   it('filter null and undefined', () => {
     const observerSpy = {
-      next: jest.fn(),
-      complete: jest.fn(),
+      next: vi.fn(),
+      complete: vi.fn(),
     };
     from([null, undefined]).pipe(filterNil()).subscribe(observerSpy);
     expect(observerSpy.next).toHaveBeenCalledTimes(0);

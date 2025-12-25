@@ -26,11 +26,12 @@ export default defineConfig(() => ({
     commonjsOptions: {
       transformMixedEsModules: true,
     },
+    minify: false,
     lib: {
       // Could also be a dictionary or array of multiple entry points.
       entry: 'src/index.ts',
       name: 'web-utils',
-      fileName: 'index',
+      fileName: '[name]',
       // Change this to the formats you want to support.
       // Don't forget to update your package.json as well.
       formats: ['es' as const],
@@ -38,6 +39,9 @@ export default defineConfig(() => ({
     rollupOptions: {
       // External packages that should not be bundled into your library.
       external: [],
+      output: {
+        preserveModules: true,
+      },
     },
   },
   test: {

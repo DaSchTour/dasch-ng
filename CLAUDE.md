@@ -129,7 +129,8 @@ libs/
 │   └── operators/       # Custom RxJS operators (Vite-based)
 ├── sharp/
 │   └── operators/       # Sharp image processing operators (Vite-based)
-└── validators/          # Form validators
+├── validators/          # Form validators
+└── web-utils/           # Web utilities (SVG conversion, downloads, file handling)
 ```
 
 ### Library Types
@@ -148,7 +149,7 @@ libs/
 - Built with Vite
 - Use Jest or Vitest for testing
 - Standalone TypeScript/JavaScript utilities
-- Examples: rxjs-operators, sharp-operators
+- Examples: rxjs-operators, sharp-operators, web-utils
 
 ### Testing Setup
 
@@ -168,7 +169,7 @@ The repository uses Nx Release with independent versioning:
 - Releases are tagged as `{projectName}/{version}`
 - Conventional commits determine version bumps
 - GitHub releases are created automatically
-- Published packages: gravatar, material-right-sheet, ng-utils, rxjs-operators, sharp-operators, prime-supplements
+- Published packages: gravatar, material-right-sheet, ng-utils, rxjs-operators, sharp-operators, web-utils, prime-supplements
 
 ### Package Manager
 
