@@ -35,7 +35,7 @@ import { safeDecodeURIComponent } from './safe-decode';
 export const routeParam = (key: string) => {
   const route = inject(ActivatedRoute);
   let initialValue = route.snapshot.paramMap.get(key);
-  if (!initialValue) {
+  if (initialValue == null) {
     throw new Error(`${key} is not in route.`);
   } else {
     initialValue = safeDecodeURIComponent(initialValue);

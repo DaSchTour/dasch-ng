@@ -34,7 +34,7 @@ import { safeDecodeURIComponent } from './safe-decode';
 export const routeQueryParam = (key: string) => {
   const route = inject(ActivatedRoute);
   let initialValue = route.snapshot.queryParamMap.get(key);
-  if (!initialValue) {
+  if (initialValue == null) {
     throw new Error(`Query parameter "${key}" is not in route.`);
   } else {
     initialValue = safeDecodeURIComponent(initialValue);

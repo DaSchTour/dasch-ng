@@ -41,7 +41,7 @@ import { map } from 'rxjs';
 export const routeData = <T>(key: string) => {
   const route = inject(ActivatedRoute);
   const initialValue = route.snapshot.data[key] as T;
-  if (initialValue === undefined) {
+  if (initialValue == null) {
     throw new Error(`Route data property "${key}" is not in route.`);
   }
   return toSignal(
