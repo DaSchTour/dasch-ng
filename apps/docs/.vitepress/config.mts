@@ -42,7 +42,14 @@ export default defineConfig({
           items: [
             { text: 'Gravatar', link: '/libraries/gravatar' },
             { text: 'JSON Viewer', link: '/libraries/json-viewer' },
-            { text: 'NG Utils', link: '/libraries/ng-utils' },
+            {
+              text: 'NG Utils',
+              link: '/libraries/ng-utils',
+              items: [
+                { text: 'Pipes', link: '/libraries/ng-utils/pipes' },
+                { text: 'Provider Helpers', link: '/libraries/ng-utils/provide-helpers' },
+              ],
+            },
             { text: 'Material Right Sheet', link: '/libraries/material-right-sheet' },
             { text: 'Mutation Observer', link: '/libraries/mutation-observer' },
             { text: 'Resize Observer', link: '/libraries/resize-observer' },
