@@ -3,6 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { filterNil } from '@dasch-ng/rxjs-operators';
 import { map } from 'rxjs';
+import { safeDecodeURIComponent } from './safe-decode';
 
 /**
  * Creates a signal that tracks a URL-encoded route parameter and automatically decodes it.
@@ -37,13 +38,13 @@ export const routeParam = (key: string) => {
   if (!initialValue) {
     throw new Error(`${key} is not in route.`);
   } else {
-    initialValue = decodeURIComponent(initialValue);
+    initialValue = safeDecodeURIComponent(initialValue);
   }
   return toSignal(
     route.paramMap.pipe(
       map((params) => params.get(key)),
       filterNil(),
-      map((param) => decodeURIComponent(param)),
+      map((param) => safeDecodeURIComponent(param)),
     ),
     { initialValue },
   );

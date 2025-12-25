@@ -27,7 +27,8 @@
       "configurations": {
         "ci": {
           "ci": true,
-          "codeCoverage": true
+          "codeCoverage": true,
+          "coverageReporters": ["lcovonly"]
         }
       }
     },
@@ -76,6 +77,7 @@
       "configurations": {
         "ci": {
           "coverage": true,
+          "coverageReporters": ["lcovonly"],
           "watch": false
         }
       }
@@ -170,7 +172,7 @@
   "useInferencePlugins": false,
   "defaultBase": "main",
   "release": {
-    "projects": ["gravatar", "material-right-sheet", "ng-utils", "rxjs-operators", "sharp-operators", "prime-supplements", "json-viewer", "route-signals"],
+    "projects": ["gravatar", "material-right-sheet", "ng-utils", "rxjs-operators", "sharp-operators", "json-viewer", "route-signals", "validators"],
     "projectsRelationship": "independent",
     "version": {
       "preVersionCommand": "bunx nx run-many -t build -c production",
