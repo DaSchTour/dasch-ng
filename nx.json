@@ -159,7 +159,7 @@
   "useInferencePlugins": false,
   "defaultBase": "main",
   "release": {
-    "projects": ["gravatar", "material-right-sheet", "ng-utils", "rxjs-operators", "sharp-operators", "prime-supplements", "json-viewer"],
+    "projects": ["gravatar", "material-right-sheet", "ng-utils", "rxjs-operators", "sharp-operators", "prime-supplements", "json-viewer", "route-signals"],
     "projectsRelationship": "independent",
     "version": {
       "preVersionCommand": "bunx nx run-many -t build -c production",
