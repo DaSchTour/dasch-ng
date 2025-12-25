@@ -3,19 +3,17 @@ import { defineConfig } from 'vite';
 
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import dts from 'vite-plugin-dts';
-import { join } from 'path';
+import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
+import * as path from 'path';
 
 export default defineConfig({
-  root: __dirname,
+  root: import.meta.dirname,
   cacheDir: '../../../node_modules/.vite/rxjs-operators',
 
   plugins: [
-    dts({
-      entryRoot: 'src',
-      tsconfigPath: join(__dirname, 'tsconfig.lib.json'),
-    }),
-
+    nxCopyAssetsPlugin(['*.md']),
     nxViteTsPaths(),
+    dts({ entryRoot: 'src', tsconfigPath: path.join(import.meta.dirname, 'tsconfig.lib.json'), pathsToAliases: false }),
   ],
 
   // Uncomment this if you are using workers.
@@ -49,6 +47,18 @@ export default defineConfig({
       output: {
         preserveModules: true,
       },
+    },
+  },
+  test: {
+    name: 'rxjs-operators',
+    watch: false,
+    globals: true,
+    environment: 'jsdom',
+    include: ['{src,tests}/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    reporters: ['default'],
+    coverage: {
+      reportsDirectory: '../../../coverage/libs/rxjs-operators',
+      provider: 'v8' as const,
     },
   },
 });

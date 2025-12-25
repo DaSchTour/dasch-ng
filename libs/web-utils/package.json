@@ -3,6 +3,15 @@
   "version": "0.0.1",
   "type": "module",
   "main": "./index.js",
+  "module": "./index.js",
   "types": "./index.d.ts",
-  "dependencies": {}
+  "typings": "./index.d.ts",
+  "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "types": "./index.d.ts"
+    }
+  }
 }
