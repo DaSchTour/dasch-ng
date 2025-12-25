@@ -140,24 +140,26 @@ describe('routeData', () => {
       expect(component.tags()).toEqual(tags);
     });
 
-    it('should handle null data (treat as valid value, not undefined)', async () => {
+    it('should throw error when data is null', async () => {
       @Component({
         selector: 'test-component',
-        template: '<div>{{ value() }}</div>',
+        template: '<div>Test</div>',
         standalone: true,
       })
       class TestComponent {
-        readonly value = routeData<string | null>('value');
+        constructor() {
+          routeData<string | null>('value');
+        }
       }
 
       TestBed.configureTestingModule({
         providers: [provideRouter([{ path: 'test', component: TestComponent, data: { value: null } }])],
       });
 
-      const harness = await RouterTestingHarness.create('/test');
-      const component = harness.routeDebugElement?.componentInstance as TestComponent;
-
-      expect(component.value()).toBeNull();
+      // null is treated as "not present" (same as undefined)
+      await expect(async () => {
+        await RouterTestingHarness.create('/test');
+      }).rejects.toThrow('Route data property "value" is not in route.');
     });
 
     it('should throw error with descriptive message if route data is not present', async () => {

@@ -87,26 +87,25 @@ describe('routeQueryParam', () => {
       }).rejects.toThrow('Query parameter "missing" is not in route.');
     });
 
-    it('should handle empty string query param by throwing error', async () => {
+    it('should handle empty string query param as valid value', async () => {
       @Component({
         selector: 'test-component',
-        template: '<div>Test</div>',
+        template: '<div>{{ searchSignal() }}</div>',
         standalone: true,
       })
       class TestComponent {
-        constructor() {
-          routeQueryParam('q');
-        }
+        readonly searchSignal = routeQueryParam('q');
       }
 
       TestBed.configureTestingModule({
         providers: [provideRouter([{ path: 'search', component: TestComponent }])],
       });
 
-      // Empty string is falsy, so it should throw
-      await expect(async () => {
-        await RouterTestingHarness.create('/search?q=');
-      }).rejects.toThrow('Query parameter "q" is not in route.');
+      const harness = await RouterTestingHarness.create('/search?q=');
+      const component = harness.routeDebugElement?.componentInstance as TestComponent;
+
+      // Empty string is a valid query parameter value
+      expect(component.searchSignal()).toBe('');
     });
   });
 

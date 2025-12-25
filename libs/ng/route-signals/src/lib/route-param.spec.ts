@@ -87,26 +87,25 @@ describe('routeParam', () => {
       }).rejects.toThrow('missing is not in route.');
     });
 
-    it('should handle empty string param by throwing error', async () => {
+    it('should handle empty string param as valid value', async () => {
       @Component({
         selector: 'test-component',
-        template: '<div>Test</div>',
+        template: '<div>{{ idSignal() }}</div>',
         standalone: true,
       })
       class TestComponent {
-        constructor() {
-          routeParam('id');
-        }
+        readonly idSignal = routeParam('id');
       }
 
       TestBed.configureTestingModule({
         providers: [provideRouter([{ path: 'test/:id', component: TestComponent }])],
       });
 
-      // Empty string in URL params is treated as missing
-      await expect(async () => {
-        await RouterTestingHarness.create('/test/');
-      }).rejects.toThrow();
+      const harness = await RouterTestingHarness.create('/test/');
+      const component = harness.routeDebugElement?.componentInstance as TestComponent;
+
+      // Empty string is a valid parameter value
+      expect(component.idSignal()).toBe('');
     });
   });
 
