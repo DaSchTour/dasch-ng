@@ -64,6 +64,10 @@
     "@nx/vitest:test": {
       "cache": true,
       "inputs": ["default", "^production"]
+    },
+    "@nx/angular:unit-test": {
+      "cache": true,
+      "inputs": ["default", "^production"]
     }
   },
   "namedInputs": {
@@ -155,7 +159,7 @@
   "useInferencePlugins": false,
   "defaultBase": "main",
   "release": {
-    "projects": ["gravatar", "material-right-sheet", "ng-utils", "rxjs-operators", "sharp-operators", "prime-supplements"],
+    "projects": ["gravatar", "material-right-sheet", "ng-utils", "rxjs-operators", "sharp-operators", "prime-supplements", "json-viewer"],
     "projectsRelationship": "independent",
     "version": {
       "preVersionCommand": "bunx nx run-many -t build -c production",

@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+bunx lint-staged --relative --allow-empty
