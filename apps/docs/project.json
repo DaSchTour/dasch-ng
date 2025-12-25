@@ -38,6 +38,10 @@
       },
       "outputs": ["{projectRoot}/.vitepress/dist", "{projectRoot}/api"],
       "dependsOn": ["^build", "typedoc"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     }
   },
   "tags": ["type:app", "scope:docs"],
