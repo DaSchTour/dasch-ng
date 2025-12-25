@@ -220,7 +220,7 @@ describe('convertSvgToImage()', () => {
     expect(mockCanvas.height).toBe(naturalHeight);
   });
 
-  it('should return null when image fails to load', async () => {
+  it('should reject when image fails to load', async () => {
     vi.spyOn(document, 'createElement').mockImplementation((tagName: string) => {
       if (tagName === 'img') {
         const img = {} as HTMLImageElement;
