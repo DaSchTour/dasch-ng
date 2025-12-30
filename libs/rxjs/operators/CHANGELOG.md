@@ -1,3 +1,14 @@
+## 0.5.0 (2025-12-30)
+
+### 🚀 Features
+
+- **rxjs-operators:** add filterNumber operator for type-safe number filtering ([4d7f82b](https://github.com/DaSchTour/dasch-ng/commit/4d7f82b))
+
+### ❤️ Thank You
+
+- Claude Sonnet 4.5
+- Daniel Schuba @DaSchTour
+
 ## 0.4.0 (2025-12-20)
 
 ### 🚀 Features
