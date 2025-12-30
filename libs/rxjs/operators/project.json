@@ -8,7 +8,7 @@
     "version": {
       "currentVersionResolver": "git-tag",
       "preserveLocalDependencyProtocols": false,
-      "manifestRootsToUpdate": ["dist/{projectRoot}"]
+      "manifestRootsToUpdate": ["dist/{projectRoot}", "{projectRoot}"]
     }
   },
   "targets": {
