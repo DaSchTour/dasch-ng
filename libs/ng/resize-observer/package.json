@@ -2,6 +2,7 @@
   "name": "@dasch-ng/resize-observer",
   "version": "0.0.1",
   "license": "MIT",
+  "private": false,
   "peerDependencies": {
     "@angular/core": "^20.0.0 || ^21.0.0",
     "@dasch-ng/rxjs-operators": "^0.3.2",

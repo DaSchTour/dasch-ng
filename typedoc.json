@@ -2,7 +2,6 @@
   "$schema": "https://typedoc.org/schema.json",
   "entryPoints": [
     "libs/rxjs/operators/",
-    "libs/sharp/operators/",
     "libs/decorators/",
     "libs/gravatar/",
     "libs/ng/utils/",
@@ -37,7 +36,7 @@
     "includeGroups": true
   },
   "categorizeByGroup": true,
-  "groupOrder": ["RxJS Operators", "Sharp Operators", "Decorators", "Angular Utilities", "*"],
+  "groupOrder": ["Angular Utilities", "RxJS Operators", "Decorators", "*"],
   "sort": ["kind", "alphabetical"],
   "kindSortOrder": ["Function", "Class", "Interface", "TypeAlias", "Variable"]
 }
