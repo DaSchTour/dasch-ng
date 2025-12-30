@@ -46,7 +46,7 @@ Install any library from the monorepo:
 ```bash
 # Angular utilities
 npm install @dasch-ng/gravatar
-npm install @dasch-ng/ng-utils
+npm install @dasch-ng/utils
 npm install @dasch-ng/material-right-sheet
 
 # TypeScript utilities

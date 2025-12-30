@@ -16,8 +16,6 @@ or with bun:
 bun add @dasch-ng/utils
 ```
 
-**Note:** The published package name is `@dasch-ng/utils` (not `@dasch-ng/ng-utils`).
-
 ## Features
 
 - 🔧 **Standalone Pipes** - Ready-to-use pipes for common operations
