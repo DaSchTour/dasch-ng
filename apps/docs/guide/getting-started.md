@@ -37,8 +37,8 @@ npm install @dasch-ng/decorators
 # Custom RxJS operators
 npm install @dasch-ng/rxjs-operators
 
-# Sharp image processing operators
-npm install @dasch-ng/sharp-operators
+# Web utilities
+npm install @dasch-ng/web-utils
 ```
 
 ## Usage

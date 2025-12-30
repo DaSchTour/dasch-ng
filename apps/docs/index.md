@@ -26,9 +26,9 @@ features:
     title: TypeScript Decorators
     details: Useful decorators for debouncing, memoization, logging, and performance measurement.
 
-  - icon: <i class="fa-slab fa-images"></i>
-    title: Sharp Operators
-    details: Image processing operators built on Sharp for efficient image transformations.
+  - icon: <i class="fa-slab fa-wrench"></i>
+    title: Web Utilities
+    details: Browser utilities for SVG conversion, file downloads, and file handling.
 
   - icon: <i class="fa-slab fa-box"></i>
     title: Nx Monorepo
@@ -52,7 +52,7 @@ npm install @dasch-ng/material-right-sheet
 # TypeScript utilities
 npm install @dasch-ng/decorators
 npm install @dasch-ng/rxjs-operators
-npm install @dasch-ng/sharp-operators
+npm install @dasch-ng/web-utils
 ```
 
 ## Libraries Overview

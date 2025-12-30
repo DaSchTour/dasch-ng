@@ -21,9 +21,8 @@ dasch-ng/
 │   │   └── utils/              # Angular utilities
 │   ├── rxjs/
 │   │   └── operators/     # Custom RxJS operators
-│   ├── sharp/
-│   │   └── operators/     # Sharp image processing operators
-│   └── validators/        # Form validators
+│   ├── validators/        # Form validators
+│   └── web-utils/         # Web utilities
 └── tools/                 # Build and development tools
 ```
 
@@ -52,7 +51,7 @@ Built with `@nx/vite:build`:
 
 - **decorators** - Pure TypeScript decorators
 - **rxjs-operators** - RxJS operators (no Angular dependency)
-- **sharp-operators** - Image processing operators
+- **web-utils** - Web utilities (SVG conversion, downloads, file handling)
 
 These libraries use:
 
@@ -65,7 +64,7 @@ These libraries use:
 The monorepo uses **both Jest and Vitest**:
 
 - **Jest**: Used by Angular libraries
-- **Vitest**: Used by non-Angular libraries (rxjs-operators, sharp-operators)
+- **Vitest**: Used by non-Angular libraries (rxjs-operators, web-utils)
 
 ### Running Tests
 

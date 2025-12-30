@@ -62,7 +62,6 @@ export default defineConfig({
           items: [
             { text: 'Decorators', link: '/libraries/decorators' },
             { text: 'RxJS Operators', link: '/libraries/rxjs-operators' },
-            { text: 'Sharp Operators', link: '/libraries/sharp-operators' },
             { text: 'Web Utils', link: '/libraries/web-utils' },
           ],
         },
@@ -90,7 +89,6 @@ export default defineConfig({
           items: [
             { text: 'Decorators', link: '/api/@dasch-ng/decorators/README' },
             { text: 'RxJS Operators', link: '/api/@dasch-ng/rxjs-operators/README' },
-            { text: 'Sharp Operators', link: '/api/@dasch-ng/sharp-operators/README' },
             { text: 'Web Utils', link: '/api/@dasch-ng/web-utils/README' },
           ],
         },

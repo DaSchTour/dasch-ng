@@ -29,7 +29,7 @@ The repository uses **Vitest** as the primary test framework:
 
 - **Vitest**: Official test framework for Angular 21+ and preferred for all new tests
   - Used by Angular libraries (route-signals and newer libraries)
-  - Used by non-Angular libraries (rxjs-operators, sharp-operators)
+  - Used by non-Angular libraries (rxjs-operators, web-utils)
 - **Jest**: Legacy test framework, still used by some older Angular libraries via 3rd party tools
   - Some older libraries still use Jest (gravatar, json-viewer, ng-utils, validators, decorators, material-right-sheet)
   - New tests should use Vitest instead of Jest
@@ -127,8 +127,6 @@ libs/
 │   └── utils/              # Angular utilities (pipes, helpers)
 ├── rxjs/
 │   └── operators/       # Custom RxJS operators (Vite-based)
-├── sharp/
-│   └── operators/       # Sharp image processing operators (Vite-based)
 ├── validators/          # Form validators
 └── web-utils/           # Web utilities (SVG conversion, downloads, file handling)
 ```
@@ -149,7 +147,7 @@ libs/
 - Built with Vite
 - Use Jest or Vitest for testing
 - Standalone TypeScript/JavaScript utilities
-- Examples: rxjs-operators, sharp-operators, web-utils
+- Examples: rxjs-operators, web-utils
 
 ### Testing Setup
 
@@ -169,7 +167,7 @@ The repository uses Nx Release with independent versioning:
 - Releases are tagged as `{projectName}/{version}`
 - Conventional commits determine version bumps
 - GitHub releases are created automatically
-- Published packages: gravatar, material-right-sheet, ng-utils, rxjs-operators, sharp-operators, web-utils, prime-supplements
+- Published packages: gravatar, material-right-sheet, ng-utils, rxjs-operators, web-utils, prime-supplements
 
 ### Package Manager
 

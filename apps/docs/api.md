@@ -135,16 +135,17 @@ Custom RxJS operators for reactive programming.
 
 ---
 
-### [Sharp Operators](api/@dasch-ng/sharp-operators/README)
+### [Web Utils](api/@dasch-ng/web-utils/README)
 
-Image processing operators built on Sharp.
+Web utilities for SVG conversion, downloads, and file handling.
 
 **Main exports:**
 
-- Image transformation operators
-- Sharp-based utilities
+- `convertSvgToImage()` - Convert SVG strings to raster images (PNG/JPEG)
+- `download()` - Trigger browser downloads for files
+- `createFileArray()` - Normalize File/FileList to array
 
-[View full documentation →](api/@dasch-ng/sharp-operators/README)
+[View full documentation →](api/@dasch-ng/web-utils/README)
 
 ## How to Read the API Documentation
 
