@@ -173,11 +173,12 @@
   "defaultBase": "main",
   "release": {
     "projects": [
+      "resize-observer",
+      "mutation-observer",
       "gravatar",
       "material-right-sheet",
       "ng-utils",
       "rxjs-operators",
-      "sharp-operators",
       "json-viewer",
       "route-signals",
       "validators",
@@ -187,7 +188,7 @@
     "version": {
       "preVersionCommand": "bunx nx run-many -t build -c production",
       "conventionalCommits": true,
-      "manifestRootsToUpdate": ["{projectRoot}", "dist/{projectRoot}"]
+      "updateDependents": "always"
     },
     "git": {
       "commit": true,
