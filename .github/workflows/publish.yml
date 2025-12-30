@@ -26,5 +26,8 @@ jobs:
 
       - run: bun install --frozen-lockfile
 
+      - name: Build
+        run: bunx nx run-many --target build --all
+
       - name: Publish packages
         run: bunx nx release publish --access public
