@@ -189,7 +189,7 @@
     "version": {
       "preVersionCommand": "bunx nx run-many -t build -c production",
       "conventionalCommits": true,
-      "updateDependents": "always"
+      "updateDependents": "never"
     },
     "git": {
       "commit": true,

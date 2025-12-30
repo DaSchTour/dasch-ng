@@ -15,6 +15,9 @@
   ],
   "homepage": "https://github.com/daschtour/dasch-ng",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/daschtour/dasch-ng.git"
