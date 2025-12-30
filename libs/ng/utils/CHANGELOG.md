@@ -1,3 +1,14 @@
+## 0.6.0 (2025-12-30)
+
+### 🚀 Features
+
+- **ng-utils:** add type-safe provider helpers for all Angular DI provider types ([90214fa](https://github.com/DaSchTour/dasch-ng/commit/90214fa))
+
+### ❤️ Thank You
+
+- Claude Sonnet 4.5
+- Daniel Schuba @DaSchTour
+
 ## 0.5.1 (2025-12-25)
 
 This was a version bump only for ng-utils to align it with other projects, there were no code changes.
