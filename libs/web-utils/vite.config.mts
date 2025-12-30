@@ -5,7 +5,7 @@ import * as path from 'path';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 
-export default defineConfig(() => ({
+export default defineConfig({
   root: import.meta.dirname,
   cacheDir: '../../node_modules/.vite/libs/web-utils',
   plugins: [
@@ -34,7 +34,7 @@ export default defineConfig(() => ({
       fileName: '[name]',
       // Change this to the formats you want to support.
       // Don't forget to update your package.json as well.
-      formats: ['es' as const],
+      formats: ['es', 'cjs'],
     },
     rollupOptions: {
       // External packages that should not be bundled into your library.
@@ -56,4 +56,4 @@ export default defineConfig(() => ({
       provider: 'v8' as const,
     },
   },
-}));
+});
