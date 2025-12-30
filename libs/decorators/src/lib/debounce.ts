@@ -1,7 +1,11 @@
-// TODO find alternative
-import _debounce from 'lodash.debounce';
+import { debounce as _debounce } from '@fxts/core';
 
-export function debounce(milliseconds = 0, options = {}): any {
+export function debounce(
+  milliseconds = 0,
+  options?: {
+    leading: boolean;
+  },
+): any {
   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     const map = new WeakMap();
     const originalMethod = descriptor.value;
