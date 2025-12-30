@@ -1,6 +1,6 @@
 {
   "name": "@dasch-ng/decorators",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "dependencies": {
     "@fxts/core": "^1.0.0",
     "rxjs": "^7.0.0"
