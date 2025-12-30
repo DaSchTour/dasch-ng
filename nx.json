@@ -182,7 +182,8 @@
       "json-viewer",
       "route-signals",
       "validators",
-      "web-utils"
+      "web-utils",
+      "decorators"
     ],
     "projectsRelationship": "independent",
     "version": {
