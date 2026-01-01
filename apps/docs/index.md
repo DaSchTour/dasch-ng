@@ -60,17 +60,19 @@ npm install @dasch-ng/web-utils
 ### Angular Libraries
 
 - **[Gravatar](/libraries/gravatar)** - Generate Gravatar hashes and URLs
-- **[NG Utils](/libraries/ng-utils)** - Angular pipes, directives, and helper functions
+- **[JSON Viewer](/libraries/json-viewer)** - Interactive JSON viewer component for Angular
 - **[Material Right Sheet](/libraries/material-right-sheet)** - Right-side sheet component for Angular Material
 - **[Mutation Observer](/libraries/mutation-observer)** - Angular wrapper for MutationObserver API
+- **[NG Utils](/libraries/ng-utils)** - Angular pipes, directives, and helper functions
 - **[Resize Observer](/libraries/resize-observer)** - Angular wrapper for ResizeObserver API
+- **[Route Signals](/libraries/route-signals)** - Angular route state as signals for reactive routing
 - **[Validators](/libraries/validators)** - Form validators for Angular applications
 
 ### TypeScript Libraries
 
 - **[Decorators](/libraries/decorators)** - Useful TypeScript decorators for common patterns
 - **[RxJS Operators](/libraries/rxjs-operators)** - Custom RxJS operators for reactive programming
-- **[Sharp Operators](/libraries/sharp-operators)** - Image processing operators using Sharp
+- **[Web Utils](/libraries/web-utils)** - Browser utilities for SVG conversion, file downloads, and file handling
 
 ## Development
 

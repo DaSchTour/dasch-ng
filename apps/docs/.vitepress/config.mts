@@ -6,7 +6,6 @@ export default defineConfig({
   description: 'Angular & TypeScript Utilities Monorepo',
   base: '/',
   ignoreDeadLinks: true,
-
   head: [
     [
       'script',
@@ -22,7 +21,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/getting-started' },
-      { text: 'Libraries', link: '/libraries/rxjs-operators' },
+      { text: 'Libraries', link: '/libraries/' },
       { text: 'API Reference', link: '/api/' },
     ],
 
