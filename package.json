@@ -75,8 +75,8 @@
     "@typescript-eslint/eslint-plugin": "8.52.0",
     "@typescript-eslint/parser": "8.52.0",
     "@typescript-eslint/utils": "8.52.0",
-    "@vitest/coverage-v8": "4.0.16",
-    "@vitest/ui": "4.0.16",
+    "@vitest/coverage-v8": "4.0.17",
+    "@vitest/ui": "4.0.17",
     "ajv": "^8.0.0",
     "angular-eslint": "^21.1.0",
     "autoprefixer": "^10.4.0",
@@ -122,7 +122,7 @@
     "vite-plugin-eslint": "^1.8.1",
     "vite-tsconfig-paths": "^6.0.0",
     "vitepress": "^1.6.4",
-    "vitest": "4.0.16",
+    "vitest": "4.0.17",
     "vue": "^3.5.26"
   },
   "overrides": {
