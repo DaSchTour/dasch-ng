@@ -84,7 +84,7 @@ describe('routeParam', () => {
 
       await expect(async () => {
         await RouterTestingHarness.create('/test');
-      }).rejects.toThrow('missing is not in route.');
+      }).rejects.toThrow('Route parameter "missing" is not in route.');
     });
 
     it('should handle empty string param as valid value', async () => {
@@ -320,6 +320,141 @@ describe('routeParam', () => {
       const component = harness.routeDebugElement?.componentInstance as TestComponent;
 
       expect(component.idSignal()).toBe('✓');
+    });
+  });
+
+  describe('fallback behavior', () => {
+    it('should use fallback value when param is not in route snapshot', async () => {
+      @Component({
+        selector: 'test-component',
+        template: '<div>{{ categorySignal() }}</div>',
+        standalone: true,
+      })
+      class TestComponent {
+        readonly categorySignal = routeParam('category', 'all');
+      }
+
+      TestBed.configureTestingModule({
+        providers: [provideRouter([{ path: 'list', component: TestComponent }])],
+      });
+
+      const harness = await RouterTestingHarness.create('/list');
+      const component = harness.routeDebugElement?.componentInstance as TestComponent;
+
+      expect(component.categorySignal()).toBe('all');
+    });
+
+    it('should use actual param value when present, not fallback', async () => {
+      @Component({
+        selector: 'test-component',
+        template: '<div>{{ categorySignal() }}</div>',
+        standalone: true,
+      })
+      class TestComponent {
+        readonly categorySignal = routeParam('category', 'all');
+      }
+
+      TestBed.configureTestingModule({
+        providers: [provideRouter([{ path: 'list/:category', component: TestComponent }])],
+      });
+
+      const harness = await RouterTestingHarness.create('/list/electronics');
+      const component = harness.routeDebugElement?.componentInstance as TestComponent;
+
+      expect(component.categorySignal()).toBe('electronics');
+    });
+
+    it('should return to fallback value when param is removed from route', async () => {
+      @Component({
+        selector: 'test-component',
+        template: '<div>{{ categorySignal() }}</div>',
+        standalone: true,
+      })
+      class TestComponent {
+        readonly categorySignal = routeParam('category', 'all');
+      }
+
+      TestBed.configureTestingModule({
+        providers: [
+          provideRouter([
+            { path: 'list/:category', component: TestComponent },
+            { path: 'list', component: TestComponent },
+          ]),
+        ],
+      });
+
+      const harness = await RouterTestingHarness.create('/list/electronics');
+      let component = harness.routeDebugElement?.componentInstance as TestComponent;
+
+      expect(component.categorySignal()).toBe('electronics');
+
+      // Navigate to route without the param - creates new component instance
+      await harness.navigateByUrl('/list');
+
+      // Get the new component instance
+      component = harness.routeDebugElement?.componentInstance as TestComponent;
+      expect(component.categorySignal()).toBe('all');
+    });
+
+    it('should decode fallback value if it contains encoded characters', async () => {
+      @Component({
+        selector: 'test-component',
+        template: '<div>{{ nameSignal() }}</div>',
+        standalone: true,
+      })
+      class TestComponent {
+        readonly nameSignal = routeParam('name', 'default name');
+      }
+
+      TestBed.configureTestingModule({
+        providers: [provideRouter([{ path: 'user', component: TestComponent }])],
+      });
+
+      const harness = await RouterTestingHarness.create('/user');
+      const component = harness.routeDebugElement?.componentInstance as TestComponent;
+
+      // Fallback value should be decoded
+      expect(component.nameSignal()).toBe('default name');
+    });
+
+    it('should handle empty string fallback', async () => {
+      @Component({
+        selector: 'test-component',
+        template: '<div>{{ idSignal() }}</div>',
+        standalone: true,
+      })
+      class TestComponent {
+        readonly idSignal = routeParam('id', '');
+      }
+
+      TestBed.configureTestingModule({
+        providers: [provideRouter([{ path: 'test', component: TestComponent }])],
+      });
+
+      const harness = await RouterTestingHarness.create('/test');
+      const component = harness.routeDebugElement?.componentInstance as TestComponent;
+
+      expect(component.idSignal()).toBe('');
+    });
+
+    it('should handle fallback with special characters', async () => {
+      @Component({
+        selector: 'test-component',
+        template: '<div>{{ pathSignal() }}</div>',
+        standalone: true,
+      })
+      class TestComponent {
+        readonly pathSignal = routeParam('path', '/default/path');
+      }
+
+      TestBed.configureTestingModule({
+        providers: [provideRouter([{ path: 'files', component: TestComponent }])],
+      });
+
+      const harness = await RouterTestingHarness.create('/files');
+      const component = harness.routeDebugElement?.componentInstance as TestComponent;
+
+      expect(component.pathSignal()).toBe('/default/path');
     });
   });
 

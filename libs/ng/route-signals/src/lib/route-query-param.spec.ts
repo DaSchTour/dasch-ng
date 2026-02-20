@@ -323,6 +323,171 @@ describe('routeQueryParam', () => {
     });
   });
 
+  describe('fallback behavior', () => {
+    it('should use fallback value when query param is not in route snapshot', async () => {
+      @Component({
+        selector: 'test-component',
+        template: '<div>{{ sortSignal() }}</div>',
+        standalone: true,
+      })
+      class TestComponent {
+        readonly sortSignal = routeQueryParam('sort', 'name');
+      }
+
+      TestBed.configureTestingModule({
+        providers: [provideRouter([{ path: 'products', component: TestComponent }])],
+      });
+
+      const harness = await RouterTestingHarness.create('/products');
+      const component = harness.routeDebugElement?.componentInstance as TestComponent;
+
+      expect(component.sortSignal()).toBe('name');
+    });
+
+    it('should use actual query param value when present, not fallback', async () => {
+      @Component({
+        selector: 'test-component',
+        template: '<div>{{ sortSignal() }}</div>',
+        standalone: true,
+      })
+      class TestComponent {
+        readonly sortSignal = routeQueryParam('sort', 'name');
+      }
+
+      TestBed.configureTestingModule({
+        providers: [provideRouter([{ path: 'products', component: TestComponent }])],
+      });
+
+      const harness = await RouterTestingHarness.create('/products?sort=price');
+      const component = harness.routeDebugElement?.componentInstance as TestComponent;
+
+      expect(component.sortSignal()).toBe('price');
+    });
+
+    it('should return to fallback value when query param is removed from route', async () => {
+      @Component({
+        selector: 'test-component',
+        template: '<div>{{ sortSignal() }}</div>',
+        standalone: true,
+      })
+      class TestComponent {
+        readonly sortSignal = routeQueryParam('sort', 'name');
+      }
+
+      TestBed.configureTestingModule({
+        providers: [provideRouter([{ path: 'products', component: TestComponent }])],
+      });
+
+      const harness = await RouterTestingHarness.create('/products?sort=price');
+      const component = harness.routeDebugElement?.componentInstance as TestComponent;
+
+      expect(component.sortSignal()).toBe('price');
+
+      // Navigate to route without the query param
+      const router = TestBed.inject(Router);
+      await router.navigate(['/products']);
+      await harness.fixture.whenStable();
+
+      // Query param changes are reactive, same component instance is reused
+      expect(component.sortSignal()).toBe('name');
+    });
+
+    it('should decode fallback value if it contains encoded characters', async () => {
+      @Component({
+        selector: 'test-component',
+        template: '<div>{{ filterSignal() }}</div>',
+        standalone: true,
+      })
+      class TestComponent {
+        readonly filterSignal = routeQueryParam('filter', 'status=active');
+      }
+
+      TestBed.configureTestingModule({
+        providers: [provideRouter([{ path: 'list', component: TestComponent }])],
+      });
+
+      const harness = await RouterTestingHarness.create('/list');
+      const component = harness.routeDebugElement?.componentInstance as TestComponent;
+
+      // Fallback value should be decoded
+      expect(component.filterSignal()).toBe('status=active');
+    });
+
+    it('should handle empty string fallback', async () => {
+      @Component({
+        selector: 'test-component',
+        template: '<div>{{ searchSignal() }}</div>',
+        standalone: true,
+      })
+      class TestComponent {
+        readonly searchSignal = routeQueryParam('q', '');
+      }
+
+      TestBed.configureTestingModule({
+        providers: [provideRouter([{ path: 'search', component: TestComponent }])],
+      });
+
+      const harness = await RouterTestingHarness.create('/search');
+      const component = harness.routeDebugElement?.componentInstance as TestComponent;
+
+      expect(component.searchSignal()).toBe('');
+    });
+
+    it('should handle fallback with special characters', async () => {
+      @Component({
+        selector: 'test-component',
+        template: '<div>{{ redirectSignal() }}</div>',
+        standalone: true,
+      })
+      class TestComponent {
+        readonly redirectSignal = routeQueryParam('redirect', '/home?tab=overview');
+      }
+
+      TestBed.configureTestingModule({
+        providers: [provideRouter([{ path: 'login', component: TestComponent }])],
+      });
+
+      const harness = await RouterTestingHarness.create('/login');
+      const component = harness.routeDebugElement?.componentInstance as TestComponent;
+
+      expect(component.redirectSignal()).toBe('/home?tab=overview');
+    });
+
+    it('should handle multiple query params with different fallback strategies', async () => {
+      @Component({
+        selector: 'test-component',
+        template: '<div>{{ sort() }} - {{ order() }} - {{ filter() }}</div>',
+        standalone: true,
+      })
+      class TestComponent {
+        readonly sort = routeQueryParam('sort', 'name');
+        readonly order = routeQueryParam('order', 'asc');
+        readonly filter = routeQueryParam('filter', 'all');
+      }
+
+      TestBed.configureTestingModule({
+        providers: [provideRouter([{ path: 'list', component: TestComponent }])],
+      });
+
+      // Start with some query params
+      const harness = await RouterTestingHarness.create('/list?sort=price&filter=active');
+      const component = harness.routeDebugElement?.componentInstance as TestComponent;
+
+      expect(component.sort()).toBe('price');
+      expect(component.order()).toBe('asc'); // fallback
+      expect(component.filter()).toBe('active');
+
+      // Remove all query params
+      const router = TestBed.inject(Router);
+      await router.navigate(['/list']);
+      await harness.fixture.whenStable();
+
+      expect(component.sort()).toBe('name'); // fallback
+      expect(component.order()).toBe('asc'); // fallback
+      expect(component.filter()).toBe('all'); // fallback
+    });
+  });
+
   describe('usage in components', () => {
     it('should work when used in component constructor', async () => {
       @Component({
