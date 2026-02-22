@@ -31,7 +31,7 @@
     "sharp": "^0.34.0",
     "spark-md5": "^3.0.2",
     "tslib": "^2.6.1",
-    "zone.js": "0.16.0"
+    "zone.js": "0.16.1"
   },
   "devDependencies": {
     "@analogjs/vite-plugin-angular": "2.2.3",
