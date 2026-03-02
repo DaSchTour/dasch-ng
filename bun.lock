@@ -91,7 +91,7 @@
         "karma-coverage": "~2.2.0",
         "karma-jasmine": "~5.1.0",
         "karma-jasmine-html-reporter": "~2.1.0",
-        "karma-jsdom-launcher": "^19.0.0",
+        "karma-jsdom-launcher": "^20.0.0",
         "lint-staged": "^16.2.7",
         "ng-packagr": "21.0.1",
         "ngx-deploy-npm": "^9.0.0",
@@ -2762,7 +2762,7 @@
 
     "karma-jasmine-html-reporter": ["karma-jasmine-html-reporter@2.1.0", "", { "peerDependencies": { "jasmine-core": "^4.0.0 || ^5.0.0", "karma": "^6.0.0", "karma-jasmine": "^5.0.0" } }, "sha512-sPQE1+nlsn6Hwb5t+HHwyy0A1FNCVKuL1192b+XNauMYWThz2kweiBVW1DqloRpVvZIJkIoHVB7XRpK78n1xbQ=="],
 
-    "karma-jsdom-launcher": ["karma-jsdom-launcher@19.0.0", "", { "peerDependencies": { "jsdom": ">=20 <=27", "karma": ">=3 <=6" } }, "sha512-3vfxAK4uSACL7cvxQRfPm94LTqN930JluwJS70PvX/CT65ritw9UTOIZc/rKgsVzw4ilKJRLC1JgZDcU5YDAAQ=="],
+    "karma-jsdom-launcher": ["karma-jsdom-launcher@20.0.0", "", { "peerDependencies": { "jsdom": ">=21 <=28", "karma": ">=3 <=6" } }, "sha512-RGKbuJjqUyPb3SsBpoBP5qpPZ+UNd0UFqRf7nNDXAXqSIEyQU/aVzrLlLij83r10i/cJh+po3iX/i9BvIhYSog=="],
 
     "karma-source-map-support": ["karma-source-map-support@1.4.0", "", { "dependencies": { "source-map-support": "^0.5.5" } }, "sha512-RsBECncGO17KAoJCYXjv+ckIz+Ii9NCi+9enk+rq6XC81ezYkb4/RHE6CTXdA7IOJqoF3wcaLfVG0CPmE5ca6A=="],
 
