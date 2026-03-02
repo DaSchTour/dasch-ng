@@ -90,7 +90,7 @@
         "karma-chrome-launcher": "^3.2.0",
         "karma-coverage": "~2.2.0",
         "karma-jasmine": "~5.1.0",
-        "karma-jasmine-html-reporter": "~2.1.0",
+        "karma-jasmine-html-reporter": "~2.2.0",
         "karma-jsdom-launcher": "^19.0.0",
         "lint-staged": "^16.2.7",
         "ng-packagr": "21.0.1",
@@ -2760,7 +2760,7 @@
 
     "karma-jasmine": ["karma-jasmine@5.1.0", "", { "dependencies": { "jasmine-core": "^4.1.0" }, "peerDependencies": { "karma": "^6.0.0" } }, "sha512-i/zQLFrfEpRyQoJF9fsCdTMOF5c2dK7C7OmsuKg2D0YSsuZSfQDiLuaiktbuio6F2wiCsZSnSnieIQ0ant/uzQ=="],
 
-    "karma-jasmine-html-reporter": ["karma-jasmine-html-reporter@2.1.0", "", { "peerDependencies": { "jasmine-core": "^4.0.0 || ^5.0.0", "karma": "^6.0.0", "karma-jasmine": "^5.0.0" } }, "sha512-sPQE1+nlsn6Hwb5t+HHwyy0A1FNCVKuL1192b+XNauMYWThz2kweiBVW1DqloRpVvZIJkIoHVB7XRpK78n1xbQ=="],
+    "karma-jasmine-html-reporter": ["karma-jasmine-html-reporter@2.2.0", "", { "peerDependencies": { "jasmine-core": "^4.0.0 || ^5.0.0 || ^6.0.0", "karma": "^6.0.0", "karma-jasmine": "^5.0.0" } }, "sha512-J0laEC43Oy2RdR5V5R3bqmdo7yRIYySq6XHKbA+e5iSAgLjhR1oICLGeSREPlJXpeyNcdJf3J17YcdhD0mRssQ=="],
 
     "karma-jsdom-launcher": ["karma-jsdom-launcher@19.0.0", "", { "peerDependencies": { "jsdom": ">=20 <=27", "karma": ">=3 <=6" } }, "sha512-3vfxAK4uSACL7cvxQRfPm94LTqN930JluwJS70PvX/CT65ritw9UTOIZc/rKgsVzw4ilKJRLC1JgZDcU5YDAAQ=="],
 
