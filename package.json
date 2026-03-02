@@ -67,7 +67,7 @@
     "@swc-node/register": "1.11.1",
     "@swc/core": "1.15.13",
     "@swc/helpers": "0.5.19",
-    "@types/jasmine": "~5.1.0",
+    "@types/jasmine": "~6.0.0",
     "@types/jest": "30.0.0",
     "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^24.0.0",
