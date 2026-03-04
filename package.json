@@ -99,7 +99,7 @@
     "karma-chrome-launcher": "^3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
+    "karma-jasmine-html-reporter": "~2.2.0",
     "karma-jsdom-launcher": "^19.0.0",
     "lint-staged": "^16.2.7",
     "ng-packagr": "21.0.1",
