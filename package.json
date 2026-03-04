@@ -102,7 +102,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "karma-jsdom-launcher": "^19.0.0",
     "lint-staged": "^16.2.7",
-    "ng-packagr": "21.0.1",
+    "ng-packagr": "21.2.0",
     "ngx-deploy-npm": "^9.0.0",
     "nx": "22.3.3",
     "postcss": "^8.4.5",
