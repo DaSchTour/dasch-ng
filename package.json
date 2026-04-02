@@ -90,7 +90,7 @@
     "jasmine-spec-reporter": "7.0.0",
     "jest": "30.3.0",
     "jest-environment-jsdom": "30.3.0",
-    "jest-preset-angular": "16.1.1",
+    "jest-preset-angular": "16.1.2",
     "jest-util": "30.3.0",
     "jiti": "2.6.1",
     "jsdom": "26.1.0",
