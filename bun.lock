@@ -42,7 +42,7 @@
         "@commitlint/config-nx-scopes": "20.5.0",
         "@eslint/eslintrc": "3.3.5",
         "@eslint/js": "9.39.4",
-        "@jscutlery/semver": "5.8.0",
+        "@jscutlery/semver": "5.8.1",
         "@ngneat/spectator": "22.1.0",
         "@nx/cypress": "22.6.3",
         "@nx/devkit": "22.6.3",
@@ -842,7 +842,7 @@
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.31", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw=="],
 
-    "@jscutlery/semver": ["@jscutlery/semver@5.8.0", "", { "dependencies": { "chalk": "4.1.2", "conventional-changelog": "^5.1.0", "conventional-changelog-angular": "^7.0.0", "conventional-changelog-atom": "^4.0.0", "conventional-changelog-codemirror": "^4.0.0", "conventional-changelog-conventionalcommits": "^7.0.2", "conventional-changelog-ember": "^4.0.0", "conventional-changelog-eslint": "^5.0.0", "conventional-changelog-express": "^4.0.0", "conventional-changelog-jquery": "^5.0.0", "conventional-changelog-jshint": "^4.0.0", "conventional-commits-parser": "^5.0.0", "conventional-recommended-bump": "^9.0.0", "detect-indent": "6.1.0", "git-semver-tags": "^7.0.1", "inquirer": "8.2.7", "rxjs": "7.8.2", "semver": "^7.0.0" }, "peerDependencies": { "@nx/devkit": "^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0 || ^22.0.0" } }, "sha512-d/2BdBx3WzmWGdeuoxO6gW/nSVcnrroVD2jwswSmnk75UwrzfIs9Y70MZzjZdqvOjmjx1/qdt4l+GpypNRfZaA=="],
+    "@jscutlery/semver": ["@jscutlery/semver@5.8.1", "", { "dependencies": { "chalk": "4.1.2", "conventional-changelog": "^5.1.0", "conventional-changelog-angular": "^7.0.0", "conventional-changelog-atom": "^4.0.0", "conventional-changelog-codemirror": "^4.0.0", "conventional-changelog-conventionalcommits": "^7.0.2", "conventional-changelog-ember": "^4.0.0", "conventional-changelog-eslint": "^5.0.0", "conventional-changelog-express": "^4.0.0", "conventional-changelog-jquery": "^5.0.0", "conventional-changelog-jshint": "^4.0.0", "conventional-commits-parser": "^5.0.0", "conventional-recommended-bump": "^9.0.0", "detect-indent": "6.1.0", "git-semver-tags": "^7.0.1", "inquirer": "8.2.7", "rxjs": "7.8.2", "semver": "^7.0.0" }, "peerDependencies": { "@nx/devkit": "^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0 || ^22.0.0" } }, "sha512-4d+lScLwpMJuKGs1CccCD9DmN82WaPmgBe9ynwSUCYLwEECyHt+AHJC/7ssFI/Ck0hZiKUsy5oKWqtJ4IYNcyg=="],
 
     "@jsonjoy.com/base64": ["@jsonjoy.com/base64@1.1.2", "", { "peerDependencies": { "tslib": "2" } }, "sha512-q6XAnWQDIMA3+FTiOYajoYqySkO+JSat0ytXGSuRdq9uXE7o92gzuQwQM14xaCRlBLGq3v5miDGC4vkVTn54xA=="],
 
