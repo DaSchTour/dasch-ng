@@ -93,7 +93,7 @@
     "jest-preset-angular": "16.1.2",
     "jest-util": "30.3.0",
     "jiti": "2.6.1",
-    "jsdom": "26.1.0",
+    "jsdom": "29.0.1",
     "jsonc-eslint-parser": "2.4.2",
     "karma": "6.4.4",
     "karma-chrome-launcher": "3.2.0",
