@@ -183,7 +183,8 @@
       "route-signals",
       "validators",
       "web-utils",
-      "decorators"
+      "decorators",
+      "postcss-custom-container"
     ],
     "projectsRelationship": "independent",
     "version": {

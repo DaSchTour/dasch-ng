@@ -1,0 +1,80 @@
+{
+  "name": "postcss-custom-container",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/postcss-custom-container/src",
+  "projectType": "library",
+  "release": {
+    "version": {
+      "currentVersionResolver": "git-tag",
+      "preserveLocalDependencyProtocols": false,
+      "manifestRootsToUpdate": ["dist/{projectRoot}", "{projectRoot}"]
+    }
+  },
+  "tags": [],
+  "targets": {
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}"
+      }
+    },
+    "build-bundle": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/libs/postcss-custom-container",
+        "main": "libs/postcss-custom-container/src/index.ts",
+        "tsConfig": "libs/postcss-custom-container/tsconfig.lib.json",
+        "format": ["cjs", "esm"],
+        "bundle": true,
+        "declaration": false,
+        "skipTypeCheck": false,
+        "deleteOutputPath": false,
+        "external": ["postcss"],
+        "assets": [
+          {
+            "input": "libs/postcss-custom-container",
+            "glob": "*.md",
+            "output": "."
+          },
+          {
+            "input": "libs/postcss-custom-container",
+            "glob": "package.json",
+            "output": "."
+          }
+        ]
+      },
+      "configurations": {
+        "development": {
+          "minify": false
+        },
+        "production": {
+          "minify": false
+        }
+      }
+    },
+    "build-types": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/dist/libs/postcss-custom-container"],
+      "options": {
+        "command": "bunx tsc -p libs/postcss-custom-container/tsconfig.lib.json --emitDeclarationOnly --declaration --rootDir libs/postcss-custom-container/src --outDir dist/libs/postcss-custom-container"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/dist/libs/postcss-custom-container"],
+      "dependsOn": ["build-bundle", "build-types"],
+      "options": {
+        "command": "echo build complete"
+      }
+    },
+    "test": {
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "coverage/libs/postcss-custom-container"
+      }
+    }
+  }
+}

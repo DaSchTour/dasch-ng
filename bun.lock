@@ -46,6 +46,7 @@
         "@ngneat/spectator": "22.1.0",
         "@nx/cypress": "22.7.1",
         "@nx/devkit": "22.7.1",
+        "@nx/esbuild": "22.7.1",
         "@nx/eslint": "22.7.1",
         "@nx/eslint-plugin": "22.7.1",
         "@nx/jest": "22.7.1",
@@ -1019,6 +1020,8 @@
     "@nx/cypress": ["@nx/cypress@22.7.1", "", { "dependencies": { "@nx/devkit": "22.7.1", "@nx/eslint": "22.7.1", "@nx/js": "22.7.1", "@phenomnomnominal/tsquery": "~6.1.4", "detect-port": "^1.5.1", "semver": "^7.6.3", "tree-kill": "1.2.2", "tslib": "^2.3.0" }, "peerDependencies": { "cypress": ">= 13 < 16" }, "optionalPeers": ["cypress"] }, "sha512-ieypLZFh4iCjfrcSWeYOPk/2Vg8O/CtmQBqqVhPdBLP9p0zgMBvym0XAtyaywhKphrYfVs1eIwwMMRA6Jn55Ng=="],
 
     "@nx/devkit": ["@nx/devkit@22.7.1", "", { "dependencies": { "@zkochan/js-yaml": "0.0.7", "ejs": "5.0.1", "enquirer": "~2.3.6", "minimatch": "10.2.4", "semver": "^7.6.3", "tslib": "^2.3.0", "yargs-parser": "21.1.1" }, "peerDependencies": { "nx": ">= 21 <= 23 || ^22.0.0-0" } }, "sha512-z2ayFHq406MyVpNtksGnsfHOYZVTSInwQgZeg6u+S4sD21Wvb+oldhqkbYX46jiGJSaw5aUjFdzXJu2l4MYP1A=="],
+
+    "@nx/esbuild": ["@nx/esbuild@22.7.1", "", { "dependencies": { "@nx/devkit": "22.7.1", "@nx/js": "22.7.1", "picocolors": "^1.1.0", "tinyglobby": "^0.2.12", "tsconfig-paths": "^4.1.2", "tslib": "^2.3.0" }, "peerDependencies": { "esbuild": ">=0.19.2 <1.0.0" }, "optionalPeers": ["esbuild"] }, "sha512-1cVs4ccUK06bgdfZT79LDWOpuUe51XTi6LxaFxtlDRPJWrjmXtyWs/VllgELnTVF7qGWwrWMlJykgOokynjfjg=="],
 
     "@nx/eslint": ["@nx/eslint@22.7.1", "", { "dependencies": { "@nx/devkit": "22.7.1", "@nx/js": "22.7.1", "semver": "^7.6.3", "tslib": "^2.3.0", "typescript": "~5.9.2" }, "peerDependencies": { "@nx/jest": "22.7.1", "@zkochan/js-yaml": "0.0.7", "eslint": "^8.0.0 || ^9.0.0 || ^10.0.0" }, "optionalPeers": ["@nx/jest", "@zkochan/js-yaml"] }, "sha512-wBx/U1NTZ4arbjFrI7bI0zd1FMSBpqIszzfJ0pXyqrHA3KxNLFTQI713XoSD2hxTNrbh4owFQD7SYG4WpNN3CA=="],
 
