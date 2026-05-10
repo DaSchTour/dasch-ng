@@ -82,7 +82,7 @@
         "jasmine-spec-reporter": "7.0.0",
         "jest": "30.3.0",
         "jest-environment-jsdom": "30.3.0",
-        "jest-preset-angular": "16.1.4",
+        "jest-preset-angular": "16.1.5",
         "jest-util": "30.3.0",
         "jiti": "2.7.0",
         "jsdom": "26.1.0",
@@ -2749,7 +2749,7 @@
 
     "jest-pnp-resolver": ["jest-pnp-resolver@1.2.3", "", { "peerDependencies": { "jest-resolve": "*" }, "optionalPeers": ["jest-resolve"] }, "sha512-+3NpwQEnRoIBtx4fyhblQDPgJI0H1IEIkX7ShLUjPGA7TtUTvI1oiKi3SR4oBR0hQhQR80l4WAe5RrXBwWMA8w=="],
 
-    "jest-preset-angular": ["jest-preset-angular@16.1.4", "", { "dependencies": { "@jest/environment-jsdom-abstract": "^30.0.0", "bs-logger": "^0.2.6", "esbuild-wasm": ">=0.23.0", "jest-util": "^30.0.0", "pretty-format": "^30.0.0", "ts-jest": "^29.4.0" }, "optionalDependencies": { "esbuild": ">=0.23.0" }, "peerDependencies": { "@angular/compiler-cli": ">=19.0.0 <22.0.0", "@angular/core": ">=19.0.0 <22.0.0", "@angular/platform-browser": ">=19.0.0 <22.0.0", "@angular/platform-browser-dynamic": ">=19.0.0 <22.0.0", "jest": "^30.0.0", "jsdom": ">=26.0.0", "typescript": ">=5.5" } }, "sha512-9RAEcxejwhumdGhOabraQ6ZSNAKJfOHHeQpq47fYOfBNNl4CIQf9um7a6vGK2iGSxvo0tNzw1mNVlYWKkPWx1g=="],
+    "jest-preset-angular": ["jest-preset-angular@16.1.5", "", { "dependencies": { "@jest/environment-jsdom-abstract": "^30.0.0", "bs-logger": "^0.2.6", "esbuild-wasm": ">=0.23.0", "jest-util": "^30.0.0", "pretty-format": "^30.0.0", "ts-jest": "^29.4.0" }, "optionalDependencies": { "esbuild": ">=0.23.0" }, "peerDependencies": { "@angular/compiler-cli": ">=19.0.0 <22.0.0", "@angular/core": ">=19.0.0 <22.0.0", "@angular/platform-browser": ">=19.0.0 <22.0.0", "@angular/platform-browser-dynamic": ">=19.0.0 <22.0.0", "jest": "^30.0.0", "jsdom": ">=26.0.0", "typescript": ">=5.5" } }, "sha512-4YNjA8O02TAQisr3JozsyFGQ4Dkc3FQyGebjpRZfXhiMo32arYW1bXZ5KXCjSe4OoXZrFV5T5nrV7SXr4NmBuA=="],
 
     "jest-regex-util": ["jest-regex-util@30.0.1", "", {}, "sha512-jHEQgBXAgc+Gh4g0p3bCevgRCVRkB4VB70zhoAE48gxeSr1hfUOsM/C2WoJgVL7Eyg//hudYENbm3Ne+/dRVVA=="],
 
