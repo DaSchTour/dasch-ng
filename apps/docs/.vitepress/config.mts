@@ -60,6 +60,7 @@ export default defineConfig({
           text: 'TypeScript Libraries',
           items: [
             { text: 'Decorators', link: '/libraries/decorators' },
+            { text: 'PostCSS Custom Container', link: '/libraries/postcss-custom-container' },
             { text: 'RxJS Operators', link: '/libraries/rxjs-operators' },
             { text: 'Web Utils', link: '/libraries/web-utils' },
           ],
@@ -87,6 +88,7 @@ export default defineConfig({
           text: 'TypeScript Libraries',
           items: [
             { text: 'Decorators', link: '/api/@dasch-ng/decorators/README' },
+            { text: 'PostCSS Custom Container', link: '/api/@dasch-ng/postcss-custom-container/README' },
             { text: 'RxJS Operators', link: '/api/@dasch-ng/rxjs-operators/README' },
             { text: 'Web Utils', link: '/api/@dasch-ng/web-utils/README' },
           ],

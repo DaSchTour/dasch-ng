@@ -145,6 +145,21 @@ Useful TypeScript decorators for common patterns like debouncing, memoization, a
 
 ---
 
+### [PostCSS Custom Container](/libraries/postcss-custom-container)
+
+PostCSS plugin for reusable CSS Container Query tokens via `@custom-container` — analogous to `@custom-media`.
+
+**Key Features:**
+
+- Define container query conditions once, reuse by name
+- Modern range syntax (`<`, `<=`, `>`, `>=`)
+- JS-side seeding for design system integration
+- Build-time substitution, no runtime
+
+**Installation:** `npm install --save-dev @dasch-ng/postcss-custom-container`
+
+---
+
 ### [RxJS Operators](/libraries/rxjs-operators)
 
 Custom RxJS operators for reactive programming with specialized stream transformations.
