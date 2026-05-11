@@ -61,10 +61,18 @@
         "command": "bunx tsc -p libs/postcss-custom-container/tsconfig.lib.json --emitDeclarationOnly --declaration --rootDir libs/postcss-custom-container/src --outDir dist/libs/postcss-custom-container"
       }
     },
+    "patch-cjs": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/dist/libs/postcss-custom-container/index.cjs"],
+      "dependsOn": ["build-bundle"],
+      "options": {
+        "command": "node libs/postcss-custom-container/scripts/patch-cjs.mjs"
+      }
+    },
     "build": {
       "executor": "nx:run-commands",
       "outputs": ["{workspaceRoot}/dist/libs/postcss-custom-container"],
-      "dependsOn": ["build-bundle", "build-types"],
+      "dependsOn": ["build-bundle", "build-types", "patch-cjs"],
       "options": {
         "command": "echo build complete"
       }
