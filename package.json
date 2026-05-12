@@ -89,7 +89,7 @@
     "husky": "9.1.7",
     "jasmine-core": "5.13.0",
     "jasmine-spec-reporter": "7.0.0",
-    "jest": "30.4.1",
+    "jest": "30.4.2",
     "jest-environment-jsdom": "30.4.1",
     "jest-preset-angular": "16.1.5",
     "jest-util": "30.4.1",
