@@ -119,7 +119,7 @@
     "typescript-eslint": "8.59.3",
     "verdaccio": "6.6.2",
     "vite": "7.3.3",
-    "vite-plugin-dts": "4.5.4",
+    "vite-plugin-dts": "5.0.0",
     "vite-plugin-eslint": "1.8.1",
     "vite-tsconfig-paths": "6.1.1",
     "vitepress": "1.6.4",
