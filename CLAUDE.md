@@ -122,6 +122,7 @@ libs/
 ├── ng/
 │   ├── json-viewer/        # JSON viewer component (Angular)
 │   ├── mutation-observer/  # Angular MutationObserver wrapper
+│   ├── pdf-viewer/         # PDF viewer component, fork of ng2-pdf-viewer (Angular)
 │   ├── resize-observer/    # Angular ResizeObserver wrapper
 │   ├── route-signals/      # Route state as signals (Angular)
 │   └── utils/              # Angular utilities (pipes, helpers)
@@ -131,16 +132,26 @@ libs/
 └── web-utils/           # Web utilities (SVG conversion, downloads, file handling)
 ```
 
+Demo applications live under `apps/`:
+
+```
+apps/
+├── docs/                # VitePress documentation site (dasch.ng)
+└── pdf-viewer-demo/     # Standalone Angular demo for @dasch-ng/pdf-viewer
+                        # Built into apps/docs/public/demos/pdf-viewer/
+                        # for deployment under https://dasch.ng/demos/pdf-viewer/
+```
+
 ### Library Types
 
 **Angular Libraries** (using `@nx/angular:package`):
 
 - Built with ng-packagr
 - Use Vitest for testing (Angular 21+ official framework)
-  - Newer libraries: route-signals
+  - Newer libraries: route-signals, pdf-viewer
   - Older libraries may still use Jest: gravatar, json-viewer, ng-utils, material-right-sheet, validators, decorators
 - Have `ng-package.json` configuration
-- Examples: route-signals, gravatar, json-viewer, ng-utils, material-right-sheet, validators, decorators
+- Examples: route-signals, pdf-viewer, gravatar, json-viewer, ng-utils, material-right-sheet, validators, decorators
 
 **Vite Libraries** (using `@nx/vite:build`):
 
