@@ -3,6 +3,9 @@
 # compiled output
 /dist
 /tmp
+
+# generated demo builds (output of `nx build pdf-viewer-demo`)
+/apps/docs/public/demos/
 /out-tsc
 
 # dependencies
