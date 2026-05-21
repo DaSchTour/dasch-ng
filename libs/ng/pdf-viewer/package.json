@@ -1,0 +1,24 @@
+{
+  "name": "@dasch-ng/pdf-viewer",
+  "version": "11.0.0-rc.0",
+  "description": "Angular standalone component for rendering PDF documents (fork of ng2-pdf-viewer)",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "pdf",
+    "pdf-viewer",
+    "pdfjs",
+    "ng2-pdf-viewer"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "pdfjs-dist": "5.6.205"
+  },
+  "peerDependencies": {
+    "@angular/core": "^21.0.0",
+    "rxjs": "^7.0.0"
+  },
+  "sideEffects": false
+}
