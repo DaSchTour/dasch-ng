@@ -37,7 +37,7 @@
         "parallel": false
       },
       "outputs": ["{projectRoot}/.vitepress/dist", "{projectRoot}/api"],
-      "dependsOn": ["^build", "typedoc"]
+      "dependsOn": ["^build", "typedoc", "pdf-viewer-demo:build"]
     },
     "lint": {
       "executor": "@nx/eslint:lint",
