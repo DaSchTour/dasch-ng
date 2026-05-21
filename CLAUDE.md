@@ -113,7 +113,7 @@ The documentation site (dasch.ng) is built with VitePress and TypeDoc, located i
 
 The repository follows an Nx workspace pattern with libraries organized by domain:
 
-```
+```text
 libs/
 ├── decorators/          # TypeScript decorators
 ├── gravatar/            # Gravatar hash generation (Angular)
@@ -134,7 +134,7 @@ libs/
 
 Demo applications live under `apps/`:
 
-```
+```text
 apps/
 ├── docs/                # VitePress documentation site (dasch.ng)
 └── pdf-viewer-demo/     # Standalone Angular demo for @dasch-ng/pdf-viewer

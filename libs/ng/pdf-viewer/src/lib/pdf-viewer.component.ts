@@ -28,10 +28,10 @@ import { assign, isSSR } from './utils/helpers';
 import type { PDFSource, PDFPageProxy, PDFProgressData, PDFDocumentProxy, PDFDocumentLoadingTask, PDFViewerOptions, ZoomScale } from './typings';
 import { GlobalWorkerOptions, getDocument } from 'pdfjs-dist';
 
-// @ts-expect-error This does not exist outside of polyfill which this is doing
-if (typeof Promise.withResolvers === 'undefined' && window) {
-  // @ts-expect-error This does not exist outside of polyfill which this is doing
-  window.Promise.withResolvers = () => {
+// @ts-expect-error Polyfill check — withResolvers is missing in older runtimes
+if (typeof Promise.withResolvers === 'undefined' && typeof globalThis !== 'undefined') {
+  // @ts-expect-error Polyfill assignment — withResolvers may not exist on the target Promise
+  globalThis.Promise.withResolvers = () => {
     let resolve;
     let reject;
     const promise = new Promise((res, rej) => {

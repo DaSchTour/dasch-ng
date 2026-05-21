@@ -55,11 +55,18 @@ pdf-viewer {
   transition: 0.5s width;
 }
 
-.outline-list li a {
+.outline-list .outline-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
   cursor: pointer;
+  text-align: left;
 }
 
-.outline-list li a:hover {
+.outline-list .outline-link:hover,
+.outline-list .outline-link:focus-visible {
   color: #ea1f62;
 }
 

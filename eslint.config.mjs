@@ -15,7 +15,15 @@ export default [
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],
   {
-    ignores: ['**/dist', '**/out-tsc', '**/vitest.config.*.timestamp*', '**/.vitepress/cache', '**/.vitepress/dist', '**/vite.config.*.timestamp*', 'apps/docs/public/demos/**'],
+    ignores: [
+      '**/dist',
+      '**/out-tsc',
+      '**/vitest.config.*.timestamp*',
+      '**/.vitepress/cache',
+      '**/.vitepress/dist',
+      '**/vite.config.*.timestamp*',
+      'apps/docs/public/demos/**',
+    ],
   },
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
