@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
   zoom = signal(1.0);
   zoomScale = signal<ZoomScale>('page-width');
   originalSize = signal(false);
-  pdf: any;
+  pdf = signal<PDFDocumentProxy | null>(null);
   renderText = signal(true);
   progressData = signal<PDFProgressData | undefined>(undefined);
   isLoaded = signal(false);
@@ -122,7 +122,7 @@ export class AppComponent implements OnInit {
    * @param pdf pdf document proxy
    */
   afterLoadComplete(pdf: PDFDocumentProxy) {
-    this.pdf = pdf;
+    this.pdf.set(pdf);
 
     this.loadOutline();
   }
@@ -131,9 +131,11 @@ export class AppComponent implements OnInit {
    * Get outline
    */
   loadOutline() {
-    this.pdf.getOutline().then((outline: any[]) => {
-      this.outline.set(outline);
-    });
+    this.pdf()
+      ?.getOutline()
+      ?.then((outline: any[]) => {
+        this.outline.set(outline);
+      });
   }
 
   /**

@@ -6,25 +6,26 @@
       </button>
     }
 
-    <span class="title {{ mobile() ? 'mob' : 'desk' }}">ng2-pdf-viewer</span>
+    <span class="title {{ mobile() ? 'mob' : 'desk' }}">&#64;dasch-ng/pdf-viewer</span>
 
     @if (!mobile()) {
-      <span class="description hide-md">Angular 5+ Component to render PDF</span>
+      <span class="description hide-md">Angular 21+ PDF viewer component (signals, zoneless, pdf.js 5)</span>
     }
 
     <span class="spacer"></span>
 
     @if (!mobile()) {
       <iframe
-        src="https://ghbtns.com/github-btn.html?user=vadimdez&repo=ng2-pdf-viewer&type=star&count=true"
+        src="https://ghbtns.com/github-btn.html?user=DaSchTour&repo=dasch-ng&type=star&count=true"
         frameborder="0"
         scrolling="0"
         width="170px"
         height="20px"
+        title="Star DaSchTour/dasch-ng on GitHub"
       ></iframe>
     }
 
-    <a href="https://github.com/vadimdez/ng2-pdf-viewer" mat-raised-button class="button">Get Started</a>
+    <a href="https://dasch.ng/libraries/pdf-viewer" mat-raised-button class="button">Get Started</a>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -134,8 +135,8 @@
           <input matInput type="number" placeholder="Page" [ngModel]="page()" (ngModelChange)="page.set($event)" pattern="-?[0-9]*(\.[0-9]+)?" />
           <mat-error>Input is not a number!</mat-error>
         </mat-form-field>
-        @if (pdf) {
-          <span>of {{ pdf.numPages }}</span>
+        @if (pdf(); as loadedPdf) {
+          <span>of {{ loadedPdf.numPages }}</span>
         }
         <button (click)="incrementPage(1)" mat-button type="button">Next</button>
       </div>
@@ -194,15 +195,15 @@
         @for (item of outline(); track item) {
           <ul class="outline-list">
             <li>
-              <a (click)="navigateTo(item.dest)">
+              <button type="button" class="outline-link" (click)="navigateTo(item.dest)">
                 {{ item.title }}
-              </a>
+              </button>
               @for (child of item.items; track child) {
                 <ul>
                   <li>
-                    <a (click)="navigateTo(child.dest)">
+                    <button type="button" class="outline-link" (click)="navigateTo(child.dest)">
                       {{ child.title }}
-                    </a>
+                    </button>
                   </li>
                 </ul>
               }
