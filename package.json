@@ -105,7 +105,7 @@
     "karma-jsdom-launcher": "19.0.0",
     "lint-staged": "16.4.0",
     "ng-packagr": "21.2.3",
-    "ngx-deploy-npm": "9.1.0",
+    "ngx-deploy-npm": "9.2.0",
     "nx": "22.7.5",
     "postcss": "8.5.15",
     "postcss-import": "16.1.1",
