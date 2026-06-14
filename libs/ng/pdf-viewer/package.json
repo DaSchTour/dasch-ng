@@ -14,7 +14,7 @@
     "access": "public"
   },
   "dependencies": {
-    "pdfjs-dist": "5.7.284",
+    "pdfjs-dist": "6.0.227",
     "tslib": "^2.8.1"
   },
   "peerDependencies": {
