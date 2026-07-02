@@ -109,7 +109,7 @@
     "nx": "22.7.6",
     "postcss": "8.5.16",
     "postcss-import": "16.1.1",
-    "postcss-preset-env": "10.6.1",
+    "postcss-preset-env": "11.3.2",
     "postcss-url": "10.1.4",
     "prettier": "3.9.1",
     "ts-jest": "29.4.11",
