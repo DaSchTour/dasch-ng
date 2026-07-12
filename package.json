@@ -111,7 +111,7 @@
     "postcss-import": "16.1.1",
     "postcss-preset-env": "10.6.1",
     "postcss-url": "10.1.4",
-    "prettier": "3.9.4",
+    "prettier": "3.9.5",
     "ts-jest": "29.4.11",
     "ts-node": "10.9.2",
     "typedoc": "0.28.20",
