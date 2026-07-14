@@ -107,7 +107,7 @@
     "ng-packagr": "21.2.5",
     "ngx-deploy-npm": "9.2.1",
     "nx": "22.7.7",
-    "postcss": "8.5.16",
+    "postcss": "8.5.17",
     "postcss-import": "16.1.1",
     "postcss-preset-env": "10.6.1",
     "postcss-url": "10.1.4",
