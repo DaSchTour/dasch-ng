@@ -46,15 +46,30 @@ If you are migrating from the v10 `PdfViewerModule`, switch to the standalone `P
 
 ## Worker location
 
-The pdf.js worker defaults to a jsDelivr CDN URL matching the bundled `pdfjs-dist` version. To self-host or override:
+`pdf.js` parses PDFs in a Web Worker. The worker file is shipped by `pdfjs-dist` (which is a transitive dependency of this library) — it is **not** bundled into `@dasch-ng/pdf-viewer` itself.
 
-```typescript
-// global override
-(window as any).pdfWorkerSrc = '/assets/pdf.worker.min.mjs';
+**Default (zero config):** the component loads the worker from `https://cdn.jsdelivr.net/npm/pdfjs-dist@<version>/legacy/build/pdf.worker.min.mjs`. Fine for prototyping but a third-party request — for GDPR/offline-friendly production, self-host instead.
 
-// version-pinned override
-(window as any)['pdfWorkerSrc5.6.205'] = '/assets/pdf.worker-5.6.205.min.mjs';
-```
+**Self-host (recommended for production):**
+
+1. Add the worker file to your app's `angular.json` `assets`:
+
+   ```json
+   {
+     "glob": "pdf.worker.min.mjs",
+     "input": "node_modules/pdfjs-dist/legacy/build",
+     "output": "assets/pdfjs"
+   }
+   ```
+
+2. Point the component at it before bootstrap, e.g. in `main.ts`:
+
+   ```typescript
+   (window as any).pdfWorkerSrc = '/assets/pdfjs/pdf.worker.min.mjs';
+   bootstrapApplication(AppComponent, { providers: [...] });
+   ```
+
+See the [docs site](https://dasch.ng/libraries/pdf-viewer#self-host) for the version-pinned override variant and the full rationale.
 
 ## Credits
 
