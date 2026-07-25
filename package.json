@@ -112,7 +112,7 @@
     "postcss-preset-env": "10.6.1",
     "postcss-url": "10.1.4",
     "prettier": "3.9.6",
-    "ts-jest": "29.4.11",
+    "ts-jest": "29.4.12",
     "ts-node": "10.9.2",
     "typedoc": "0.28.20",
     "typedoc-plugin-markdown": "4.12.0",
