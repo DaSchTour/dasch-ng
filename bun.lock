@@ -28,14 +28,14 @@
       "devDependencies": {
         "@analogjs/vite-plugin-angular": "2.7.0",
         "@analogjs/vitest-angular": "2.7.0",
-        "@angular-devkit/build-angular": "21.2.20",
-        "@angular-devkit/core": "21.2.20",
-        "@angular-devkit/schematics": "21.2.20",
+        "@angular-devkit/build-angular": "21.2.21",
+        "@angular-devkit/core": "21.2.21",
+        "@angular-devkit/schematics": "21.2.21",
         "@angular-eslint/eslint-plugin": "21.4.0",
         "@angular-eslint/eslint-plugin-template": "21.4.0",
         "@angular-eslint/template-parser": "21.4.0",
-        "@angular/build": "21.2.20",
-        "@angular/cli": "21.2.20",
+        "@angular/build": "21.2.21",
+        "@angular/cli": "21.2.21",
         "@angular/compiler-cli": "21.2.19",
         "@angular/language-service": "21.2.19",
         "@commitlint/cli": "20.5.3",
@@ -56,7 +56,7 @@
         "@nx/vitest": "22.7.8",
         "@nx/web": "22.7.8",
         "@nx/workspace": "22.7.8",
-        "@schematics/angular": "21.2.20",
+        "@schematics/angular": "21.2.21",
         "@swc-node/register": "1.12.1",
         "@swc/core": "1.15.47",
         "@swc/helpers": "0.5.23",
@@ -168,13 +168,13 @@
 
     "@angular-devkit/architect": ["@angular-devkit/architect@0.2102.20", "", { "dependencies": { "@angular-devkit/core": "21.2.20", "rxjs": "7.8.2" }, "bin": { "architect": "bin/cli.js" } }, "sha512-s7wPFCMrt9mWMr+NWs4T8849snnOE4DcmLb9Set7KtbhV6Z8E7ZASs/wqPOS3KPxLjxTqM6CnkwKhc3Th6DniA=="],
 
-    "@angular-devkit/build-angular": ["@angular-devkit/build-angular@21.2.20", "", { "dependencies": { "@ampproject/remapping": "2.3.0", "@angular-devkit/architect": "0.2102.20", "@angular-devkit/build-webpack": "0.2102.20", "@angular-devkit/core": "21.2.20", "@angular/build": "21.2.20", "@babel/core": "7.29.7", "@babel/generator": "7.29.1", "@babel/helper-annotate-as-pure": "7.27.3", "@babel/helper-split-export-declaration": "7.24.7", "@babel/plugin-transform-async-generator-functions": "7.29.0", "@babel/plugin-transform-async-to-generator": "7.28.6", "@babel/plugin-transform-runtime": "7.29.0", "@babel/preset-env": "7.29.2", "@babel/runtime": "7.29.2", "@discoveryjs/json-ext": "0.6.3", "@ngtools/webpack": "21.2.20", "ansi-colors": "4.1.3", "autoprefixer": "10.4.27", "babel-loader": "10.0.0", "browserslist": "^4.26.0", "copy-webpack-plugin": "14.0.0", "css-loader": "7.1.3", "esbuild-wasm": "0.28.1", "http-proxy-middleware": "3.0.7", "istanbul-lib-instrument": "6.0.3", "jsonc-parser": "3.3.1", "karma-source-map-support": "1.4.0", "less": "4.4.2", "less-loader": "12.3.1", "license-webpack-plugin": "4.0.2", "loader-utils": "3.3.1", "mini-css-extract-plugin": "2.10.0", "open": "11.0.0", "ora": "9.3.0", "picomatch": "4.0.4", "piscina": "5.2.0", "postcss": "8.5.23", "postcss-loader": "8.2.0", "resolve-url-loader": "5.0.0", "rxjs": "7.8.2", "sass": "1.97.3", "sass-loader": "16.0.7", "semver": "7.7.4", "source-map-loader": "5.0.0", "source-map-support": "0.5.21", "terser": "5.46.0", "tinyglobby": "0.2.15", "tree-kill": "1.2.2", "tslib": "2.8.1", "webpack": "5.105.2", "webpack-dev-middleware": "7.4.5", "webpack-dev-server": "5.2.5", "webpack-merge": "6.0.1", "webpack-subresource-integrity": "5.1.0" }, "optionalDependencies": { "esbuild": "0.28.1" }, "peerDependencies": { "@angular/compiler-cli": "^21.0.0", "@angular/core": "^21.0.0", "@angular/localize": "^21.0.0", "@angular/platform-browser": "^21.0.0", "@angular/platform-server": "^21.0.0", "@angular/service-worker": "^21.0.0", "@angular/ssr": "^21.2.20", "@web/test-runner": "^0.20.0", "browser-sync": "^3.0.2", "jest": "^30.2.0", "jest-environment-jsdom": "^30.2.0", "karma": "^6.3.0", "ng-packagr": "^21.0.0", "protractor": "^7.0.0", "tailwindcss": "^2.0.0 || ^3.0.0 || ^4.0.0", "typescript": ">=5.9 <6.0" }, "optionalPeers": ["@angular/core", "@angular/localize", "@angular/platform-browser", "@angular/platform-server", "@angular/service-worker", "@angular/ssr", "@web/test-runner", "browser-sync", "jest", "jest-environment-jsdom", "karma", "ng-packagr", "protractor", "tailwindcss"] }, "sha512-ungbjySjh+4F+3okIKf1XydY+zXl59djXqK9YiAdaLGDex1RaC0nkd7TckVAmVEJR/dJHtqT9heHgFnmrLPgSg=="],
+    "@angular-devkit/build-angular": ["@angular-devkit/build-angular@21.2.21", "", { "dependencies": { "@ampproject/remapping": "2.3.0", "@angular-devkit/architect": "0.2102.21", "@angular-devkit/build-webpack": "0.2102.21", "@angular-devkit/core": "21.2.21", "@angular/build": "21.2.21", "@babel/core": "7.29.7", "@babel/generator": "7.29.1", "@babel/helper-annotate-as-pure": "7.27.3", "@babel/helper-split-export-declaration": "7.24.7", "@babel/plugin-transform-async-generator-functions": "7.29.0", "@babel/plugin-transform-async-to-generator": "7.28.6", "@babel/plugin-transform-runtime": "7.29.0", "@babel/preset-env": "7.29.2", "@babel/runtime": "7.29.2", "@discoveryjs/json-ext": "0.6.3", "@ngtools/webpack": "21.2.21", "ansi-colors": "4.1.3", "autoprefixer": "10.4.27", "babel-loader": "10.0.0", "browserslist": "^4.26.0", "copy-webpack-plugin": "14.0.0", "css-loader": "7.1.3", "esbuild-wasm": "0.28.1", "http-proxy-middleware": "3.0.7", "istanbul-lib-instrument": "6.0.3", "jsonc-parser": "3.3.1", "karma-source-map-support": "1.4.0", "less": "4.4.2", "less-loader": "12.3.1", "license-webpack-plugin": "4.0.2", "loader-utils": "3.3.1", "mini-css-extract-plugin": "2.10.0", "open": "11.0.0", "ora": "9.3.0", "picomatch": "4.0.4", "piscina": "5.2.0", "postcss": "8.5.23", "postcss-loader": "8.2.0", "resolve-url-loader": "5.0.0", "rxjs": "7.8.2", "sass": "1.97.3", "sass-loader": "16.0.7", "semver": "7.7.4", "source-map-loader": "5.0.0", "source-map-support": "0.5.21", "terser": "5.46.0", "tinyglobby": "0.2.15", "tree-kill": "1.2.2", "tslib": "2.8.1", "webpack": "5.105.2", "webpack-dev-middleware": "7.4.5", "webpack-dev-server": "5.2.5", "webpack-merge": "6.0.1", "webpack-subresource-integrity": "5.1.0" }, "optionalDependencies": { "esbuild": "0.28.1" }, "peerDependencies": { "@angular/compiler-cli": "^21.0.0", "@angular/core": "^21.0.0", "@angular/localize": "^21.0.0", "@angular/platform-browser": "^21.0.0", "@angular/platform-server": "^21.0.0", "@angular/service-worker": "^21.0.0", "@angular/ssr": "^21.2.21", "@web/test-runner": "^0.20.0", "browser-sync": "^3.0.2", "jest": "^30.2.0", "jest-environment-jsdom": "^30.2.0", "karma": "^6.3.0", "ng-packagr": "^21.0.0", "protractor": "^7.0.0", "tailwindcss": "^2.0.0 || ^3.0.0 || ^4.0.0", "typescript": ">=5.9 <6.0" }, "optionalPeers": ["@angular/core", "@angular/localize", "@angular/platform-browser", "@angular/platform-server", "@angular/service-worker", "@angular/ssr", "@web/test-runner", "browser-sync", "jest", "jest-environment-jsdom", "karma", "ng-packagr", "protractor", "tailwindcss"] }, "sha512-Q9ee1UrdQcv2pVDyPn8sOUryZfvPQ7ItuXLCnzfqTW9Cm/dvY9oRmBbw8+Ae85FjVuPEvGBkGFcZqBp2hgBy8Q=="],
 
-    "@angular-devkit/build-webpack": ["@angular-devkit/build-webpack@0.2102.20", "", { "dependencies": { "@angular-devkit/architect": "0.2102.20", "rxjs": "7.8.2" }, "peerDependencies": { "webpack": "^5.30.0", "webpack-dev-server": "^5.0.2" } }, "sha512-ULSeZIELAwJuXTMuNh43IH4Xu9MLlsGPQnqXJawwH5Efc5lOT9adCKC9IHMzdKIDTFf/cldWabgEdCaMQR26WQ=="],
+    "@angular-devkit/build-webpack": ["@angular-devkit/build-webpack@0.2102.21", "", { "dependencies": { "@angular-devkit/architect": "0.2102.21", "rxjs": "7.8.2" }, "peerDependencies": { "webpack": "^5.30.0", "webpack-dev-server": "^5.0.2" } }, "sha512-UQ9hl4cVLLPr53GYr2GBrdR8NWT5/ncD/0Kwomc2kbAfIKni8QWHgn6pK1q0vZfQRJ/uy5N/dInrEPYRZhr+iQ=="],
 
-    "@angular-devkit/core": ["@angular-devkit/core@21.2.20", "", { "dependencies": { "ajv": "8.18.0", "ajv-formats": "3.0.1", "jsonc-parser": "3.3.1", "picomatch": "4.0.4", "rxjs": "7.8.2", "source-map": "0.7.6" }, "peerDependencies": { "chokidar": "^5.0.0" }, "optionalPeers": ["chokidar"] }, "sha512-QViRAYFj3jcElWND79hM6y4vTSYhMlJSOjy9nby9JsQaPgetkf039jI2u9Lp+PduE6lysewzf85d1UGsm3eI0A=="],
+    "@angular-devkit/core": ["@angular-devkit/core@21.2.21", "", { "dependencies": { "ajv": "8.18.0", "ajv-formats": "3.0.1", "jsonc-parser": "3.3.1", "picomatch": "4.0.4", "rxjs": "7.8.2", "source-map": "0.7.6" }, "peerDependencies": { "chokidar": "^5.0.0" }, "optionalPeers": ["chokidar"] }, "sha512-xOr6mZ00M6hgM/xltAVkPVc/Yd1a/Wa0CGecV64JTITaVaSH8p8+wXe62Xavdr3pcc9cLKKUUB4mAup4k7Kkyw=="],
 
-    "@angular-devkit/schematics": ["@angular-devkit/schematics@21.2.20", "", { "dependencies": { "@angular-devkit/core": "21.2.20", "jsonc-parser": "3.3.1", "magic-string": "0.30.21", "ora": "9.3.0", "rxjs": "7.8.2" } }, "sha512-XH0BtcqSwHlyLRzvbZccSEe5Hcl7Yex8fXfj3gMVBB5g+KBUm2OGtGN3lDOl5BtrwrZBVnNNXkg0ehNrWzxVgw=="],
+    "@angular-devkit/schematics": ["@angular-devkit/schematics@21.2.21", "", { "dependencies": { "@angular-devkit/core": "21.2.21", "jsonc-parser": "3.3.1", "magic-string": "0.30.21", "ora": "9.3.0", "rxjs": "7.8.2" } }, "sha512-LgTd/0CpyWSxMJLLk0X85F5RyDlJekssLlapU1C8fKqOUdWONYncTXYvZUQ+zbRAGXHcSZrst1Vm8qdXbo11Mg=="],
 
     "@angular-eslint/builder": ["@angular-eslint/builder@21.4.0", "", { "dependencies": { "@angular-devkit/architect": ">= 0.2100.0 < 0.2200.0", "@angular-devkit/core": ">= 21.0.0 < 22.0.0" }, "peerDependencies": { "@angular/cli": ">= 21.0.0 < 22.0.0", "eslint": "^8.57.0 || ^9.0.0 || ^10.0.0", "typescript": "*" } }, "sha512-3kgGmrVaCYbLtDjC8g4BmMBbdz4thsOB8/NYly8JtXM8EuDZEk5Pz6VTRpJR02ARprwayraTTmhyvq6OGBlQ9w=="],
 
@@ -192,11 +192,11 @@
 
     "@angular/animations": ["@angular/animations@21.2.19", "", { "dependencies": { "tslib": "^2.3.0" }, "peerDependencies": { "@angular/core": "21.2.19" } }, "sha512-qC0mviselvpKq2ID9bT+USnCsHKfwZAifkUr5A4h/WCzXvUvpVNWp/RPhGcKeOR+seg3EO5GtIZyblwiRlhzrA=="],
 
-    "@angular/build": ["@angular/build@21.2.20", "", { "dependencies": { "@ampproject/remapping": "2.3.0", "@angular-devkit/architect": "0.2102.20", "@babel/core": "7.29.7", "@babel/helper-annotate-as-pure": "7.27.3", "@babel/helper-split-export-declaration": "7.24.7", "@inquirer/confirm": "5.1.21", "@vitejs/plugin-basic-ssl": "2.1.4", "beasties": "0.4.1", "browserslist": "^4.26.0", "esbuild": "0.28.1", "https-proxy-agent": "7.0.6", "istanbul-lib-instrument": "6.0.3", "jsonc-parser": "3.3.1", "listr2": "9.0.5", "magic-string": "0.30.21", "mrmime": "2.0.1", "parse5-html-rewriting-stream": "8.0.0", "picomatch": "4.0.4", "piscina": "5.2.0", "rolldown": "1.0.0-rc.4", "sass": "1.97.3", "semver": "7.7.4", "source-map-support": "0.5.21", "tinyglobby": "0.2.15", "undici": "7.28.0", "vite": "7.3.6", "watchpack": "2.5.1" }, "optionalDependencies": { "lmdb": "3.5.1" }, "peerDependencies": { "@angular/compiler": "^21.0.0", "@angular/compiler-cli": "^21.0.0", "@angular/core": "^21.0.0", "@angular/localize": "^21.0.0", "@angular/platform-browser": "^21.0.0", "@angular/platform-server": "^21.0.0", "@angular/service-worker": "^21.0.0", "@angular/ssr": "^21.2.20", "karma": "^6.4.0", "less": "^4.2.0", "ng-packagr": "^21.0.0", "postcss": "^8.4.0", "tailwindcss": "^2.0.0 || ^3.0.0 || ^4.0.0", "tslib": "^2.3.0", "typescript": ">=5.9 <6.0", "vitest": "^4.0.8" }, "optionalPeers": ["@angular/core", "@angular/localize", "@angular/platform-browser", "@angular/platform-server", "@angular/service-worker", "@angular/ssr", "karma", "less", "ng-packagr", "postcss", "tailwindcss", "vitest"] }, "sha512-Dl9AX8e3mQpAl4RkmvoNnYRoRSpqMLQBqJYf/quupGLxMpQ55mOBhnGfzmoBLyETFhMUd329tvGtOcicPW/hdA=="],
+    "@angular/build": ["@angular/build@21.2.21", "", { "dependencies": { "@ampproject/remapping": "2.3.0", "@angular-devkit/architect": "0.2102.21", "@babel/core": "7.29.7", "@babel/helper-annotate-as-pure": "7.27.3", "@babel/helper-split-export-declaration": "7.24.7", "@inquirer/confirm": "5.1.21", "@vitejs/plugin-basic-ssl": "2.1.4", "beasties": "0.4.1", "browserslist": "^4.26.0", "esbuild": "0.28.1", "https-proxy-agent": "7.0.6", "istanbul-lib-instrument": "6.0.3", "jsonc-parser": "3.3.1", "listr2": "9.0.5", "magic-string": "0.30.21", "mrmime": "2.0.1", "parse5-html-rewriting-stream": "8.0.0", "picomatch": "4.0.4", "piscina": "5.2.0", "rolldown": "1.0.0-rc.4", "sass": "1.97.3", "semver": "7.7.4", "source-map-support": "0.5.21", "tinyglobby": "0.2.15", "undici": "7.29.0", "vite": "7.3.6", "watchpack": "2.5.1" }, "optionalDependencies": { "lmdb": "3.5.1" }, "peerDependencies": { "@angular/compiler": "^21.0.0", "@angular/compiler-cli": "^21.0.0", "@angular/core": "^21.0.0", "@angular/localize": "^21.0.0", "@angular/platform-browser": "^21.0.0", "@angular/platform-server": "^21.0.0", "@angular/service-worker": "^21.0.0", "@angular/ssr": "^21.2.21", "karma": "^6.4.0", "less": "^4.2.0", "ng-packagr": "^21.0.0", "postcss": "^8.4.0", "tailwindcss": "^2.0.0 || ^3.0.0 || ^4.0.0", "tslib": "^2.3.0", "typescript": ">=5.9 <6.0", "vitest": "^4.0.8" }, "optionalPeers": ["@angular/core", "@angular/localize", "@angular/platform-browser", "@angular/platform-server", "@angular/service-worker", "@angular/ssr", "karma", "less", "ng-packagr", "postcss", "tailwindcss", "vitest"] }, "sha512-Z88uTaPte8uEYW+Sn5BUz7YoGAbi1dcoz8X1eaJi30bT7qtZ5Bph0vELMBu2VCtp9JFgZhsLn+uy8F6iIPiOUQ=="],
 
     "@angular/cdk": ["@angular/cdk@21.2.14", "", { "dependencies": { "parse5": "^8.0.0", "tslib": "^2.3.0" }, "peerDependencies": { "@angular/common": "^21.0.0 || ^22.0.0", "@angular/core": "^21.0.0 || ^22.0.0", "@angular/platform-browser": "^21.0.0 || ^22.0.0", "rxjs": "^6.5.3 || ^7.4.0" } }, "sha512-806REq/CLf37nEhmmd8Q+ILN8z/RVG2vk2n8YZ/4TdHpcBCi5ux4AxLbpMmduLwGPOzPagJ6ggRzE5fnX0rmcQ=="],
 
-    "@angular/cli": ["@angular/cli@21.2.20", "", { "dependencies": { "@angular-devkit/architect": "0.2102.20", "@angular-devkit/core": "21.2.20", "@angular-devkit/schematics": "21.2.20", "@inquirer/prompts": "7.10.1", "@listr2/prompt-adapter-inquirer": "3.0.5", "@modelcontextprotocol/sdk": "1.26.0", "@schematics/angular": "21.2.20", "@yarnpkg/lockfile": "1.1.0", "algoliasearch": "5.48.1", "ini": "6.0.0", "jsonc-parser": "3.3.1", "listr2": "9.0.5", "npm-package-arg": "13.0.2", "pacote": "21.5.1", "parse5-html-rewriting-stream": "8.0.0", "semver": "7.7.4", "yargs": "18.0.0", "zod": "4.3.6" }, "bin": { "ng": "bin/ng.js" } }, "sha512-ATzRaKSDWIUVHQDU14mO3EVrkoEddfm0b4L/uUJraG2tIevRGYStuzT1jIKlPl8mg+O1cDVIjiqdX114kPHczw=="],
+    "@angular/cli": ["@angular/cli@21.2.21", "", { "dependencies": { "@angular-devkit/architect": "0.2102.21", "@angular-devkit/core": "21.2.21", "@angular-devkit/schematics": "21.2.21", "@inquirer/prompts": "7.10.1", "@listr2/prompt-adapter-inquirer": "3.0.5", "@modelcontextprotocol/sdk": "1.30.0", "@schematics/angular": "21.2.21", "@yarnpkg/lockfile": "1.1.0", "algoliasearch": "5.48.1", "ini": "6.0.0", "jsonc-parser": "3.3.1", "listr2": "9.0.5", "npm-package-arg": "13.0.2", "pacote": "21.5.1", "parse5-html-rewriting-stream": "8.0.0", "semver": "7.7.4", "yargs": "18.0.0", "zod": "4.3.6" }, "bin": { "ng": "bin/ng.js" } }, "sha512-9TqWGpguYGpAsycSYX/Ji6csuPrEntdd+D2iK0TWIVQ1APCma7UmBgI1ltcATQNezxWiLTiJIMIOEuPG+cIVnw=="],
 
     "@angular/common": ["@angular/common@21.2.19", "", { "dependencies": { "tslib": "^2.3.0" }, "peerDependencies": { "@angular/core": "21.2.19", "rxjs": "^6.5.3 || ^7.4.0" } }, "sha512-Rvo/VXI0kUmfQT7+OeAjv526OJlf/WrLnJq1Tz84Jkyv9bs9SOMTCT6m4+boo8gxVNdrcxvGU3Q0o2jZzKceSg=="],
 
@@ -910,7 +910,7 @@
 
     "@microsoft/tsdoc-config": ["@microsoft/tsdoc-config@0.18.1", "", { "dependencies": { "@microsoft/tsdoc": "0.16.0", "ajv": "~8.18.0", "jju": "~1.4.0", "resolve": "~1.22.2" } }, "sha512-9brPoVdfN9k9g0dcWkFeA7IH9bbcttzDJlXvkf8b2OBzd5MueR1V2wkKBL0abn0otvmkHJC6aapBOTJDDeMCZg=="],
 
-    "@modelcontextprotocol/sdk": ["@modelcontextprotocol/sdk@1.26.0", "", { "dependencies": { "@hono/node-server": "^1.19.9", "ajv": "^8.17.1", "ajv-formats": "^3.0.1", "content-type": "^1.0.5", "cors": "^2.8.5", "cross-spawn": "^7.0.5", "eventsource": "^3.0.2", "eventsource-parser": "^3.0.0", "express": "^5.2.1", "express-rate-limit": "^8.2.1", "hono": "^4.11.4", "jose": "^6.1.3", "json-schema-typed": "^8.0.2", "pkce-challenge": "^5.0.0", "raw-body": "^3.0.0", "zod": "^3.25 || ^4.0", "zod-to-json-schema": "^3.25.1" }, "peerDependencies": { "@cfworker/json-schema": "^4.1.1" }, "optionalPeers": ["@cfworker/json-schema"] }, "sha512-Y5RmPncpiDtTXDbLKswIJzTqu2hyBKxTNsgKqKclDbhIgg1wgtf1fRuvxgTnRfcnxtvvgbIEcqUOzZrJ6iSReg=="],
+    "@modelcontextprotocol/sdk": ["@modelcontextprotocol/sdk@1.30.0", "", { "dependencies": { "@hono/node-server": "^1.19.9 || ^2.0.5", "ajv": "^8.17.1", "ajv-formats": "^3.0.1", "content-type": "^1.0.5", "cors": "^2.8.5", "cross-spawn": "^7.0.5", "eventsource": "^3.0.2", "eventsource-parser": "^3.0.0", "express": "^5.2.1", "express-rate-limit": "^8.2.1", "hono": "^4.11.4", "jose": "^6.1.3", "json-schema-typed": "^8.0.2", "pkce-challenge": "^5.0.0", "raw-body": "^3.0.0", "zod": "^3.25 || ^4.0", "zod-to-json-schema": "^3.25.1" }, "peerDependencies": { "@cfworker/json-schema": "^4.1.1" }, "optionalPeers": ["@cfworker/json-schema"] }, "sha512-xKd8OIzlqNzcqcNumGAa6g+PW2kjD5vrpcKOnfldAUPP3j7lnqMPwlTXQm8gF+UwH72z0lqaRbjr9hqGz0eITA=="],
 
     "@module-federation/bridge-react-webpack-plugin": ["@module-federation/bridge-react-webpack-plugin@2.8.2", "", { "dependencies": { "@module-federation/sdk": "2.8.2" } }, "sha512-cEhnpCsWHqUndQC6WKtwat5BGz+IU0UdCjzyXrZtx1UqHX1jRB0+DZxB4DKYKtxTko8fsV0FUCJ/0FjKZY6z8g=="],
 
@@ -1022,7 +1022,7 @@
 
     "@ngneat/spectator": ["@ngneat/spectator@22.1.0", "", { "dependencies": { "@testing-library/dom": "^10.4.1", "jquery": "^3.7.1", "tslib": "^2.6.2" }, "peerDependencies": { "@angular/animations": ">= 20.0.0", "@angular/common": ">= 20.0.0", "@angular/router": ">= 20.0.0" } }, "sha512-5UxMxiSp8LeWCdAtMktd2NVPJhbm88nBbNoOlmBty7b4paHAFwEhr7NNSdNlnFH2ZF/iAE5fLqzkUAgCGSGmDA=="],
 
-    "@ngtools/webpack": ["@ngtools/webpack@21.2.20", "", { "peerDependencies": { "@angular/compiler-cli": "^21.0.0", "typescript": ">=5.9 <6.0", "webpack": "^5.54.0" } }, "sha512-6UQlsKYdPoINJA07dNWP505rru0gJ08oP8O3H6XHW1H0jEj04e498IMNgoKqw4ZTREExhOX3Zts693hAaASABA=="],
+    "@ngtools/webpack": ["@ngtools/webpack@21.2.21", "", { "peerDependencies": { "@angular/compiler-cli": "^21.0.0", "typescript": ">=5.9 <6.0", "webpack": "^5.54.0" } }, "sha512-Nm5Diu+IrXL6/Wg+lA1MB57K1Y4aUOyKkGvJ5rGbvmdSML1dsSwsya2ilpho/FNu3RaGsJfxEwS8qwA+RhcYTg=="],
 
     "@noble/hashes": ["@noble/hashes@1.4.0", "", {}, "sha512-V1JJ1WTRUqHHrOSh597hURcMqVKVGL/ea3kv0gSnEdsEZ0/+VyPghM1lMNGc00z7CIQorSvbKpuJkxvuHbvdbg=="],
 
@@ -1394,7 +1394,7 @@
 
     "@rushstack/ts-command-line": ["@rushstack/ts-command-line@5.3.12", "", { "dependencies": { "@rushstack/terminal": "0.24.2", "@types/argparse": "1.0.38", "argparse": "~1.0.9", "string-argv": "~0.3.1" } }, "sha512-Vg2n24arSf7JvUNga2DMHYTbxnVq9L5OtVCp4Gfr8YC/kmL/bmdR8FQhGcpMzMYNY9Vdw3+TaimG11Sf+z1Tpw=="],
 
-    "@schematics/angular": ["@schematics/angular@21.2.20", "", { "dependencies": { "@angular-devkit/core": "21.2.20", "@angular-devkit/schematics": "21.2.20", "jsonc-parser": "3.3.1" } }, "sha512-D0MFRofD144Gn+LMPgrRQKazv3sNxfB11kbdU19yN8JyXyRqmB3C8/k3lLA/+LyXVeyLwzIKs7Cw/PSzPUaAxA=="],
+    "@schematics/angular": ["@schematics/angular@21.2.21", "", { "dependencies": { "@angular-devkit/core": "21.2.21", "@angular-devkit/schematics": "21.2.21", "jsonc-parser": "3.3.1" } }, "sha512-ZiR5CcDMBI+0TkP4WeazhJmu1SdIq81VvO9CbXEHBO9KQWTtuE0EQCnzQkpIo4Dyh6jDRpA6sA3gkh79vW4aNQ=="],
 
     "@sec-ant/readable-stream": ["@sec-ant/readable-stream@0.4.1", "", {}, "sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg=="],
 
@@ -3888,7 +3888,7 @@
 
     "uint8array-extras": ["uint8array-extras@1.5.0", "", {}, "sha512-rvKSBiC5zqCCiDZ9kAOszZcDvdAHwwIKJG33Ykj43OKcWsnmcBRL09YTU4nOeHZ8Y2a7l1MgTd08SBe9A8Qj6A=="],
 
-    "undici": ["undici@7.28.0", "", {}, "sha512-cRZYrTDwWznlnRiPjggAGxZXanty6M8RV1ff8Wm4LWXBp7/IG8v5DnOm74DtUBp9OONpK75YlPnIjQqX0dBDtA=="],
+    "undici": ["undici@7.29.0", "", {}, "sha512-IDxfleLmmbSskfWSUATiN1nfn2rDuvnMOqb5CWR92iIfojA0Ud+ulOAAEQ57LPr9rWmsreUyf5lwyao+7GNNVw=="],
 
     "undici-types": ["undici-types@8.3.0", "", {}, "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="],
 
@@ -4076,19 +4076,35 @@
 
     "zwitch": ["zwitch@2.0.4", "", {}, "sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A=="],
 
+    "@angular-devkit/architect/@angular-devkit/core": ["@angular-devkit/core@21.2.20", "", { "dependencies": { "ajv": "8.18.0", "ajv-formats": "3.0.1", "jsonc-parser": "3.3.1", "picomatch": "4.0.4", "rxjs": "7.8.2", "source-map": "0.7.6" }, "peerDependencies": { "chokidar": "^5.0.0" }, "optionalPeers": ["chokidar"] }, "sha512-QViRAYFj3jcElWND79hM6y4vTSYhMlJSOjy9nby9JsQaPgetkf039jI2u9Lp+PduE6lysewzf85d1UGsm3eI0A=="],
+
+    "@angular-devkit/build-angular/@angular-devkit/architect": ["@angular-devkit/architect@0.2102.21", "", { "dependencies": { "@angular-devkit/core": "21.2.21", "rxjs": "7.8.2" }, "bin": { "architect": "bin/cli.js" } }, "sha512-WqITVviALevNpCQoI50e3YY9qNOQT+gqTow/4FhWsxlAJFMb5uyilFpVz2hGYWPgosF3OAKmT1h9r+Jm9S6SUQ=="],
+
     "@angular-devkit/build-angular/autoprefixer": ["autoprefixer@10.4.27", "", { "dependencies": { "browserslist": "^4.28.1", "caniuse-lite": "^1.0.30001774", "fraction.js": "^5.3.4", "picocolors": "^1.1.1", "postcss-value-parser": "^4.2.0" }, "peerDependencies": { "postcss": "^8.1.0" }, "bin": { "autoprefixer": "bin/autoprefixer" } }, "sha512-NP9APE+tO+LuJGn7/9+cohklunJsXWiaWEfV3si4Gi/XHDwVNgkwr1J3RQYFIvPy76GmJ9/bW8vyoU1LcxwKHA=="],
 
     "@angular-devkit/build-angular/postcss": ["postcss@8.5.23", "", { "dependencies": { "nanoid": "^3.3.16", "picocolors": "^1.1.1", "source-map-js": "^1.2.1" } }, "sha512-g50586zr4bZmwFiTlflMu8E0bDTb5I5gertgwAKmsdUlTQIhZtunzUlD1WSzwcVWPoAVpsrA6vlfCD7oXvRwgg=="],
 
     "@angular-devkit/build-angular/tinyglobby": ["tinyglobby@0.2.15", "", { "dependencies": { "fdir": "^6.5.0", "picomatch": "^4.0.3" } }, "sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ=="],
 
+    "@angular-devkit/build-webpack/@angular-devkit/architect": ["@angular-devkit/architect@0.2102.21", "", { "dependencies": { "@angular-devkit/core": "21.2.21", "rxjs": "7.8.2" }, "bin": { "architect": "bin/cli.js" } }, "sha512-WqITVviALevNpCQoI50e3YY9qNOQT+gqTow/4FhWsxlAJFMb5uyilFpVz2hGYWPgosF3OAKmT1h9r+Jm9S6SUQ=="],
+
     "@angular-devkit/core/ajv": ["ajv@8.18.0", "", { "dependencies": { "fast-deep-equal": "^3.1.3", "fast-uri": "^3.0.1", "json-schema-traverse": "^1.0.0", "require-from-string": "^2.0.2" } }, "sha512-PlXPeEWMXMZ7sPYOHqmDyCJzcfNrUr3fGNKtezX14ykXOEIvyK81d+qydx89KY5O71FKMPaQ2vBfBFI5NHR63A=="],
 
+    "@angular-eslint/builder/@angular-devkit/core": ["@angular-devkit/core@21.2.20", "", { "dependencies": { "ajv": "8.18.0", "ajv-formats": "3.0.1", "jsonc-parser": "3.3.1", "picomatch": "4.0.4", "rxjs": "7.8.2", "source-map": "0.7.6" }, "peerDependencies": { "chokidar": "^5.0.0" }, "optionalPeers": ["chokidar"] }, "sha512-QViRAYFj3jcElWND79hM6y4vTSYhMlJSOjy9nby9JsQaPgetkf039jI2u9Lp+PduE6lysewzf85d1UGsm3eI0A=="],
+
+    "@angular-eslint/schematics/@angular-devkit/core": ["@angular-devkit/core@21.2.20", "", { "dependencies": { "ajv": "8.18.0", "ajv-formats": "3.0.1", "jsonc-parser": "3.3.1", "picomatch": "4.0.4", "rxjs": "7.8.2", "source-map": "0.7.6" }, "peerDependencies": { "chokidar": "^5.0.0" }, "optionalPeers": ["chokidar"] }, "sha512-QViRAYFj3jcElWND79hM6y4vTSYhMlJSOjy9nby9JsQaPgetkf039jI2u9Lp+PduE6lysewzf85d1UGsm3eI0A=="],
+
+    "@angular-eslint/schematics/@angular-devkit/schematics": ["@angular-devkit/schematics@21.2.20", "", { "dependencies": { "@angular-devkit/core": "21.2.20", "jsonc-parser": "3.3.1", "magic-string": "0.30.21", "ora": "9.3.0", "rxjs": "7.8.2" } }, "sha512-XH0BtcqSwHlyLRzvbZccSEe5Hcl7Yex8fXfj3gMVBB5g+KBUm2OGtGN3lDOl5BtrwrZBVnNNXkg0ehNrWzxVgw=="],
+
     "@angular-eslint/schematics/ignore": ["ignore@7.0.5", "", {}, "sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg=="],
+
+    "@angular/build/@angular-devkit/architect": ["@angular-devkit/architect@0.2102.21", "", { "dependencies": { "@angular-devkit/core": "21.2.21", "rxjs": "7.8.2" }, "bin": { "architect": "bin/cli.js" } }, "sha512-WqITVviALevNpCQoI50e3YY9qNOQT+gqTow/4FhWsxlAJFMb5uyilFpVz2hGYWPgosF3OAKmT1h9r+Jm9S6SUQ=="],
 
     "@angular/build/tinyglobby": ["tinyglobby@0.2.15", "", { "dependencies": { "fdir": "^6.5.0", "picomatch": "^4.0.3" } }, "sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ=="],
 
     "@angular/cdk/parse5": ["parse5@8.0.1", "", { "dependencies": { "entities": "^8.0.0" } }, "sha512-z1e/HMG90obSGeidlli3hj7cbocou0/wa5HacvI3ASx34PecNjNQeaHNo5WIZpWofN9kgkqV1q5YvXe3F0FoPw=="],
+
+    "@angular/cli/@angular-devkit/architect": ["@angular-devkit/architect@0.2102.21", "", { "dependencies": { "@angular-devkit/core": "21.2.21", "rxjs": "7.8.2" }, "bin": { "architect": "bin/cli.js" } }, "sha512-WqITVviALevNpCQoI50e3YY9qNOQT+gqTow/4FhWsxlAJFMb5uyilFpVz2hGYWPgosF3OAKmT1h9r+Jm9S6SUQ=="],
 
     "@angular/compiler-cli/semver": ["semver@7.8.5", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA=="],
 
@@ -4233,8 +4249,6 @@
     "@module-federation/cli/commander": ["commander@11.1.0", "", {}, "sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ=="],
 
     "@module-federation/cli/jiti": ["jiti@2.4.2", "", { "bin": { "jiti": "lib/jiti-cli.mjs" } }, "sha512-rg9zJN+G4n2nfJl5MW3BMygZX56zKPNVEYYqq7adpmMh4Jn2QNEwhvQlFy6jPVdcod7txZtKHWnyZiA3a0zP7A=="],
-
-    "@module-federation/dts-plugin/undici": ["undici@7.29.0", "", {}, "sha512-IDxfleLmmbSskfWSUATiN1nfn2rDuvnMOqb5CWR92iIfojA0Ud+ulOAAEQ57LPr9rWmsreUyf5lwyao+7GNNVw=="],
 
     "@module-federation/dts-plugin/ws": ["ws@8.21.0", "", { "peerDependencies": { "bufferutil": "^4.0.1", "utf-8-validate": ">=5.0.2" }, "optionalPeers": ["bufferutil", "utf-8-validate"] }, "sha512-Vsp28b7DRcimFQvrqu2Wek3z1iYxDCWqHYB8Qsnk/S4RfaCQzPGPyBNuVjJV3cd6UiKtUtp6sNM77gWvzcCH+g=="],
 
@@ -4485,6 +4499,10 @@
     "accepts/negotiator": ["negotiator@0.6.3", "", {}, "sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg=="],
 
     "adjust-sourcemap-loader/loader-utils": ["loader-utils@2.0.4", "", { "dependencies": { "big.js": "^5.2.2", "emojis-list": "^3.0.0", "json5": "^2.1.2" } }, "sha512-xXqpXoINfFhgua9xiqD8fPFHgkoq1mmmpE92WlDbm9rNRd/EbRb+Gqf908T2DMfuHjjJlksiK2RbHVOdD/MqSw=="],
+
+    "angular-eslint/@angular-devkit/core": ["@angular-devkit/core@21.2.20", "", { "dependencies": { "ajv": "8.18.0", "ajv-formats": "3.0.1", "jsonc-parser": "3.3.1", "picomatch": "4.0.4", "rxjs": "7.8.2", "source-map": "0.7.6" }, "peerDependencies": { "chokidar": "^5.0.0" }, "optionalPeers": ["chokidar"] }, "sha512-QViRAYFj3jcElWND79hM6y4vTSYhMlJSOjy9nby9JsQaPgetkf039jI2u9Lp+PduE6lysewzf85d1UGsm3eI0A=="],
+
+    "angular-eslint/@angular-devkit/schematics": ["@angular-devkit/schematics@21.2.20", "", { "dependencies": { "@angular-devkit/core": "21.2.20", "jsonc-parser": "3.3.1", "magic-string": "0.30.21", "ora": "9.3.0", "rxjs": "7.8.2" } }, "sha512-XH0BtcqSwHlyLRzvbZccSEe5Hcl7Yex8fXfj3gMVBB5g+KBUm2OGtGN3lDOl5BtrwrZBVnNNXkg0ehNrWzxVgw=="],
 
     "angular-eslint/@typescript-eslint/utils": ["@typescript-eslint/utils@8.66.0", "", { "dependencies": { "@eslint-community/eslint-utils": "^4.9.1", "@typescript-eslint/scope-manager": "8.66.0", "@typescript-eslint/types": "8.66.0", "@typescript-eslint/typescript-estree": "8.66.0" }, "peerDependencies": { "eslint": "^8.57.0 || ^9.0.0 || ^10.0.0", "typescript": ">=4.8.4 <6.1.0" } }, "sha512-jasearZPolBw5NJNYGMwxzHMF83niVWmMU1VdHzG1CyfI2VS7f7nZltnKtHcg20hW+7Uo5GfK4MeDPoU3qI8EA=="],
 
@@ -4962,7 +4980,13 @@
 
     "yargs/yargs-parser": ["yargs-parser@22.0.0", "", {}, "sha512-rwu/ClNdSMpkSrUb+d6BRsSkLUq1fmfsY6TOpYzTwvwkg1/NRG85KBy3kq++A8LKQwX6lsu+aWad+2khvuXrqw=="],
 
+    "@angular-devkit/architect/@angular-devkit/core/ajv": ["ajv@8.18.0", "", { "dependencies": { "fast-deep-equal": "^3.1.3", "fast-uri": "^3.0.1", "json-schema-traverse": "^1.0.0", "require-from-string": "^2.0.2" } }, "sha512-PlXPeEWMXMZ7sPYOHqmDyCJzcfNrUr3fGNKtezX14ykXOEIvyK81d+qydx89KY5O71FKMPaQ2vBfBFI5NHR63A=="],
+
     "@angular-devkit/build-angular/tinyglobby/picomatch": ["picomatch@4.0.5", "", {}, "sha512-RvwwcruNjI1ncT5xRakeyS9Lf8lcItv34KD+aif+VH9kduAyfYBipGh12274xtenIPZ119/R9BdTBa8gAwSh0A=="],
+
+    "@angular-eslint/builder/@angular-devkit/core/ajv": ["ajv@8.18.0", "", { "dependencies": { "fast-deep-equal": "^3.1.3", "fast-uri": "^3.0.1", "json-schema-traverse": "^1.0.0", "require-from-string": "^2.0.2" } }, "sha512-PlXPeEWMXMZ7sPYOHqmDyCJzcfNrUr3fGNKtezX14ykXOEIvyK81d+qydx89KY5O71FKMPaQ2vBfBFI5NHR63A=="],
+
+    "@angular-eslint/schematics/@angular-devkit/core/ajv": ["ajv@8.18.0", "", { "dependencies": { "fast-deep-equal": "^3.1.3", "fast-uri": "^3.0.1", "json-schema-traverse": "^1.0.0", "require-from-string": "^2.0.2" } }, "sha512-PlXPeEWMXMZ7sPYOHqmDyCJzcfNrUr3fGNKtezX14ykXOEIvyK81d+qydx89KY5O71FKMPaQ2vBfBFI5NHR63A=="],
 
     "@angular/build/tinyglobby/picomatch": ["picomatch@4.0.5", "", {}, "sha512-RvwwcruNjI1ncT5xRakeyS9Lf8lcItv34KD+aif+VH9kduAyfYBipGh12274xtenIPZ119/R9BdTBa8gAwSh0A=="],
 
@@ -5125,6 +5149,8 @@
     "@verdaccio/logger-prettify/pino-abstract-transport/readable-stream": ["readable-stream@4.7.0", "", { "dependencies": { "abort-controller": "^3.0.0", "buffer": "^6.0.3", "events": "^3.3.0", "process": "^0.11.10", "string_decoder": "^1.3.0" } }, "sha512-oIGGmcpTLwPga8Bn6/Z75SVaH1z5dUut2ibSyAMVhmUggWpmDn2dapB0n7f8nwaSiRtepAsfJyfXIO5DCVAODg=="],
 
     "@vue/language-core/minimatch/brace-expansion": ["brace-expansion@2.1.4", "", { "dependencies": { "balanced-match": "^1.0.0" } }, "sha512-hGfVzPxthbf3+2yjg/RBs60cB0FhqBS/zvdV/4wn4/BmN0bNMMHPc4V/BbFieqf1TKAGGAHnY4eSjajCl0f2Xg=="],
+
+    "angular-eslint/@angular-devkit/core/ajv": ["ajv@8.18.0", "", { "dependencies": { "fast-deep-equal": "^3.1.3", "fast-uri": "^3.0.1", "json-schema-traverse": "^1.0.0", "require-from-string": "^2.0.2" } }, "sha512-PlXPeEWMXMZ7sPYOHqmDyCJzcfNrUr3fGNKtezX14ykXOEIvyK81d+qydx89KY5O71FKMPaQ2vBfBFI5NHR63A=="],
 
     "angular-eslint/@typescript-eslint/utils/@typescript-eslint/scope-manager": ["@typescript-eslint/scope-manager@8.66.0", "", { "dependencies": { "@typescript-eslint/types": "8.66.0", "@typescript-eslint/visitor-keys": "8.66.0" } }, "sha512-8TGcH25j9zqJ/IULB/ppyhRvxA8QYfFEZ7nfbg6/BN9spDgb8fPWQXlE5l8TWBL50EtUx007uZ1o9VOwrq2/9g=="],
 
