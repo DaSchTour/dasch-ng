@@ -99,7 +99,7 @@
         "ngx-deploy-npm": "9.2.1",
         "nx": "22.7.8",
         "postcss": "8.5.26",
-        "postcss-import": "16.1.1",
+        "postcss-import": "16.2.0",
         "postcss-preset-env": "10.6.1",
         "postcss-url": "10.1.4",
         "prettier": "3.9.6",
@@ -3304,7 +3304,7 @@
 
     "postcss-image-set-function": ["postcss-image-set-function@7.0.0", "", { "dependencies": { "@csstools/utilities": "^2.0.0", "postcss-value-parser": "^4.2.0" }, "peerDependencies": { "postcss": "^8.4" } }, "sha512-QL7W7QNlZuzOwBTeXEmbVckNt1FSmhQtbMRvGGqqU4Nf4xk6KUEQhAoWuMzwbSv5jxiRiSZ5Tv7eiDB9U87znA=="],
 
-    "postcss-import": ["postcss-import@16.1.1", "", { "dependencies": { "postcss-value-parser": "^4.0.0", "read-cache": "^1.0.0", "resolve": "^1.1.7" }, "peerDependencies": { "postcss": "^8.0.0" } }, "sha512-2xVS1NCZAfjtVdvXiyegxzJ447GyqCeEI5V7ApgQVOWnros1p5lGNovJNapwPpMombyFBfqDwt7AD3n2l0KOfQ=="],
+    "postcss-import": ["postcss-import@16.2.0", "", { "dependencies": { "postcss-value-parser": "^4.0.0", "read-cache": "^1.0.0", "resolve": "^1.1.7" }, "peerDependencies": { "postcss": "^8.0.0" } }, "sha512-0mQUGlSp87Zl70K58RNwQAN1WS9plFE6KWGui9nyK6ninduMyjW/Khaoy/BpBoFTBh7ndAvAKrSKVbwy6vd/BA=="],
 
     "postcss-lab-function": ["postcss-lab-function@7.0.12", "", { "dependencies": { "@csstools/css-color-parser": "^3.1.0", "@csstools/css-parser-algorithms": "^3.0.5", "@csstools/css-tokenizer": "^3.0.4", "@csstools/postcss-progressive-custom-properties": "^4.2.1", "@csstools/utilities": "^2.0.0" }, "peerDependencies": { "postcss": "^8.4" } }, "sha512-tUcyRk1ZTPec3OuKFsqtRzW2Go5lehW29XA21lZ65XmzQkz43VY2tyWEC202F7W3mILOjw0voOiuxRGTsN+J9w=="],
 
