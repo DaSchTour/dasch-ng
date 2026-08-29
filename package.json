@@ -118,7 +118,7 @@
     "typedoc-plugin-markdown": "4.13.0",
     "typescript": "5.9.3",
     "typescript-eslint": "8.68.0",
-    "verdaccio": "6.10.0",
+    "verdaccio": "6.10.1",
     "vite": "7.3.6",
     "vite-plugin-dts": "4.5.4",
     "vite-plugin-eslint": "1.8.1",
