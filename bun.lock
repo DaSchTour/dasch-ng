@@ -26,8 +26,8 @@
         "zone.js": "0.16.2",
       },
       "devDependencies": {
-        "@analogjs/vite-plugin-angular": "2.7.0",
-        "@analogjs/vitest-angular": "2.7.0",
+        "@analogjs/vite-plugin-angular": "2.7.1",
+        "@analogjs/vitest-angular": "2.7.1",
         "@angular-devkit/build-angular": "21.2.22",
         "@angular-devkit/core": "21.2.22",
         "@angular-devkit/schematics": "21.2.22",
@@ -162,9 +162,9 @@
 
     "@ampproject/remapping": ["@ampproject/remapping@2.3.0", "", { "dependencies": { "@jridgewell/gen-mapping": "^0.3.5", "@jridgewell/trace-mapping": "^0.3.24" } }, "sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw=="],
 
-    "@analogjs/vite-plugin-angular": ["@analogjs/vite-plugin-angular@2.7.0", "", { "dependencies": { "magic-string": "^0.30.21", "obug": "^2.1.1", "oxc-parser": "^0.121.0", "tinyglobby": "^0.2.14" }, "peerDependencies": { "@angular-devkit/build-angular": "^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0 || ^22.0.0", "@angular/build": "^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0 || ^22.0.0", "vite": "^6.0.0 || ^7.0.0 || ^8.0.0" }, "optionalPeers": ["@angular-devkit/build-angular", "@angular/build", "vite"] }, "sha512-KhFC9wiIxD4vi0p3Iyd6tPXyvV9J8GF1eLTkANtBcUbuLkdCRFtbqp/U08cDt+Ae+mVOiSZliBO+JSr66YCqFA=="],
+    "@analogjs/vite-plugin-angular": ["@analogjs/vite-plugin-angular@2.7.1", "", { "dependencies": { "magic-string": "^0.30.21", "obug": "^2.1.1", "oxc-parser": "^0.121.0", "tinyglobby": "^0.2.14" }, "peerDependencies": { "@angular-devkit/build-angular": "^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0 || ^22.0.0", "@angular/build": "^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0 || ^22.0.0", "vite": "^6.0.0 || ^7.0.0 || ^8.0.0" }, "optionalPeers": ["@angular-devkit/build-angular", "@angular/build", "vite"] }, "sha512-avRNF3ryDkWqBNege4kIuEalGYI7XnmFJXf/IT/hDjSeHObi+NNXLYfYBcZifjOYuChTRcr7FhR2Ogu4EToiBg=="],
 
-    "@analogjs/vitest-angular": ["@analogjs/vitest-angular@2.7.0", "", { "peerDependencies": { "@analogjs/vite-plugin-angular": "*", "@angular-devkit/architect": ">=0.1700.0 < 0.2300.0 || >=0.2200.0 < 0.2300.0", "@angular-devkit/schematics": ">=17.0.0", "vitest": "^1.3.1 || ^2.0.0 || ^3.0.0 || ^4.0.0", "zone.js": ">=0.14.0" }, "optionalPeers": ["zone.js"] }, "sha512-39qs+o5zGJ0xtzubNpy89t2/kwnYTl03US/z7YD1vss2Tb//R38ymjaLrUtirDW/X9nk5NdFGi8nasbctSDOrw=="],
+    "@analogjs/vitest-angular": ["@analogjs/vitest-angular@2.7.1", "", { "peerDependencies": { "@analogjs/vite-plugin-angular": "*", "@angular-devkit/architect": ">=0.1700.0 < 0.2300.0 || >=0.2200.0 < 0.2300.0", "@angular-devkit/schematics": ">=17.0.0", "vitest": "^1.3.1 || ^2.0.0 || ^3.0.0 || ^4.0.0", "zone.js": ">=0.14.0" }, "optionalPeers": ["zone.js"] }, "sha512-Ra+XrsjlA5NvG0u94dxOE5ZE1gRVA/HMauYXiWEFTddeltJoI8bJ4Tc0du62iZo2AdJxUADaei8Liu0nm0GRBQ=="],
 
     "@angular-devkit/architect": ["@angular-devkit/architect@0.2102.22", "", { "dependencies": { "@angular-devkit/core": "21.2.22", "rxjs": "7.8.2" }, "bin": { "architect": "bin/cli.js" } }, "sha512-7+jlbVdPk1TKqbp8xmsMnRsXsnOilD9NH4OGKu2YtNL9mg0y8aB5ziBqvm7IpeHysyi9ae8XTabajq99ItM9gw=="],
 
