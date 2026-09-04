@@ -15,7 +15,7 @@
         "@angular/platform-browser": "21.2.22",
         "@angular/platform-browser-dynamic": "21.2.22",
         "@angular/router": "21.2.22",
-        "@fxts/core": "^1.0.0",
+        "@fxts/core": "^2.0.0",
         "@nx/angular": "22.7.8",
         "lodash.debounce": "^4.0.8",
         "pdfjs-dist": "5.7.284",
@@ -680,7 +680,7 @@
 
     "@eslint/plugin-kit": ["@eslint/plugin-kit@0.4.1", "", { "dependencies": { "@eslint/core": "^0.17.0", "levn": "^0.4.1" } }, "sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA=="],
 
-    "@fxts/core": ["@fxts/core@1.28.0", "", { "dependencies": { "tslib": "^2.6.0" } }, "sha512-6AC3L6wScT5lLaipQRNgBJ/2PrL7rjV1tIt6S2dz7wRZ6c4gds+RWuG5djhq7WsyVB5jGYGImcVMl/DUhG0DlQ=="],
+    "@fxts/core": ["@fxts/core@2.0.1", "", { "dependencies": { "tslib": "^2.6.0" } }, "sha512-VSfrLah3wvI2BNs/ToYlrsCbYteJTLbmvT+LZTaBVJ3CUaobAWLLdnvMzBwnZ/BCvRq8M3UzAsRce+Pi61HuPQ=="],
 
     "@gar/promise-retry": ["@gar/promise-retry@1.0.3", "", {}, "sha512-GmzA9ckNokPypTg10pgpeHNQe7ph+iIKKmhKu3Ob9ANkswreCx7R3cKmY781K8QK3AqVL3xVh9A42JvIAbkkSA=="],
 
