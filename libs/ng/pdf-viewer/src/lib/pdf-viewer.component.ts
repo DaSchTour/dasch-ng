@@ -16,6 +16,7 @@ import {
   viewChild,
   input,
   booleanAttribute,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { from, fromEvent, Subject } from 'rxjs';
 import { debounceTime, filter, takeUntil } from 'rxjs/operators';
@@ -76,6 +77,9 @@ function pageTransform(value: unknown): number {
       <div class="pdfViewer"></div>
     </div>
   `,
+  // Keeps the pre-Angular-22 default; switching to OnPush needs a dedicated review.
+  // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./pdf-viewer.component.scss'],
 })
 export class PdfViewerComponent implements OnChanges, OnInit, OnDestroy, AfterViewChecked {
@@ -497,7 +501,7 @@ export class PdfViewerComponent implements OnChanges, OnInit, OnDestroy, AfterVi
       return 1;
     }
 
-    let ratio = 1;
+    let ratio: number;
     switch (this.zoomScale()) {
       case 'page-fit':
         ratio = Math.min(pdfContainerHeight / viewportHeight, pdfContainerWidth / viewportWidth);

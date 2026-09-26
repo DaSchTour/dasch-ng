@@ -10,5 +10,13 @@
     "isolatedModules": true
   },
   "files": ["src/test.ts"],
-  "include": ["**/*.spec.ts", "**/*.test.ts", "**/*.d.ts"]
+  "include": ["**/*.spec.ts", "**/*.test.ts", "**/*.d.ts"],
+  "angularCompilerOptions": {
+    "extendedDiagnostics": {
+      "checks": {
+        "nullishCoalescingNotNullable": "suppress",
+        "optionalChainNotNullable": "suppress"
+      }
+    }
+  }
 }

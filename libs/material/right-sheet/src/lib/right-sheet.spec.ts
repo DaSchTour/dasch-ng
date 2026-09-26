@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/prefer-on-push-component-change-detection -- test fixtures rely on eager change detection */
 import { Directionality } from '@angular/cdk/bidi';
 import { A, ESCAPE } from '@angular/cdk/keycodes';
 import { OverlayContainer, ScrollStrategy } from '@angular/cdk/overlay';
@@ -16,6 +17,7 @@ import {
   ViewEncapsulation,
   inject as inject_1,
   AfterViewInit,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, flushMicrotasks, inject, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -1200,6 +1202,7 @@ class DirectiveWithViewContainer {
 
 @Component({
   template: `<dir-with-view-container></dir-with-view-container>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class ComponentWithChildViewContainer {
@@ -1214,6 +1217,7 @@ class ComponentWithChildViewContainer {
 @Component({
   selector: 'arbitrary-component-with-template-ref',
   template: `<ng-template let-data let-rightSheetRef="rightSheetRef"> Cheese {{ localValue }} {{ data?.value }}{{ setRef(rightSheetRef) }}</ng-template>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class ComponentWithTemplateRef {
@@ -1230,6 +1234,7 @@ class ComponentWithTemplateRef {
 
 @Component({
   template: '<p>Pizza</p> <input #input tabindex="0"> <button>Close</button>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class PizzaMsg implements AfterViewInit {
@@ -1245,6 +1250,7 @@ class PizzaMsg implements AfterViewInit {
 
 @Component({
   template: '<p>Taco</p>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class TacoMsg {}
@@ -1254,6 +1260,7 @@ class TacoMsg {}
     <h1 #header tabindex="-1">This is the title</h1>
     <p #para tabindex="-1">This is the paragraph</p>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class ContentElementDialog implements AfterViewInit {
@@ -1268,6 +1275,7 @@ class ContentElementDialog implements AfterViewInit {
 @Component({
   template: '',
   providers: [MatRightSheet],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class ComponentThatProvidesMatRightSheet {
@@ -1276,6 +1284,7 @@ class ComponentThatProvidesMatRightSheet {
 
 @Component({
   template: '',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class RightSheetWithInjectedData {
@@ -1285,6 +1294,7 @@ class RightSheetWithInjectedData {
 @Component({
   template: `<button>I'm a button</button>`,
   encapsulation: ViewEncapsulation.ShadowDom,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class ShadowDomComponent {}

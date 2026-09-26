@@ -162,7 +162,7 @@ apps/
 
 ### Testing Setup
 
-- **Vitest**: Official test framework for Angular 21+ (configured in `vitest.workspace.ts`)
+- **Vitest**: Official test framework for Angular 21+ (configured in the root `vitest.config.ts` via `test.projects`)
   - Modern Angular libraries use Vitest with `@analogjs/vite-plugin-angular`
   - Each library has `vitest.config.ts` and `src/test-setup.ts`
 - **Jest**: Legacy test framework for older Angular libraries
