@@ -12,7 +12,7 @@ common-bun-init-steps: &common-bun-init-steps
     inputs:
       key: 'bun.lock|"browsers"'
       paths: |
-        '../.cache/Cypress'
+        '../.cache/ms-playwright'
       base-branch: 'main'
   - name: Install Bun
     script: |

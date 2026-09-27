@@ -55,6 +55,7 @@ describe('Provide Helpers', () => {
       const token = new InjectionToken<string>('TEST');
       const depToken = new InjectionToken<number>('DEP');
       const factory = (dep: number) => `value: ${dep}`;
+      // @ts-expect-error `deps` is typed as the factory's argument types instead of DI tokens
       const provider = provideFactory(token, factory, { deps: [depToken] });
 
       expect(provider).toEqual({
@@ -79,6 +80,7 @@ describe('Provide Helpers', () => {
       const token = new InjectionToken<string>('TEST');
       const depToken = new InjectionToken<number>('DEP');
       const factory = (dep: number) => `value: ${dep}`;
+      // @ts-expect-error `deps` is typed as the factory's argument types instead of DI tokens
       const provider = provideFactory(token, factory, { deps: [depToken], multi: true });
 
       expect(provider).toEqual({
@@ -169,7 +171,7 @@ describe('Provide Helpers', () => {
         }
       }
       class ExtendedClass extends BaseClass {
-        test() {
+        override test() {
           return 'extended';
         }
       }

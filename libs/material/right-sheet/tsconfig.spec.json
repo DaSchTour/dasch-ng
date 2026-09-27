@@ -3,14 +3,13 @@
   "compilerOptions": {
     "outDir": "../../../dist/out-tsc",
     "strict": true,
-    "types": ["jasmine", "node"],
+    "types": ["vitest/globals"],
     "target": "ES2022",
     "useDefineForClassFields": false,
     "moduleResolution": "bundler",
     "isolatedModules": true
   },
-  "files": ["src/test.ts"],
-  "include": ["**/*.spec.ts", "**/*.test.ts", "**/*.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts"],
   "angularCompilerOptions": {
     "extendedDiagnostics": {
       "checks": {

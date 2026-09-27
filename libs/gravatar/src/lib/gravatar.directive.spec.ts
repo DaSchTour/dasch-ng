@@ -1,4 +1,4 @@
-import { createDirectiveFactory, SpectatorDirective } from '@ngneat/spectator/jest';
+import { createDirectiveFactory, SpectatorDirective } from '@ngneat/spectator/vitest';
 import { GravatarDirective } from './gravatar.directive';
 
 describe('GravatarDirective', () => {
