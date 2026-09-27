@@ -19,8 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'pdf-viewer-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     FormsModule,
     JsonPipe,
