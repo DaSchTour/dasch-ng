@@ -25,8 +25,10 @@ common-bun-init-steps: &common-bun-init-steps
       npm install -g bun
   - name: Install Node Modules
     script: bun install --frozen-lockfile
-  - name: Install Browsers (if needed)
-    uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/install-browsers/main.yaml'
+  # The generic install-browsers step only reacts to @playwright/test; Vitest browser mode
+  # (material-right-sheet) uses the plain playwright package and needs Chromium.
+  - name: Install Playwright Chromium
+    script: bunx playwright install --with-deps chromium
 
 launch-templates:
   linux-small-bun:
