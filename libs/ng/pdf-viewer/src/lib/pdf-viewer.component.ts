@@ -77,9 +77,9 @@ function pageTransform(value: unknown): number {
       <div class="pdfViewer"></div>
     </div>
   `,
-  // Keeps the pre-Angular-22 default; switching to OnPush needs a dedicated review.
-  // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
-  changeDetection: ChangeDetectionStrategy.Eager,
+  // Explicit so the behaviour is the same on Angular 21, where the default is still Eager.
+  // The template has no bindings (pdf.js renders imperatively), so OnPush only skips needless checks.
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./pdf-viewer.component.scss'],
 })
 export class PdfViewerComponent implements OnChanges, OnInit, OnDestroy, AfterViewChecked {
