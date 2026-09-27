@@ -49,6 +49,7 @@
     "@nx/angular:unit-test": {
       "cache": true,
       "inputs": ["default", "^production"],
+      "outputs": ["{workspaceRoot}/coverage/{projectName}"],
       "configurations": {
         "ci": {
           "coverage": true,
