@@ -1,4 +1,4 @@
-import { InjectionToken } from '@angular/core';
+import { InjectionToken, Injector, Optional } from '@angular/core';
 import { provideClass, provideExisting, provideFactory, provideType, provideValue } from './provide-helpers';
 
 describe('Provide Helpers', () => {
@@ -55,7 +55,6 @@ describe('Provide Helpers', () => {
       const token = new InjectionToken<string>('TEST');
       const depToken = new InjectionToken<number>('DEP');
       const factory = (dep: number) => `value: ${dep}`;
-      // @ts-expect-error `deps` is typed as the factory's argument types instead of DI tokens
       const provider = provideFactory(token, factory, { deps: [depToken] });
 
       expect(provider).toEqual({
@@ -80,7 +79,6 @@ describe('Provide Helpers', () => {
       const token = new InjectionToken<string>('TEST');
       const depToken = new InjectionToken<number>('DEP');
       const factory = (dep: number) => `value: ${dep}`;
-      // @ts-expect-error `deps` is typed as the factory's argument types instead of DI tokens
       const provider = provideFactory(token, factory, { deps: [depToken], multi: true });
 
       expect(provider).toEqual({
@@ -89,6 +87,53 @@ describe('Provide Helpers', () => {
         deps: [depToken],
         multi: true,
       });
+    });
+
+    it('should accept class tokens and DI flag arrays as deps', () => {
+      class Dependency {
+        value = 42;
+      }
+      const token = new InjectionToken<string>('TEST');
+      const optionalToken = new InjectionToken<string>('OPTIONAL');
+      const factory = (dep: Dependency, optional: string | null) => `${dep.value} ${optional}`;
+      const optionalDep = [new Optional(), optionalToken];
+      const provider = provideFactory(token, factory, { deps: [Dependency, optionalDep] });
+
+      expect(provider.deps).toEqual([Dependency, optionalDep]);
+    });
+
+    it('should reject class deps whose instance type does not match the factory parameter', () => {
+      class Unrelated {
+        name = 'unrelated';
+      }
+      const token = new InjectionToken<string>('TEST');
+      const factory = (dep: number) => `value: ${dep}`;
+
+      // @ts-expect-error Unrelated does not provide the number the factory expects
+      const provider = provideFactory(token, factory, { deps: [Unrelated] });
+
+      expect(provider.deps).toEqual([Unrelated]);
+    });
+
+    it('should reject more deps than the factory has parameters', () => {
+      const token = new InjectionToken<string>('TEST');
+      const depToken = new InjectionToken<number>('DEP');
+      const factory = () => 'test value';
+
+      // @ts-expect-error the factory takes no parameters
+      const provider = provideFactory(token, factory, { deps: [depToken] });
+
+      expect(provider.deps).toEqual([depToken]);
+    });
+
+    it('should resolve deps through the injector', () => {
+      const token = new InjectionToken<string>('TEST');
+      const depToken = new InjectionToken<number>('DEP');
+      const injector = Injector.create({
+        providers: [provideValue(depToken, 21), provideFactory(token, (dep: number) => `value: ${dep * 2}`, { deps: [depToken] })],
+      });
+
+      expect(injector.get(token)).toBe('value: 42');
     });
 
     it('should work without options', () => {
