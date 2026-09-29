@@ -1,8 +1,8 @@
-import { createPipeFactory, SpectatorPipe } from '@ngneat/spectator/jest';
+import { createPipeFactory, SpectatorPipe } from '@ngneat/spectator/vitest';
 
 import { ReversePipe } from './reverse.pipe';
 
-xdescribe('ReversePipe ', () => {
+describe.skip('ReversePipe ', () => {
   let spectator: SpectatorPipe<ReversePipe>;
   const createPipe = createPipeFactory({
     pipe: ReversePipe,

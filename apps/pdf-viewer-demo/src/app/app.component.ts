@@ -1,7 +1,7 @@
 /**
  * Created by vadimdez on 21/06/16.
  */
-import { Component, HostListener, OnInit, signal, viewChild } from '@angular/core';
+import { Component, HostListener, OnInit, signal, viewChild, ChangeDetectionStrategy } from '@angular/core';
 import { PDFDocumentProxy, PDFProgressData, PDFSource, ZoomScale, PdfViewerComponent } from '@dasch-ng/pdf-viewer';
 import { FormsModule } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
@@ -19,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'pdf-viewer-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     FormsModule,
     JsonPipe,

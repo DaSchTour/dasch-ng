@@ -1,4 +1,4 @@
-import { createDirectiveFactory, mockProvider, SpectatorDirective } from '@ngneat/spectator/jest';
+import { createDirectiveFactory, mockProvider, SpectatorDirective } from '@ngneat/spectator/vitest';
 
 import { ObserveResizeDirective } from './observe-resize.directive';
 import { ResizeObserverService } from './resize-observer.service';

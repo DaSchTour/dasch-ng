@@ -28,7 +28,12 @@
       "@dasch-ng/route-signals": ["libs/ng/route-signals/src/index.ts"],
       "@dasch-ng/web-utils": ["libs/web-utils/src/index.ts"],
       "@dasch-ng/postcss-custom-container": ["libs/postcss-custom-container/src/index.ts"]
-    }
+    },
+    "strict": false,
+    "noUncheckedSideEffectImports": false,
+    "types": ["*"],
+    "esModuleInterop": false,
+    "ignoreDeprecations": "6.0"
   },
   "exclude": ["node_modules", "tmp"]
 }

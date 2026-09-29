@@ -25,14 +25,11 @@ nx build gravatar
 
 ### Test
 
-The repository uses **Vitest** as the primary test framework:
+All projects use **Vitest**:
 
-- **Vitest**: Official test framework for Angular 21+ and preferred for all new tests
-  - Used by Angular libraries (route-signals and newer libraries)
-  - Used by non-Angular libraries (rxjs-operators, web-utils)
-- **Jest**: Legacy test framework, still used by some older Angular libraries via 3rd party tools
-  - Some older libraries still use Jest (gravatar, json-viewer, ng-utils, validators, decorators, material-right-sheet)
-  - New tests should use Vitest instead of Jest
+- **Angular libraries/apps** use the `@nx/angular:unit-test` executor (Angular's official Vitest integration)
+- **Non-Angular libraries** (rxjs-operators, web-utils, decorators, postcss-custom-container) use `@nx/vitest:test` with their `vite.config.*`
+- Jest and Karma have been removed from the workspace
 
 ```bash
 # Run all tests
@@ -49,8 +46,8 @@ nx test <project-name> --updateSnapshot
 # Or for projects with update configuration:
 nx test <project-name>:update
 
-# Run a single test file
-nx test <project-name> --testFile=<file-name>
+# Run only tests whose name matches a pattern (Angular projects)
+nx test <project-name> --filter=<pattern>
 ```
 
 ### Lint
@@ -147,28 +144,25 @@ apps/
 **Angular Libraries** (using `@nx/angular:package`):
 
 - Built with ng-packagr
-- Use Vitest for testing (Angular 21+ official framework)
-  - Newer libraries: route-signals, pdf-viewer
-  - Older libraries may still use Jest: gravatar, json-viewer, ng-utils, material-right-sheet, validators, decorators
+- Use Vitest via `@nx/angular:unit-test` (Angular's official test runner integration)
 - Have `ng-package.json` configuration
 - Examples: route-signals, pdf-viewer, gravatar, json-viewer, ng-utils, material-right-sheet, validators, decorators
 
 **Vite Libraries** (using `@nx/vite:build`):
 
 - Built with Vite
-- Use Jest or Vitest for testing
+- Use Vitest (`@nx/vitest:test`) for testing
 - Standalone TypeScript/JavaScript utilities
 - Examples: rxjs-operators, web-utils
 
 ### Testing Setup
 
-- **Vitest**: Official test framework for Angular 21+ (configured in `vitest.workspace.ts`)
-  - Modern Angular libraries use Vitest with `@analogjs/vite-plugin-angular`
-  - Each library has `vitest.config.ts` and `src/test-setup.ts`
-- **Jest**: Legacy test framework for older Angular libraries
-  - Shared Jest configuration in `jest.preset.js`
-  - Each older library has its own `jest.config.ts`
-- Angular component tests may use `@ngneat/spectator` for cleaner test setup
+- **Angular projects**: `@nx/angular:unit-test` executor, no per-project Vitest config needed
+  - Tests run in jsdom by default; `tsconfig.spec.json` sets `"types": ["vitest/globals"]`
+  - `material-right-sheet` runs in headless Chromium (Vitest browser mode via Playwright) because its tests need real layout and focus behaviour
+  - `material-right-sheet` also uses `fakeAsync()`: its `src/test-setup.ts` loads `zone.js/plugins/vitest-patch`, and the helper target `test-zone-env` supplies the `zone.js` polyfill (library build targets have none)
+- **Non-Angular projects**: `@nx/vitest:test` with a `test` block in the project's `vite.config.*`; the root `vitest.config.ts` lists them via `test.projects`
+- Angular component tests may use `@ngneat/spectator/vitest` for cleaner test setup
 
 ### Release Process
 
@@ -297,17 +291,12 @@ git push
 
 ### CI Test Configuration
 
-When working with Karma-based tests (Angular projects):
-
-- Use the `:ci` configuration for CI environments
-- CI configuration automatically uses headless Chrome
-- Example: `nx test material-right-sheet:ci`
-- The GitHub Actions workflow uses `nx affected -t lint test:ci build`
+- The GitHub Actions workflow runs `nx affected -t lint`, `nx affected -t test -c ci` and `nx affected -t build -c production`
+- Tasks are distributed to Nx Agents; their init steps install the Playwright browsers needed by browser-mode tests
 
 ### Testing Strategy
 
-- **Local development**: Use `nx test <project-name>` (opens browser)
-- **CI/headless**: Use `nx test <project-name>:ci` (headless Chrome)
+- Run `nx test <project-name>` locally; browser-mode tests start headless Chromium automatically
 - Always verify tests pass locally before pushing
 
 #### Angular Router Testing Best Practices
@@ -351,8 +340,8 @@ describe('MyComponent', () => {
 
 **IMPORTANT**: Do NOT modify test configurations without explicit user request or when fixing specific errors:
 
-- Angular 21+ has integrated support for both Jest and Vitest
-- Test configurations (`jest.config.ts`, `vitest.config.ts`, `project.json` test targets) are already correctly set up
+- Angular 21+ ships an integrated Vitest runner (`@nx/angular:unit-test`)
+- Test configurations (`vite.config.*`, `vitest.config.ts`, `project.json` test targets) are already correctly set up
 - Angular's testing infrastructure handles configuration automatically
 - Only modify test configuration when:
   1. The user explicitly requests a configuration change
@@ -392,7 +381,7 @@ When creating a new library, you must:
 4. **Update this CLAUDE.md file**
    - Add the library to the monorepo structure diagram if it's a new category
    - Update the library types section with examples if applicable
-   - Update any relevant testing information (Jest vs Vitest)
+   - Update any relevant testing information
 
 #### For New Features/Functions
 

@@ -38,9 +38,22 @@ export default defineConfig({
       // Don't forget to update your package.json as well.
       formats: ['es', 'cjs'],
     },
-    rollupOptions: {
+    rolldownOptions: {
       // External packages that should not be bundled into your library.
       external: ['@fxts/core'],
+    },
+  },
+  test: {
+    name: 'decorators',
+    watch: false,
+    globals: true,
+    environment: 'node',
+    include: ['{src,tests}/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    passWithNoTests: true,
+    reporters: ['default'],
+    coverage: {
+      reportsDirectory: '../../coverage/libs/decorators',
+      provider: 'v8' as const,
     },
   },
 });

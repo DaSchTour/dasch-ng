@@ -6,7 +6,7 @@ export default [
   ...nx.configs['flat/angular'],
   ...nx.configs['flat/angular-template'],
   {
-    ignores: ['**/dist', '**/out-tsc', 'karma.conf.js'],
+    ignores: ['**/dist', '**/out-tsc'],
   },
   {
     files: ['**/*.ts'],

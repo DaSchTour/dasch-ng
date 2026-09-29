@@ -122,12 +122,25 @@ Creates a type-safe factory provider for dependency injection.
 **Signature:**
 
 ```typescript
-function provideFactory<T, U extends Array<any> = []>(
+function provideFactory<T, U extends unknown[] = []>(
   provide: InjectionToken<T> | Type<T>,
   useFactory: (...args: U) => T,
-  options?: { deps?: U; multi?: boolean },
+  options?: { deps?: FactoryDeps<U>; multi?: boolean },
 ): FactoryProvider;
+
+// One DI token per factory parameter, or an array with DI flags such as [new Optional(), TOKEN]
+type FactoryDeps<U extends readonly unknown[]> = { [K in keyof U]: ProviderToken<U[K]> | readonly unknown[] };
 ```
+
+`deps` lists the **tokens** that provide the factory parameters, in parameter order. With class tokens,
+TypeScript checks that each class matches the parameter type. `InjectionToken<T>` only carries `T` as a
+phantom type, so a mismatch between two `InjectionToken`s cannot be detected at compile time.
+
+::: warning Breaking change
+Earlier versions typed `deps` as the factory's _parameter values_ instead of their tokens, so real-world
+calls like `{ deps: [HttpClient] }` did not compile. Code that worked around this with casts can drop them;
+code that passed values instead of tokens to `deps` was broken at runtime and must pass tokens now.
+:::
 
 **Use Cases:**
 
