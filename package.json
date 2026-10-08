@@ -82,7 +82,7 @@
     "ng-packagr": "22.2.4",
     "nx": "23.2.1",
     "playwright": "1.63.0",
-    "postcss": "8.5.28",
+    "postcss": "8.5.29",
     "prettier": "3.9.9",
     "typedoc": "0.28.20",
     "typedoc-plugin-markdown": "4.13.1",
