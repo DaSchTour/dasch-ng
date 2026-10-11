@@ -81,7 +81,7 @@
     "lint-staged": "17.6.0",
     "ng-packagr": "22.2.4",
     "nx": "23.3.0",
-    "playwright": "1.63.0",
+    "playwright": "1.64.0",
     "postcss": "8.5.29",
     "prettier": "3.9.9",
     "typedoc": "0.28.20",
