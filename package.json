@@ -93,7 +93,7 @@
     "vite-plugin-dts": "5.1.2",
     "vitepress": "1.6.4",
     "vitest": "4.1.11",
-    "vue": "3.5.43"
+    "vue": "3.5.44"
   },
   "overrides": {
     "@nx/devkit": "$@nx/devkit"
