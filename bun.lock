@@ -79,7 +79,7 @@
         "typedoc-plugin-markdown": "4.14.1",
         "typescript": "6.0.3",
         "typescript-eslint": "8.72.0",
-        "verdaccio": "6.10.6",
+        "verdaccio": "6.10.7",
         "vite": "8.3.5",
         "vite-plugin-dts": "5.1.2",
         "vitepress": "1.6.4",
@@ -2430,7 +2430,7 @@
 
     "vary": ["vary@1.1.2", "", {}, "sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg=="],
 
-    "verdaccio": ["verdaccio@6.10.6", "", { "dependencies": { "@cypress/request": "4.0.1", "@verdaccio/auth": "8.1.6", "@verdaccio/config": "8.3.3", "@verdaccio/core": "8.3.3", "@verdaccio/hooks": "8.1.7", "@verdaccio/loaders": "8.1.6", "@verdaccio/local-storage-legacy": "11.4.6", "@verdaccio/logger": "8.1.6", "@verdaccio/middleware": "8.1.7", "@verdaccio/package-filter": "13.2.4", "@verdaccio/search-indexer": "8.1.0", "@verdaccio/signature": "8.1.6", "@verdaccio/streams": "10.3.0", "@verdaccio/tarball": "13.1.6", "@verdaccio/ui-theme": "9.0.0-next-9.36", "@verdaccio/url": "13.1.6", "JSONStream": "1.3.5", "async": "3.2.6", "clipanion": "4.0.0-rc.4", "compression": "1.8.2", "cors": "2.8.6", "debug": "4.4.3", "envinfo": "7.21.0", "express": "4.22.3", "lodash": "4.18.1", "lru-cache": "7.18.3", "mime": "3.0.0", "semver": "7.8.5", "verdaccio-audit": "13.1.7", "verdaccio-htpasswd": "13.1.6" }, "bin": "./bin/verdaccio" }, "sha512-LHM3362H2S2pjHhfP0E5ZBBlt9Jy+eIGjOwR+9jV8dIoc3OY4If9FUfiDsWIJoM8slGih17B4ofBg3ax/L8fww=="],
+    "verdaccio": ["verdaccio@6.10.7", "", { "dependencies": { "@cypress/request": "4.0.1", "@verdaccio/auth": "8.1.6", "@verdaccio/config": "8.3.3", "@verdaccio/core": "8.3.3", "@verdaccio/hooks": "8.1.7", "@verdaccio/loaders": "8.1.6", "@verdaccio/local-storage-legacy": "11.4.6", "@verdaccio/logger": "8.1.6", "@verdaccio/middleware": "8.1.7", "@verdaccio/package-filter": "13.2.4", "@verdaccio/search-indexer": "8.1.0", "@verdaccio/signature": "8.1.6", "@verdaccio/streams": "10.3.0", "@verdaccio/tarball": "13.1.6", "@verdaccio/ui-theme": "9.0.0-next-9.36", "@verdaccio/url": "13.1.6", "JSONStream": "1.3.5", "async": "3.2.6", "clipanion": "4.0.0-rc.4", "compression": "1.8.2", "cors": "2.8.6", "debug": "4.4.3", "envinfo": "7.21.0", "express": "4.22.3", "lodash": "4.18.1", "lru-cache": "7.18.3", "mime": "3.0.0", "semver": "7.8.5", "verdaccio-audit": "13.1.7", "verdaccio-htpasswd": "13.1.6" }, "bin": "./bin/verdaccio" }, "sha512-WkmAJDWO4htWE4W2U/IGTuX03uuIHibb2yYop5KT2nCiCv9y6hSUXs1lbefYvrV6A1oZvisaaJSqpkKeo/yf0Q=="],
 
     "verdaccio-audit": ["verdaccio-audit@13.1.7", "", { "dependencies": { "@verdaccio/config": "8.3.3", "@verdaccio/core": "8.3.3", "express": "4.22.3", "https-proxy-agent": "5.0.1", "node-fetch": "cjs" } }, "sha512-u3QE6ZrZgW4UiMahfS5vIYNzlZgMA7hyI+4MSfWFTNYTB+/WWSItNn1B3D/PFi/OhLubgspSqxbVqeX56jKopA=="],
 
