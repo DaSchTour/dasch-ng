@@ -79,7 +79,7 @@
         "typedoc-plugin-markdown": "4.14.1",
         "typescript": "6.0.3",
         "typescript-eslint": "8.72.0",
-        "verdaccio": "6.11.0",
+        "verdaccio": "6.11.1",
         "vite": "8.3.5",
         "vite-plugin-dts": "5.1.2",
         "vitepress": "1.6.4",
@@ -980,7 +980,7 @@
 
     "@verdaccio/tarball": ["@verdaccio/tarball@13.1.7", "", { "dependencies": { "@verdaccio/core": "8.4.0", "@verdaccio/url": "13.1.7", "debug": "4.4.3", "gunzip-maybe": "1.4.2", "tar-stream": "3.2.2" } }, "sha512-q8GaRaqZpMUQZ81D88pI4ZlMZoBgLxCZT+9o5ieSUVm5pCT2i4wo3xMBxlYLIkhez6daG6aS2NoGJ1tuNZcxNw=="],
 
-    "@verdaccio/ui-theme": ["@verdaccio/ui-theme@9.0.0-next-9.39", "", { "dependencies": { "debug": "4.4.3" } }, "sha512-3VPul6hOsm5YsqBWbAhnps1DjXjccZoXQw3GfxQI966+osYbhBIsillvlDgPAygD/znF9uOiMwaLDouljYw+VQ=="],
+    "@verdaccio/ui-theme": ["@verdaccio/ui-theme@9.0.0-next-9.40", "", { "dependencies": { "debug": "4.4.3" } }, "sha512-5DSirvMmeIIgKGlvCM2JH3OJqYcbuAuafLepin1Xskpx3plLq7vargX3RdQSP/WlHr+jtRcy4g2OZni3tK15MA=="],
 
     "@verdaccio/url": ["@verdaccio/url@13.1.7", "", { "dependencies": { "@verdaccio/core": "8.4.0", "debug": "4.4.3", "validator": "13.15.35" } }, "sha512-a93xon0PXP8zXEsZyR+XCox1nllCYVq0HNEics3vTxkTXN/d5RrOix6/rVoCUc8+IF+iy+mYk/u7L+GdxT197g=="],
 
@@ -2432,7 +2432,7 @@
 
     "vary": ["vary@1.1.2", "", {}, "sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg=="],
 
-    "verdaccio": ["verdaccio@6.11.0", "", { "dependencies": { "@cypress/request": "4.0.1", "@verdaccio/auth": "8.1.7", "@verdaccio/config": "8.4.0", "@verdaccio/core": "8.4.0", "@verdaccio/hooks": "8.1.8", "@verdaccio/loaders": "8.1.7", "@verdaccio/local-storage-legacy": "11.4.7", "@verdaccio/logger": "8.1.7", "@verdaccio/middleware": "8.2.0", "@verdaccio/package-filter": "13.2.5", "@verdaccio/search-indexer": "8.1.0", "@verdaccio/signature": "8.1.7", "@verdaccio/streams": "10.3.0", "@verdaccio/tarball": "13.1.7", "@verdaccio/ui-theme": "9.0.0-next-9.39", "@verdaccio/url": "13.1.7", "JSONStream": "1.3.5", "async": "3.2.6", "clipanion": "4.0.0-rc.4", "compression": "1.8.2", "cors": "2.8.6", "debug": "4.4.3", "envinfo": "7.21.0", "express": "4.22.3", "lodash": "4.18.1", "lru-cache": "7.18.3", "mime": "3.0.0", "semver": "7.8.5", "verdaccio-audit": "13.1.8", "verdaccio-htpasswd": "13.1.7" }, "bin": "./bin/verdaccio" }, "sha512-wHAcdahdGHy2VsGm2qb7n6g+IkH4r1dNJC6OxL+IGPjNkC+Xz7tOBpKUQD4ACDOCJEjXorB8izCMwwFA3bIHiQ=="],
+    "verdaccio": ["verdaccio@6.11.1", "", { "dependencies": { "@cypress/request": "4.0.1", "@verdaccio/auth": "8.1.7", "@verdaccio/config": "8.4.0", "@verdaccio/core": "8.4.0", "@verdaccio/hooks": "8.1.8", "@verdaccio/loaders": "8.1.7", "@verdaccio/local-storage-legacy": "11.4.7", "@verdaccio/logger": "8.1.7", "@verdaccio/middleware": "8.2.0", "@verdaccio/package-filter": "13.2.5", "@verdaccio/search-indexer": "8.1.0", "@verdaccio/signature": "8.1.7", "@verdaccio/streams": "10.3.0", "@verdaccio/tarball": "13.1.7", "@verdaccio/ui-theme": "9.0.0-next-9.40", "@verdaccio/url": "13.1.7", "JSONStream": "1.3.5", "async": "3.2.6", "clipanion": "4.0.0-rc.4", "compression": "1.8.2", "cors": "2.8.6", "debug": "4.4.3", "envinfo": "7.21.0", "express": "4.22.3", "lodash": "4.18.1", "lru-cache": "7.18.3", "mime": "3.0.0", "semver": "7.8.5", "verdaccio-audit": "13.1.8", "verdaccio-htpasswd": "13.1.7" }, "bin": "./bin/verdaccio" }, "sha512-tI3uiviWmMPYq0FRHnXYWN0ZU/QYMdts8kMNf8BwpPLI7aXh2cmy+uyiYeNfskh3EMM6gJ2NpXr81lkmgFr+0A=="],
 
     "verdaccio-audit": ["verdaccio-audit@13.1.8", "", { "dependencies": { "@verdaccio/config": "8.4.0", "@verdaccio/core": "8.4.0", "express": "4.22.3", "https-proxy-agent": "5.0.1", "node-fetch": "cjs" } }, "sha512-Q4B2NrbbsuFG3qHRHYtqhb9z+tFVnR1P1ahkJ6ROksMmdLe7J95d/5YrCLB/VRBfzNEXUadVuEx3BIr23XZYOg=="],
 
