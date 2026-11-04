@@ -280,7 +280,6 @@ export class PdfViewerComponent implements OnChanges, OnInit, OnDestroy, AfterVi
 
     if (this._pdf) {
       this._latestScrolledPage = 0;
-      this._pdf.destroy();
       this._pdf = undefined;
     }
 
