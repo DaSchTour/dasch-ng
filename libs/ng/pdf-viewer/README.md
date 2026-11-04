@@ -46,9 +46,9 @@ If you are migrating from the v10 `PdfViewerModule`, switch to the standalone `P
 
 ## Worker location
 
-`pdf.js` parses PDFs in a Web Worker. The worker file is shipped by `pdfjs-dist` (which is a transitive dependency of this library) — it is **not** bundled into `@dasch-ng/pdf-viewer` itself.
+`pdf.js` parses PDFs in a Web Worker. The worker file is shipped by `pdfjs-dist` (which is a dependency of this library). It is **not** bundled into `@dasch-ng/pdf-viewer` itself.
 
-**Default (zero config):** the component loads the worker from `https://cdn.jsdelivr.net/npm/pdfjs-dist@<version>/legacy/build/pdf.worker.min.mjs`. Fine for prototyping but a third-party request — for GDPR/offline-friendly production, self-host instead.
+**Default (zero config):** the component loads the worker from `https://cdn.jsdelivr.net/npm/pdfjs-dist@<version>/legacy/build/pdf.worker.min.mjs`. Fine for prototyping, but it is a third-party request. For GDPR-friendly or offline production use, self-host instead.
 
 **Self-host (recommended for production):**
 
@@ -68,6 +68,8 @@ If you are migrating from the v10 `PdfViewerModule`, switch to the standalone `P
    (window as any).pdfWorkerSrc = '/assets/pdfjs/pdf.worker.min.mjs';
    bootstrapApplication(AppComponent, { providers: [...] });
    ```
+
+The worker must be the exact `pdfjs-dist` version used by this library. CMaps and annotation icons still load from unpkg by default; use the `c-maps-url` input to self-host CMaps.
 
 See the [docs site](https://dasch.ng/libraries/pdf-viewer#self-host) for the version-pinned override variant and the full rationale.
 

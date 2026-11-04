@@ -73,7 +73,7 @@ See the generated [API reference](/api/@dasch-ng/pdf-viewer/) for the complete l
 | `autoresize`           | `boolean`                                          | `true`         | Re-render on container resize                         |
 | `fit-to-page`          | `boolean`                                          | `false`        | Fit page to viewport                                  |
 | `show-borders`         | `boolean`                                          | `false`        | Show page borders                                     |
-| `c-maps-url`           | `string`                                           | jsDelivr CDN   | CMaps URL for non-Latin fonts                         |
+| `c-maps-url`           | `string`                                           | unpkg CDN      | CMaps URL for non-Latin fonts                         |
 
 ### Outputs
 
@@ -89,9 +89,9 @@ See the generated [API reference](/api/@dasch-ng/pdf-viewer/) for the complete l
 
 ### Worker setup
 
-`pdf.js` runs the actual PDF parsing in a Web Worker. The worker needs to be reachable at runtime. The library does **not** bundle the worker file — `pdfjs-dist` ships it as part of its npm package, and your application decides how to serve it.
+`pdf.js` runs the actual PDF parsing in a Web Worker. The worker needs to be reachable at runtime. The library does **not** bundle the worker file: `pdfjs-dist` ships it as part of its npm package, and your application decides how to serve it.
 
-#### Default — jsDelivr CDN (zero config)
+#### Default: jsDelivr CDN (zero config)
 
 If you do nothing, `PdfViewerComponent` configures `GlobalWorkerOptions.workerSrc` to:
 
@@ -103,7 +103,7 @@ This works out of the box and is convenient for prototypes, but means each visit
 
 #### Self-host the worker (recommended for production) {#self-host}
 
-Step 1 — copy the worker file into your application build via your Angular app's `angular.json` assets array:
+Step 1: copy the worker file into your application build via your Angular app's `angular.json` assets array:
 
 ```json
 {
@@ -129,7 +129,7 @@ Step 1 — copy the worker file into your application build via your Angular app
 
 (If you're on the new `@angular/build:application` builder, the `assets` array has the same shape.)
 
-Step 2 — point the component at that URL **before** the first `PdfViewerComponent` is instantiated. The simplest place is `main.ts`, right before `bootstrapApplication(...)`:
+Step 2: point the component at that URL **before** the first `PdfViewerComponent` is instantiated. The simplest place is `main.ts`, right before `bootstrapApplication(...)`:
 
 ```typescript
 // main.ts
@@ -146,21 +146,27 @@ Or in `index.html` before Angular boots:
 </script>
 ```
 
-Now the worker is served from your own origin. No third-party requests, no CDN dependency, version is whatever you have installed in `node_modules/pdfjs-dist`.
+Now the worker is served from your own origin, from the `pdfjs-dist` version in your `node_modules`.
+
+The worker and the `pdfjs-dist` code bundled into your app must be the exact same version, otherwise pdf.js refuses to load the document. If your app also depends on another `pdfjs-dist` version, copy the worker from the copy that `@dasch-ng/pdf-viewer` uses.
+
+::: warning Other CDN requests
+Self-hosting the worker does not remove every third-party request. By default, CMaps and annotation icons still load from unpkg. Set the `c-maps-url` input to a self-hosted copy of `pdfjs-dist/cmaps/`. The annotation icon path cannot be changed yet.
+:::
 
 #### Version-pinned override
 
-If you need to support multiple pdfjs versions side-by-side (rare), use the version-keyed property:
+If you need a worker URL that only applies to one pdf.js version (rare), use the version-keyed property. Replace `<version>` with the installed `pdfjs-dist` version:
 
 ```typescript
-(window as any)['pdfWorkerSrc5.6.205'] = '/assets/pdfjs/pdf.worker-5.6.205.min.mjs';
+(window as any)['pdfWorkerSrc<version>'] = '/assets/pdfjs/pdf.worker-<version>.min.mjs';
 ```
 
 The component reads `pdfWorkerSrc<currentPdfJsVersion>` first, then falls back to plain `pdfWorkerSrc`, then to the CDN.
 
 #### Why isn't the worker shipped inside `@dasch-ng/pdf-viewer`?
 
-`pdfjs-dist` is already declared as a `dependency` of `@dasch-ng/pdf-viewer`, so the worker file is always present in your `node_modules` tree. Re-shipping it inside our package would mean storing the same binary twice and forcing a fixed pdfjs version on consumers. The asset-copy approach above gives you control over the version and the deployment path.
+`pdfjs-dist` is already declared as a `dependency` of `@dasch-ng/pdf-viewer`, so the worker file is always present in your `node_modules` tree. Re-shipping it inside our package would store the same file twice. The asset-copy approach above lets you choose the deployment path. The version itself is set by `@dasch-ng/pdf-viewer`, which pins an exact `pdfjs-dist` version.
 
 ## Examples
 
