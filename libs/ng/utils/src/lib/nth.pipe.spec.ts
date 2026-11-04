@@ -1,4 +1,4 @@
-import { createPipeFactory, SpectatorPipe } from '@ngneat/spectator/jest';
+import { createPipeFactory, SpectatorPipe } from '@ngneat/spectator/vitest';
 
 import { NthPipe } from './nth.pipe';
 

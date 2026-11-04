@@ -1,6 +1,11 @@
 common-bun-init-steps: &common-bun-init-steps
   - name: Checkout
     uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/checkout/main.yaml'
+  # The images ship Node 20, but Angular 22 and jsdom 30 require Node ^22.22 || ^24.15
+  - name: Install Node
+    uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/install-node/main.yaml'
+    inputs:
+      node_version: '24'
   - name: Restore Node Modules Cache
     uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/cache/main.yaml'
     inputs:
@@ -12,7 +17,7 @@ common-bun-init-steps: &common-bun-init-steps
     inputs:
       key: 'bun.lock|"browsers"'
       paths: |
-        '../.cache/Cypress'
+        '../.cache/ms-playwright'
       base-branch: 'main'
   - name: Install Bun
     script: |
@@ -20,8 +25,10 @@ common-bun-init-steps: &common-bun-init-steps
       npm install -g bun
   - name: Install Node Modules
     script: bun install --frozen-lockfile
-  - name: Install Browsers (if needed)
-    uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/install-browsers/main.yaml'
+  # The generic install-browsers step only reacts to @playwright/test; Vitest browser mode
+  # (material-right-sheet) uses the plain playwright package and needs Chromium.
+  - name: Install Playwright Chromium
+    script: bunx playwright install --with-deps chromium
 
 launch-templates:
   linux-small-bun:

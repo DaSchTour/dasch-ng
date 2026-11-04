@@ -34,12 +34,8 @@
       "defaultConfiguration": "production"
     },
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "libs/ng/resize-observer/jest.config.ts",
-        "tsConfig": "libs/ng/resize-observer/tsconfig.spec.json"
-      }
+      "executor": "@nx/angular:unit-test",
+      "options": {}
     },
     "lint": {
       "inputs": [

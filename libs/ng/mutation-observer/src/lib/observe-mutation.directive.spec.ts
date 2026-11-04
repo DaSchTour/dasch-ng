@@ -1,4 +1,4 @@
-import { createDirectiveFactory, mockProvider, SpectatorDirective } from '@ngneat/spectator/jest';
+import { createDirectiveFactory, mockProvider, SpectatorDirective } from '@ngneat/spectator/vitest';
 
 import { ObserveMutationDirective } from './observe-mutation.directive';
 import { MutationObserverService } from './mutation-observer.service';

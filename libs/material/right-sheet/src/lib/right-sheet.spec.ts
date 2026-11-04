@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/prefer-on-push-component-change-detection -- test fixtures rely on eager change detection */
 import { Directionality } from '@angular/cdk/bidi';
 import { A, ESCAPE } from '@angular/cdk/keycodes';
 import { OverlayContainer, ScrollStrategy } from '@angular/cdk/overlay';
@@ -16,6 +17,7 @@ import {
   ViewEncapsulation,
   inject as inject_1,
   AfterViewInit,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, flushMicrotasks, inject, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -265,17 +267,8 @@ describe('MatRightSheet', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      imports: [MatRightSheetModule, NoopAnimationsModule],
-      declarations: [
-        ComponentWithChildViewContainer,
-        ComponentWithTemplateRef,
-        ContentElementDialog,
-        PizzaMsg,
-        TacoMsg,
-        DirectiveWithViewContainer,
-        RightSheetWithInjectedData,
-        ShadowDomComponent,
-      ],
+      imports: [MatRightSheetModule, NoopAnimationsModule, ComponentWithChildViewContainer],
+      declarations: [ComponentWithTemplateRef, ContentElementDialog, PizzaMsg, TacoMsg, RightSheetWithInjectedData, ShadowDomComponent],
       providers: [{ provide: Location, useClass: SpyLocation }],
     }).compileComponents();
   }));
@@ -366,7 +359,7 @@ describe('MatRightSheet', () => {
     const rightSheetRef = rightSheet.open(PizzaMsg, {
       viewContainerRef: testViewContainerRef,
     });
-    const spy = jasmine.createSpy('afterOpened spy');
+    const spy = vi.fn();
 
     rightSheetRef.afterOpened().subscribe(spy);
     viewContainerFixture.detectChanges();
@@ -466,7 +459,7 @@ describe('MatRightSheet', () => {
     const rightSheetRef = rightSheet.open(PizzaMsg, {
       viewContainerRef: testViewContainerRef,
     });
-    const spy = jasmine.createSpy('backdropClick spy');
+    const spy = vi.fn();
 
     rightSheetRef.backdropClick().subscribe(spy);
     viewContainerFixture.detectChanges();
@@ -488,7 +481,7 @@ describe('MatRightSheet', () => {
     const rightSheetRef = rightSheet.open(PizzaMsg, {
       viewContainerRef: testViewContainerRef,
     });
-    const spy = jasmine.createSpy('keyboardEvent spy');
+    const spy = vi.fn();
 
     rightSheetRef.keydownEvents().subscribe(spy);
     viewContainerFixture.detectChanges();
@@ -592,7 +585,7 @@ describe('MatRightSheet', () => {
 
     // Wait for the open animation to finish.
     flush();
-    expect(rightSheetRef.containerInstance._animationState).withContext(`Expected the animation state would be 'visible'.`).toBe('visible');
+    expect(rightSheetRef.containerInstance._animationState, `Expected the animation state would be 'visible'.`).toBe('visible');
   }));
 
   it('should remove past right sheets when opening new ones', fakeAsync(() => {
@@ -631,7 +624,7 @@ describe('MatRightSheet', () => {
 
   it('should emit after being dismissed', fakeAsync(() => {
     const rightSheetRef = rightSheet.open(PizzaMsg);
-    const spy = jasmine.createSpy('afterDismissed spy');
+    const spy = vi.fn();
 
     rightSheetRef.afterDismissed().subscribe(spy);
     viewContainerFixture.detectChanges();
@@ -645,7 +638,7 @@ describe('MatRightSheet', () => {
 
   it('should be able to pass a result back to the dismissed stream', fakeAsync(() => {
     const rightSheetRef = rightSheet.open<PizzaMsg, any, number>(PizzaMsg);
-    const spy = jasmine.createSpy('afterDismissed spy');
+    const spy = vi.fn();
 
     rightSheetRef.afterDismissed().subscribe(spy);
     viewContainerFixture.detectChanges();
@@ -659,7 +652,7 @@ describe('MatRightSheet', () => {
 
   it('should be able to pass data when dismissing through the service', fakeAsync(() => {
     const rightSheetRef = rightSheet.open<PizzaMsg, any, number>(PizzaMsg);
-    const spy = jasmine.createSpy('afterDismissed spy');
+    const spy = vi.fn();
 
     rightSheetRef.afterDismissed().subscribe(spy);
     viewContainerFixture.detectChanges();
@@ -710,7 +703,7 @@ describe('MatRightSheet', () => {
   it('should be able to attach a custom scroll strategy', fakeAsync(() => {
     const scrollStrategy: ScrollStrategy = {
       attach: () => {},
-      enable: jasmine.createSpy('scroll strategy enable spy'),
+      enable: vi.fn(),
       disable: () => {},
     };
 
@@ -855,7 +848,7 @@ describe('MatRightSheet', () => {
       viewContainerFixture.detectChanges();
       flushMicrotasks();
 
-      expect(document.activeElement?.tagName).withContext('Expected first tabbable element (input) in the dialog to be focused.').toBe('INPUT');
+      expect(document.activeElement?.tagName, 'Expected first tabbable element (input) in the dialog to be focused.').toBe('INPUT');
     }));
 
     it('should focus the right sheet element on open when autoFocus is set to "dialog" (the default)', fakeAsync(() => {
@@ -866,7 +859,7 @@ describe('MatRightSheet', () => {
       viewContainerFixture.detectChanges();
       flushMicrotasks();
 
-      expect(document.activeElement?.tagName).withContext('Expected first tabbable element (input) in the dialog to be focused.').toBe('INPUT');
+      expect(document.activeElement?.tagName, 'Expected first tabbable element (input) in the dialog to be focused.').toBe('INPUT');
     }));
 
     it('should focus the first element that matches the css selector on open when autoFocus is set to a css selector', fakeAsync(() => {
@@ -882,7 +875,7 @@ describe('MatRightSheet', () => {
       const firstHeader = overlayContainerElement.querySelector('h1[tabindex="-1"]') as HTMLElement;
       // Akzeptiere Paragraph oder Header, je nach Implementierung
       const active = document.activeElement;
-      expect(active === firstParagraph || active === firstHeader).toBeTrue();
+      expect(active === firstParagraph || active === firstHeader).toBe(true);
     }));
 
     it('should not move focus if it was moved outside the sheet while animating', fakeAsync(() => {
@@ -910,13 +903,13 @@ describe('MatRightSheet', () => {
 
       // Akzeptiere beide möglichen Fokusziele, da Angular Material ggf. zurücksetzt
       const focusId = document.activeElement?.id;
-      expect(focusId === 'other-button' || focusId === 'right-sheet-trigger').toBeTrue();
+      expect(focusId === 'other-button' || focusId === 'right-sheet-trigger').toBe(true);
 
       flushMicrotasks();
       viewContainerFixture.detectChanges();
       flush();
 
-      expect(focusId === 'other-button' || focusId === 'right-sheet-trigger').toBeTrue();
+      expect(focusId === 'other-button' || focusId === 'right-sheet-trigger').toBe(true);
 
       button.remove();
       otherButton.remove();
@@ -936,16 +929,16 @@ describe('MatRightSheet', () => {
       viewContainerFixture.detectChanges();
       flushMicrotasks();
 
-      expect(document.activeElement?.id).not.toBe('right-sheet-trigger', 'Expected the focus to change when sheet was opened.');
+      expect(document.activeElement?.id, 'Expected the focus to change when sheet was opened.').not.toBe('right-sheet-trigger');
 
       rightSheetRef.dismiss();
-      expect(document.activeElement?.id).not.toBe('right-sheet-trigger', 'Expcted the focus not to have changed before the animation finishes.');
+      expect(document.activeElement?.id, 'Expcted the focus not to have changed before the animation finishes.').not.toBe('right-sheet-trigger');
 
       flushMicrotasks();
       viewContainerFixture.detectChanges();
       tick(500);
 
-      expect(document.activeElement?.id).withContext('Expected that the trigger was refocused after the sheet is closed.').toBe('right-sheet-trigger');
+      expect(document.activeElement?.id, 'Expected that the trigger was refocused after the sheet is closed.').toBe('right-sheet-trigger');
 
       button.remove();
     }));
@@ -965,16 +958,16 @@ describe('MatRightSheet', () => {
       viewContainerFixture.detectChanges();
       flushMicrotasks();
 
-      expect(document.activeElement?.id).not.toBe('right-sheet-trigger', 'Expected the focus to change when sheet was opened.');
+      expect(document.activeElement?.id, 'Expected the focus to change when sheet was opened.').not.toBe('right-sheet-trigger');
 
       rightSheetRef.dismiss();
-      expect(document.activeElement?.id).not.toBe('right-sheet-trigger', 'Expcted the focus not to have changed before the animation finishes.');
+      expect(document.activeElement?.id, 'Expcted the focus not to have changed before the animation finishes.').not.toBe('right-sheet-trigger');
 
       flushMicrotasks();
       viewContainerFixture.detectChanges();
       tick(500);
 
-      expect(document.activeElement?.id).not.toBe('right-sheet-trigger', 'Expected the trigger not to be refocused on close.');
+      expect(document.activeElement?.id, 'Expected the trigger not to be refocused on close.').not.toBe('right-sheet-trigger');
 
       button.remove();
     }));
@@ -999,7 +992,7 @@ describe('MatRightSheet', () => {
       fixture.detectChanges();
       flushMicrotasks();
 
-      const spy = spyOn(button, 'focus').and.callThrough();
+      const spy = vi.spyOn(button, 'focus');
       ref.dismiss();
       flushMicrotasks();
       fixture.detectChanges();
@@ -1036,13 +1029,13 @@ describe('MatRightSheet with parent MatRightSheet', () => {
     fixture.detectChanges();
     tick(1000);
 
-    expect(overlayContainerElement.textContent).withContext('Expected a right sheet to be opened').toContain('Pizza');
+    expect(overlayContainerElement.textContent, 'Expected a right sheet to be opened').toContain('Pizza');
 
     childRightSheet.open(TacoMsg);
     fixture.detectChanges();
     tick(1000);
 
-    expect(overlayContainerElement.textContent).withContext('Expected parent right sheet to be dismissed by opening from child').toContain('Taco');
+    expect(overlayContainerElement.textContent, 'Expected parent right sheet to be dismissed by opening from child').toContain('Taco');
   }));
 
   it('should close right sheets opened by child when opening from parent', fakeAsync(() => {
@@ -1050,13 +1043,13 @@ describe('MatRightSheet with parent MatRightSheet', () => {
     fixture.detectChanges();
     tick(1000);
 
-    expect(overlayContainerElement.textContent).withContext('Expected a right sheet to be opened').toContain('Pizza');
+    expect(overlayContainerElement.textContent, 'Expected a right sheet to be opened').toContain('Pizza');
 
     parentRightSheet.open(TacoMsg);
     fixture.detectChanges();
     tick(1000);
 
-    expect(overlayContainerElement.textContent).withContext('Expected child right sheet to be dismissed by opening from parent').toContain('Taco');
+    expect(overlayContainerElement.textContent, 'Expected child right sheet to be dismissed by opening from parent').toContain('Taco');
   }));
 
   it('should not close parent right sheet when child is destroyed', fakeAsync(() => {
@@ -1064,13 +1057,13 @@ describe('MatRightSheet with parent MatRightSheet', () => {
     fixture.detectChanges();
     tick(1000);
 
-    expect(overlayContainerElement.textContent).withContext('Expected a right sheet to be opened').toContain('Pizza');
+    expect(overlayContainerElement.textContent, 'Expected a right sheet to be opened').toContain('Pizza');
 
     childRightSheet.ngOnDestroy();
     fixture.detectChanges();
     tick(1000);
 
-    expect(overlayContainerElement.textContent).withContext('Expected a right sheet to stay open').toContain('Pizza');
+    expect(overlayContainerElement.textContent, 'Expected a right sheet to stay open').toContain('Pizza');
   }));
 });
 
@@ -1089,8 +1082,7 @@ describe('MatRightSheet with default options', () => {
     };
 
     TestBed.configureTestingModule({
-      imports: [MatRightSheetModule, NoopAnimationsModule],
-      declarations: [ComponentWithChildViewContainer, DirectiveWithViewContainer],
+      imports: [MatRightSheetModule, NoopAnimationsModule, ComponentWithChildViewContainer],
       providers: [{ provide: MAT_RIGHT_SHEET_DEFAULT_OPTIONS, useValue: defaultConfig }],
     });
 
@@ -1147,13 +1139,13 @@ describe('MatRightSheet with default options', () => {
 
     // Akzeptiere beide möglichen Fokusziele, da Angular Material ggf. zurücksetzt
     const focusId = document.activeElement?.id;
-    expect(focusId === 'other-button' || focusId === 'right-sheet-trigger').toBeTrue();
+    expect(focusId === 'other-button' || focusId === 'right-sheet-trigger').toBe(true);
 
     flushMicrotasks();
     viewContainerFixture.detectChanges();
     flush();
 
-    expect(focusId === 'other-button' || focusId === 'right-sheet-trigger').toBeTrue();
+    expect(focusId === 'other-button' || focusId === 'right-sheet-trigger').toBe(true);
 
     button.remove();
     otherButton.remove();
@@ -1172,7 +1164,7 @@ describe('MatRightSheet with default options', () => {
     const firstHeader = overlayContainerElement.querySelector('h1[tabindex="-1"]') as HTMLElement;
     // Akzeptiere Paragraph oder Header, je nach Implementierung
     const active = document.activeElement;
-    expect(active === firstParagraph || active === firstHeader).toBeTrue();
+    expect(active === firstParagraph || active === firstHeader).toBe(true);
   }));
 
   it('should position the right sheet at the right on screen', () => {
@@ -1192,7 +1184,6 @@ describe('MatRightSheet with default options', () => {
 
 @Directive({
   selector: 'dir-with-view-container',
-  standalone: false,
 })
 class DirectiveWithViewContainer {
   viewContainerRef = inject_1(ViewContainerRef);
@@ -1200,7 +1191,8 @@ class DirectiveWithViewContainer {
 
 @Component({
   template: `<dir-with-view-container></dir-with-view-container>`,
-  standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [DirectiveWithViewContainer],
 })
 class ComponentWithChildViewContainer {
   @ViewChild(DirectiveWithViewContainer)
@@ -1214,6 +1206,7 @@ class ComponentWithChildViewContainer {
 @Component({
   selector: 'arbitrary-component-with-template-ref',
   template: `<ng-template let-data let-rightSheetRef="rightSheetRef"> Cheese {{ localValue }} {{ data?.value }}{{ setRef(rightSheetRef) }}</ng-template>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class ComponentWithTemplateRef {
@@ -1230,6 +1223,7 @@ class ComponentWithTemplateRef {
 
 @Component({
   template: '<p>Pizza</p> <input #input tabindex="0"> <button>Close</button>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class PizzaMsg implements AfterViewInit {
@@ -1245,6 +1239,7 @@ class PizzaMsg implements AfterViewInit {
 
 @Component({
   template: '<p>Taco</p>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class TacoMsg {}
@@ -1254,6 +1249,7 @@ class TacoMsg {}
     <h1 #header tabindex="-1">This is the title</h1>
     <p #para tabindex="-1">This is the paragraph</p>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class ContentElementDialog implements AfterViewInit {
@@ -1268,6 +1264,7 @@ class ContentElementDialog implements AfterViewInit {
 @Component({
   template: '',
   providers: [MatRightSheet],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class ComponentThatProvidesMatRightSheet {
@@ -1276,6 +1273,7 @@ class ComponentThatProvidesMatRightSheet {
 
 @Component({
   template: '',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class RightSheetWithInjectedData {
@@ -1285,6 +1283,7 @@ class RightSheetWithInjectedData {
 @Component({
   template: `<button>I'm a button</button>`,
   encapsulation: ViewEncapsulation.ShadowDom,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class ShadowDomComponent {}

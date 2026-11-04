@@ -1,0 +1,3 @@
+# Demo and documentation apps are not published; only library code counts towards coverage.
+ignore:
+  - 'apps/**'

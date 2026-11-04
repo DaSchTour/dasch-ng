@@ -34,11 +34,11 @@
       "defaultConfiguration": "production"
     },
     "test": {
-      "executor": "@angular-devkit/build-angular:karma",
+      "executor": "@nx/angular:unit-test",
       "options": {
-        "main": "libs/material/right-sheet/src/test.ts",
-        "tsConfig": "libs/material/right-sheet/tsconfig.spec.json",
-        "karmaConfig": "libs/material/right-sheet/karma.conf.js"
+        "buildTarget": "material-right-sheet:test-zone-env",
+        "setupFiles": ["libs/material/right-sheet/src/test-setup.ts"],
+        "browsers": ["chromiumHeadless"]
       }
     },
     "lint": {
@@ -50,6 +50,18 @@
           "externalDependencies": ["eslint"]
         }
       ]
+    },
+    "test-zone-env": {
+      "executor": "@angular/build:application",
+      "metadata": {
+        "description": "Not meant to be run. Supplies zone.js polyfills to the unit-test target: for library build targets the Angular unit-test builder loads zone.js after @angular/core/testing, which breaks fakeAsync()."
+      },
+      "options": {
+        "browser": "libs/material/right-sheet/src/index.ts",
+        "tsConfig": "libs/material/right-sheet/tsconfig.spec.json",
+        "polyfills": ["zone.js"],
+        "outputPath": "dist/out-tsc/material-right-sheet-test-zone-env"
+      }
     }
   }
 }

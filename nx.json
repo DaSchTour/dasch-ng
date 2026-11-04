@@ -7,7 +7,7 @@
       "cache": true
     },
     "test": {
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js", "{workspaceRoot}/karma.conf.js"],
+      "inputs": ["default", "^production"],
       "cache": true
     },
     "e2e": {
@@ -17,31 +17,6 @@
     "publish": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
-    },
-    "@nx/jest:jest": {
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js", "{workspaceRoot}/karma.conf.js"],
-      "cache": true,
-      "options": {
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true,
-          "coverageReporters": ["lcovonly"]
-        }
-      }
-    },
-    "@angular-devkit/build-angular:karma": {
-      "inputs": ["default", "^production", "{workspaceRoot}/karma.conf.js"],
-      "cache": true,
-      "configurations": {
-        "ci": {
-          "browsers": "ChromeHeadless",
-          "watch": false,
-          "codeCoverage": true
-        }
-      }
     },
     "@nx/eslint:lint": {
       "inputs": ["default", "{workspaceRoot}/.eslintrc.json", "{workspaceRoot}/eslint.config.mjs"],
@@ -74,6 +49,7 @@
     "@nx/angular:unit-test": {
       "cache": true,
       "inputs": ["default", "^production"],
+      "outputs": ["{workspaceRoot}/coverage/{projectName}"],
       "configurations": {
         "ci": {
           "coverage": true,
@@ -89,10 +65,8 @@
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/tsconfig.spec.json",
-      "!{projectRoot}/jest.config.[jt]s",
       "!{projectRoot}/.eslintrc.json",
       "!{projectRoot}/**/*.spec.[jt]s",
-      "!{projectRoot}/karma.conf.js",
       "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/eslint.config.mjs"
     ],
@@ -105,12 +79,12 @@
     "@nx/angular:application": {
       "style": "scss",
       "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
+      "unitTestRunner": "vitest-angular",
+      "e2eTestRunner": "none"
     },
     "@nx/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "jest"
+      "unitTestRunner": "vitest-angular"
     },
     "@nx/angular:component": {
       "style": "scss",

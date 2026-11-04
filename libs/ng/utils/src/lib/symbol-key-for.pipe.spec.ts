@@ -6,7 +6,7 @@ const symbol = Symbol('test');
 
 describe('SymbolKeyForPipe', () => {
   // Tests that the transform method returns the correct string for a valid symbol
-  xit('test_valid_symbol_returns_correct_string', () => {
+  it.skip('test_valid_symbol_returns_correct_string', () => {
     const pipe = new SymbolKeyForPipe();
     expect(pipe.transform(symbol)).toEqual('test');
   });
@@ -31,7 +31,7 @@ describe('SymbolKeyForPipe', () => {
   });
 
   // Tests that the transform method throws an error for non-symbol input
-  xit('test_non_symbol_input_throws_error', () => {
+  it.skip('test_non_symbol_input_throws_error', () => {
     const pipe = new SymbolKeyForPipe();
     expect(() => pipe.transform('test')).toThrow();
   });

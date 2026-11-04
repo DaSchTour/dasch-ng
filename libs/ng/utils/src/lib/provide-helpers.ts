@@ -1,4 +1,30 @@
-import type { ConstructorProvider, ExistingProvider, FactoryProvider, InjectionToken, StaticClassProvider, Type, ValueProvider } from '@angular/core';
+import type {
+  ConstructorProvider,
+  ExistingProvider,
+  FactoryProvider,
+  InjectionToken,
+  ProviderToken,
+  StaticClassProvider,
+  Type,
+  ValueProvider,
+} from '@angular/core';
+
+/**
+ * A single entry of a factory provider's `deps` array.
+ *
+ * Either the token whose value is passed to the factory parameter, or an array that combines
+ * the token with DI flags such as `new Optional()` or `new SkipSelf()`.
+ *
+ * @template T - The type of the corresponding factory parameter
+ */
+export type FactoryDep<T> = ProviderToken<T> | readonly unknown[];
+
+/**
+ * Maps the parameter types of a factory function to the DI tokens that provide them.
+ *
+ * @template U - Tuple type of the factory function parameters
+ */
+export type FactoryDeps<U extends readonly unknown[]> = { [K in keyof U]: FactoryDep<U[K]> };
 
 /**
  * Creates a type-safe value provider for Angular dependency injection.
@@ -39,11 +65,12 @@ export function provideValue<T>(provide: InjectionToken<T> | Type<T>, useValue: 
  * dependencies are properly declared, providing better type safety than plain provider objects.
  *
  * @template T - The type that the factory function produces
- * @template U - Tuple type of the factory function parameters (inferred from deps)
+ * @template U - Tuple type of the factory function parameters (inferred from `useFactory`)
  * @param provide - The injection token or class to provide for
  * @param useFactory - Factory function that creates the value (return type must match T)
  * @param options - Configuration object
- * @param options.deps - Optional array of dependencies to inject into the factory function
+ * @param options.deps - Optional array of DI tokens whose values are passed to the factory, one token per
+ *   factory parameter. Each token must provide the type of its parameter.
  * @param options.multi - Optional flag to enable multi-provider
  * @returns A type-safe FactoryProvider object
  *
@@ -71,12 +98,12 @@ export function provideValue<T>(provide: InjectionToken<T> | Type<T>, useValue: 
  *
  * @see {@link https://angular.dev/guide/di/dependency-injection-providers}
  */
-export function provideFactory<T, U extends Array<any> = []>(
+export function provideFactory<T, U extends unknown[] = []>(
   provide: InjectionToken<T> | Type<T>,
   useFactory: (...args: U) => T,
-  { deps, multi }: { deps?: U; multi?: boolean } = {},
+  { deps, multi }: { deps?: NoInfer<FactoryDeps<U>>; multi?: boolean } = {},
 ): FactoryProvider {
-  return { provide, useFactory, deps, multi };
+  return { provide, useFactory, deps: deps as unknown[] | undefined, multi };
 }
 
 /**
