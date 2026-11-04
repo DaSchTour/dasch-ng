@@ -32,6 +32,9 @@ jobs:
       - run: bun install --frozen-lockfile
 
       - name: Build and publish the tagged package
+        # Build from source: published files must not come from a shared cache.
+        env:
+          NX_NO_CLOUD: true
         run: |
           if [ "$GITHUB_REF_TYPE" != tag ]; then
             echo "::error::Run this workflow on a {projectName}/{version} tag" >&2
@@ -40,7 +43,7 @@ jobs:
           project="${GITHUB_REF_NAME%%/*}"
           version="${GITHUB_REF_NAME#*/}"
 
-          bunx nx build "$project" -c production
+          bunx nx build "$project" -c production --skip-nx-cache
           root="$(bunx nx show project "$project" --json | jq -r '.targets["nx-release-publish"].options.packageRoot')"
           cd "$root"
 
@@ -50,10 +53,21 @@ jobs:
           fi
 
           # A prerelease takes `latest` only until the package has a stable version.
+          # Only a missing package counts as "no stable version"; other errors stop the run.
+          name="$(jq -r .name package.json)"
+          if ! latest="$(npm view "$name" dist-tags.latest 2>npm-view.err)"; then
+            if ! grep -q E404 npm-view.err; then
+              cat npm-view.err >&2
+              exit 1
+            fi
+            latest=""
+          fi
+          rm npm-view.err
+
           dist_tag=latest
           case "$version" in
             *-*)
-              case "$(npm view "$(jq -r .name package.json)" dist-tags.latest 2>/dev/null)" in
+              case "$latest" in
                 *-* | "") ;;
                 *) preid="${version#*-}"; dist_tag="${preid%%.*}" ;;
               esac
