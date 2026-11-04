@@ -154,6 +154,7 @@
       "ng-utils",
       "rxjs-operators",
       "json-viewer",
+      "pdf-viewer",
       "route-signals",
       "validators",
       "web-utils",

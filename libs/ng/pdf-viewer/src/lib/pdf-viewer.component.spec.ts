@@ -39,7 +39,6 @@ describe('PdfViewerComponent', () => {
   function setPdf(numPages: number) {
     (pdfViewer as any)._pdf = {
       numPages,
-      destroy: vi.fn(),
     };
   }
 

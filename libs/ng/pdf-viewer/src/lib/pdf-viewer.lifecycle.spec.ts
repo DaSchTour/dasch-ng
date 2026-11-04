@@ -68,7 +68,7 @@ const pdfjs = vi.hoisted(() => {
 vi.mock('pdfjs-dist', () => ({
   GlobalWorkerOptions: { workerSrc: '' },
   getDocument: pdfjs.getDocument,
-  version: '5.7.284',
+  version: '6.4.299',
   AnnotationEditorType: { DISABLE: 0 },
 }));
 
@@ -97,7 +97,6 @@ function createPage(pageNumber = 1) {
 function createPdf(numPages = 5) {
   return {
     numPages,
-    destroy: vi.fn(),
     getPage: vi.fn((pageNumber: number) => Promise.resolve(createPage(pageNumber))),
   };
 }
@@ -436,7 +435,6 @@ describe('PdfViewerComponent lifecycle', () => {
       component.clear();
 
       expect(pending.destroy).toHaveBeenCalled();
-      expect(pdf.destroy).toHaveBeenCalled();
       expect(viewer().setDocument).toHaveBeenLastCalledWith(null);
       expect((component as any).pdfLinkService.setDocument).toHaveBeenLastCalledWith(null, null);
       expect((component as any).pdfFindController.setDocument).toHaveBeenLastCalledWith(null);
@@ -447,7 +445,7 @@ describe('PdfViewerComponent lifecycle', () => {
 
       fixture.destroy();
 
-      expect(pdf.destroy).toHaveBeenCalled();
+      expect(loadingTask.destroy).toHaveBeenCalled();
       expect((component as any).loadingTask).toBeNull();
     });
   });
