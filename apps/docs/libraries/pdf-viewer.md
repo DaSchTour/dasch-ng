@@ -133,7 +133,7 @@ Step 2: point the component at that URL **before** the first `PdfViewerComponent
 
 ```typescript
 // main.ts
-(window as any).pdfWorkerSrc = '/assets/pdfjs/pdf.worker.min.mjs';
+(window as any).pdfWorkerSrc = new URL('assets/pdfjs/pdf.worker.min.mjs', document.baseURI).href;
 
 bootstrapApplication(AppComponent, { providers: [...] });
 ```
@@ -142,13 +142,13 @@ Or in `index.html` before Angular boots:
 
 ```html
 <script>
-  window.pdfWorkerSrc = '/assets/pdfjs/pdf.worker.min.mjs';
+  window.pdfWorkerSrc = new URL('assets/pdfjs/pdf.worker.min.mjs', document.baseURI).href;
 </script>
 ```
 
 Now the worker is served from your own origin, from the `pdfjs-dist` version in your `node_modules`.
 
-The worker and the `pdfjs-dist` code bundled into your app must be the exact same version, otherwise pdf.js refuses to load the document. If your app also depends on another `pdfjs-dist` version, copy the worker from the copy that `@dasch-ng/pdf-viewer` uses.
+The worker and the `pdfjs-dist` code bundled into your app must be the exact same version, otherwise pdf.js refuses to load the document. If your app declares a different `pdfjs-dist` version, set the asset `input` to `node_modules/@dasch-ng/pdf-viewer/node_modules/pdfjs-dist/legacy/build`.
 
 ::: warning Other CDN requests
 Self-hosting the worker does not remove every third-party request. By default, CMaps and annotation icons still load from unpkg. Set the `c-maps-url` input to a self-hosted copy of `pdfjs-dist/cmaps/`. The annotation icon path cannot be changed yet.

@@ -65,11 +65,11 @@ If you are migrating from the v10 `PdfViewerModule`, switch to the standalone `P
 2. Point the component at it before bootstrap, e.g. in `main.ts`:
 
    ```typescript
-   (window as any).pdfWorkerSrc = '/assets/pdfjs/pdf.worker.min.mjs';
+   (window as any).pdfWorkerSrc = new URL('assets/pdfjs/pdf.worker.min.mjs', document.baseURI).href;
    bootstrapApplication(AppComponent, { providers: [...] });
    ```
 
-The worker must be the exact `pdfjs-dist` version used by this library. CMaps and annotation icons still load from unpkg by default; use the `c-maps-url` input to self-host CMaps.
+The worker must be the exact `pdfjs-dist` version used by this library. If your app declares a different `pdfjs-dist` version, copy the worker from `node_modules/@dasch-ng/pdf-viewer/node_modules/pdfjs-dist/legacy/build` instead. CMaps and annotation icons still load from unpkg by default; use the `c-maps-url` input to self-host CMaps.
 
 See the [docs site](https://dasch.ng/libraries/pdf-viewer#self-host) for the version-pinned override variant and the full rationale.
 
