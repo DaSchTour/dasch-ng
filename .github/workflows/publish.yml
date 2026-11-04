@@ -24,10 +24,40 @@ jobs:
         with:
           bun-version: latest
 
+      # npm publish handles the OIDC exchange, which needs npm 11.5.1 or later
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+
       - run: bun install --frozen-lockfile
 
-      - name: Build
-        run: bunx nx run-many --target build --all
+      - name: Build and publish the tagged package
+        run: |
+          if [ "$GITHUB_REF_TYPE" != tag ]; then
+            echo "::error::Run this workflow on a {projectName}/{version} tag" >&2
+            exit 1
+          fi
+          project="${GITHUB_REF_NAME%%/*}"
+          version="${GITHUB_REF_NAME#*/}"
 
-      - name: Publish packages
-        run: bunx nx release publish --access public
+          bunx nx build "$project" -c production
+          root="$(bunx nx show project "$project" --json | jq -r '.targets["nx-release-publish"].options.packageRoot')"
+          cd "$root"
+
+          if [ "$(jq -r .version package.json)" != "$version" ]; then
+            echo "::error::$root/package.json does not match tag version $version" >&2
+            exit 1
+          fi
+
+          # A prerelease takes `latest` only until the package has a stable version.
+          dist_tag=latest
+          case "$version" in
+            *-*)
+              case "$(npm view "$(jq -r .name package.json)" dist-tags.latest 2>/dev/null)" in
+                *-* | "") ;;
+                *) preid="${version#*-}"; dist_tag="${preid%%.*}" ;;
+              esac
+              ;;
+          esac
+
+          npm publish --access public --tag "$dist_tag"
