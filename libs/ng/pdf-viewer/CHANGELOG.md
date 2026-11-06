@@ -1,3 +1,13 @@
+## 11.0.0-rc.3 (2026-11-06)
+
+### 🩹 Fixes
+
+- **pdf-viewer:** add repository field for npm provenance ([#1215](https://github.com/DaSchTour/dasch-ng/pull/1215))
+
+### ❤️ Thank You
+
+- Daniel Schuba @DaSchTour
+
 ## 11.0.0-rc.2 (2026-11-06)
 
 This was a version bump only for pdf-viewer to align it with other projects, there were no code changes.

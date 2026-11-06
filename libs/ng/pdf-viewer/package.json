@@ -1,6 +1,6 @@
 {
   "name": "@dasch-ng/pdf-viewer",
-  "version": "11.0.0-rc.2",
+  "version": "11.0.0-rc.3",
   "description": "Angular standalone component for rendering PDF documents (fork of ng2-pdf-viewer)",
   "repository": {
     "type": "git",
