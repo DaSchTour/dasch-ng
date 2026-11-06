@@ -1,6 +1,11 @@
 {
   "name": "@dasch-ng/validators",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaSchTour/dasch-ng.git",
+    "directory": "libs/validators"
+  },
   "publishConfig": {
     "access": "public"
   },

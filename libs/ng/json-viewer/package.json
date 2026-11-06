@@ -1,6 +1,11 @@
 {
   "name": "@dasch-ng/json-viewer",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaSchTour/dasch-ng.git",
+    "directory": "libs/ng/json-viewer"
+  },
   "publishConfig": {
     "access": "public"
   },

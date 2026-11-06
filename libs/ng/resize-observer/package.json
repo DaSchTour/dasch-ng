@@ -1,6 +1,11 @@
 {
   "name": "@dasch-ng/resize-observer",
   "version": "0.0.2-rc.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaSchTour/dasch-ng.git",
+    "directory": "libs/ng/resize-observer"
+  },
   "license": "MIT",
   "publishConfig": {
     "access": "public"

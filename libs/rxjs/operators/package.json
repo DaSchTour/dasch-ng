@@ -1,6 +1,11 @@
 {
   "name": "@dasch-ng/rxjs-operators",
   "version": "0.5.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaSchTour/dasch-ng.git",
+    "directory": "libs/rxjs/operators"
+  },
   "license": "MIT",
   "publishConfig": {
     "access": "public"

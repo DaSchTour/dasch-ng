@@ -1,6 +1,11 @@
 {
   "name": "@dasch-ng/route-signals",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaSchTour/dasch-ng.git",
+    "directory": "libs/ng/route-signals"
+  },
   "publishConfig": {
     "access": "public"
   },

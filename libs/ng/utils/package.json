@@ -1,6 +1,11 @@
 {
   "name": "@dasch-ng/utils",
   "version": "0.6.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaSchTour/dasch-ng.git",
+    "directory": "libs/ng/utils"
+  },
   "license": "MIT",
   "publishConfig": {
     "access": "public"
