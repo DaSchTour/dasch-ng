@@ -36,6 +36,7 @@ Over 15 standalone pipes for common operations:
 - **Object Utilities**: `prop`
 - **Type Checking**: `isNil`, `isNull`, `isUndefined`, `isEmpty`
 - **Formatting**: `decimalBytes`
+- **Text**: `truncateText`, `middleTruncate`, `highlight`
 - **Symbol Utilities**: `symbolKeyFor`
 
 [→ View all pipes documentation](/libraries/ng-utils/pipes)
