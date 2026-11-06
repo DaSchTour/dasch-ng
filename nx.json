@@ -167,15 +167,15 @@
       "conventionalCommits": true,
       "updateDependents": "never"
     },
-    "git": {
-      "commit": true,
-      "tag": true,
-      "commitMessage": "chore({projectName}): release version {version} 🚀"
-    },
     "changelog": {
       "automaticFromRef": true,
       "projectChangelogs": {
         "createRelease": "github"
+      },
+      "git": {
+        "commit": true,
+        "tag": true,
+        "commitMessage": "chore({projectName}): release version {version} 🚀"
       }
     },
     "releaseTag": {

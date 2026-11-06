@@ -1,3 +1,15 @@
+## 11.0.0-rc.1 (2026-11-06)
+
+### 🩹 Fixes
+
+- **deps:** update dependency pdfjs-dist to v6.5.438 ([#1213](https://github.com/DaSchTour/dasch-ng/pull/1213))
+- **pdf-viewer:** update pdfjs-dist to 6.4.299 for CVE-2026-16633 ([#1211](https://github.com/DaSchTour/dasch-ng/pull/1211))
+- **deps:** update dependency pdfjs-dist to v5.7.284 ([#924](https://github.com/DaSchTour/dasch-ng/pull/924))
+
+### ❤️ Thank You
+
+- Daniel Schuba @DaSchTour
+
 # Changelog
 
 > This library is a fork of [`ng2-pdf-viewer`](https://github.com/VadimDez/ng2-pdf-viewer)
