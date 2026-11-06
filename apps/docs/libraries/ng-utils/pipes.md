@@ -416,6 +416,17 @@ import { DecimalBytesPipe } from '@dasch-ng/utils';
 0 | decimalBytes          // → "0 B"
 ```
 
+### BinaryBytesPipe
+
+The base-1024 counterpart to `decimalBytes`, with IEC units (`KiB`, `MiB`, `GiB`, …). Use it where sizes follow memory or file-system conventions. Same behaviour for `0`, precision and invalid input as `decimalBytes`.
+
+```typescript
+1024 | binaryBytes; // → "1 KiB"
+1536 | binaryBytes; // → "1.5 KiB"
+1000000 | binaryBytes; // → "976.56 KiB"
+10485760 | binaryBytes; // → "10 MiB"
+```
+
 ## Text Pipes
 
 ### TruncateTextPipe

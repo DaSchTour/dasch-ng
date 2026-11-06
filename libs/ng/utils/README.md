@@ -83,6 +83,7 @@ export class ExampleComponent {
 **Formatting:**
 
 - `decimalBytes` - Format bytes to human-readable sizes
+- `binaryBytes` - Format bytes with base 1024 (KiB, MiB)
 
 **Text:**
 
@@ -93,6 +94,14 @@ export class ExampleComponent {
 **Symbol Utilities:**
 
 - `symbolKeyFor` - Get key for global symbol
+
+**Intl Pipes** (`@dasch-ng/utils/intl`, no `registerLocaleData()` needed):
+
+- `intlNumber`, `intlCurrency` (with `minorUnits` for cents), `intlDate`, `intlDateRange`, `intlRelativeTime`, `intlList`, `intlPlural`, `intlDisplayName`, `intlDuration`
+
+```typescript
+import { IntlCurrencyPipe, IntlRelativeTimePipe } from '@dasch-ng/utils/intl';
+```
 
 ### Functions
 

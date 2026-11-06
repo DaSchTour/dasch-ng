@@ -35,7 +35,9 @@
     },
     "test": {
       "executor": "@nx/angular:unit-test",
-      "options": {}
+      "options": {
+        "include": ["**/*.spec.ts", "../intl/**/*.spec.ts"]
+      }
     },
     "lint": {
       "inputs": [

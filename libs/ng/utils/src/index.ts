@@ -1,3 +1,4 @@
+export * from './lib/binary-bytes.pipe';
 export * from './lib/decimal-bytes.pipe';
 export * from './lib/event-modifiers.plugin';
 export * from './lib/highlight.pipe';
