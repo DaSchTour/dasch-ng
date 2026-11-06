@@ -97,6 +97,26 @@ export const appConfig: ApplicationConfig = {
 
 **When to use:** action buttons inside clickable cards or links, backdrops that close on outside clicks, and forms where Enter should not submit. It replaces `$event.stopPropagation()` calls in templates and handlers.
 
+### Overflow Detection
+
+`OverflowDirective` (`[daschNgOverflow]`) tracks whether an element's content is cut off, horizontally (`text-overflow: ellipsis`) or vertically (`line-clamp`, fixed height). It re-checks on resize and text changes, exposes `overflowing()` and `(overflowChange)`, and sets `data-overflowing` on the host. It runs only in the browser, after the first render.
+
+```html
+<!-- tooltip only when the name is truncated -->
+<span class="ellipsis" daschNgOverflow #name="daschNgOverflow" [title]="name.overflowing() ? file.name : ''"> {{ file.name }} </span>
+
+<!-- "more" toggle for clamped text -->
+<p class="clamp-3" daschNgOverflow (overflowChange)="showMore.set($event)">{{ description }}</p>
+```
+
+```css
+[data-overflowing] {
+  mask-image: linear-gradient(to bottom, black 70%, transparent);
+}
+```
+
+Call `check()` to measure again after changes the observers cannot see, e.g. a web font that finished loading.
+
 ## Quick Start
 
 ```typescript

@@ -10,6 +10,7 @@ export * from './lib/join.pipe';
 export * from './lib/middle-truncate.pipe';
 export * from './lib/ng-utils.module';
 export * from './lib/nth.pipe';
+export * from './lib/overflow.directive';
 export * from './lib/prop.pipe';
 export * from './lib/provide-helpers';
 export * from './lib/resource-value-guard';
