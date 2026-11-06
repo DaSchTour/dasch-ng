@@ -84,6 +84,12 @@ export class ExampleComponent {
 
 - `decimalBytes` - Format bytes to human-readable sizes
 
+**Text:**
+
+- `truncateText` - Shorten text at a word boundary
+- `middleTruncate` - Split a string for an ellipsis in the middle
+- `highlight` - Split text into matching segments for a search term
+
 **Symbol Utilities:**
 
 - `symbolKeyFor` - Get key for global symbol

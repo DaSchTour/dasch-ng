@@ -25,6 +25,7 @@ The library includes over 15 standalone pipes organized into the following categ
 - **Object Utilities**: Extract and transform object properties
 - **Type Checking**: Runtime type guards for templates
 - **Formatting**: Format values for display
+- **Text**: Truncate and highlight text
 - **Symbol Utilities**: Work with JavaScript symbols
 
 ## Array Manipulation Pipes
@@ -413,6 +414,77 @@ import { DecimalBytesPipe } from '@dasch-ng/utils';
 1536000 | decimalBytes    // → "1.54 MB"
 1536000 | decimalBytes:3  // → "1.536 MB"
 0 | decimalBytes          // → "0 B"
+```
+
+## Text Pipes
+
+### TruncateTextPipe
+
+Shortens text to at most `limit` characters (default 160) plus `…`, cutting at the last space before the limit. If that space is in the first half, it cuts at the limit.
+
+```typescript
+import { TruncateTextPipe } from '@dasch-ng/utils';
+
+@Component({
+  imports: [TruncateTextPipe],
+  template: `<p>{{ description | truncateText: 120 }}</p>`,
+})
+```
+
+```typescript
+'The quick brown fox jumps' | truncateText:18  // → "The quick brown…"
+'short' | truncateText:18                      // → "short"
+```
+
+### MiddleTruncatePipe
+
+Splits a string into `{ head, tail }` so the ellipsis lands in the middle and the end stays visible, for example the take number and extension of a filename. The cut goes to a delimiter (`_`, `-`, `.`, space) within the last 16 characters, otherwise the tail is 6 characters. Graphemes (emoji, accents) are never split.
+
+```typescript
+import { MiddleTruncatePipe } from '@dasch-ng/utils';
+
+@Component({
+  imports: [MiddleTruncatePipe],
+  template: `
+    @let name = file.name | middleTruncate;
+    <span class="name" [title]="file.name">
+      <span class="head">{{ name.head }}</span><span class="tail">{{ name.tail }}</span>
+    </span>
+  `,
+  styles: `
+    .name { display: flex; min-width: 0; }
+    .head { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .tail { flex-shrink: 0; white-space: pre; }
+  `,
+})
+```
+
+```typescript
+'20260901_Concert_Hamburg_Cam3_0042.mov' | middleTruncate;
+// → { head: '20260901_Concert_Hamburg', tail: '_Cam3_0042.mov' }
+// renders as "20260901_Conc…_Cam3_0042.mov" in a narrow column
+```
+
+### HighlightPipe
+
+Splits text into `{ text, match }` segments for a search term (case-insensitive, matched literally). The template renders the matches, so there is no `innerHTML` and nothing to sanitize.
+
+```typescript
+import { HighlightPipe } from '@dasch-ng/utils';
+
+@Component({
+  imports: [HighlightPipe],
+  template: `
+    @for (part of label | highlight: query(); track $index) {
+      @if (part.match) {<mark>{{ part.text }}</mark>} @else {{{ part.text }}}
+    }
+  `,
+})
+```
+
+```typescript
+'Stadium light' | highlight:'stad'
+// → [{ text: 'Stad', match: true }, { text: 'ium light', match: false }]
 ```
 
 ## Symbol Utilities
