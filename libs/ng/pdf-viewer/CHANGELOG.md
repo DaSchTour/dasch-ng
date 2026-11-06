@@ -1,3 +1,7 @@
+## 11.0.0-rc.2 (2026-11-06)
+
+This was a version bump only for pdf-viewer to align it with other projects, there were no code changes.
+
 ## 11.0.0-rc.1 (2026-11-06)
 
 ### 🩹 Fixes
