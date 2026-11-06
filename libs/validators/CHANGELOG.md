@@ -1,3 +1,17 @@
+## 0.2.0 (2026-11-06)
+
+### 🚀 Features
+
+- **validators:** add json, integer, float, not-blank and unique validators ([#1219](https://github.com/DaSchTour/dasch-ng/pull/1219))
+
+### 🩹 Fixes
+
+- **validators:** report invalid hex values instead of valid ones ([#1220](https://github.com/DaSchTour/dasch-ng/pull/1220))
+
+### ❤️ Thank You
+
+- Daniel Schuba @DaSchTour
+
 ## 0.1.0 (2025-12-30)
 
 ### 🚀 Features
