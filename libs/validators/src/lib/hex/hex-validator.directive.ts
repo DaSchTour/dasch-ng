@@ -15,6 +15,6 @@ import { hexValidator } from './hex.validator';
 })
 export class HexValidatorDirective implements Validator {
   validate(control: AbstractControl): ValidationErrors | null {
-    return control.value && hexValidator(control.value) ? { invalidHex: true } : null;
+    return control.value && !hexValidator(control.value) ? { invalidHex: true } : null;
   }
 }

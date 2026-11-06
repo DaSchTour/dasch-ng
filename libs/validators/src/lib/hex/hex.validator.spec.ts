@@ -21,3 +21,10 @@ describe('hexValidator', () => {
     expect(hexValidator('ff', 2)).toBe(true);
   });
 });
+
+describe('hexValidator length', () => {
+  it('ff00ff00: should return false for a value longer than the given length', () => {
+    expect(hexValidator('ff00ff00')).toBe(false);
+    expect(hexValidator('#ff00ffZZ')).toBe(false);
+  });
+});
