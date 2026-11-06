@@ -56,6 +56,40 @@ Type-safe provider functions for Angular DI:
 
 - `resourceValueGuard` - Safe value extraction from Angular Resources
 
+### Event Modifiers
+
+`provideEventModifiers()` adds Vue-style modifiers to template event bindings:
+
+| Modifier   | Effect                                                            |
+| ---------- | ----------------------------------------------------------------- |
+| `.prevent` | Calls `event.preventDefault()`                                    |
+| `.stop`    | Calls `event.stopPropagation()`                                   |
+| `.self`    | Runs the handler only when the event target is the element itself |
+
+Modifiers combine and work with key filters:
+
+```typescript
+// app.config.ts
+import { provideEventModifiers } from '@dasch-ng/utils';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideEventModifiers()],
+};
+```
+
+```html
+<a routerLink="/assets/1">
+  Asset
+  <button (click.stop.prevent)="addToAlbum()">Add</button>
+</a>
+
+<div class="backdrop" (click.self)="close()">…</div>
+
+<input (keydown.enter.prevent)="submit()" />
+```
+
+**When to use:** action buttons inside clickable cards or links, backdrops that close on outside clicks, and forms where Enter should not submit. It replaces `$event.stopPropagation()` calls in templates and handlers.
+
 ## Quick Start
 
 ```typescript

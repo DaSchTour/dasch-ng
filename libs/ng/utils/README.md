@@ -102,6 +102,10 @@ export class ExampleComponent {
 
 - `resourceValueGuard` - Safe value extraction from Angular Resources
 
+**Event Modifiers:**
+
+- `provideEventModifiers` - `(click.stop)`, `(click.prevent)`, `(click.self)` and combinations like `(click.stop.prevent)` in templates
+
 ## Documentation
 
 Full documentation is available at [dasch.ng](https://dasch.ng/libraries/ng-utils)
