@@ -1,4 +1,5 @@
 export * from './lib/decimal-bytes.pipe';
+export * from './lib/event-modifiers.plugin';
 export * from './lib/includes.pipe';
 export * from './lib/included-in.pipe';
 export * from './lib/is-empty.pipe';
