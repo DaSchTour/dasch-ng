@@ -29,21 +29,21 @@ bun add @dasch-ng/utils
 
 ### Pipes
 
-Over 15 standalone pipes for common operations:
+Over 25 standalone pipes for common operations:
 
 - **Array Manipulation**: `reverse`, `join`, `nth`, `sortBy`
-- **Collection Utilities**: `size`, `includes`, `includedIn`
-- **Object Utilities**: `prop`
+- **Collection Utilities**: `size`, `includes`, `includedIn`, `without`, `values`
+- **Object Utilities**: `prop`, `omit`, `parseJson`
 - **Type Checking**: `isNil`, `isNull`, `isUndefined`, `isEmpty`
 - **Formatting**: `decimalBytes`, `binaryBytes`
-- **Text**: `truncateText`, `middleTruncate`, `highlight`
+- **Text**: `truncateText`, `middleTruncate`, `highlight`, `upperFirst`
 - **Symbol Utilities**: `symbolKeyFor`
 
 [→ View all pipes documentation](/libraries/ng-utils/pipes)
 
 ### Intl Pipes
 
-`@dasch-ng/utils/intl` adds pipes on top of the browser's `Intl` APIs, without `registerLocaleData()`: `intlNumber`, `intlCurrency` (also for amounts in cents), `intlDate`, `intlDateRange`, `intlRelativeTime`, `intlList`, `intlPlural`, `intlDisplayName` and `intlDuration`.
+`@dasch-ng/utils/intl` adds pipes on top of the browser's `Intl` APIs, without `registerLocaleData()`: `intlNumber`, `intlCurrency` (also for amounts in cents), `intlDate`, `intlDateRange`, `intlRelativeTime`, `intlList`, `intlPlural`, `intlDisplayName`, `intlDuration`, `intlLocalized` and `intlCanonicalLocale`.
 
 [→ View Intl pipes documentation](/libraries/ng-utils/intl)
 

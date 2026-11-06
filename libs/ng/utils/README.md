@@ -68,10 +68,14 @@ export class ExampleComponent {
 - `size` - Get size of any iterable
 - `includes` - Check if array includes value
 - `includedIn` - Check if value is in array
+- `without` - Remove values from an array
+- `values` - Values of a Map, Set or object, in insertion order
 
 **Object Utilities:**
 
 - `prop` - Extract property from object
+- `omit` - Copy an object without some keys
+- `parseJson` - Parse JSON, `null` instead of an exception
 
 **Type Checking:**
 
@@ -90,6 +94,7 @@ export class ExampleComponent {
 - `truncateText` - Shorten text at a word boundary
 - `middleTruncate` - Split a string for an ellipsis in the middle
 - `highlight` - Split text into matching segments for a search term
+- `upperFirst` - Uppercase the first character, locale-aware
 
 **Symbol Utilities:**
 
@@ -97,7 +102,7 @@ export class ExampleComponent {
 
 **Intl Pipes** (`@dasch-ng/utils/intl`, no `registerLocaleData()` needed):
 
-- `intlNumber`, `intlCurrency` (with `minorUnits` for cents), `intlDate`, `intlDateRange`, `intlRelativeTime`, `intlList`, `intlPlural`, `intlDisplayName`, `intlDuration`
+- `intlNumber`, `intlCurrency` (with `minorUnits` for cents), `intlDate`, `intlDateRange`, `intlRelativeTime`, `intlList`, `intlPlural`, `intlDisplayName`, `intlDuration`, `intlLocalized`, `intlCanonicalLocale`
 
 ```typescript
 import { IntlCurrencyPipe, IntlRelativeTimePipe } from '@dasch-ng/utils/intl';

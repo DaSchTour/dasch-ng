@@ -5,6 +5,7 @@ import { IntlDatePipe, IntlDateRangePipe } from './intl-date.pipe';
 import { IntlDisplayNamePipe } from './intl-display-name.pipe';
 import { IntlDurationPipe, splitMilliseconds } from './intl-duration.pipe';
 import { IntlListPipe } from './intl-list.pipe';
+import { IntlCanonicalLocalePipe, IntlLocalizedPipe } from './intl-localized.pipe';
 import { IntlNumberPipe } from './intl-number.pipe';
 import { IntlPluralPipe } from './intl-plural.pipe';
 import { IntlRelativeTimePipe } from './intl-relative-time.pipe';
@@ -168,5 +169,44 @@ describe('IntlDurationPipe', () => {
   it('splits milliseconds without mixing signs', () => {
     expect(splitMilliseconds(3_723_004)).toEqual({ hours: 1, minutes: 2, seconds: 3, milliseconds: 4 });
     expect(splitMilliseconds(-61_000)).toEqual({ hours: 0, minutes: -1, seconds: -1, milliseconds: 0 });
+  });
+});
+
+describe('IntlLocalizedPipe', () => {
+  const titles = { de: 'Hallo', en: 'Hello', 'fr-CA': 'Bonjour' };
+
+  it('picks the exact locale, then its language', () => {
+    expect(create(IntlLocalizedPipe, 'de').transform(titles)).toBe('Hallo');
+    expect(create(IntlLocalizedPipe, 'de-AT').transform(titles)).toBe('Hallo');
+    expect(create(IntlLocalizedPipe, 'fr-FR').transform(titles)).toBe('Bonjour');
+    expect(create(IntlLocalizedPipe, 'en').transform({ 'EN-us': 'Hi' })).toBe('Hi');
+  });
+
+  it('falls back to the fallback locales, then the first non-empty value', () => {
+    expect(create(IntlLocalizedPipe, 'pl').transform(titles)).toBe('Hello');
+    expect(create(IntlLocalizedPipe, 'pl').transform(titles, { fallback: ['de'] })).toBe('Hallo');
+    expect(create(IntlLocalizedPipe, 'pl').transform({ it: '', es: 'Hola' })).toBe('Hola');
+    expect(create(IntlLocalizedPipe, 'pl').transform(titles, { locale: 'en' })).toBe('Hello');
+  });
+
+  it('skips empty values and returns null when nothing is set', () => {
+    expect(create(IntlLocalizedPipe, 'de').transform({ de: '', en: 'Hello' })).toBe('Hello');
+    expect(create(IntlLocalizedPipe, 'de').transform({ de: '' })).toBeNull();
+    expect(create(IntlLocalizedPipe, 'de').transform(null)).toBeNull();
+  });
+});
+
+describe('IntlCanonicalLocalePipe', () => {
+  const pipe = new IntlCanonicalLocalePipe();
+
+  it('normalizes language tags', () => {
+    expect(pipe.transform('de-de')).toBe('de-DE');
+    expect(pipe.transform('EN_us')).toBe('en-US');
+    expect(pipe.transform('zh-hant-tw')).toBe('zh-Hant-TW');
+  });
+
+  it('returns invalid tags unchanged', () => {
+    expect(pipe.transform('not a tag')).toBe('not a tag');
+    expect(pipe.transform(null)).toBe('');
   });
 });
