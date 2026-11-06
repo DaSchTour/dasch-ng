@@ -146,14 +146,55 @@ apps/
 - Built with ng-packagr
 - Use Vitest via `@nx/angular:unit-test` (Angular's official test runner integration)
 - Have `ng-package.json` configuration
-- Examples: route-signals, pdf-viewer, gravatar, json-viewer, ng-utils, material-right-sheet, validators, decorators
+- Examples: route-signals, pdf-viewer, gravatar, json-viewer, ng-utils, material-right-sheet, validators
 
 **Vite Libraries** (using `@nx/vite:build`):
 
 - Built with Vite
 - Use Vitest (`@nx/vitest:test`) for testing
 - Standalone TypeScript/JavaScript utilities
-- Examples: rxjs-operators, web-utils
+- Examples: rxjs-operators, web-utils, decorators, postcss-custom-container
+
+### Library Boundaries
+
+Check new code against these rules before choosing a library. Dependencies only point downwards: Angular libraries may use framework-free libraries, never the other way round.
+
+**1. Framework-free** (no Angular imports, usable in any web or Node project)
+
+| Library                    | Scope                                                                                                                    | Allowed dependencies |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------- |
+| `web-utils`                | Browser and plain TypeScript helpers: files, downloads, URLs, strings (slug, redaction), parsing (`Content-Disposition`) | none                 |
+| `rxjs-operators`           | RxJS operators                                                                                                           | `rxjs`, `@fxts/core` |
+| `decorators`               | TypeScript method/class decorators                                                                                       | `rxjs`, `@fxts/core` |
+| `postcss-custom-container` | PostCSS plugin                                                                                                           | `postcss`            |
+
+**2. Angular, general purpose** (`@angular/core`, `@angular/common`, `@angular/platform-browser` only)
+
+| Library    | Scope                                                                                                                                                      |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ng-utils` | Pipes (formatting with `Intl`, text, collections, type checks), small attribute directives without a topic of their own, DI helpers, event manager plugins |
+
+**3. Angular, one topic each** (may add the Angular package that topic needs)
+
+| Library                                | Scope                                                                                                          | Extra dependencies |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------ |
+| `route-signals`                        | Router state as signals, signals written back to the URL                                                       | `@angular/router`  |
+| `validators`                           | Form validators (`ValidatorFn` plus directive)                                                                 | `@angular/forms`   |
+| `resize-observer`, `mutation-observer` | One browser observer API each, as service plus directive                                                       | —                  |
+| `gravatar`                             | Gravatar URLs, pipe, directive                                                                                 | —                  |
+| planned: file handling                 | Download service/directive, file drop and file select, `ControlValueAccessor` for files; builds on `web-utils` | `@angular/forms`   |
+
+**4. Angular components** (own UI and styles)
+
+`json-viewer`, `pdf-viewer`, `material-right-sheet` (`@angular/material`, `@angular/cdk`).
+
+**Placement rules**
+
+- Logic that is useful without Angular goes into a framework-free library; the Angular library only wraps it (pipe, directive, service).
+- A pipe or directive belongs in `ng-utils` unless it needs an Angular package beyond core/common/platform-browser or belongs to a topic that has its own library.
+- A new topic library is worth it when it has several exports with a shared purpose or needs its own peer dependency. A single helper goes into an existing library.
+- No new third-party dependencies for things the platform can do (`Intl`, `structuredClone`, native array methods instead of lodash, luxon or date-fns).
+- No app- or design-system-specific code: no selector prefixes of other projects, no Tailwind or daisyUI classes, no hard-coded UI texts or `$localize` IDs.
 
 ### Testing Setup
 
