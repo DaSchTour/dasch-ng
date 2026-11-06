@@ -3,7 +3,7 @@ name: Publish Package
 on:
   push:
     tags:
-      - '*'
+      - '**'
   workflow_dispatch:
 
 permissions:
@@ -24,7 +24,7 @@ jobs:
         with:
           bun-version: latest
 
-      # npm publish handles the OIDC exchange, which needs npm 11.5.1 or later
+      # npm stage publish handles the OIDC exchange, which needs npm 11.15.0 or later
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .nvmrc
@@ -74,4 +74,5 @@ jobs:
               ;;
           esac
 
-          npm publish --access public --tag "$dist_tag"
+          # The trusted publisher only allows staging; a maintainer approves the version on npmjs.com.
+          npm stage publish --access public --tag "$dist_tag"
