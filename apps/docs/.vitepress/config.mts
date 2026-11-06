@@ -47,6 +47,7 @@ export default defineConfig({
               items: [
                 { text: 'Pipes', link: '/libraries/ng-utils/pipes' },
                 { text: 'Intl Pipes', link: '/libraries/ng-utils/intl' },
+                { text: 'Media Pipes', link: '/libraries/ng-utils/media' },
                 { text: 'Provider Helpers', link: '/libraries/ng-utils/provide-helpers' },
               ],
             },

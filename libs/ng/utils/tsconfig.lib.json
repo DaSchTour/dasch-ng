@@ -8,8 +8,8 @@
     "types": [],
     "moduleResolution": "bundler"
   },
-  "exclude": ["src/**/*.spec.ts", "src/**/*.test.ts", "intl/src/**/*.spec.ts"],
-  "include": ["src/**/*.ts", "intl/src/**/*.ts"],
+  "exclude": ["src/**/*.spec.ts", "src/**/*.test.ts", "intl/src/**/*.spec.ts", "media/src/**/*.spec.ts"],
+  "include": ["src/**/*.ts", "intl/src/**/*.ts", "media/src/**/*.ts"],
   "angularCompilerOptions": {
     "extendedDiagnostics": {
       "checks": {
