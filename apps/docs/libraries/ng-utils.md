@@ -35,11 +35,17 @@ Over 15 standalone pipes for common operations:
 - **Collection Utilities**: `size`, `includes`, `includedIn`
 - **Object Utilities**: `prop`
 - **Type Checking**: `isNil`, `isNull`, `isUndefined`, `isEmpty`
-- **Formatting**: `decimalBytes`, `binaryBytes`, `minorUnitCurrency`, `displayName`
+- **Formatting**: `decimalBytes`, `binaryBytes`
 - **Text**: `truncateText`, `middleTruncate`, `highlight`
 - **Symbol Utilities**: `symbolKeyFor`
 
 [→ View all pipes documentation](/libraries/ng-utils/pipes)
+
+### Intl Pipes
+
+`@dasch-ng/utils/intl` adds pipes on top of the browser's `Intl` APIs, without `registerLocaleData()`: `intlNumber`, `intlCurrency` (also for amounts in cents), `intlDate`, `intlDateRange`, `intlRelativeTime`, `intlList`, `intlPlural`, `intlDisplayName` and `intlDuration`.
+
+[→ View Intl pipes documentation](/libraries/ng-utils/intl)
 
 ### Dependency Injection Helpers
 

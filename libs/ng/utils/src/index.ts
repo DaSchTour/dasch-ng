@@ -1,6 +1,5 @@
 export * from './lib/binary-bytes.pipe';
 export * from './lib/decimal-bytes.pipe';
-export * from './lib/display-name.pipe';
 export * from './lib/event-modifiers.plugin';
 export * from './lib/highlight.pipe';
 export * from './lib/includes.pipe';
@@ -9,7 +8,6 @@ export * from './lib/is-empty.pipe';
 export * from './lib/is-nil.pipe';
 export * from './lib/join.pipe';
 export * from './lib/middle-truncate.pipe';
-export * from './lib/minor-unit-currency.pipe';
 export * from './lib/ng-utils.module';
 export * from './lib/nth.pipe';
 export * from './lib/prop.pipe';
