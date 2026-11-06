@@ -12,6 +12,7 @@ npm install @dasch-ng/validators
 
 - **Hex Validator**: Validates hexadecimal color codes and values
 - **Number Validator**: Enhanced number validation with range support
+- **JSON, Integer, Float, Not Blank, Unique**: Common checks as `ValidatorFn` and directive
 - **Directive-based**: Easy integration with Angular Reactive and Template-driven forms
 - **Type-safe**: Full TypeScript support with proper typings
 
@@ -55,6 +56,11 @@ export class ExampleComponent {
 - **hexValidator** - Validates hexadecimal values (with or without `#` prefix)
 - **numberValidator** - Validates numeric input with optional min/max constraints
 - **nativeNumberValidator** - Enhanced native number input validation
+- **jsonValidator** / `validateJson` - Validates JSON text, reports the parser message
+- **integerValidator** / `validateInteger` - Integer numbers or numeric strings
+- **floatValidator** / `validateFloat` - Finite numbers or numeric strings
+- **notBlankValidator** / `validateNotBlank` - Rejects empty or whitespace-only strings
+- **uniqueValidator(existing, { caseInsensitive })** / `[validateUnique]` - Rejects values already in a list
 
 ## API Reference
 

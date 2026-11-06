@@ -13,6 +13,7 @@ npm install @dasch-ng/validators
 - **Hex Validation**: Validate hexadecimal color codes and values
 - **Number Validation**: Enhanced number validation with flexible input formats
 - **Native Number Validation**: Leverage browser's native number input validation
+- **JSON, Integer, Float, Not Blank, Unique**: Validators for structured text, numeric strings, whitespace-only input and duplicates
 - **Directive-based**: Easy integration with Angular forms
 - **Standalone**: All validators are standalone and tree-shakeable
 - **Type-safe**: Full TypeScript support with proper typings
@@ -221,6 +222,54 @@ function hexValidator(value: string, length?: number): boolean;
 [View API Documentation →](../api/@dasch-ng/validators/functions/hexValidator.html)
 
 ---
+
+## JSON, Integer, Float, Not Blank and Unique
+
+Each validator exists as a `ValidatorFn` for reactive forms and as a directive for template-driven forms. Empty values pass (except for `notBlankValidator`), so combine them with `Validators.required` where a value is mandatory.
+
+| Function                                         | Directive                                                   | Error                          | Fails when                             |
+| ------------------------------------------------ | ----------------------------------------------------------- | ------------------------------ | -------------------------------------- |
+| `jsonValidator`                                  | `validateJson`                                              | `{ invalidJson: { message } }` | the string is not valid JSON           |
+| `integerValidator`                               | `validateInteger`                                           | `{ invalidInteger: true }`     | the value is not an integer            |
+| `floatValidator`                                 | `validateFloat`                                             | `{ invalidFloat: true }`       | the value is not a finite number       |
+| `notBlankValidator`                              | `validateNotBlank`                                          | `{ blank: true }`              | the string is empty or whitespace only |
+| `uniqueValidator(existing, { caseInsensitive })` | `[validateUnique]="existing"` (`caseInsensitive` attribute) | `{ notUnique: true }`          | the value is already in `existing`     |
+
+Integer and float accept numbers and numeric strings, so they work with text inputs too. The unique directive re-validates when the list changes.
+
+### Example
+
+```typescript
+import { Component, signal } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { jsonValidator, notBlankValidator, UniqueValidatorDirective, uniqueValidator } from '@dasch-ng/validators';
+
+@Component({
+  selector: 'app-preset-form',
+  imports: [FormsModule, ReactiveFormsModule, UniqueValidatorDirective],
+  template: `
+    <input [formControl]="name" />
+    @if (name.hasError('notUnique')) {
+      <span>This name is already taken.</span>
+    }
+
+    <textarea [formControl]="config"></textarea>
+    @if (config.getError('invalidJson'); as error) {
+      <span>Invalid JSON: {{ error.message }}</span>
+    }
+
+    <!-- template-driven -->
+    <input name="alias" [(ngModel)]="alias" [validateUnique]="existingNames()" caseInsensitive />
+  `,
+})
+export class PresetFormComponent {
+  readonly existingNames = signal(['Default', 'Archive']);
+  alias = '';
+
+  readonly name = new FormControl('', [Validators.required, notBlankValidator, uniqueValidator(this.existingNames())]);
+  readonly config = new FormControl('{}', [jsonValidator]);
+}
+```
 
 ## Common Patterns
 
