@@ -2,6 +2,11 @@
   "name": "@dasch-ng/pdf-viewer",
   "version": "11.0.0-rc.2",
   "description": "Angular standalone component for rendering PDF documents (fork of ng2-pdf-viewer)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaSchTour/dasch-ng.git",
+    "directory": "libs/ng/pdf-viewer"
+  },
   "license": "MIT",
   "keywords": [
     "angular",
