@@ -1,6 +1,6 @@
 # Web Utils
 
-Utility functions for common web development tasks. This library provides helpers for SVG conversion, file downloads, and file handling that work in any modern browser environment.
+Utility functions for common web development tasks. This library provides helpers for SVG conversion, file downloads, file handling, URL slugs and URL redaction that work in any modern browser environment, without framework dependencies.
 
 ## Installation
 
@@ -82,6 +82,92 @@ input.addEventListener('change', (event) => {
 [View API Documentation →](../api/@dasch-ng/web-utils/README)
 
 ---
+
+---
+
+### parseContentDisposition
+
+Parses a `Content-Disposition` header (RFC 6266): quoted values with escapes, unquoted tokens and `filename*=UTF-8''…`, which wins over `filename`. Returns `{ type, filename?, parameters }` or `null` for an empty header.
+
+**Use case:** Name a file downloaded with `fetch` the way the server suggests.
+
+#### Example
+
+```typescript
+import { download, parseContentDisposition } from '@dasch-ng/web-utils';
+
+const response = await fetch('/api/reports/42');
+const { filename } = parseContentDisposition(response.headers.get('Content-Disposition')) ?? {};
+await download(await response.blob(), filename ?? 'report');
+
+parseContentDisposition(`attachment; filename*=UTF-8''%E2%82%AC%20rates.pdf`)?.filename; // '€ rates.pdf'
+```
+
+The file name is not sanitized; strip path separators before using it as a path.
+
+[View API Documentation →](../api/@dasch-ng/web-utils/README)
+
+---
+
+### fileTypeOf
+
+Classifies a file name or `File` by extension as `'video'`, `'image'`, `'audio'`, `'document'`, `'spreadsheet'` or `'archive'`, or `null`. The patterns are exported as `FILE_TYPE_PATTERNS`.
+
+**Use case:** Pick an icon or a preview for an upload list. The extension says nothing about the content, so it is no security check.
+
+#### Example
+
+```typescript
+import { fileTypeOf } from '@dasch-ng/web-utils';
+
+fileTypeOf('Interview_Take3.MOV'); // 'video'
+fileTypeOf(input.files[0]); // e.g. 'image'
+fileTypeOf('notes'); // null
+```
+
+[View API Documentation →](../api/@dasch-ng/web-utils/README)
+
+---
+
+### toSlug
+
+Turns text into a URL slug of `[a-z0-9-]`: lowercased, accents removed, German umlauts written out (`ü` → `ue`), separators collapsed, cut at a word boundary. NFC and NFD spellings give the same slug.
+
+**Options:** `maxLength` (default `80`), `fallback` (used when no Latin letters or digits are left), `expandUmlauts` (default `true`).
+
+#### Example
+
+```typescript
+import { toSlug } from '@dasch-ng/web-utils';
+
+toSlug('Grüne Wälder über Köln'); // 'gruene-waelder-ueber-koeln'
+toSlug('Café au Łódź'); // 'cafe-au-lodz'
+toSlug('Grün', { expandUmlauts: false }); // 'grun'
+toSlug('東京', { fallback: 'item-42' }); // 'item-42'
+```
+
+[View API Documentation →](../api/@dasch-ng/web-utils/README)
+
+---
+
+### redactUrl
+
+Removes secret query parameters (OAuth `code`/`state`, tokens, client secrets; exported as `SECRET_URL_PARAMS`) and the fragment from an absolute http(s) URL. Other strings come back unchanged.
+
+**Use case:** Clean page URLs before they go to analytics, error tracking or logs.
+
+#### Example
+
+```typescript
+import { redactUrl, SECRET_URL_PARAMS } from '@dasch-ng/web-utils';
+
+redactUrl('https://example.com/callback?code=abc&lang=de#access_token=x');
+// 'https://example.com/callback?lang=de'
+
+redactUrl(url, { params: [...SECRET_URL_PARAMS, 'email'], keepHash: true });
+```
+
+[View API Documentation →](../api/@dasch-ng/web-utils/README)
 
 ## Common Patterns
 
