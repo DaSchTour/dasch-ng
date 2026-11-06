@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@dasch-ng/route-signals.svg)](https://www.npmjs.com/package/@dasch-ng/route-signals)
 
-Angular utilities for working with route parameters, query parameters, and route data as signals.
+Angular utilities for working with route parameters, query parameters, and route data as signals, plus writing signals back into query parameters.
 
 ## Features
 
@@ -196,6 +196,38 @@ Creates a signal that tracks a route data property.
   - `key`: The name of the data property to track
 - **Returns:** A signal containing the route data value
 - **Throws:** Error if the data property is not present in the current route
+
+### `bindQuerySignal<T>(options: BindQuerySignalOptions<T>): void`
+
+Writes a `WritableSignal` into a query parameter. The signal is set once from the URL on creation; later changes update the URL (debounced, `replaceUrl`, other parameters kept). A value that serializes like `defaultValue` removes the parameter.
+
+- **Options:** `signal`, `param`, `defaultValue`, optional `serialize(value) => string | null` and `deserialize(raw) => T`
+- The URL is only read on creation. Combine with `routeQueryParam` to follow back/forward navigation.
+
+```typescript
+export class AssetListComponent {
+  readonly search = signal('');
+  readonly size = signal<MinMaxRange | null>(null);
+
+  constructor() {
+    bindQuerySignal({ signal: this.search, param: 'q', defaultValue: '' });
+    bindQuerySignal({
+      signal: this.size,
+      param: 'size',
+      defaultValue: null,
+      serialize: serializeMinMaxRange,
+      deserialize: deserializeMinMaxRange,
+    });
+  }
+}
+```
+
+### Query parameter codecs
+
+Ready-made `serialize`/`deserialize` pairs for `bindQuerySignal`:
+
+- `serializeMinMaxRange` / `deserializeMinMaxRange`: `{ min: 5, max: 100 }` ⇄ `5-100` (open sides: `5-`, `-100`)
+- `serializeDateRange` / `deserializeDateRange`: `{ start, end }` ⇄ `2026-01-01,2026-02-15` (local calendar dates)
 
 ## URL Decoding
 

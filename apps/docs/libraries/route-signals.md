@@ -20,7 +20,7 @@ bun add @dasch-ng/route-signals
 - 🔄 **Reactive** - Automatically updates when route changes
 - 🔓 **Auto URL Decoding** - Automatic decoding of URL-encoded parameters
 - 🚀 **Modern Angular** - Built with Angular's `inject()` and signals API
-- ✨ **Simple API** - Three intuitive functions for all route tracking needs
+- ✨ **Simple API** - Three functions for reading route state, one for writing signals back to the URL
 - 🛡️ **Error Handling** - Clear error messages when parameters are missing
 
 ## Basic Usage
@@ -124,14 +124,14 @@ Creates a signal that tracks a URL-encoded route parameter and automatically dec
 **Signature:**
 
 ```typescript
-function routeParam(key: string): Signal<string>
+function routeParam(key: string): Signal<string>;
 ```
 
 **Parameters:**
 
-| Parameter | Type     | Description                           |
-| --------- | -------- | ------------------------------------- |
-| `key`     | `string` | The name of the route parameter       |
+| Parameter | Type     | Description                     |
+| --------- | -------- | ------------------------------- |
+| `key`     | `string` | The name of the route parameter |
 
 **Returns:** `Signal<string>` - A signal containing the decoded parameter value
 
@@ -160,14 +160,14 @@ Creates a signal that tracks a URL-encoded query parameter and automatically dec
 **Signature:**
 
 ```typescript
-function routeQueryParam(key: string): Signal<string>
+function routeQueryParam(key: string): Signal<string>;
 ```
 
 **Parameters:**
 
-| Parameter | Type     | Description                       |
-| --------- | -------- | --------------------------------- |
-| `key`     | `string` | The name of the query parameter   |
+| Parameter | Type     | Description                     |
+| --------- | -------- | ------------------------------- |
+| `key`     | `string` | The name of the query parameter |
 
 **Returns:** `Signal<string>` - A signal containing the decoded query parameter value
 
@@ -195,20 +195,20 @@ Creates a signal that tracks a typed route data property.
 **Signature:**
 
 ```typescript
-function routeData<T>(key: string): Signal<T>
+function routeData<T>(key: string): Signal<T>;
 ```
 
 **Type Parameters:**
 
-| Parameter | Description                               |
-| --------- | ----------------------------------------- |
-| `T`       | The type of the data property             |
+| Parameter | Description                   |
+| --------- | ----------------------------- |
+| `T`       | The type of the data property |
 
 **Parameters:**
 
-| Parameter | Type     | Description                       |
-| --------- | -------- | --------------------------------- |
-| `key`     | `string` | The name of the data property     |
+| Parameter | Type     | Description                   |
+| --------- | -------- | ----------------------------- |
+| `key`     | `string` | The name of the data property |
 
 **Returns:** `Signal<T>` - A signal containing the route data value
 
@@ -240,6 +240,75 @@ export class SettingsComponent {
   }
 }
 ```
+
+### bindQuerySignal
+
+Writes a writable signal into a query parameter, for example a search box or a filter that should survive a reload or a shared link.
+
+**Signature:**
+
+```typescript
+function bindQuerySignal<T>(options: BindQuerySignalOptions<T>): void;
+```
+
+**Options:**
+
+| Option         | Type                           | Description                                                                  |
+| -------------- | ------------------------------ | ---------------------------------------------------------------------------- |
+| `signal`       | `WritableSignal<T>`            | The signal to mirror into the URL                                            |
+| `param`        | `string`                       | Query parameter name                                                         |
+| `defaultValue` | `T`                            | Value that removes the parameter from the URL                                |
+| `serialize`    | `(value: T) => string \| null` | Optional. Defaults to `String(value)`; return `null` to remove the parameter |
+| `deserialize`  | `(raw: string) => T`           | Optional. Defaults to the raw string                                         |
+
+**Behavior:**
+
+- On creation, the signal is set once from the current URL. Opening a deep link does not trigger a navigation.
+- Later changes navigate with `replaceUrl: true` and `queryParamsHandling: 'merge'`, debounced by 50 ms, so other parameters stay untouched and typing does not flood the history.
+- No navigation happens when the URL already holds the value or while another navigation is running.
+- The URL is only read on creation. To react to back/forward navigation, read the parameter with `routeQueryParam` as well.
+- Must be called in an injection context (field initializer or constructor).
+
+**Example:**
+
+```typescript
+import { Component, signal } from '@angular/core';
+import { bindQuerySignal, deserializeMinMaxRange, MinMaxRange, serializeMinMaxRange } from '@dasch-ng/route-signals';
+
+@Component({
+  selector: 'app-asset-list',
+  template: `<input [value]="search()" (input)="search.set($any($event.target).value)" />`,
+})
+export class AssetListComponent {
+  readonly search = signal('');
+  readonly page = signal(1);
+  readonly size = signal<MinMaxRange | null>(null);
+
+  constructor() {
+    // /assets?q=cat&page=2&size=5-100
+    bindQuerySignal({ signal: this.search, param: 'q', defaultValue: '' });
+    bindQuerySignal({ signal: this.page, param: 'page', defaultValue: 1, deserialize: Number });
+    bindQuerySignal({
+      signal: this.size,
+      param: 'size',
+      defaultValue: null,
+      serialize: serializeMinMaxRange,
+      deserialize: deserializeMinMaxRange,
+    });
+  }
+}
+```
+
+### Query parameter codecs
+
+Ready-made `serialize`/`deserialize` pairs for `bindQuerySignal`:
+
+| Functions                                         | Value                            | URL form                |
+| ------------------------------------------------- | -------------------------------- | ----------------------- |
+| `serializeMinMaxRange` / `deserializeMinMaxRange` | `{ min?: number; max?: number }` | `5-100`, `5-`, `-100`   |
+| `serializeDateRange` / `deserializeDateRange`     | `{ start?: Date; end?: Date }`   | `2026-01-01,2026-02-15` |
+
+Dates are written as local calendar dates, so a date never shifts by a day across time zones. Invalid parts deserialize to `undefined` (numbers) or `null` (dates).
 
 ## Common Use Cases
 
