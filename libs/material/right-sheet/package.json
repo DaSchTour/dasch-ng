@@ -1,6 +1,11 @@
 {
   "name": "@dasch-ng/material-right-sheet",
   "version": "2.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaSchTour/dasch-ng.git",
+    "directory": "libs/material/right-sheet"
+  },
   "keywords": [
     "angular",
     "ng",
@@ -17,10 +22,6 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/daschtour/dasch-ng.git"
   },
   "peerDependencies": {
     "@angular/common": "^21.0.0 || ^22.0.0",

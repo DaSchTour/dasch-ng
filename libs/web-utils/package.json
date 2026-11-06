@@ -1,6 +1,11 @@
 {
   "name": "@dasch-ng/web-utils",
   "version": "1.0.0-rc.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaSchTour/dasch-ng.git",
+    "directory": "libs/web-utils"
+  },
   "type": "module",
   "main": "./index.cjs",
   "module": "./index.js",

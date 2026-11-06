@@ -1,6 +1,11 @@
 {
   "name": "@dasch-ng/gravatar",
   "version": "0.1.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaSchTour/dasch-ng.git",
+    "directory": "libs/gravatar"
+  },
   "publishConfig": {
     "access": "public"
   },
