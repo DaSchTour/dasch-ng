@@ -416,6 +416,56 @@ import { DecimalBytesPipe } from '@dasch-ng/utils';
 0 | decimalBytes          // → "0 B"
 ```
 
+### BinaryBytesPipe
+
+The base-1024 counterpart to `decimalBytes`, with IEC units (`KiB`, `MiB`, `GiB`, …). Use it where sizes follow memory or file-system conventions. Same behaviour for `0`, precision and invalid input as `decimalBytes`.
+
+```typescript
+1024 | binaryBytes; // → "1 KiB"
+1536 | binaryBytes; // → "1.5 KiB"
+1000000 | binaryBytes; // → "976.56 KiB"
+10485760 | binaryBytes; // → "10 MiB"
+```
+
+### MinorUnitCurrencyPipe
+
+Formats an amount given in the currency's minor unit, as payment providers and many APIs return it. The fraction digits come from the currency, so it is correct for EUR (2), JPY (0) and KWD (3). Uses `LOCALE_ID` or an optional locale argument; returns `null` for a missing amount or currency.
+
+```typescript
+import { MinorUnitCurrencyPipe } from '@dasch-ng/utils';
+
+@Component({
+  imports: [MinorUnitCurrencyPipe],
+  template: `<p>Total: {{ order.totalCents | minorUnitCurrency: order.currency }}</p>`,
+})
+```
+
+```typescript
+1299 | minorUnitCurrency:'EUR'           // → "€12.99"
+1299 | minorUnitCurrency:'JPY'           // → "¥1,299"
+1299 | minorUnitCurrency:'EUR':'de-DE'   // → "12,99 €"
+```
+
+### DisplayNamePipe
+
+Localized names for codes via `Intl.DisplayNames`. `type` is `'region'` (default), `'language'`, `'currency'`, `'script'`, `'calendar'` or `'dateTimeField'`. Unknown or malformed codes return the code itself.
+
+```typescript
+import { DisplayNamePipe } from '@dasch-ng/utils';
+
+@Component({
+  imports: [DisplayNamePipe],
+  template: `<p>{{ address.country | displayName }}</p>`,
+})
+```
+
+```typescript
+'DE' | displayName                       // → "Germany" (LOCALE_ID en-US)
+'de-AT' | displayName:'language'         // → "Austrian German"
+'EUR' | displayName:'currency':'de'      // → "Euro"
+'XY' | displayName                       // → "XY"
+```
+
 ## Text Pipes
 
 ### TruncateTextPipe

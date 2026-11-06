@@ -35,7 +35,7 @@ Over 15 standalone pipes for common operations:
 - **Collection Utilities**: `size`, `includes`, `includedIn`
 - **Object Utilities**: `prop`
 - **Type Checking**: `isNil`, `isNull`, `isUndefined`, `isEmpty`
-- **Formatting**: `decimalBytes`
+- **Formatting**: `decimalBytes`, `binaryBytes`, `minorUnitCurrency`, `displayName`
 - **Text**: `truncateText`, `middleTruncate`, `highlight`
 - **Symbol Utilities**: `symbolKeyFor`
 

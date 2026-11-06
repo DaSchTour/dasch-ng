@@ -83,6 +83,9 @@ export class ExampleComponent {
 **Formatting:**
 
 - `decimalBytes` - Format bytes to human-readable sizes
+- `binaryBytes` - Format bytes with base 1024 (KiB, MiB)
+- `minorUnitCurrency` - Format amounts given in cents or other minor units
+- `displayName` - Localized names for country, language, currency and script codes
 
 **Text:**
 
