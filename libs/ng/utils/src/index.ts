@@ -12,6 +12,7 @@ export * from './lib/ng-utils.module';
 export * from './lib/omit.pipe';
 export * from './lib/parse-json.pipe';
 export * from './lib/nth.pipe';
+export * from './lib/overflow.directive';
 export * from './lib/prop.pipe';
 export * from './lib/provide-helpers';
 export * from './lib/resource-value-guard';

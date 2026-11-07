@@ -130,6 +130,10 @@ import { IntlCurrencyPipe, IntlRelativeTimePipe } from '@dasch-ng/utils/intl';
 
 - `provideEventModifiers` - `(click.stop)`, `(click.prevent)`, `(click.self)` and combinations like `(click.stop.prevent)` in templates
 
+**Overflow Detection:**
+
+- `OverflowDirective` (`[daschNgOverflow]`) - Tells whether text is cut off by ellipsis or line clamp, e.g. to show a tooltip only then
+
 ## Documentation
 
 Full documentation is available at [dasch.ng](https://dasch.ng/libraries/ng-utils)
