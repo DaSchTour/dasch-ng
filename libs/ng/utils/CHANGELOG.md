@@ -1,3 +1,18 @@
+## 0.6.1 (2026-11-07)
+
+### 🚀 Features
+
+- **ng-utils:** add overflow directive ([#1228](https://github.com/DaSchTour/dasch-ng/pull/1228))
+- **ng-utils:** add object, collection and locale pipes ([#1224](https://github.com/DaSchTour/dasch-ng/pull/1224))
+- **ng-utils:** add media pipes in @dasch-ng/utils/media ([#1226](https://github.com/DaSchTour/dasch-ng/pull/1226))
+- **ng-utils:** add binaryBytes and Intl pipes in @dasch-ng/utils/intl ([#1223](https://github.com/DaSchTour/dasch-ng/pull/1223))
+- **ng-utils:** add truncateText, middleTruncate and highlight pipes ([#1218](https://github.com/DaSchTour/dasch-ng/pull/1218))
+- **ng-utils:** add event modifiers plugin ([#1217](https://github.com/DaSchTour/dasch-ng/pull/1217))
+
+### ❤️ Thank You
+
+- Daniel Schuba @DaSchTour
+
 ## 0.6.0 (2025-12-30)
 
 ### 🚀 Features
