@@ -1,3 +1,13 @@
+## 1.0.0-rc.2 (2026-11-07)
+
+### 🚀 Features
+
+- **web-utils:** add parseContentDisposition, fileTypeOf, toSlug and redactUrl ([#1225](https://github.com/DaSchTour/dasch-ng/pull/1225))
+
+### ❤️ Thank You
+
+- Daniel Schuba @DaSchTour
+
 ## 1.0.0-rc.1 (2025-12-30)
 
 This was a version bump only for web-utils to align it with other projects, there were no code changes.
