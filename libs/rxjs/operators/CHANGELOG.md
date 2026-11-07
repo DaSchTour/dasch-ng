@@ -1,3 +1,13 @@
+## 0.5.1 (2026-11-07)
+
+### 🚀 Features
+
+- **rxjs-operators:** add pollUntil ([#1227](https://github.com/DaSchTour/dasch-ng/pull/1227))
+
+### ❤️ Thank You
+
+- Daniel Schuba @DaSchTour
+
 ## 0.5.0 (2025-12-30)
 
 ### 🚀 Features
