@@ -101,6 +101,26 @@ const singleFile = new File(['content'], 'test.txt');
 const fileArray = createFileArray(singleFile); // [File]
 ```
 
+### `parseContentDisposition(header)`
+
+Parses a `Content-Disposition` header (RFC 6266), including quoted names and `filename*=UTF-8''…`.
+
+```typescript
+const { filename } = parseContentDisposition(response.headers.get('Content-Disposition')) ?? {};
+```
+
+### `fileTypeOf(file)`
+
+Classifies a file name or `File` by extension: `'video' | 'image' | 'audio' | 'document' | 'spreadsheet' | 'archive' | null`.
+
+### `toSlug(value, { maxLength?, fallback?, expandUmlauts? })`
+
+URL slug of `[a-z0-9-]`, accents removed, umlauts written out, cut at a word boundary: `toSlug('Grüne Wälder')` → `'gruene-waelder'`.
+
+### `redactUrl(url, { params?, keepHash? })`
+
+Removes secret query parameters (`SECRET_URL_PARAMS`) and the fragment from an http(s) URL before logging it.
+
 ## Usage Patterns
 
 ### SVG to Image Download
