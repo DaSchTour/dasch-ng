@@ -1,6 +1,6 @@
 # Intl Pipes
 
-Pipes for numbers, currencies, dates, lists, plurals and names, built directly on the browser's `Intl` APIs. They live in the secondary entry point `@dasch-ng/utils/intl`.
+Pipes for numbers, currencies, dates, lists, plurals, names and localized values, built directly on the browser's `Intl` APIs. They live in the secondary entry point `@dasch-ng/utils/intl`.
 
 ## Why Intl pipes?
 
@@ -31,17 +31,19 @@ export class OrderComponent {}
 
 ## Overview
 
-| Pipe               | API                               | Example                                              |
-| ------------------ | --------------------------------- | ---------------------------------------------------- |
-| `intlNumber`       | `Intl.NumberFormat`               | `1234.5` → `1,234.5`                                 |
-| `intlCurrency`     | `Intl.NumberFormat`               | `12.99, 'EUR'` → `€12.99`                            |
-| `intlDate`         | `Intl.DateTimeFormat`             | `date, 'long'` → `November 6, 2026`                  |
-| `intlDateRange`    | `Intl.DateTimeFormat.formatRange` | `[start, end]` → `Nov 3 – 7, 2026`                   |
-| `intlRelativeTime` | `Intl.RelativeTimeFormat`         | `date` → `5 minutes ago`                             |
-| `intlList`         | `Intl.ListFormat`                 | `['a', 'b', 'c']` → `a, b, and c`                    |
-| `intlPlural`       | `Intl.PluralRules`                | `3, { one: '# file', other: '# files' }` → `3 files` |
-| `intlDisplayName`  | `Intl.DisplayNames`               | `'DE'` → `Germany`                                   |
-| `intlDuration`     | `Intl.DurationFormat`             | `134000, { style: 'digital' }` → `0:02:14`           |
+| Pipe                  | API                               | Example                                              |
+| --------------------- | --------------------------------- | ---------------------------------------------------- |
+| `intlNumber`          | `Intl.NumberFormat`               | `1234.5` → `1,234.5`                                 |
+| `intlCurrency`        | `Intl.NumberFormat`               | `12.99, 'EUR'` → `€12.99`                            |
+| `intlDate`            | `Intl.DateTimeFormat`             | `date, 'long'` → `November 6, 2026`                  |
+| `intlDateRange`       | `Intl.DateTimeFormat.formatRange` | `[start, end]` → `Nov 3 – 7, 2026`                   |
+| `intlRelativeTime`    | `Intl.RelativeTimeFormat`         | `date` → `5 minutes ago`                             |
+| `intlList`            | `Intl.ListFormat`                 | `['a', 'b', 'c']` → `a, b, and c`                    |
+| `intlPlural`          | `Intl.PluralRules`                | `3, { one: '# file', other: '# files' }` → `3 files` |
+| `intlDisplayName`     | `Intl.DisplayNames`               | `'DE'` → `Germany`                                   |
+| `intlDuration`        | `Intl.DurationFormat`             | `134000, { style: 'digital' }` → `0:02:14`           |
+| `intlLocalized`       | locale fallback                   | `{ de: "Hallo", en: "Hello" }` → `Hallo`             |
+| `intlCanonicalLocale` | `Intl.getCanonicalLocales`        | `de-de` → `de-DE`                                    |
 
 ## intlNumber
 
@@ -154,6 +156,27 @@ place | intlPlural : { one: '#st', two: '#nd', few: '#rd', other: '#th' } : { ty
 ::: warning Browser support
 `Intl.DurationFormat` needs Chrome 129, Safari 16.4 or Firefox 136 or later. Older browsers get an unlocalized fallback (`1 hours 5 minutes`). The option types come from TypeScript's `es2025.intl` lib; projects on an older `lib` setting need `skipLibCheck` (the Angular default) or that lib entry.
 :::
+
+## intlLocalized
+
+`values | intlLocalized : options?` picks the value for the active locale from a `{ [locale]: value }` map, as CMS entries or API labels carry them. Order: exact locale (`de-AT`), its language (`de`), any key with that language (`de-DE`), the `fallback` locales (default `['en']`), then the first non-empty value. Empty strings are skipped; `null` when nothing is set.
+
+```typescript
+{ de: 'Hallo', en: 'Hello' } | intlLocalized                    // LOCALE_ID de-AT → "Hallo"
+{ de: 'Hallo', en: 'Hello' } | intlLocalized                    // LOCALE_ID pl → "Hello"
+label | intlLocalized : { fallback: ['de', 'en'] }
+label | intlLocalized : { locale: 'fr' }
+```
+
+## intlCanonicalLocale
+
+`tag | intlCanonicalLocale` normalizes a language tag with `Intl.getCanonicalLocales`, also accepting `_` as separator. Invalid tags come back unchanged.
+
+```typescript
+'de-de' | intlCanonicalLocale; // → "de-DE"
+'EN_us' | intlCanonicalLocale; // → "en-US"
+'zh-hant-tw' | intlCanonicalLocale; // → "zh-Hant-TW"
+```
 
 ## API Reference
 

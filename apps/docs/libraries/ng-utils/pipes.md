@@ -218,6 +218,25 @@ allowedRoles = ['admin', 'editor'];
 // 'admin' | includedIn:allowedRoles → true
 ```
 
+### WithoutPipe
+
+Returns the items of an array or other iterable that are not among the given values (`===`).
+
+```typescript
+[1, 2, 3, 2] | without:2                  // → [1, 3]
+tags | without:selectedTag                // all other tags
+```
+
+### ValuesPipe
+
+Values of a `Map`, `Set` or plain object as an array, in insertion order. Unlike `keyvalue`, it neither sorts nor wraps entries.
+
+```html
+@for (user of usersById | values; track user.id) {
+<li>{{ user.name }}</li>
+}
+```
+
 ## Object Utilities
 
 ### PropPipe
@@ -249,6 +268,24 @@ user = {
 };
 // user | prop:'name' → 'John'
 // user | prop:'address.city' → 'Berlin'
+```
+
+### OmitPipe
+
+Shallow copy of an object without the given keys.
+
+```html
+<pre>{{ user | omit: 'password' : 'token' | json }}</pre>
+```
+
+### ParseJsonPipe
+
+Parses a JSON string; returns `null` instead of throwing for invalid JSON or non-string input.
+
+```html
+@let settings = row.settingsJson | parseJson; @if (settings) {
+<pre>{{ settings | json }}</pre>
+}
 ```
 
 ## Type Checking Pipes
@@ -496,6 +533,16 @@ import { HighlightPipe } from '@dasch-ng/utils';
 ```typescript
 'Stadium light' | highlight:'stad'
 // → [{ text: 'Stad', match: true }, { text: 'ium light', match: false }]
+```
+
+### UpperFirstPipe
+
+Uppercases the first character with the rules of `LOCALE_ID` (or a locale argument) and leaves the rest unchanged. Combine with `lowercase` to capitalize.
+
+```typescript
+'hello world' | upperFirst                // → "Hello world"
+'HELLO' | lowercase | upperFirst          // → "Hello"
+'istanbul' | upperFirst:'tr'              // → "İstanbul"
 ```
 
 ## Symbol Utilities

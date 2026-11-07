@@ -3,6 +3,7 @@ export * from './lib/intl-date.pipe';
 export * from './lib/intl-display-name.pipe';
 export * from './lib/intl-duration.pipe';
 export * from './lib/intl-list.pipe';
+export * from './lib/intl-localized.pipe';
 export * from './lib/intl-number.pipe';
 export * from './lib/intl-plural.pipe';
 export * from './lib/intl-relative-time.pipe';
