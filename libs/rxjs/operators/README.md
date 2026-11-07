@@ -178,6 +178,14 @@ throwError(() => new Error('Oops!'))
 // fallback value
 ```
 
+### `pollUntil<T>(read, { interval?, timeout?, ready? })`
+
+Reads a value every `interval` ms (first read synchronous) until `ready(value)`, emits it once and completes; errors with `TimeoutError` after `timeout` ms (default 10 s).
+
+```typescript
+pollUntil(() => auth.token, { timeout: 5000 }).subscribe((token) => …);
+```
+
 ## Usage Patterns
 
 ### Type-Safe Filtering Chain

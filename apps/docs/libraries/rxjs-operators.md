@@ -149,6 +149,29 @@ of('hello', 123, 'world', null, '', 'foo').pipe(filterString()).subscribe(consol
 
 [View API Documentation →](../api/modules/filterString.html)
 
+---
+
+### pollUntil
+
+Reads a value repeatedly until it is ready, emits it once and completes. The first read is synchronous, so an already available value is emitted right away. Errors with rxjs' `TimeoutError` after `timeout` ms.
+
+**Use case:** Wait for something initialised outside your control, such as an auth token or a third-party SDK global, before sending requests.
+
+**Options:** `interval` (default `100`), `timeout` (default `10000`, `Infinity` waits forever), `ready` (default: not `null`, `undefined`, `''` or `false`).
+
+#### Example
+
+```typescript
+import { switchMap } from 'rxjs';
+import { pollUntil } from '@dasch-ng/rxjs-operators';
+
+pollUntil(() => auth.token, { timeout: 5000 })
+  .pipe(switchMap((token) => http.get(url, { headers: { Authorization: `Bearer ${token}` } })))
+  .subscribe();
+
+pollUntil(() => window.someSdk, { interval: 250 }).subscribe((sdk) => sdk.init());
+```
+
 ## Common Patterns
 
 ### Combining Operators
