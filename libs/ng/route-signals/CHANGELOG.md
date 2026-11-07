@@ -1,3 +1,13 @@
+## 1.1.0 (2026-11-07)
+
+### 🚀 Features
+
+- **route-signals:** add bindQuerySignal and query param codecs ([#1216](https://github.com/DaSchTour/dasch-ng/pull/1216))
+
+### ❤️ Thank You
+
+- Daniel Schuba @DaSchTour
+
 # 1.0.0 (2026-02-20)
 
 ### 🚀 Features
