@@ -47,6 +47,12 @@ Over 15 standalone pipes for common operations:
 
 [→ View Intl pipes documentation](/libraries/ng-utils/intl)
 
+### Media Pipes
+
+`@dasch-ng/utils/media` formats technical media metadata: `frameRate` (`30000/1001` → `29.97 fps`), `shutterSpeed` (`0.004` → `1/250 s`), `coordinate` (degrees, minutes, seconds with N/S/E/W) and `aspectRatio` (`16x9` → `16:9`).
+
+[→ View media pipes documentation](/libraries/ng-utils/media)
+
 ### Dependency Injection Helpers
 
 Type-safe provider functions for Angular DI:

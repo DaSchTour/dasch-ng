@@ -103,6 +103,10 @@ export class ExampleComponent {
 import { IntlCurrencyPipe, IntlRelativeTimePipe } from '@dasch-ng/utils/intl';
 ```
 
+**Media Pipes** (`@dasch-ng/utils/media`):
+
+- `frameRate`, `shutterSpeed`, `coordinate`, `aspectRatio`
+
 ### Functions
 
 **Dependency Injection Helpers:**
