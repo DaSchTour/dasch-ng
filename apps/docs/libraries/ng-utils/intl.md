@@ -143,6 +143,22 @@ place | intlPlural : { one: '#st', two: '#nd', few: '#rd', other: '#th' } : { ty
 'XY' | intlDisplayName                                         // → "XY"
 ```
 
+## intlBytes
+
+`bytes | intlBytes : options? : locale?` formats a file size with the byte units of `Intl.NumberFormat`, so number and unit follow the locale (`1.6 GB`, de `1,6 GB`, fr `1,6 Go`). Missing, invalid or negative values give an empty string. Options are `Intl.NumberFormatOptions` (without `style`/`unit`) plus `base`; `maximumFractionDigits` defaults to `1`.
+
+- `base: 1000` (default): SI sizes as storage vendors state them.
+- `base: 1024`: divides by 1024 but keeps the `kB`/`MB`/`GB` labels, as most operating systems and media tools show sizes. For IEC labels (`KiB`, `MiB`) use `binaryBytes`.
+
+```typescript
+1600000000 | intlBytes                                         // → "1.6 GB"
+1717986918 | intlBytes : { base: 1024 } : 'de-DE'              // → "1,6 GB"
+1536 | intlBytes : { maximumFractionDigits: 2 }                // → "1.54 kB"
+1536 | intlBytes : { unitDisplay: 'long' }                     // → "1.5 kilobytes"
+```
+
+`decimalBytes` and `binaryBytes` in the main entry point keep their output (`toFixed`, `'Invalid Number'`) for compatibility.
+
 ## intlDuration
 
 `value | intlDuration : options? : locale?`. `value` is a duration object (`{ hours, minutes, seconds, … }`) or a number of milliseconds, which is split into hours, minutes, seconds and milliseconds. `style` is `'short'` (default), `'long'`, `'narrow'` or `'digital'`.

@@ -43,13 +43,13 @@ Over 25 standalone pipes for common operations:
 
 ### Intl Pipes
 
-`@dasch-ng/utils/intl` adds pipes on top of the browser's `Intl` APIs, without `registerLocaleData()`: `intlNumber`, `intlCurrency` (also for amounts in cents), `intlDate`, `intlDateRange`, `intlRelativeTime`, `intlList`, `intlPlural`, `intlDisplayName`, `intlDuration`, `intlLocalized` and `intlCanonicalLocale`.
+`@dasch-ng/utils/intl` adds pipes on top of the browser's `Intl` APIs, without `registerLocaleData()`: `intlNumber`, `intlCurrency` (also for amounts in cents), `intlDate`, `intlDateRange`, `intlRelativeTime`, `intlList`, `intlPlural`, `intlDisplayName`, `intlDuration`, `intlBytes` (file sizes with localized units), `intlLocalized` and `intlCanonicalLocale`.
 
 [→ View Intl pipes documentation](/libraries/ng-utils/intl)
 
 ### Media Pipes
 
-`@dasch-ng/utils/media` formats technical media metadata: `frameRate` (`30000/1001` → `29.97 fps`), `shutterSpeed` (`0.004` → `1/250 s`), `coordinate` (degrees, minutes, seconds with N/S/E/W) and `aspectRatio` (`16x9` → `16:9`).
+`@dasch-ng/utils/media` formats technical media metadata: `frameRate` (`30000/1001` → `29.97 fps`), `shutterSpeed` (`0.004` → `1/250 s`), `coordinate` (degrees, minutes, seconds with N/S/E/W) `aspectRatio` (`16x9` → `16:9`), `codecName` (`hevc` → `H.265 (HEVC)`) and `pixelFormat` (`yuv422p10le` → `4:2:2, 10 bit`).
 
 [→ View media pipes documentation](/libraries/ng-utils/media)
 

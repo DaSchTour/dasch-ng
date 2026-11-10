@@ -102,7 +102,7 @@ export class ExampleComponent {
 
 **Intl Pipes** (`@dasch-ng/utils/intl`, no `registerLocaleData()` needed):
 
-- `intlNumber`, `intlCurrency` (with `minorUnits` for cents), `intlDate`, `intlDateRange`, `intlRelativeTime`, `intlList`, `intlPlural`, `intlDisplayName`, `intlDuration`, `intlLocalized`, `intlCanonicalLocale`
+- `intlNumber`, `intlCurrency` (with `minorUnits` for cents), `intlDate`, `intlDateRange`, `intlRelativeTime`, `intlList`, `intlPlural`, `intlDisplayName`, `intlDuration`, `intlBytes`, `intlLocalized`, `intlCanonicalLocale`
 
 ```typescript
 import { IntlCurrencyPipe, IntlRelativeTimePipe } from '@dasch-ng/utils/intl';
@@ -110,7 +110,7 @@ import { IntlCurrencyPipe, IntlRelativeTimePipe } from '@dasch-ng/utils/intl';
 
 **Media Pipes** (`@dasch-ng/utils/media`):
 
-- `frameRate`, `shutterSpeed`, `coordinate`, `aspectRatio`
+- `frameRate`, `shutterSpeed`, `coordinate`, `aspectRatio`, `codecName`, `pixelFormat`
 
 ### Functions
 

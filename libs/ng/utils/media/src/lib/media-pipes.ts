@@ -134,3 +134,63 @@ export class AspectRatioPipe extends LocalePipe implements PipeTransform {
     return `${this.format(width, 2, locale)}:${this.format(height, 2, locale)}`;
   }
 }
+
+const CODECS: Readonly<Record<string, string>> = {
+  prores: 'ProRes',
+  h264: 'H.264',
+  hevc: 'H.265 (HEVC)',
+  mpeg2video: 'MPEG-2',
+  mpeg4: 'MPEG-4',
+  dnxhd: 'DNxHD',
+  mjpeg: 'Motion JPEG',
+  jpeg2000: 'JPEG 2000',
+  av1: 'AV1',
+  vp9: 'VP9',
+};
+
+/**
+ * Turns an FFmpeg/ffprobe `codec_name` into a readable label. Unknown values pass through.
+ *
+ * @example
+ * ```html
+ * {{ 'prores' | codecName }}   <!-- ProRes -->
+ * {{ 'hevc' | codecName }}     <!-- H.265 (HEVC) -->
+ * {{ 'ffv1' | codecName }}     <!-- ffv1 -->
+ * ```
+ */
+@Pipe({ name: 'codecName' })
+export class CodecNamePipe implements PipeTransform {
+  transform(value: string | null | undefined): string {
+    return value ? (CODECS[value.toLowerCase()] ?? value) : '';
+  }
+}
+
+const PIXEL_FORMAT = /^yuv[aj]?(420|422|444|411)p(\d{1,2})?(?:le|be)?$/;
+
+/**
+ * Turns an FFmpeg/ffprobe `pix_fmt` of the YUV family into chroma subsampling and bit depth.
+ * The bit label comes from `Intl.NumberFormat` (`10 bit`, de: `10 Bit`). Formats without a bit
+ * depth count as 8 bit; other formats (`rgb24`, `nv12`, …) pass through.
+ *
+ * @example
+ * ```html
+ * {{ 'yuv422p10le' | pixelFormat }}           <!-- 4:2:2, 10 bit -->
+ * {{ 'yuvj420p' | pixelFormat }}              <!-- 4:2:0, 8 bit -->
+ * {{ 'yuv444p12le' | pixelFormat: 'de-DE' }}  <!-- 4:4:4, 12 Bit -->
+ * ```
+ */
+@Pipe({ name: 'pixelFormat' })
+export class PixelFormatPipe extends LocalePipe implements PipeTransform {
+  transform(value: string | null | undefined, locale?: string): string {
+    if (!value) {
+      return '';
+    }
+    const match = PIXEL_FORMAT.exec(value.toLowerCase());
+    if (!match) {
+      return value;
+    }
+    const [, chroma, depth = '8'] = match;
+    const bits = new Intl.NumberFormat(locale ?? this.localeId, { style: 'unit', unit: 'bit' }).format(Number(depth));
+    return `${chroma.split('').join(':')}, ${bits}`;
+  }
+}

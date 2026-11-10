@@ -75,6 +75,31 @@ Rounding carries over, so `10.99999` becomes `11° 00' 00.0"`, never `10° 59' 6
 '2.39' | aspectRatio : 'de-DE'           // → "2,39:1"
 ```
 
+## codecName
+
+`codecName | codecName` turns an FFmpeg/ffprobe `codec_name` into a readable label. Unknown values pass through unchanged.
+
+```typescript
+'prores' | codecName; // → "ProRes"
+'h264' | codecName; // → "H.264"
+'hevc' | codecName; // → "H.265 (HEVC)"
+'mpeg2video' | codecName; // → "MPEG-2"
+'ffv1' | codecName; // → "ffv1"
+```
+
+Known: `prores`, `h264`, `hevc`, `mpeg2video`, `mpeg4`, `dnxhd`, `mjpeg`, `jpeg2000`, `av1`, `vp9`.
+
+## pixelFormat
+
+`pixFmt | pixelFormat : locale?` turns an FFmpeg/ffprobe `pix_fmt` of the YUV family (`yuv`, `yuva`, `yuvj`; 4:2:0, 4:2:2, 4:4:4, 4:1:1) into chroma subsampling and bit depth. Without a bit depth the format counts as 8 bit. The bit label is localized with `Intl.NumberFormat`. Other formats (`rgb24`, `nv12`, …) pass through.
+
+```typescript
+'yuv422p10le' | pixelFormat              // → "4:2:2, 10 bit"
+'yuvj420p' | pixelFormat                 // → "4:2:0, 8 bit"
+'yuv444p12le' | pixelFormat : 'de-DE'    // → "4:4:4, 12 Bit"
+'rgb24' | pixelFormat                    // → "rgb24"
+```
+
 ## API Reference
 
 TypeDoc API documentation: [dasch.ng/api/@dasch-ng/utils](https://dasch.ng/api/@dasch-ng/utils/README)

@@ -428,7 +428,7 @@ false | not; // → true
 
 ### DecimalBytesPipe
 
-Formats byte values into human-readable sizes (KB, MB, GB, etc.).
+Formats byte values into human-readable sizes (KB, MB, GB, etc.). For locale-aware output (`1,6 GB` in German) and an empty string for invalid input, use [`intlBytes`](/libraries/ng-utils/intl#intlbytes).
 
 **Usage:**
 

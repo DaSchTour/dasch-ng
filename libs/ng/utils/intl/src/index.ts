@@ -1,3 +1,4 @@
+export * from './lib/intl-bytes.pipe';
 export * from './lib/intl-currency.pipe';
 export * from './lib/intl-date.pipe';
 export * from './lib/intl-display-name.pipe';

@@ -1,5 +1,6 @@
 import { LOCALE_ID, Type } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { IntlBytesPipe } from './intl-bytes.pipe';
 import { IntlCurrencyPipe } from './intl-currency.pipe';
 import { IntlDatePipe, IntlDateRangePipe } from './intl-date.pipe';
 import { IntlDisplayNamePipe } from './intl-display-name.pipe';
@@ -208,5 +209,34 @@ describe('IntlCanonicalLocalePipe', () => {
   it('returns invalid tags unchanged', () => {
     expect(pipe.transform('not a tag')).toBe('not a tag');
     expect(pipe.transform(null)).toBe('');
+  });
+});
+
+describe('IntlBytesPipe', () => {
+  it('formats number and unit with the locale', () => {
+    expect(create(IntlBytesPipe).transform(1_600_000_000)).toBe('1.6 GB');
+    expect(n(create(IntlBytesPipe, 'de-DE').transform(1_600_000_000))).toBe('1,6 GB');
+    expect(n(create(IntlBytesPipe).transform(1_600_000_000, {}, 'fr'))).toBe('1,6 Go');
+    expect(create(IntlBytesPipe).transform(512)).toBe('512 byte');
+    expect(create(IntlBytesPipe).transform(0)).toBe('0 byte');
+  });
+
+  it('divides by 1024 with base 1024 and keeps SI labels', () => {
+    expect(create(IntlBytesPipe).transform(1_717_986_918, { base: 1024 })).toBe('1.6 GB');
+    expect(create(IntlBytesPipe).transform(1024, { base: 1024 })).toBe('1 kB');
+    expect(create(IntlBytesPipe).transform(1000, { base: 1024 })).toBe('1,000 byte');
+  });
+
+  it('passes number options and caps at petabyte', () => {
+    expect(create(IntlBytesPipe).transform(1536, { maximumFractionDigits: 2 })).toBe('1.54 kB');
+    expect(create(IntlBytesPipe).transform(1536, { unitDisplay: 'long' })).toBe('1.5 kilobytes');
+    expect(create(IntlBytesPipe).transform(2e18)).toBe('2,000 PB');
+  });
+
+  it('returns an empty string for missing, invalid or negative input', () => {
+    const pipe = create(IntlBytesPipe);
+    expect(pipe.transform(null)).toBe('');
+    expect(pipe.transform(Number.NaN)).toBe('');
+    expect(pipe.transform(-1)).toBe('');
   });
 });
