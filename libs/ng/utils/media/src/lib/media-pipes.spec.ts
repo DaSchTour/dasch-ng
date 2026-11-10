@@ -1,6 +1,6 @@
 import { LOCALE_ID, Type } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { AspectRatioPipe, CoordinatePipe, FrameRatePipe, ShutterSpeedPipe } from './media-pipes';
+import { AspectRatioPipe, CodecNamePipe, CoordinatePipe, FrameRatePipe, PixelFormatPipe, ShutterSpeedPipe } from './media-pipes';
 
 function create<T>(pipe: Type<T>, locale = 'en-US'): T {
   TestBed.resetTestingModule();
@@ -88,5 +88,35 @@ describe('AspectRatioPipe', () => {
     expect(pipe.transform('wide')).toBe('');
     expect(pipe.transform('16x0')).toBe('');
     expect(pipe.transform(null)).toBe('');
+  });
+});
+
+describe('CodecNamePipe', () => {
+  const pipe = new CodecNamePipe();
+
+  it('maps known codec names and passes others through', () => {
+    expect(pipe.transform('prores')).toBe('ProRes');
+    expect(pipe.transform('H264')).toBe('H.264');
+    expect(pipe.transform('hevc')).toBe('H.265 (HEVC)');
+    expect(pipe.transform('ffv1')).toBe('ffv1');
+    expect(pipe.transform(null)).toBe('');
+  });
+});
+
+describe('PixelFormatPipe', () => {
+  it('shows chroma subsampling and bit depth', () => {
+    const pipe = create(PixelFormatPipe);
+    expect(pipe.transform('yuv422p10le')).toBe('4:2:2, 10 bit');
+    expect(pipe.transform('yuvj420p')).toBe('4:2:0, 8 bit');
+    expect(pipe.transform('yuva444p12be')).toBe('4:4:4, 12 bit');
+    expect(pipe.transform('yuv411p')).toBe('4:1:1, 8 bit');
+    expect(pipe.transform('yuv444p12le', 'de-DE')).toBe('4:4:4, 12 Bit');
+  });
+
+  it('passes other formats through', () => {
+    const pipe = create(PixelFormatPipe);
+    expect(pipe.transform('rgb24')).toBe('rgb24');
+    expect(pipe.transform('yuv440p')).toBe('yuv440p');
+    expect(pipe.transform('')).toBe('');
   });
 });
