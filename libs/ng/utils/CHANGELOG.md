@@ -1,3 +1,13 @@
+## 0.6.2 (2026-11-10)
+
+### 🚀 Features
+
+- **ng-utils:** add intlBytes, codecName and pixelFormat pipes ([#1262](https://github.com/DaSchTour/dasch-ng/pull/1262))
+
+### ❤️ Thank You
+
+- Daniel Schuba @DaSchTour
+
 ## 0.6.1 (2026-11-07)
 
 ### 🚀 Features
