@@ -5,6 +5,8 @@ import { FileDownloadService } from './file-download.service';
 /**
  * Downloads the link target through {@link FileDownloadService} instead of navigating.
  * The URL is the `href` of the anchor unless `fileDownload` is set to another URL.
+ * Links that the service refuses (other origins, see `FILE_DOWNLOAD_ALLOWED_ORIGINS`) are left alone
+ * and navigate normally.
  *
  * @example
  * ```html
@@ -37,7 +39,8 @@ export class FileDownloadDirective {
 
   protected onClick(event: MouseEvent): void {
     const url = this.fileDownload() || this.element.getAttribute('href');
-    if (!url) {
+    // Not downloadable through HttpClient (e.g. cross-origin): let the browser follow the link.
+    if (!url || !this.service.isAllowed(url)) {
       return;
     }
     event.preventDefault();

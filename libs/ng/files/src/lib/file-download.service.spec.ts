@@ -1,7 +1,7 @@
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { FileDownloadService, UnexpectedHtmlResponseError } from './file-download.service';
+import { DisallowedDownloadUrlError, FILE_DOWNLOAD_ALLOWED_ORIGINS, FileDownloadService, UnexpectedHtmlResponseError } from './file-download.service';
 
 /** Records anchor downloads instead of letting jsdom try to navigate. */
 const saved: string[] = [];
@@ -80,5 +80,40 @@ describe('FileDownloadService', () => {
     http.expectOne('/missing').flush(new Blob(['nope']), { status: 404, statusText: 'Not Found' });
     expect(error).toHaveBeenCalled();
     expect(saved).toEqual([]);
+  });
+
+  it('downloads same-origin absolute URLs', async () => {
+    const url = `${location.origin}/api/a.txt`;
+    const { next } = run(url, {}, new Blob(['a'], { type: 'text/plain' }));
+    await vi.waitFor(() => expect(next).toHaveBeenCalledWith('a.txt'));
+  });
+
+  it.each(['https://evil.example/a.txt', '//evil.example/a.txt'])('makes no request for cross-origin %s', (url) => {
+    const error = vi.fn();
+    service.download(url).subscribe({ error });
+    http.expectNone(url);
+    expect(error).toHaveBeenCalledWith(expect.any(DisallowedDownloadUrlError));
+    expect(service.isAllowed(url)).toBe(false);
+  });
+
+  it.each(['javascript:alert(1)', 'data:text/plain,hi', 'blob:http://localhost/x'])('rejects %s', (url) => {
+    const error = vi.fn();
+    service.download(url).subscribe({ error });
+    http.expectNone(url);
+    expect(error).toHaveBeenCalledWith(expect.any(DisallowedDownloadUrlError));
+  });
+});
+
+describe('FileDownloadService with allowed origins', () => {
+  it('downloads from an origin listed in FILE_DOWNLOAD_ALLOWED_ORIGINS', async () => {
+    TestBed.configureTestingModule({
+      providers: [provideHttpClient(), provideHttpClientTesting(), { provide: FILE_DOWNLOAD_ALLOWED_ORIGINS, useValue: ['https://cdn.example'] }],
+    });
+    const next = vi.fn();
+    TestBed.inject(FileDownloadService).download('https://cdn.example/f.bin').subscribe(next);
+    TestBed.inject(HttpTestingController)
+      .expectOne('https://cdn.example/f.bin')
+      .flush(new Blob(['a'], { type: 'application/octet-stream' }));
+    await vi.waitFor(() => expect(next).toHaveBeenCalledWith('f.bin'));
   });
 });

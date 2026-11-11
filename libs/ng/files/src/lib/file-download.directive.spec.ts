@@ -69,4 +69,13 @@ describe('FileDownloadDirective', () => {
     anchor.click();
     http.expectOne('/api/report.pdf');
   });
+
+  it('leaves clicks on cross-origin links to the browser', () => {
+    const { anchor } = setup();
+    anchor.setAttribute('href', 'https://evil.example/a.pdf');
+    const event = new MouseEvent('click', { bubbles: true, cancelable: true });
+    anchor.dispatchEvent(event);
+    expect(event.defaultPrevented).toBe(false);
+    http.expectNone('https://evil.example/a.pdf');
+  });
 });

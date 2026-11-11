@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { inject, Injectable, InjectionToken } from '@angular/core';
 import { download, parseContentDisposition } from '@dasch-ng/web-utils';
 import { from, map, Observable, switchMap, throwError } from 'rxjs';
 
@@ -10,6 +11,26 @@ export class UnexpectedHtmlResponseError extends Error {
     this.name = 'UnexpectedHtmlResponseError';
   }
 }
+
+/** Error emitted for URLs that are not downloaded through `HttpClient` (other protocol, foreign origin). */
+export class DisallowedDownloadUrlError extends Error {
+  constructor(
+    readonly url: string,
+    reason: string,
+  ) {
+    super(`Refusing to download ${url}: ${reason}`);
+    this.name = 'DisallowedDownloadUrlError';
+  }
+}
+
+/**
+ * Extra origins (for example `https://cdn.example.com`) that may be downloaded through
+ * `HttpClient`. Empty by default, so only same-origin URLs are sent through the HTTP stack
+ * (and its interceptors, which may add credentials).
+ */
+export const FILE_DOWNLOAD_ALLOWED_ORIGINS = new InjectionToken<readonly string[]>('FILE_DOWNLOAD_ALLOWED_ORIGINS', {
+  factory: () => [],
+});
 
 /**
  * Downloads a URL through `HttpClient` (so interceptors, e.g. for auth headers, apply)
@@ -23,16 +44,46 @@ export class UnexpectedHtmlResponseError extends Error {
 @Injectable({ providedIn: 'root' })
 export class FileDownloadService {
   private readonly http = inject(HttpClient);
+  private readonly document = inject(DOCUMENT);
+  private readonly allowedOrigins = inject(FILE_DOWNLOAD_ALLOWED_ORIGINS);
+
+  /**
+   * `true` for `http(s)` URLs on the document's origin or on an origin from
+   * `FILE_DOWNLOAD_ALLOWED_ORIGINS`. Relative URLs resolve against the document.
+   */
+  isAllowed(url: string): boolean {
+    return this.disallowedReason(url) === null;
+  }
+
+  private disallowedReason(url: string): string | null {
+    let parsed: URL;
+    try {
+      parsed = new URL(url, this.document.baseURI);
+    } catch {
+      return 'not a valid URL';
+    }
+    if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+      return 'only http and https URLs are supported';
+    }
+    if (parsed.origin !== this.document.location.origin && !this.allowedOrigins.includes(parsed.origin)) {
+      return 'cross-origin URL (see FILE_DOWNLOAD_ALLOWED_ORIGINS)';
+    }
+    return null;
+  }
 
   /**
    * Fetches `url` and saves the response as a file. The file name comes from `filename`,
    * else from `Content-Disposition`, else from the last URL segment.
    *
-   * The returned observable emits the used file name once and completes. HTTP errors and
-   * HTML responses (an error page that is not marked as attachment) are emitted as errors
+   * The returned observable emits the used file name once and completes. HTTP errors,
+   * disallowed URLs (`DisallowedDownloadUrlError`) and HTML responses (an error page that is not marked as attachment) are emitted as errors
    * and nothing is saved.
    */
   download(url: string, filename?: string): Observable<string> {
+    const reason = this.disallowedReason(url);
+    if (reason) {
+      return throwError(() => new DisallowedDownloadUrlError(url, reason));
+    }
     return this.http.get(url, { observe: 'response', responseType: 'blob' }).pipe(
       switchMap((response) => {
         const disposition = parseContentDisposition(response.headers.get('Content-Disposition'));

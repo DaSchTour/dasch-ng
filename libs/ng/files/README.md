@@ -33,6 +33,14 @@ export class ExampleComponent {}
 - `[fileDrop]`: drop zone with `data-drag-over` attribute and `dragOver()` signal, emits `File[]`, optional `accept`.
 - `input[type=file][fileSelect]`: `ControlValueAccessor` with `File | null` (single) or `File[]` (`multiple`).
 
+## Security
+
+`FileDownloadService` and `[fileDownload]` send requests through `HttpClient`, so an auth interceptor may attach credentials. Therefore only `http(s)` URLs on the page's own origin are downloaded. Other URLs fail with `DisallowedDownloadUrlError`; the directive does not intercept such links and the browser follows them normally. To allow more origins, provide `FILE_DOWNLOAD_ALLOWED_ORIGINS`:
+
+```typescript
+providers: [{ provide: FILE_DOWNLOAD_ALLOWED_ORIGINS, useValue: ['https://cdn.example.com'] }];
+```
+
 See the [documentation](https://dasch.ng/libraries/files) for details.
 
 ## License

@@ -54,6 +54,14 @@ The name is taken from the optional second argument, then from `Content-Disposit
 | `(fileDownloadError)` | Emits the error                                             |
 | `downloading()`       | Signal, `true` while running (also `aria-busy` on the link) |
 
+## Security
+
+`FileDownloadService` and `[fileDownload]` send requests through `HttpClient`, so an auth interceptor may attach credentials. Therefore only `http(s)` URLs on the page's own origin are downloaded. Other URLs fail with `DisallowedDownloadUrlError`; the directive does not intercept such links and the browser follows them normally. To allow more origins, provide `FILE_DOWNLOAD_ALLOWED_ORIGINS`:
+
+```typescript
+providers: [{ provide: FILE_DOWNLOAD_ALLOWED_ORIGINS, useValue: ['https://cdn.example.com'] }];
+```
+
 ## fileDrop directive
 
 ```html
