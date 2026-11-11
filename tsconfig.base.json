@@ -28,6 +28,7 @@
       "@dasch-ng/json-viewer": ["libs/ng/json-viewer/src/index.ts"],
       "@dasch-ng/pdf-viewer": ["libs/ng/pdf-viewer/src/index.ts"],
       "@dasch-ng/route-signals": ["libs/ng/route-signals/src/index.ts"],
+      "@dasch-ng/unsaved-changes": ["libs/ng/unsaved-changes/src/index.ts"],
       "@dasch-ng/web-utils": ["libs/web-utils/src/index.ts"],
       "@dasch-ng/postcss-custom-container": ["libs/postcss-custom-container/src/index.ts"]
     },
