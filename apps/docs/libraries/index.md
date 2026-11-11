@@ -111,6 +111,20 @@ Angular route state as signals for reactive routing.
 
 ---
 
+### [Testing](/libraries/testing)
+
+Helpers for Vitest-based Angular tests.
+
+**Key Features:**
+
+- DOM snapshot serializer
+- `flushUI` for zoneless tests
+- jsdom stubs
+
+**Installation:** `npm install @dasch-ng/testing`
+
+---
+
 ### [Validators](/libraries/validators)
 
 Collection of reusable Angular form validators for common validation scenarios.
