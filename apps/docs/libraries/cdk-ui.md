@@ -15,6 +15,35 @@ Peer dependencies: `@angular/core`, `@angular/common`, `@angular/cdk`, `rxjs`.
 - Everything is unstyled apart from a small structural stylesheet. Styling goes through CSS custom properties.
 - Selector prefix `daschUi` (attributes) and `dasch-ui` (elements), so nothing clashes with the CDK's own `cdk` prefix.
 
+## Breakpoints
+
+Named media queries as signals, built on the CDK `BreakpointObserver`.
+
+```ts
+import { injectActiveBreakpoint, injectBreakpoint, provideBreakpoints } from '@dasch-ng/cdk-ui';
+
+// optional: replace the defaults (the map is not merged with them)
+bootstrapApplication(App, {
+  providers: [provideBreakpoints({ mobile: '(max-width: 767.98px)', desktop: '(min-width: 768px)' })],
+});
+
+@Component({
+  template: `@if (mobile()) {
+    <app-menu-button />
+  }`,
+})
+export class Header {
+  protected readonly mobile = injectBreakpoint('mobile'); // Signal<boolean>
+  protected readonly size = injectActiveBreakpoint(); // Signal<string | null>, e.g. 'desktop'
+}
+```
+
+- Defaults (close to the Bootstrap grid, no overlap): `xs` below 576px, `sm` 576 to 767px, `md` 768 to 991px, `lg` 992 to 1199px, `xl` from 1200px.
+- Both functions must be called in an injection context.
+- `injectBreakpoint()` throws for a name that is not configured.
+- `injectActiveBreakpoint()` returns the first matching name in the order of the map, or `null` if none matches. Use non-overlapping queries if you want a single answer.
+- On the server there is no `matchMedia`: `injectBreakpoint()` is `false` and `injectActiveBreakpoint()` is `null`. Render the mobile-first layout by default and let the client correct it, or avoid layout decisions that depend on the width during SSR.
+
 ## API Reference
 
 See the [API reference](/api/@dasch-ng/cdk-ui/README).
