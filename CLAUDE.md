@@ -28,7 +28,7 @@ nx build gravatar
 All projects use **Vitest**:
 
 - **Angular libraries/apps** use the `@nx/angular:unit-test` executor (Angular's official Vitest integration)
-- **Non-Angular libraries** (rxjs-operators, web-utils, decorators, postcss-custom-container) use `@nx/vitest:test` with their `vite.config.*`
+- **Non-Angular libraries** (rxjs-operators, web-utils, decorators, postcss-custom-container, build-tools) use `@nx/vitest:test` with their `vite.config.*`
 - Jest and Karma have been removed from the workspace
 
 ```bash
@@ -112,6 +112,7 @@ The repository follows an Nx workspace pattern with libraries organized by domai
 
 ```text
 libs/
+├── build-tools/         # Build and CI tooling (Vite plugin, SSR bundle check, i18n checker), Node only
 ├── decorators/          # TypeScript decorators
 ├── gravatar/            # Gravatar hash generation (Angular)
 ├── material/
@@ -153,7 +154,7 @@ apps/
 - Built with Vite
 - Use Vitest (`@nx/vitest:test`) for testing
 - Standalone TypeScript/JavaScript utilities
-- Examples: rxjs-operators, web-utils, decorators, postcss-custom-container
+- Examples: rxjs-operators, web-utils, decorators, postcss-custom-container, build-tools (built with `@nx/esbuild`, ESM only, has a `bin`)
 
 ### Library Boundaries
 
@@ -161,12 +162,13 @@ Check new code against these rules before choosing a library. Dependencies only 
 
 **1. Framework-free** (no Angular imports, usable in any web or Node project)
 
-| Library                    | Scope                                                                                                                    | Allowed dependencies |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------- |
-| `web-utils`                | Browser and plain TypeScript helpers: files, downloads, URLs, strings (slug, redaction), parsing (`Content-Disposition`) | none                 |
-| `rxjs-operators`           | RxJS operators                                                                                                           | `rxjs`, `@fxts/core` |
-| `decorators`               | TypeScript method/class decorators                                                                                       | `rxjs`, `@fxts/core` |
-| `postcss-custom-container` | PostCSS plugin                                                                                                           | `postcss`            |
+| Library                    | Scope                                                                                                                    | Allowed dependencies               |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------- |
+| `web-utils`                | Browser and plain TypeScript helpers: files, downloads, URLs, strings (slug, redaction), parsing (`Content-Disposition`) | none                               |
+| `rxjs-operators`           | RxJS operators                                                                                                           | `rxjs`, `@fxts/core`               |
+| `decorators`               | TypeScript method/class decorators                                                                                       | `rxjs`, `@fxts/core`               |
+| `postcss-custom-container` | PostCSS plugin                                                                                                           | `postcss`                          |
+| `build-tools`              | Node-only build and CI tooling: Vite plugin for build info, SSR bundle check, i18n checker, CLI (`bin`)                  | `vite` (optional peer, types only) |
 
 **2. Angular, general purpose** (`@angular/core`, `@angular/common`, `@angular/platform-browser` only)
 

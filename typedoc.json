@@ -12,7 +12,8 @@
     "libs/ng/resize-observer/",
     "libs/ng/route-signals/",
     "libs/validators/",
-    "libs/web-utils/"
+    "libs/web-utils/",
+    "libs/build-tools/"
   ],
   "packageOptions": {
     "entryPoints": ["src/index.ts"]

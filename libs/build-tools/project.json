@@ -1,0 +1,83 @@
+{
+  "name": "build-tools",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/build-tools/src",
+  "projectType": "library",
+  "release": {
+    "version": {
+      "currentVersionResolver": "git-tag",
+      "fallbackCurrentVersionResolver": "disk",
+      "preserveLocalDependencyProtocols": false,
+      "manifestRootsToUpdate": ["dist/{projectRoot}", "{projectRoot}"]
+    }
+  },
+  "tags": [],
+  "targets": {
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}"
+      }
+    },
+    "build-bundle": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/libs/build-tools",
+        "main": "libs/build-tools/src/index.ts",
+        "additionalEntryPoints": ["libs/build-tools/src/cli.ts"],
+        "outputFileNames": "[name]",
+        "tsConfig": "libs/build-tools/tsconfig.lib.json",
+        "format": ["esm"],
+        "bundle": true,
+        "declaration": false,
+        "skipTypeCheck": false,
+        "deleteOutputPath": false,
+        "external": ["vite"],
+        "assets": [
+          {
+            "input": "libs/build-tools",
+            "glob": "*.md",
+            "output": "."
+          },
+          {
+            "input": "libs/build-tools",
+            "glob": "package.json",
+            "output": "."
+          }
+        ]
+      },
+      "configurations": {
+        "development": {
+          "minify": false
+        },
+        "production": {
+          "minify": false
+        }
+      }
+    },
+    "build-types": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/dist/libs/build-tools"],
+      "options": {
+        "command": "bunx tsc -p libs/build-tools/tsconfig.lib.json --emitDeclarationOnly --declaration --rootDir libs/build-tools/src --outDir dist/libs/build-tools"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/dist/libs/build-tools"],
+      "dependsOn": ["build-bundle", "build-types"],
+      "options": {
+        "command": "echo build complete"
+      }
+    },
+    "test": {
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "coverage/libs/build-tools"
+      }
+    }
+  }
+}
