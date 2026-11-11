@@ -16,6 +16,7 @@ dasch-ng/
 │   ├── material/
 │   │   └── right-sheet/   # Angular Material right-side sheet
 │   ├── ng/
+│   │   ├── intersection-observer/ # IntersectionObserver wrapper
 │   │   ├── mutation-observer/  # MutationObserver wrapper
 │   │   ├── resize-observer/    # ResizeObserver wrapper
 │   │   └── utils/              # Angular utilities
@@ -35,6 +36,7 @@ Built with `@nx/angular:package` (ng-packagr):
 - **gravatar** - Gravatar hash generation for Angular
 - **ng-utils** - Pipes, directives, and helper functions
 - **material-right-sheet** - Angular Material component
+- **intersection-observer** - Angular service wrapper for IntersectionObserver
 - **mutation-observer** - Angular service wrapper for MutationObserver
 - **resize-observer** - Angular service wrapper for ResizeObserver
 - **validators** - Angular form validators

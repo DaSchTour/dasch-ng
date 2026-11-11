@@ -18,6 +18,19 @@ Generate Gravatar hashes and URLs for Angular applications.
 
 ---
 
+### [Intersection Observer](api/@dasch-ng/intersection-observer/README)
+
+Angular wrapper for the IntersectionObserver API.
+
+**Main exports:**
+
+- `IntersectionObserverService` - Service for observing element visibility
+- `ObserveIntersectionDirective` - Directive for visibility observation
+
+[View full documentation →](api/@dasch-ng/intersection-observer/README)
+
+---
+
 ### [JSON Viewer](api/@dasch-ng/json-viewer/README)
 
 Interactive JSON viewer component with syntax highlighting and circular reference detection.
