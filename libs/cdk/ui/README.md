@@ -103,4 +103,92 @@ Pair it with the `daschNgOverflow` directive from `@dasch-ng/utils`. The two lib
 <span class="ellipsis" daschNgOverflow #o="daschNgOverflow" [daschUiTooltip]="o.overflowing() ? file.name : ''"> {{ file.name }} </span>
 ```
 
+## Toasts
+
+`Toasts` is a service that shows short messages on the CDK Overlay.
+
+```ts
+import { provideToasts, Toasts } from '@dasch-ng/cdk-ui';
+
+// optional defaults
+bootstrapApplication(App, {
+  providers: [provideToasts({ position: 'top-end', maxVisible: 4, duration: 6000 })],
+});
+
+@Component({ template: `<button (click)="remove()">Delete</button>` })
+export class Files {
+  private readonly toasts = inject(Toasts);
+
+  remove() {
+    const ref = this.toasts.show({
+      message: 'File deleted',
+      type: 'success',
+      action: { label: 'Undo', handler: () => this.restore() },
+    });
+    ref.afterDismissed.subscribe((reason) => console.log(reason)); // 'timeout' | 'action' | 'dismissed'
+  }
+}
+```
+
+### Options of `show()`
+
+| Option     | Default           | Description                                                                              |
+| ---------- | ----------------- | ---------------------------------------------------------------------------------------- |
+| `message`  | -                 | Text, or a `TemplateRef` for custom content (the context `$implicit` is the `ToastRef`). |
+| `type`     | `'info'`          | `'info'`, `'success'`, `'warning'` or `'error'`.                                         |
+| `duration` | configured (5000) | Milliseconds. `0` keeps the toast until it is dismissed.                                 |
+| `action`   | -                 | `{ label, handler? }`. A button that runs `handler` and dismisses the toast.             |
+
+`show()` returns a `ToastRef` with `dismiss()` and `afterDismissed`. The observable emits the reason once (`'timeout'`, `'action'` or `'dismissed'`) and completes. `Toasts.dismissAll()` removes everything.
+
+### Configuration
+
+`provideToasts()` takes `maxVisible` (default 3), `position` (default `'bottom-end'`; also `top-start`, `top-center`, `top-end`, `bottom-start`, `bottom-center`) and `duration` (default 5000). Omitted values keep their default.
+
+### Behaviour
+
+- Only `maxVisible` toasts are on screen. The others wait in a queue (`Toasts.waiting()`) and their timer starts when they appear.
+- The timer stops while a toast is hovered or has keyboard focus, and continues with the remaining time afterwards.
+- `Toasts.visible()` is a signal with the toasts on screen.
+- Accessibility: `error` toasts use `role="alert"` (read out immediately), all others `role="status"` (read out politely). Both are live regions. There is no built-in close button, because the library has no texts of its own. For toasts with `duration: 0` add an `action` such as `{ label: 'Close' }`, or a button in a custom template that calls `ref.dismiss()`.
+- Nothing is shown on the server, and no timers are started there.
+
+### Custom content
+
+```html
+<ng-template #custom let-ref>
+  <strong>Upload finished</strong>
+  <a routerLink="/files">Show files</a>
+  <button (click)="ref.dismiss()">Close</button>
+</ng-template>
+```
+
+```ts
+this.toasts.show({ message: this.custom(), duration: 0 });
+```
+
+### Styling
+
+The default look is a plain box with a colored edge per type. Change it with CSS custom properties (set them on `:root`):
+
+```css
+:root {
+  --dasch-ui-toast-background: #1f2937;
+  --dasch-ui-toast-color: #fff;
+  --dasch-ui-toast-padding: 0.75rem 1rem;
+  --dasch-ui-toast-radius: 0.375rem;
+  --dasch-ui-toast-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 0.25);
+  --dasch-ui-toast-min-width: 16rem;
+  --dasch-ui-toast-max-width: 28rem;
+  --dasch-ui-toast-gap: 0.5rem; /* between toasts */
+  --dasch-ui-toast-margin: 1rem; /* to the viewport edge */
+  --dasch-ui-toast-info-accent: #2563eb;
+  --dasch-ui-toast-success-accent: #16a34a;
+  --dasch-ui-toast-warning-accent: #d97706;
+  --dasch-ui-toast-error-accent: #dc2626;
+}
+```
+
+For full control, target the classes `.dasch-ui-toast`, `.dasch-ui-toast-message`, `.dasch-ui-toast-action` and the attribute `[data-type]` in your global styles.
+
 Full documentation: <https://dasch.ng/libraries/cdk-ui>

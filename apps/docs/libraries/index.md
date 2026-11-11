@@ -14,7 +14,8 @@ Unstyled UI building blocks on the Angular CDK, for apps that do not use Angular
 
 - Named breakpoints as signals
 - Tooltip (text or template, keyboard accessible)
-- Toasts and table helpers (see the library page for what is available)
+- Signal-based toasts with queue, pause on hover and focus
+- Table helpers (see the library page for what is available)
 - Styling only through CSS custom properties
 
 **Installation:** `npm install @dasch-ng/cdk-ui`
