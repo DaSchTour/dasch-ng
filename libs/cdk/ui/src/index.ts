@@ -1,4 +1,7 @@
 export * from './lib/breakpoints';
+export * from './lib/resizable-columns';
+export * from './lib/resizable-panel.directive';
+export * from './lib/selection';
 export * from './lib/tooltip.directive';
 export {
   provideToasts,

@@ -191,6 +191,109 @@ The default look is a plain box with a colored edge per type. Change it with CSS
 
 For full control, target the classes `.dasch-ui-toast`, `.dasch-ui-toast-message`, `.dasch-ui-toast-action` and the attribute `[data-type]` in your global styles.
 
+## Table helpers
+
+Selection, resizable columns and a resizable panel. They work with the CDK table, a plain `<table>` or any other markup.
+
+### Selection
+
+`provideSelectionModel<T>()` provides a CDK `SelectionModel<T>`. Put it in the `providers` of the component that owns the table, so each table has its own selection.
+
+```ts
+import { injectSelectionModel, provideSelectionModel, SelectAllCheckboxDirective, SelectRowCheckboxDirective } from '@dasch-ng/cdk-ui';
+
+@Component({
+  imports: [SelectAllCheckboxDirective, SelectRowCheckboxDirective],
+  providers: [provideSelectionModel<User>()],
+  template: `
+    <input type="checkbox" [daschUiSelectAll]="users()" aria-label="Select all users" />
+    @for (user of users(); track user.id) {
+      <input type="checkbox" [daschUiSelectRow]="user" [attr.aria-label]="'Select ' + user.name" />
+    }
+    <p>{{ selection.selected.length }} selected</p>
+  `,
+})
+export class UserTable {
+  protected readonly users = input.required<User[]>();
+  protected readonly selection = injectSelectionModel<User>();
+}
+```
+
+- `provideSelectionModel<T>({ multiple, initiallySelected, compareWith })`: `multiple` defaults to `true`. Use `compareWith` when rows are re-created as new objects (for example after a reload).
+- `[daschUiSelectAll]="rows"` goes on an `<input type="checkbox">`. It is checked when all of `rows` are selected and indeterminate when only some are. It only touches the rows you bind, so bind the current page to select a page. It needs multiple selection and throws otherwise.
+- `[daschUiSelectRow]="row"` goes on an `<input type="checkbox">`, with single and multiple selection.
+- `selectionSignal(model)` turns the model into a signal of the selected values (call it in an injection context). The `SelectionModel` itself is not signal based, the directives listen to its `changed` stream.
+- Both directives use native checkboxes, so keyboard and screen reader support comes from the browser. Always add an `aria-label` or a `<label>`, the library has no texts of its own.
+
+### Resizable columns
+
+Put `daschUiResizableColumns` on the table and `daschUiResizableColumn="<name>"` on the header cells. Every header cell gets a drag handle at its end edge.
+
+```html
+<table style="table-layout: fixed; width: 100%" [(daschUiResizableColumns)]="widths" #cols="daschUiResizableColumns">
+  <thead>
+    <tr>
+      <th daschUiResizableColumn="name" daschUiResizableColumnLabel="Resize name column">Name</th>
+      <th daschUiResizableColumn="email" [daschUiResizableColumnMin]="8" daschUiResizableColumnLabel="Resize email column">Email</th>
+      <th daschUiResizableColumn="rest" daschUiResizableColumnFiller></th>
+    </tr>
+  </thead>
+  ...
+</table>
+<button (click)="cols.reset()">Reset widths</button>
+```
+
+```ts
+protected readonly widths = signal<Record<string, number>>({ name: 12 }); // rem
+```
+
+- Widths are in `rem`. The model `[(daschUiResizableColumns)]` holds the width of every column that was set, so you can save it (for example in local storage) and pass it back in. Columns that are not in the map have their natural width until the user resizes them.
+- Values present at the start are the defaults. `cols.reset()` goes back to them, `cols.reset('name')` resets one column. A double click on a handle resets that column.
+- Minimum width: `[daschUiResizableColumnsMin]` on the table (default `4`), `[daschUiResizableColumnMin]` on a header cell.
+- A filler column (`daschUiResizableColumnFiller`) has no handle and no fixed width. It takes the space that the other columns leave, several fillers share it. Without a filler, the extra space of a `table-layout: fixed` table is spread over all columns.
+- The widths go on the header cells, so a `<table>` needs `table-layout: fixed`. For a flex based table, read `widths()` and apply it to the cells yourself.
+- Keyboard: the handle is focusable (`role="separator"`). Arrow keys change the width by 1rem, `Shift` + arrow by 5rem, `Home` sets the minimum width. Give it a name with `daschUiResizableColumnLabel`.
+- Right-to-left layouts are supported through the CDK `Directionality`.
+
+### Resizable panel
+
+```html
+<aside
+  [(daschUiResizablePanel)]="sidebarWidth"
+  daschUiResizablePanelLabel="Resize sidebar"
+  [daschUiResizablePanelMin]="10"
+  [daschUiResizablePanelMaxShare]="0.4"
+  daschUiResizablePanelSide="start"
+>
+  ...
+</aside>
+```
+
+| Input                           | Default | Description                                                          |
+| ------------------------------- | ------- | -------------------------------------------------------------------- |
+| `[(daschUiResizablePanel)]`     | `20`    | Width in rem, a two-way `model()`.                                   |
+| `daschUiResizablePanelMin`      | `8`     | Smallest width in rem.                                               |
+| `daschUiResizablePanelMaxShare` | `0.5`   | Largest width as share of the viewport width (`0` to `1`).           |
+| `daschUiResizablePanelSide`     | `start` | Side of the page the panel is on. The handle sits on the inner edge. |
+| `daschUiResizablePanelLabel`    | -       | Accessible name of the handle.                                       |
+
+- The applied width is always kept between the limits. If the window gets smaller, the panel shrinks, but the model is only written when the user resizes.
+- Keyboard: arrow keys change the width by 1rem, `Shift` + arrow by 5rem, `Home` and `End` jump to the limits.
+- The panel gets `position: relative` if it has none.
+
+### Styling the handle
+
+The handle is transparent until it is hovered, focused or dragged. Change it with CSS custom properties:
+
+```css
+:root {
+  --dasch-ui-resize-handle-size: 0.5rem;
+  --dasch-ui-resize-handle-color: transparent;
+  --dasch-ui-resize-handle-active-color: rgb(37 99 235 / 0.5);
+  --dasch-ui-resize-handle-focus-color: currentColor;
+}
+```
+
 ## API Reference
 
 See the [API reference](/api/@dasch-ng/cdk-ui/README).

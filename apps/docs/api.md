@@ -13,6 +13,9 @@ Unstyled UI building blocks on the Angular CDK.
 - `provideBreakpoints()`, `injectBreakpoint()`, `injectActiveBreakpoint()` - Named breakpoints as signals
 - `TooltipDirective` - Tooltip on the CDK Overlay
 - `Toasts`, `provideToasts()` - Signal-based toast service on the CDK Overlay
+- `provideSelectionModel()`, `SelectAllCheckboxDirective`, `SelectRowCheckboxDirective` - Selection with the CDK `SelectionModel`
+- `ResizableColumnsDirective`, `ResizableColumnDirective` - Resizable table columns
+- `ResizablePanelDirective` - Resizable side panel
 
 [View full documentation →](api/@dasch-ng/cdk-ui/README)
 
