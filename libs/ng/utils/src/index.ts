@@ -21,6 +21,7 @@ export * from './lib/reverse.pipe';
 export * from './lib/size.pipe';
 export * from './lib/sort-by.pipe';
 export * from './lib/symbol-key-for.pipe';
+export * from './lib/test-id.directive';
 export * from './lib/truncate-text.pipe';
 export * from './lib/upper-first.pipe';
 export * from './lib/values.pipe';

@@ -138,6 +138,10 @@ import { IntlCurrencyPipe, IntlRelativeTimePipe } from '@dasch-ng/utils/intl';
 
 - `Logger`, `LOG_SINK`, `provideLogger()`, `provideLoggerErrorHandler()` - Levels with a minimum level, pluggable sinks for error tracking, no console output in production unless configured
 
+**Test IDs:**
+
+- `TestIdDirective` (`[daschNgTestId]`), `provideTestIdContext()`, `provideTestIdConfig()` - Stable `data-test-id` attributes built from nested context, e.g. `checkout-address-submit-0`; attribute name configurable, can be switched off
+
 ## Documentation
 
 Full documentation is available at [dasch.ng](https://dasch.ng/libraries/ng-utils)

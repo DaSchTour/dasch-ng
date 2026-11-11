@@ -152,6 +152,33 @@ inject(Logger).warn('Quota almost used', { used: 95 });
 
 `captureException(error)` is never filtered by level. A sink that throws is ignored, so a broken tracker cannot break the app.
 
+### Test IDs
+
+`provideTestIdContext(name)` adds a name to a context that nested components and routes inherit. `TestIdDirective` (`[daschNgTestId]`) writes a kebab-case `data-test-id` from the context, its own base name, optional `daschNgTestIdTokens` and an optional `daschNgTestIdIndex`.
+
+```typescript
+@Component({
+  providers: [provideTestIdContext('checkout')],
+  template: `<app-address />`,
+})
+class CheckoutPage {}
+
+@Component({
+  selector: 'app-address',
+  imports: [TestIdDirective],
+  providers: [provideTestIdContext('address')],
+  template: `
+    @for (option of options; track option; let i = $index) {
+      <button daschNgTestId="submit" [daschNgTestIdIndex]="i">Save</button>
+      <!-- data-test-id="checkout-address-submit-0" -->
+    }
+  `,
+})
+class Address {}
+```
+
+Use `provideTestIdConfig({ attribute: 'data-cy' })` to change the attribute name, and `provideTestIdConfig({ enabled: false })` to write no attributes, e.g. in production builds.
+
 ## Quick Start
 
 ```typescript
