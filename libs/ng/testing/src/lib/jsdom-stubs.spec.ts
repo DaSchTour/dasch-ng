@@ -26,14 +26,27 @@ describe('jsdom stubs', () => {
     const query = window.matchMedia('(min-width: 1px)');
     expect(query.matches).toBe(false);
     expect(query.media).toBe('(min-width: 1px)');
+    const listener = () => undefined;
+    query.addListener(listener);
+    query.removeListener(listener);
+    query.addEventListener('change', listener);
+    query.removeEventListener('change', listener);
+    expect(query.onchange).toBeNull();
+    expect(query.dispatchEvent(new Event('change'))).toBe(false);
   });
 
   it('installs IntersectionObserver and ResizeObserver stubs', () => {
     installIntersectionObserverStub();
     installResizeObserverStub();
     const el = document.createElement('div');
-    new IntersectionObserver(() => undefined).observe(el);
-    new ResizeObserver(() => undefined).observe(el);
+    const intersection = new IntersectionObserver(() => undefined);
+    intersection.observe(el);
+    intersection.unobserve(el);
+    intersection.disconnect();
+    const resize = new ResizeObserver(() => undefined);
+    resize.observe(el);
+    resize.unobserve(el);
+    resize.disconnect();
     expect(new IntersectionObserver(() => undefined).takeRecords()).toEqual([]);
   });
 
@@ -47,10 +60,12 @@ describe('jsdom stubs', () => {
   it('keeps APIs that already exist', () => {
     const existing = class {};
     globals['ResizeObserver'] = existing;
+    globals['IntersectionObserver'] = existing;
+    globals['TextEncoder'] = existing;
     const matchMedia = () => ({}) as MediaQueryList;
     window.matchMedia = matchMedia;
     installJsdomStubs();
-    expect(globals['ResizeObserver']).toBe(existing);
+    for (const name of stubbed) expect(globals[name]).toBe(existing);
     expect(window.matchMedia).toBe(matchMedia);
   });
 
