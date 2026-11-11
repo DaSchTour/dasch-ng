@@ -59,6 +59,7 @@ npm install @dasch-ng/web-utils
 
 ### Angular Libraries
 
+- **[Files](/libraries/files)** - File download service, drop zone and file input form control
 - **[Gravatar](/libraries/gravatar)** - Generate Gravatar hashes and URLs
 - **[JSON Viewer](/libraries/json-viewer)** - Interactive JSON viewer component for Angular
 - **[Material Right Sheet](/libraries/material-right-sheet)** - Right-side sheet component for Angular Material

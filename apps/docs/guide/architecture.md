@@ -16,6 +16,7 @@ dasch-ng/
 │   ├── material/
 │   │   └── right-sheet/   # Angular Material right-side sheet
 │   ├── ng/
+│   │   ├── files/              # File download, drop zone, file input
 │   │   ├── mutation-observer/  # MutationObserver wrapper
 │   │   ├── resize-observer/    # ResizeObserver wrapper
 │   │   └── utils/              # Angular utilities

@@ -117,6 +117,7 @@ libs/
 ├── material/
 │   └── right-sheet/     # Angular Material right-side sheet component
 ├── ng/
+│   ├── files/              # File download, drop zone, file input (Angular)
 │   ├── json-viewer/        # JSON viewer component (Angular)
 │   ├── mutation-observer/  # Angular MutationObserver wrapper
 │   ├── pdf-viewer/         # PDF viewer component, fork of ng2-pdf-viewer (Angular)
@@ -182,7 +183,7 @@ Check new code against these rules before choosing a library. Dependencies only 
 | `validators`                           | Form validators (`ValidatorFn` plus directive)                                                                 | `@angular/forms`   |
 | `resize-observer`, `mutation-observer` | One browser observer API each, as service plus directive                                                       | —                  |
 | `gravatar`                             | Gravatar URLs, pipe, directive                                                                                 | —                  |
-| planned: file handling                 | Download service/directive, file drop and file select, `ControlValueAccessor` for files; builds on `web-utils` | `@angular/forms`   |
+| `files`                                | Download service/directive, file drop and file select, `ControlValueAccessor` for files; builds on `web-utils` | `@angular/forms`   |
 
 **4. Angular components** (own UI and styles)
 
