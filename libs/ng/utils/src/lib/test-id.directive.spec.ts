@@ -19,8 +19,10 @@ class InnerComponent {
 })
 class OuterComponent {}
 
-@Component({ imports: [TestIdDirective], template: `<i daschNgTestId="solo"></i>` })
-class PlainComponent {}
+@Component({ imports: [TestIdDirective], template: `<i [daschNgTestId]="name()"></i>` })
+class PlainComponent {
+  readonly name = signal('solo');
+}
 
 function render<T>(type: new () => T, providers: Provider[] = []) {
   TestBed.configureTestingModule({ providers });
@@ -60,6 +62,16 @@ describe('TestIdDirective', () => {
 
   it('writes nothing when switched off', () => {
     const el: HTMLElement = render(PlainComponent, [provideTestIdConfig({ enabled: false })]).nativeElement;
+    expect(el.querySelector('i')?.hasAttribute('data-test-id')).toBe(false);
+  });
+
+  it('removes the attribute when nothing is left to build an id from', () => {
+    const fixture = render(PlainComponent);
+    const el: HTMLElement = fixture.nativeElement;
+
+    fixture.componentInstance.name.set('!!!');
+    fixture.detectChanges();
+
     expect(el.querySelector('i')?.hasAttribute('data-test-id')).toBe(false);
   });
 });

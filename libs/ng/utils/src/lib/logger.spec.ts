@@ -77,4 +77,27 @@ describe('Logger', () => {
     TestBed.configureTestingModule({ providers: [provideLogger({ console: false })] });
     expect(() => TestBed.inject(Logger).error('x')).not.toThrow();
   });
+
+  it('prints levels and context to the matching console method', () => {
+    const log = vi.spyOn(console, 'log').mockImplementation(() => undefined);
+    const error = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { logger } = setup({ console: true });
+
+    logger.debug('d');
+    logger.error('e', { id: 1 });
+    logger.captureException('boom');
+
+    expect(log).toHaveBeenCalledWith('d');
+    expect(error).toHaveBeenCalledWith('e', { id: 1 });
+    expect(error).toHaveBeenCalledWith('boom');
+  });
+
+  it('does not print exceptions when the console is off, and skips sinks without captureException', () => {
+    const error = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    const { logger } = setup({ console: false }, { captureException: undefined });
+
+    logger.captureException('boom');
+
+    expect(error).not.toHaveBeenCalled();
+  });
 });

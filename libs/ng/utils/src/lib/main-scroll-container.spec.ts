@@ -1,7 +1,7 @@
-import { ViewportScroller } from '@angular/common';
+import { DOCUMENT, ViewportScroller } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { MainScrollContainerDirective, provideMainViewportScroller } from './main-scroll-container';
+import { MainScrollContainer, MainScrollContainerDirective, provideMainViewportScroller } from './main-scroll-container';
 
 @Component({
   imports: [MainScrollContainerDirective],
@@ -77,5 +77,61 @@ describe('provideMainViewportScroller', () => {
     scroller.scrollToPosition([0, 5]);
 
     expect(windowScroll).toHaveBeenCalledWith({ left: 0, top: 5 });
+  });
+
+  it('reads the window position and sets history restoration without a container', () => {
+    const { fixture, scroller } = setup();
+    fixture.componentInstance.show.set(false);
+    fixture.detectChanges();
+    vi.spyOn(window, 'scrollX', 'get').mockReturnValue(3);
+    vi.spyOn(window, 'scrollY', 'get').mockReturnValue(9);
+
+    expect(scroller.getScrollPosition()).toEqual([3, 9]);
+    scroller.setHistoryScrollRestoration('manual');
+    expect(window.history.scrollRestoration).toBe('manual');
+  });
+
+  it('escapes anchors, falls back to element names and accepts an offset function', () => {
+    const { fixture, main, scroller } = setup();
+    const special = document.createElement('p');
+    special.id = 'a.b:c';
+    main.appendChild(special);
+    const named = document.createElement('a');
+    named.setAttribute('name', 'by-name');
+    fixture.nativeElement.appendChild(named);
+    vi.spyOn(main, 'getBoundingClientRect').mockReturnValue({ top: 0 } as DOMRect);
+    vi.spyOn(special, 'getBoundingClientRect').mockReturnValue({ top: 30 } as DOMRect);
+    scroller.setOffset(() => [0, 10]);
+
+    scroller.scrollToAnchor('a.b:c');
+    scroller.scrollToAnchor('by-name');
+
+    expect(main.scrollTo).toHaveBeenCalledWith({ left: 0, top: 20 });
+    expect(windowScroll).toHaveBeenCalledTimes(1);
+  });
+
+  it('does nothing without a window (server rendering)', () => {
+    const target = document.createElement('div');
+    const fakeDocument = { defaultView: null, getElementById: () => target, getElementsByName: () => [] };
+    TestBed.configureTestingModule({ providers: [provideMainViewportScroller(), { provide: DOCUMENT, useValue: fakeDocument }] });
+    const scroller = TestBed.inject(ViewportScroller);
+
+    expect(scroller.getScrollPosition()).toEqual([0, 0]);
+    expect(() => {
+      scroller.scrollToPosition([0, 1]);
+      scroller.scrollToAnchor('x');
+      scroller.setHistoryScrollRestoration('auto');
+    }).not.toThrow();
+  });
+
+  it('keeps a newer container registered when an older one is destroyed', () => {
+    const { fixture } = setup();
+    const newer = document.createElement('div');
+    TestBed.inject(MainScrollContainer).element.set(newer);
+
+    fixture.componentInstance.show.set(false);
+    fixture.detectChanges();
+
+    expect(TestBed.inject(MainScrollContainer).element()).toBe(newer);
   });
 });
