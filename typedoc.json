@@ -1,6 +1,7 @@
 {
   "$schema": "https://typedoc.org/schema.json",
   "entryPoints": [
+    "libs/cdk/ui/",
     "libs/rxjs/operators/",
     "libs/decorators/",
     "libs/gravatar/",

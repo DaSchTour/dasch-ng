@@ -4,6 +4,18 @@ Complete API documentation for all libraries in the dasch.ng monorepo, automatic
 
 ## Angular Libraries
 
+### [CDK UI](api/@dasch-ng/cdk-ui/README)
+
+Unstyled UI building blocks on the Angular CDK.
+
+**Main exports:**
+
+- `provideBreakpoints()`, `injectBreakpoint()`, `injectActiveBreakpoint()` - Named breakpoints as signals
+
+[View full documentation →](api/@dasch-ng/cdk-ui/README)
+
+---
+
 ### [Gravatar](api/@dasch-ng/gravatar/README)
 
 Generate Gravatar hashes and URLs for Angular applications.

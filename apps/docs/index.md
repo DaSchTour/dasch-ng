@@ -59,6 +59,7 @@ npm install @dasch-ng/web-utils
 
 ### Angular Libraries
 
+- **[CDK UI](/libraries/cdk-ui)** - Unstyled CDK-based UI building blocks: breakpoints, tooltip, toasts, table helpers
 - **[Gravatar](/libraries/gravatar)** - Generate Gravatar hashes and URLs
 - **[JSON Viewer](/libraries/json-viewer)** - Interactive JSON viewer component for Angular
 - **[Material Right Sheet](/libraries/material-right-sheet)** - Right-side sheet component for Angular Material
