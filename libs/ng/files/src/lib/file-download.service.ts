@@ -55,6 +55,16 @@ export class FileDownloadService {
     return this.disallowedReason(url) === null;
   }
 
+  /** Last non-empty path segment of the (already validated) URL, decoded. */
+  private fileNameFromUrl(url: string): string {
+    const segment = new URL(url, this.document.baseURI).pathname.split('/').filter(Boolean).pop() ?? '';
+    try {
+      return decodeURIComponent(segment) || 'download';
+    } catch {
+      return segment || 'download';
+    }
+  }
+
   private disallowedReason(url: string): string | null {
     let parsed: URL;
     try {
@@ -91,24 +101,14 @@ export class FileDownloadService {
         if (disposition?.type !== 'attachment' && blob.type.toLowerCase().startsWith('text/html')) {
           return throwError(() => new UnexpectedHtmlResponseError(url));
         }
-        const name = filename ?? (disposition?.filename && baseName(disposition.filename)) ?? fileNameFromUrl(url);
+        const name = filename || baseName(disposition?.filename ?? '') || this.fileNameFromUrl(url);
         return from(download(blob, name)).pipe(map(() => name));
       }),
     );
   }
 }
 
-/** Strips path separators, as `parseContentDisposition` leaves them in. */
+/** Strips path separators, as `parseContentDisposition` leaves them in. Empty if nothing is left. */
 function baseName(name: string): string {
-  return name.split(/[\\/]/).pop() ?? '';
-}
-
-function fileNameFromUrl(url: string): string {
-  const path = url.split(/[?#]/)[0];
-  const segment = baseName(path.replace(/[\\/]+$/, ''));
-  try {
-    return decodeURIComponent(segment) || 'download';
-  } catch {
-    return segment || 'download';
-  }
+  return name.replaceAll('\\', '/').split('/').pop() ?? '';
 }

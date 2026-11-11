@@ -52,6 +52,16 @@ describe('FileDownloadService', () => {
     await vi.waitFor(() => expect(next).toHaveBeenCalledWith('my file.txt'));
   });
 
+  it('falls back to the URL name when the header name is empty after stripping', async () => {
+    const { next } = run('/files/x.bin', { 'Content-Disposition': 'attachment; filename="dir/"' }, new Blob(['a']));
+    await vi.waitFor(() => expect(next).toHaveBeenCalledWith('x.bin'));
+  });
+
+  it('ignores trailing slashes in the URL', async () => {
+    const { next } = run('/files/x.bin////', {}, new Blob(['a'], { type: 'text/plain' }));
+    await vi.waitFor(() => expect(next).toHaveBeenCalledWith('x.bin'));
+  });
+
   it('uses "download" when the URL has no usable segment', async () => {
     const { next } = run('/', {}, new Blob(['a'], { type: 'text/plain' }));
     await vi.waitFor(() => expect(next).toHaveBeenCalledWith('download'));
