@@ -149,6 +149,30 @@ fuzzySearch('ann', users, { keys: ['firstName', 'email'] }); // objects: search 
 
 ---
 
+### classifyHttpError
+
+Sorts an HTTP error into `'not-found' | 'forbidden' | 'unauthorized' | 'server' | 'network' | 'unknown'`. It only looks at the shape of the error, so it works for Angular `HttpErrorResponse` (`status`, `0` means network), `fetch` (`Response`, or the `TypeError` thrown when offline) and ofetch (`statusCode`, `status`, `response.status`), also during SSR. `hasHttpStatus(error, status)` is a type guard for one code, and `HttpStatus` holds the common codes.
+
+#### Example
+
+```typescript
+import { classifyHttpError, hasHttpStatus, HttpStatus } from '@dasch-ng/web-utils';
+
+try {
+  await $fetch('/api/items/42');
+} catch (error) {
+  if (classifyHttpError(error) === 'not-found') {
+    // show the "not found" page
+  } else if (hasHttpStatus(error, HttpStatus.Conflict)) {
+    // handle the conflict
+  }
+}
+```
+
+[View API Documentation →](../api/@dasch-ng/web-utils/README)
+
+---
+
 ### toSlug
 
 Turns text into a URL slug of `[a-z0-9-]`: lowercased, accents removed, German umlauts written out (`ü` → `ue`), separators collapsed, cut at a word boundary. NFC and NFD spellings give the same slug.
