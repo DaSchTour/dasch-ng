@@ -229,6 +229,15 @@ Ready-made `serialize`/`deserialize` pairs for `bindQuerySignal`:
 - `serializeMinMaxRange` / `deserializeMinMaxRange`: `{ min: 5, max: 100 }` ⇄ `5-100` (open sides: `5-`, `-100`)
 - `serializeDateRange` / `deserializeDateRange`: `{ start, end }` ⇄ `2026-01-01,2026-02-15` (local calendar dates)
 
+### `nestedRouteData<T>(key?)` and `nestedRouteParams()`
+
+Data and params merged from the root route to the deepest active child (child wins), updated on `NavigationEnd`. With a `key`, `nestedRouteData` returns that single value (`undefined` when no active route sets it).
+
+```typescript
+readonly title = nestedRouteData<string>('title');
+readonly params = nestedRouteParams(); // { orgId: '7', projectId: '42' }
+```
+
 ### Router event guards
 
 `isNavigationStart`, `isNavigationEnd`, `isNavigationCancel`, `isNavigationError` and `isResolveEnd` are type guards for `filter()`:

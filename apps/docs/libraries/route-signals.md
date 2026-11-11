@@ -310,6 +310,19 @@ Ready-made `serialize`/`deserialize` pairs for `bindQuerySignal`:
 
 Dates are written as local calendar dates, so a date never shifts by a day across time zones. Invalid parts deserialize to `undefined` (numbers) or `null` (dates).
 
+### nestedRouteData / nestedRouteParams
+
+`routeData` and `routeParam` read the activated route only. These two read the whole active route tree: root to the deepest child, merged, with the child winning on equal names. They update after every `NavigationEnd`, so they suit layouts and shells that sit above the routed page.
+
+```typescript
+// Routes: { path: 'orgs/:orgId', data: { section: 'Orgs' }, children: [{ path: 'projects/:projectId', data: { title: 'Project' } }] }
+export class ShellComponent {
+  readonly data = nestedRouteData<{ section: string; title: string }>(); // { section, title }
+  readonly title = nestedRouteData<string>('title'); // Signal<string | undefined>
+  readonly params = nestedRouteParams(); // { orgId: '7', projectId: '42' }
+}
+```
+
 ### Router event guards
 
 Type guards for `router.events`, so `filter()` narrows the event type without a hand-written predicate:
