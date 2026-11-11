@@ -43,9 +43,13 @@ if (typeof Promise.withResolvers === 'undefined' && typeof globalThis !== 'undef
   };
 }
 
+/** Text layer mode, used with the `renderTextMode` input (template alias `render-text-mode`). */
 export enum RenderTextMode {
+  /** No text layer is rendered, so text cannot be selected. */
   DISABLED,
+  /** Renders a text layer so text can be selected and searched. */
   ENABLED,
+  /** Renders an enhanced text layer (pdf.js text layer mode 2), which also supports interactive content such as form fields. */
   ENHANCED,
 }
 
@@ -70,6 +74,15 @@ function pageTransform(value: unknown): number {
   return Number.isFinite(n) && n > 0 ? n : 1;
 }
 
+/**
+ * Displays a PDF document using pdf.js. All pages are shown in a scrollable list by default, or a single page with `show-all` set to `false`.
+ * Inputs and outputs keep the kebab-case names of the ng2-pdf-viewer API in templates; the alias is noted on each member.
+ *
+ * @example
+ * ```html
+ * <pdf-viewer [src]="'/assets/sample.pdf'" [page]="page" (pageChange)="page = $event" [zoom]="1.2" (after-load-complete)="onLoaded($event)"></pdf-viewer>
+ * ```
+ */
 @Component({
   selector: 'pdf-viewer',
   template: `
@@ -86,7 +99,9 @@ export class PdfViewerComponent implements OnChanges, OnInit, OnDestroy, AfterVi
   private element = inject<ElementRef<HTMLElement>>(ElementRef);
   private ngZone = inject(NgZone);
 
+  /** Ratio between CSS pixels (96 dpi) and PDF points (72 dpi). */
   static CSS_UNITS = 96.0 / 72.0;
+  /** Page border width in CSS pixels, taken into account when sizing pages while `show-borders` is on. */
   static BORDER_WIDTH = 9;
 
   private _page = 1;
@@ -111,31 +126,59 @@ export class PdfViewerComponent implements OnChanges, OnInit, OnDestroy, AfterVi
   private loadingTask?: PDFDocumentLoadingTask | null;
   private destroy$ = new Subject<void>();
 
+  /** Emits the loaded pdf.js document once it has been parsed. Template alias: `after-load-complete`. */
   readonly afterLoadComplete = output<PDFDocumentProxy>({ alias: 'after-load-complete' });
+  /** Emits when a page has been rendered. Template alias: `page-rendered`. */
   readonly pageRendered = output<CustomEvent>({ alias: 'page-rendered' });
+  /** Emits when the pages have been initialized, before they are rendered. Template alias: `pages-initialized` (note the plural; the field name is `pageInitialized`). */
   readonly pageInitialized = output<CustomEvent>({ alias: 'pages-initialized' });
+  /** Emits when the text layer of a page has been rendered. Template alias: `text-layer-rendered`. */
   readonly textLayerRendered = output<CustomEvent>({ alias: 'text-layer-rendered' });
+  /** Emits when loading the document fails. Template alias: `error`. */
   readonly onError = output<any>({ alias: 'error' });
+  /** Emits loading progress while the document is downloaded. Template alias: `on-progress`. */
   readonly onProgress = output<PDFProgressData>({ alias: 'on-progress' });
+  /** Emits the page number when the viewer corrects `page` to a valid value, or when the user scrolls to another page. Together with the `page` input it supports `[(page)]`. */
   readonly pageChange = output<number>();
+  /** The PDF to show: a URL, binary data, or a pdf.js document parameters object (see `PDFSource`). Changing it loads the new document. */
   readonly src = input<string | Uint8Array | PDFSource>();
+  /** Page number to show, starting at 1. Values that cannot be parsed or are below 1 become 1, and values above the page count are clamped (reported through `pageChange`). Defaults to `1`. */
   readonly page = input(1, { transform: pageTransform });
+  /** Base URL of the pdf.js character maps (CMaps), needed for some CJK or legacy fonts. Template alias: `c-maps-url`. Defaults to the pdfjs-dist version on unpkg. */
   readonly cMapsUrl = input(PdfViewerComponent.DEFAULT_C_MAPS_URL, { alias: 'c-maps-url' });
+  /** Whether to render the text layer, which makes text selectable and searchable. Template alias: `render-text`. Defaults to `true`. */
   readonly renderText = input(true, { alias: 'render-text' });
+  /** Text layer mode used when `render-text` is on, see `RenderTextMode`. Template alias: `render-text-mode`. Defaults to `RenderTextMode.ENABLED`. */
   readonly renderTextMode = input(RenderTextMode.ENABLED, { alias: 'render-text-mode' });
+  /** Whether pages are shown at their original size. When `false`, pages are scaled to the container width according to `zoom-scale`. Template alias: `original-size`. Defaults to `true`. */
   readonly originalSize = input(true, { alias: 'original-size' });
+  /** Whether to show all pages in a scrollable list (`true`) or only the current page (`false`). Template alias: `show-all`. Defaults to `true`. */
   readonly showAll = input(true, { alias: 'show-all' });
+  /** Whether the viewer keeps the page given by `page` in view after zooming or resizing. Template alias: `stick-to-page`. Defaults to `false`. */
   readonly stickToPage = input(false, { alias: 'stick-to-page' });
+  /** How pages are scaled to the container when `original-size` is `false`: `'page-width'`, `'page-height'` or `'page-fit'` (see `ZoomScale`). The `zoom` factor is applied on top. Template alias: `zoom-scale`. Defaults to `'page-width'`. */
   readonly zoomScale = input<ZoomScale>('page-width', { alias: 'zoom-scale' });
 
+  /** Zoom factor, `1` meaning 100 percent. Values that are not a positive number log a warning and fall back to `1`. */
   readonly zoom = input(1, { transform: validZoom });
+  /** Rotation of all pages in degrees, a multiple of 90. Other values log a warning and fall back to `0`. Defaults to `0`. */
   readonly rotation = input(0, { transform: validRotation });
+  /** Where links to external URLs open: `'blank'`, `'none'`, `'self'`, `'parent'` or `'top'` (see `getLinkTarget`). Template alias: `external-link-target`. Defaults to `'blank'`. */
   readonly externalLinkTarget = input('blank', { alias: 'external-link-target' });
 
+  /** Whether the pages are resized when the container or window size changes. Accepts a boolean attribute. Defaults to `true`. */
   readonly autoresize = input(true, { transform: booleanAttribute });
+  /** Whether pages wider than the container are scaled down to fit it, even with `original-size` on. Accepts a boolean attribute. Template alias: `fit-to-page`. Defaults to `false`. */
   readonly fitToPage = input(false, { alias: 'fit-to-page', transform: booleanAttribute });
+  /** Whether to draw a border around each page. Accepts a boolean attribute. Template alias: `show-borders`. Defaults to `false`. */
   readonly showBorders = input(false, { alias: 'show-borders', transform: booleanAttribute });
 
+  /**
+   * Maps a link target name to the matching pdf.js `LinkTarget` value.
+   *
+   * @param type One of `'blank'`, `'none'`, `'self'`, `'parent'` or `'top'`.
+   * @returns The pdf.js link target, or `null` for an unknown name.
+   */
   static getLinkTarget(type: string) {
     switch (type) {
       case 'blank':
