@@ -142,6 +142,10 @@ import { IntlCurrencyPipe, IntlRelativeTimePipe } from '@dasch-ng/utils/intl';
 
 - `TestIdDirective` (`[daschNgTestId]`), `provideTestIdContext()`, `provideTestIdConfig()` - Stable `data-test-id` attributes built from nested context, e.g. `checkout-address-submit-0`; attribute name configurable, can be switched off
 
+**Scrolling:**
+
+- `MainScrollContainerDirective` (`[daschNgMainScrollContainer]`), `provideMainViewportScroller()` - Router scroll restoration and anchor scrolling inside a scrolling main area instead of the window
+
 ## Documentation
 
 Full documentation is available at [dasch.ng](https://dasch.ng/libraries/ng-utils)

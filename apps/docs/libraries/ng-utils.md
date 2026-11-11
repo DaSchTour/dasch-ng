@@ -179,6 +179,22 @@ class Address {}
 
 Use `provideTestIdConfig({ attribute: 'data-cy' })` to change the attribute name, and `provideTestIdConfig({ enabled: false })` to write no attributes, e.g. in production builds.
 
+### Scrolling in an Inner Container
+
+Angular's scroll restoration and anchor scrolling only handle the window. For a layout with a fixed header and a scrolling main area, mark that area with `MainScrollContainerDirective` (`[daschNgMainScrollContainer]`) and provide `provideMainViewportScroller()`. The router then restores positions and scrolls to anchors inside that element. Without a registered element it falls back to the window.
+
+```typescript
+provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' })),
+provideMainViewportScroller(),
+```
+
+```html
+<header>…</header>
+<main daschNgMainScrollContainer style="overflow: auto"><router-outlet /></main>
+```
+
+Use the directive once per app. `setOffset()` is honoured for anchors, e.g. for a sticky heading inside the container.
+
 ## Quick Start
 
 ```typescript
