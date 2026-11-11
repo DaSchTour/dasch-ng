@@ -1,0 +1,19 @@
+{
+  "name": "@dasch-ng/webmcp",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaSchTour/dasch-ng.git",
+    "directory": "libs/ng/webmcp"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "private": false,
+  "peerDependencies": {
+    "@angular/common": "^21.0.0 || ^22.0.0",
+    "@angular/core": "^21.0.0 || ^22.0.0"
+  },
+  "sideEffects": false
+}

@@ -158,6 +158,7 @@
       "route-signals",
       "validators",
       "web-utils",
+      "webmcp",
       "decorators",
       "postcss-custom-container"
     ],
