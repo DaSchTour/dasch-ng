@@ -310,6 +310,24 @@ Ready-made `serialize`/`deserialize` pairs for `bindQuerySignal`:
 
 Dates are written as local calendar dates, so a date never shifts by a day across time zones. Invalid parts deserialize to `undefined` (numbers) or `null` (dates).
 
+### RouterLinkActiveFor
+
+`routerLinkActive` only checks the element's own `routerLink`. `[routerLinkActiveFor]` takes a list of URLs and sets classes when any of them is active, for navigation items that stand for several routes.
+
+| Input                        | Default             | Description                                                                    |
+| ---------------------------- | ------------------- | ------------------------------------------------------------------------------ |
+| `routerLinkActiveFor`        | required            | One URL or a list of URLs                                                      |
+| `routerLinkActiveForClass`   | none (no class set) | Class names, space-separated or as an array                                    |
+| `routerLinkActiveForOptions` | `{ exact: false }`  | `{ exact: boolean }` or `IsActiveMatchOptions`, like `routerLinkActiveOptions` |
+
+`isActive()` is a signal, available through the template reference `#item="routerLinkActiveFor"`.
+
+```html
+<a routerLink="/settings" [routerLinkActiveFor]="['/settings', '/account']" routerLinkActiveForClass="active" #item="routerLinkActiveFor">
+  Settings @if (item.isActive()) { (current) }
+</a>
+```
+
 ### querySort / defaultSortGuard
 
 `querySort` keeps a list's sort in two query parameters (`?sort=name&dir=desc`), so it survives reloads and shared links. It returns a writable signal of `{ property, direction } | null` with two extra methods:

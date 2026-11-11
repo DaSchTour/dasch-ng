@@ -229,6 +229,14 @@ Ready-made `serialize`/`deserialize` pairs for `bindQuerySignal`:
 - `serializeMinMaxRange` / `deserializeMinMaxRange`: `{ min: 5, max: 100 }` ⇄ `5-100` (open sides: `5-`, `-100`)
 - `serializeDateRange` / `deserializeDateRange`: `{ start, end }` ⇄ `2026-01-01,2026-02-15` (local calendar dates)
 
+### `[routerLinkActiveFor]`
+
+Like `routerLinkActive` for an element that stands for several routes. Inputs: `routerLinkActiveFor` (URL or list), `routerLinkActiveForClass` (no default), `routerLinkActiveForOptions` (`{ exact }` or `IsActiveMatchOptions`, default prefix match). Exposes `isActive()` as a signal via `exportAs: 'routerLinkActiveFor'`.
+
+```html
+<a [routerLinkActiveFor]="['/settings', '/account']" routerLinkActiveForClass="active">Settings</a>
+```
+
 ### `querySort(options?)` and `defaultSortGuard(defaultSort, names?)`
 
 `querySort` is a writable signal `{ property, direction } | null` bound to the query parameters `sort` and `dir` (names configurable), with `toggle(property)` and `reset()`. Options: `property`, `direction`, `default`, `resetParams` (parameters removed when the sort changes, e.g. `['page']`). `defaultSortGuard` redirects to the default sort when the parameters are missing and keeps other parameters.
