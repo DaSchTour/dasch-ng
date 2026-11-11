@@ -310,6 +310,20 @@ Ready-made `serialize`/`deserialize` pairs for `bindQuerySignal`:
 
 Dates are written as local calendar dates, so a date never shifts by a day across time zones. Invalid parts deserialize to `undefined` (numbers) or `null` (dates).
 
+### Router event guards
+
+Type guards for `router.events`, so `filter()` narrows the event type without a hand-written predicate:
+
+```typescript
+router.events.pipe(filter(isNavigationEnd)).subscribe((event) => {
+  console.log(event.urlAfterRedirects); // event is NavigationEnd
+});
+```
+
+Available: `isNavigationStart`, `isNavigationEnd`, `isNavigationCancel`, `isNavigationError`, `isResolveEnd`.
+
+`navigationEnd()` returns a `Signal<NavigationEnd | null>` with the last finished navigation (`null` before the first one). Call it in an injection context.
+
 ## Common Use Cases
 
 ### Page Titles from Route Data

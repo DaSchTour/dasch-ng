@@ -229,6 +229,16 @@ Ready-made `serialize`/`deserialize` pairs for `bindQuerySignal`:
 - `serializeMinMaxRange` / `deserializeMinMaxRange`: `{ min: 5, max: 100 }` ⇄ `5-100` (open sides: `5-`, `-100`)
 - `serializeDateRange` / `deserializeDateRange`: `{ start, end }` ⇄ `2026-01-01,2026-02-15` (local calendar dates)
 
+### Router event guards
+
+`isNavigationStart`, `isNavigationEnd`, `isNavigationCancel`, `isNavigationError` and `isResolveEnd` are type guards for `filter()`:
+
+```typescript
+router.events.pipe(filter(isNavigationEnd)).subscribe((event) => console.log(event.urlAfterRedirects));
+```
+
+`navigationEnd(): Signal<NavigationEnd | null>` holds the last finished navigation.
+
 ## URL Decoding
 
 All functions automatically decode URL-encoded values using a safe decoder that:
