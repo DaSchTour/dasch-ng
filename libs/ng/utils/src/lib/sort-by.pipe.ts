@@ -8,7 +8,8 @@ import { sortBy } from '@fxts/core';
 export class SortByPipe implements PipeTransform {
   public transform<T>(value: Iterable<T> | null | undefined, prop?: keyof T | null) {
     if (prop && value) {
-      return sortBy((v) => `${v[prop]}`.toLowerCase(), value);
+      // sort a copy: fxts sorts arrays in place, which mutates the input and throws on frozen arrays
+      return sortBy((v) => `${v[prop]}`.toLowerCase(), [...value]);
     } else {
       return value;
     }
