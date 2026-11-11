@@ -44,6 +44,65 @@ export class Header {
 - `injectActiveBreakpoint()` returns the first matching name in the order of the map, or `null` if none matches. Use non-overlapping queries if you want a single answer.
 - On the server there is no `matchMedia`: `injectBreakpoint()` is `false` and `injectActiveBreakpoint()` is `null`. Render the mobile-first layout by default and let the client correct it, or avoid layout decisions that depend on the width during SSR.
 
+## Tooltip
+
+`daschUiTooltip` shows a tooltip on the CDK Overlay. No Angular Material needed.
+
+```ts
+import { TooltipDirective } from '@dasch-ng/cdk-ui';
+
+@Component({
+  imports: [TooltipDirective],
+  template: `
+    <button daschUiTooltip="Save changes">Save</button>
+
+    <button [daschUiTooltip]="help" [daschUiTooltipPosition]="['end', 'start']" [daschUiTooltipShowDelay]="0">?</button>
+    <ng-template #help>Press <kbd>Ctrl</kbd> + <kbd>S</kbd></ng-template>
+  `,
+})
+export class Toolbar {}
+```
+
+| Input                     | Default                             | Description                                                                                                                  |
+| ------------------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `daschUiTooltip`          | -                                   | Text or `TemplateRef`. An empty string, `null` or `undefined` shows nothing.                                                 |
+| `daschUiTooltipPosition`  | `['top', 'bottom', 'start', 'end']` | One side or a list of preferred sides. The next one is used if it does not fit. `start` and `end` follow the text direction. |
+| `daschUiTooltipShowDelay` | `300`                               | Milliseconds before the tooltip appears.                                                                                     |
+| `daschUiTooltipHideDelay` | `0`                                 | Milliseconds before the tooltip disappears.                                                                                  |
+| `daschUiTooltipDisabled`  | `false`                             | Turns the tooltip off.                                                                                                       |
+
+Behaviour:
+
+- Shows on hover and on keyboard focus. Focus caused by a mouse click does not show it.
+- Hides on mouse leave, blur, `Escape` and when anything on the page scrolls.
+- The overlay has `role="tooltip"`. While it is shown, the host gets `aria-describedby` pointing to it (an existing value is kept and restored).
+- The tooltip does not take pointer events, so it disappears as soon as the pointer leaves the host.
+- `show()`, `hide()`, `scheduleShow()` and `scheduleHide()` are available through `exportAs: 'daschUiTooltip'`.
+
+### Styling
+
+Only a structural stylesheet is included (size limit, spacing, wrapping). Colors and sizes come from CSS custom properties. Set them on `:root` or any ancestor of the overlay container:
+
+```css
+:root {
+  --dasch-ui-tooltip-background: #1f2937;
+  --dasch-ui-tooltip-color: #fff;
+  --dasch-ui-tooltip-font-size: 0.8125rem;
+  --dasch-ui-tooltip-padding: 0.25rem 0.5rem;
+  --dasch-ui-tooltip-radius: 0.25rem;
+  --dasch-ui-tooltip-max-width: 20rem;
+  --dasch-ui-tooltip-gap: 0.5rem; /* distance to the host */
+}
+```
+
+### Tooltip only when the text is cut off
+
+Pair it with the `daschNgOverflow` directive from `@dasch-ng/utils`. The two libraries do not depend on each other, the template connects them:
+
+```html
+<span class="ellipsis" daschNgOverflow #o="daschNgOverflow" [daschUiTooltip]="o.overflowing() ? file.name : ''"> {{ file.name }} </span>
+```
+
 ## API Reference
 
 See the [API reference](/api/@dasch-ng/cdk-ui/README).

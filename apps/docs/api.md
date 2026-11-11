@@ -11,6 +11,7 @@ Unstyled UI building blocks on the Angular CDK.
 **Main exports:**
 
 - `provideBreakpoints()`, `injectBreakpoint()`, `injectActiveBreakpoint()` - Named breakpoints as signals
+- `TooltipDirective` - Tooltip on the CDK Overlay
 
 [View full documentation →](api/@dasch-ng/cdk-ui/README)
 
