@@ -1,3 +1,13 @@
+## 0.6.3 (2026-11-11)
+
+### 🩹 Fixes
+
+- **ng-utils:** sort a copy in sortBy pipe instead of the input ([#1263](https://github.com/DaSchTour/dasch-ng/pull/1263))
+
+### ❤️ Thank You
+
+- Daniel Schuba @DaSchTour
+
 ## 0.6.2 (2026-11-10)
 
 ### 🚀 Features
