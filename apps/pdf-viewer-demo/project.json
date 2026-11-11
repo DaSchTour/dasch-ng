@@ -20,7 +20,7 @@
         "tsConfig": "apps/pdf-viewer-demo/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/pdf-viewer-demo/src/favicon.ico", "apps/pdf-viewer-demo/src/assets"],
-        "styles": ["apps/pdf-viewer-demo/src/styles.scss"],
+        "styles": ["@fontsource/lato/400.css", "material-icons/iconfont/material-icons.css", "apps/pdf-viewer-demo/src/styles.scss"],
         "scripts": [],
         "baseHref": "/demos/pdf-viewer/"
       },
