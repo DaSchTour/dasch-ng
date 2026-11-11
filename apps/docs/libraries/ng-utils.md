@@ -123,6 +123,35 @@ export const appConfig: ApplicationConfig = {
 
 Call `check()` to measure again after changes the observers cannot see, e.g. a web font that finished loading.
 
+### Logger
+
+`Logger` has the levels `debug`, `info`, `warn` and `error`, and a minimum level that drops everything below it. Every entry goes to the `LOG_SINK` providers, so an app can forward logs to its error tracking or analytics without the library knowing any vendor. The browser console is used only in development mode, unless you set `console` yourself.
+
+```typescript
+import { provideLogger, provideLoggerErrorHandler, LOG_SINK, LogSink, Logger } from '@dasch-ng/utils';
+
+class TrackerSink implements LogSink {
+  capture(level, message, context) {
+    tracker.log(level, message, context);
+  }
+  captureException(error) {
+    tracker.report(error);
+  }
+}
+
+bootstrapApplication(App, {
+  providers: [
+    provideLogger({ minLevel: 'info' }), // console: true prints in production too
+    { provide: LOG_SINK, useClass: TrackerSink, multi: true },
+    provideLoggerErrorHandler(), // uncaught errors go through the logger
+  ],
+});
+
+inject(Logger).warn('Quota almost used', { used: 95 });
+```
+
+`captureException(error)` is never filtered by level. A sink that throws is ignored, so a broken tracker cannot break the app.
+
 ## Quick Start
 
 ```typescript

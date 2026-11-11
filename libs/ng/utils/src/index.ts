@@ -7,6 +7,7 @@ export * from './lib/included-in.pipe';
 export * from './lib/is-empty.pipe';
 export * from './lib/is-nil.pipe';
 export * from './lib/join.pipe';
+export * from './lib/logger';
 export * from './lib/middle-truncate.pipe';
 export * from './lib/ng-utils.module';
 export * from './lib/omit.pipe';

@@ -134,6 +134,10 @@ import { IntlCurrencyPipe, IntlRelativeTimePipe } from '@dasch-ng/utils/intl';
 
 - `OverflowDirective` (`[daschNgOverflow]`) - Tells whether text is cut off by ellipsis or line clamp, e.g. to show a tooltip only then
 
+**Logging:**
+
+- `Logger`, `LOG_SINK`, `provideLogger()`, `provideLoggerErrorHandler()` - Levels with a minimum level, pluggable sinks for error tracking, no console output in production unless configured
+
 ## Documentation
 
 Full documentation is available at [dasch.ng](https://dasch.ng/libraries/ng-utils)
