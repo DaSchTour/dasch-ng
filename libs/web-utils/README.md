@@ -113,6 +113,10 @@ const { filename } = parseContentDisposition(response.headers.get('Content-Dispo
 
 Classifies a file name or `File` by extension: `'video' | 'image' | 'audio' | 'document' | 'spreadsheet' | 'archive' | null`.
 
+### `fuzzySearch(query, items, { keys? })`
+
+Case- and diacritic-insensitive "contains" search that tolerates one typo. Exact matches come first, order is otherwise kept: `fuzzySearch('zuerich', ['Zürich', 'Bern'])` → `['Zürich']`. Pass `keys` to search properties of objects.
+
 ### `toSlug(value, { maxLength?, fallback?, expandUmlauts? })`
 
 URL slug of `[a-z0-9-]`, accents removed, umlauts written out, cut at a word boundary: `toSlug('Grüne Wälder')` → `'gruene-waelder'`.

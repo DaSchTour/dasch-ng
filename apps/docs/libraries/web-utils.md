@@ -129,6 +129,26 @@ fileTypeOf('notes'); // null
 
 ---
 
+### fuzzySearch
+
+Filters a list with a case- and diacritic-insensitive "contains" match that also accepts one typo (queries under 3 letters get no typo tolerance). Exact matches come first, then plain matches, then typo matches; the original order is kept within each group. An empty query returns all items.
+
+**Use case:** Search boxes over small, in-memory lists. For large lists or ranking by relevance, use a dedicated search library.
+
+#### Example
+
+```typescript
+import { fuzzySearch } from '@dasch-ng/web-utils';
+
+fuzzySearch('cafe', ['Tea', 'Café', 'Cafeteria']); // ['Café', 'Cafeteria']
+fuzzySearch('Zuerich', ['Zürich', 'Bern']); // ['Zürich'] (one typo)
+fuzzySearch('ann', users, { keys: ['firstName', 'email'] }); // objects: search the given properties
+```
+
+[View API Documentation →](../api/@dasch-ng/web-utils/README)
+
+---
+
 ### toSlug
 
 Turns text into a URL slug of `[a-z0-9-]`: lowercased, accents removed, German umlauts written out (`ü` → `ue`), separators collapsed, cut at a word boundary. NFC and NFD spellings give the same slug.
