@@ -123,6 +123,78 @@ export const appConfig: ApplicationConfig = {
 
 Call `check()` to measure again after changes the observers cannot see, e.g. a web font that finished loading.
 
+### Logger
+
+`Logger` has the levels `debug`, `info`, `warn` and `error`, and a minimum level that drops everything below it. Every entry goes to the `LOG_SINK` providers, so an app can forward logs to its error tracking or analytics without the library knowing any vendor. The browser console is used only in development mode, unless you set `console` yourself.
+
+```typescript
+import { provideLogger, provideLoggerErrorHandler, LOG_SINK, LogSink, Logger } from '@dasch-ng/utils';
+
+class TrackerSink implements LogSink {
+  capture(level, message, context) {
+    tracker.log(level, message, context);
+  }
+  captureException(error) {
+    tracker.report(error);
+  }
+}
+
+bootstrapApplication(App, {
+  providers: [
+    provideLogger({ minLevel: 'info' }), // console: true prints in production too
+    { provide: LOG_SINK, useClass: TrackerSink, multi: true },
+    provideLoggerErrorHandler(), // uncaught errors go through the logger
+  ],
+});
+
+inject(Logger).warn('Quota almost used', { used: 95 });
+```
+
+`captureException(error)` is never filtered by level. A sink that throws is ignored, so a broken tracker cannot break the app.
+
+### Test IDs
+
+`provideTestIdContext(name)` adds a name to a context that nested components and routes inherit. `TestIdDirective` (`[daschNgTestId]`) writes a kebab-case `data-test-id` from the context, its own base name, optional `daschNgTestIdTokens` and an optional `daschNgTestIdIndex`.
+
+```typescript
+@Component({
+  providers: [provideTestIdContext('checkout')],
+  template: `<app-address />`,
+})
+class CheckoutPage {}
+
+@Component({
+  selector: 'app-address',
+  imports: [TestIdDirective],
+  providers: [provideTestIdContext('address')],
+  template: `
+    @for (option of options; track option; let i = $index) {
+      <button daschNgTestId="submit" [daschNgTestIdIndex]="i">Save</button>
+      <!-- data-test-id="checkout-address-submit-0" -->
+    }
+  `,
+})
+class Address {}
+```
+
+Use `provideTestIdConfig({ attribute: 'data-cy' })` to change the attribute name, and `provideTestIdConfig({ enabled: false })` to write no attributes, e.g. in production builds.
+
+### Scrolling in an Inner Container
+
+Angular's scroll restoration and anchor scrolling only handle the window. For a layout with a fixed header and a scrolling main area, mark that area with `MainScrollContainerDirective` (`[daschNgMainScrollContainer]`) and provide `provideMainViewportScroller()`. The router then restores positions and scrolls to anchors inside that element. Without a registered element it falls back to the window.
+
+```typescript
+provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' })),
+provideMainViewportScroller(),
+```
+
+```html
+<header>…</header>
+<main daschNgMainScrollContainer style="overflow: auto"><router-outlet /></main>
+```
+
+Use the directive once per app. `setOffset()` is honoured for anchors, e.g. for a sticky heading inside the container.
+
 ## Quick Start
 
 ```typescript
