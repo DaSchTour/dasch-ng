@@ -122,6 +122,7 @@ libs/
 │   ├── pdf-viewer/         # PDF viewer component, fork of ng2-pdf-viewer (Angular)
 │   ├── resize-observer/    # Angular ResizeObserver wrapper
 │   ├── route-signals/      # Route state as signals (Angular)
+│   ├── testing/            # Helpers for Vitest-based Angular tests
 │   └── utils/              # Angular utilities (pipes, helpers)
 ├── rxjs/
 │   └── operators/       # Custom RxJS operators (Vite-based)
@@ -182,6 +183,7 @@ Check new code against these rules before choosing a library. Dependencies only 
 | `validators`                           | Form validators (`ValidatorFn` plus directive)                                                                 | `@angular/forms`   |
 | `resize-observer`, `mutation-observer` | One browser observer API each, as service plus directive                                                       | —                  |
 | `gravatar`                             | Gravatar URLs, pipe, directive                                                                                 | —                  |
+| `testing`                              | Helpers for Vitest-based Angular tests: snapshot serializer, `flushUI`, jsdom stubs                            | `vitest`           |
 | planned: file handling                 | Download service/directive, file drop and file select, `ControlValueAccessor` for files; builds on `web-utils` | `@angular/forms`   |
 
 **4. Angular components** (own UI and styles)

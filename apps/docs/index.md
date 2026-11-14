@@ -66,6 +66,7 @@ npm install @dasch-ng/web-utils
 - **[NG Utils](/libraries/ng-utils)** - Angular pipes, directives, and helper functions
 - **[Resize Observer](/libraries/resize-observer)** - Angular wrapper for ResizeObserver API
 - **[Route Signals](/libraries/route-signals)** - Angular route state as signals for reactive routing
+- **[Testing](/libraries/testing)** - Helpers for Vitest-based Angular tests
 - **[Validators](/libraries/validators)** - Form validators for Angular applications
 
 ### TypeScript Libraries
