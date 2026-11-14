@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../../dist/out-tsc",
+    "strict": true,
+    "types": ["vitest/globals"],
+    "target": "ES2022",
+    "useDefineForClassFields": false,
+    "moduleResolution": "bundler",
+    "isolatedModules": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts"],
+  "angularCompilerOptions": {
+    "extendedDiagnostics": {
+      "checks": {
+        "nullishCoalescingNotNullable": "suppress",
+        "optionalChainNotNullable": "suppress"
+      }
+    }
+  }
+}

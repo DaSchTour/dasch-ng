@@ -112,6 +112,8 @@ The repository follows an Nx workspace pattern with libraries organized by domai
 
 ```text
 libs/
+├── cdk/
+│   └── ui/              # CDK-based UI building blocks: breakpoints, tooltip, toasts, table helpers (Angular)
 ├── decorators/          # TypeScript decorators
 ├── gravatar/            # Gravatar hash generation (Angular)
 ├── material/
@@ -146,7 +148,7 @@ apps/
 - Built with ng-packagr
 - Use Vitest via `@nx/angular:unit-test` (Angular's official test runner integration)
 - Have `ng-package.json` configuration
-- Examples: route-signals, pdf-viewer, gravatar, json-viewer, ng-utils, material-right-sheet, validators
+- Examples: route-signals, pdf-viewer, gravatar, json-viewer, ng-utils, material-right-sheet, validators, cdk-ui
 
 **Vite Libraries** (using `@nx/vite:build`):
 
@@ -188,6 +190,8 @@ Check new code against these rules before choosing a library. Dependencies only 
 
 `json-viewer`, `pdf-viewer`, `material-right-sheet` (`@angular/material`, `@angular/cdk`).
 
+`cdk-ui` (`@angular/cdk` only, no Material): named breakpoints, tooltip, toasts, selection and resize helpers for tables and panels. Unstyled apart from a structural stylesheet, styled through CSS custom properties. Selector prefix `daschUi` / `dasch-ui`.
+
 **Placement rules**
 
 - Logic that is useful without Angular goes into a framework-free library; the Angular library only wraps it (pipe, directive, service).
@@ -202,6 +206,7 @@ Check new code against these rules before choosing a library. Dependencies only 
   - Tests run in jsdom by default; `tsconfig.spec.json` sets `"types": ["vitest/globals"]`
   - `material-right-sheet` runs in headless Chromium (Vitest browser mode via Playwright) because its tests need real layout and focus behaviour
   - `material-right-sheet` also uses `fakeAsync()`: its `src/test-setup.ts` loads `zone.js/plugins/vitest-patch`, and the helper target `test-zone-env` supplies the `zone.js` polyfill (library build targets have none)
+  - `cdk-ui` also runs in headless Chromium (overlay, focus and layout behaviour), without `zone.js`: use `vi.useFakeTimers()` instead of `fakeAsync()`
 - **Non-Angular projects**: `@nx/vitest:test` with a `test` block in the project's `vite.config.*`; the root `vitest.config.ts` lists them via `test.projects`
 - Angular component tests may use `@ngneat/spectator/vitest` for cleaner test setup
 
@@ -213,7 +218,7 @@ The repository uses Nx Release with independent versioning:
 - Releases are tagged as `{projectName}/{version}`
 - Conventional commits determine version bumps
 - GitHub releases are created automatically
-- Published packages: gravatar, material-right-sheet, ng-utils, rxjs-operators, web-utils, prime-supplements
+- Published packages: cdk-ui, gravatar, material-right-sheet, ng-utils, rxjs-operators, web-utils, prime-supplements
 
 ### Package Manager
 

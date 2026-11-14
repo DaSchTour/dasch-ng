@@ -147,6 +147,7 @@
   "defaultBase": "main",
   "release": {
     "projects": [
+      "cdk-ui",
       "resize-observer",
       "mutation-observer",
       "gravatar",

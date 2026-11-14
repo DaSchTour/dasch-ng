@@ -6,6 +6,22 @@ Welcome to the dasch.ng library collection! This monorepo contains a curated set
 
 Angular-specific libraries that integrate seamlessly with your Angular applications.
 
+### [CDK UI](/libraries/cdk-ui)
+
+Unstyled UI building blocks on the Angular CDK, for apps that do not use Angular Material.
+
+**Key Features:**
+
+- Named breakpoints as signals
+- Tooltip (text or template, keyboard accessible)
+- Signal-based toasts with queue, pause on hover and focus
+- Table helpers: selection with checkboxes, resizable columns, resizable panel
+- Styling only through CSS custom properties
+
+**Installation:** `npm install @dasch-ng/cdk-ui`
+
+---
+
 ### [Gravatar](/libraries/gravatar)
 
 Generate Gravatar URLs and integrate Gravatar images into your Angular application.

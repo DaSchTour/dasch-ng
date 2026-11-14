@@ -39,6 +39,7 @@ export default defineConfig({
         {
           text: 'Angular Libraries',
           items: [
+            { text: 'CDK UI', link: '/libraries/cdk-ui' },
             { text: 'Gravatar', link: '/libraries/gravatar' },
             { text: 'JSON Viewer', link: '/libraries/json-viewer' },
             {
@@ -77,6 +78,7 @@ export default defineConfig({
         {
           text: 'Angular Libraries',
           items: [
+            { text: 'CDK UI', link: '/api/@dasch-ng/cdk-ui/README' },
             { text: 'Gravatar', link: '/api/@dasch-ng/gravatar/README' },
             { text: 'JSON Viewer', link: '/api/@dasch-ng/json-viewer/README' },
             { text: 'NG Utils', link: '/api/@dasch-ng/utils/README' },
