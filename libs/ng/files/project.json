@@ -1,0 +1,51 @@
+{
+  "name": "files",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/ng/files/src",
+  "prefix": "file",
+  "projectType": "library",
+  "release": {
+    "version": {
+      "currentVersionResolver": "git-tag",
+      "preserveLocalDependencyProtocols": false,
+      "manifestRootsToUpdate": ["dist/{projectRoot}", "{projectRoot}"]
+    }
+  },
+  "tags": [],
+  "targets": {
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/ng/files/ng-package.json",
+        "tsConfig": "libs/ng/files/tsconfig.lib.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/ng/files/tsconfig.lib.prod.json"
+        },
+        "development": {}
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/angular:unit-test",
+      "options": {}
+    },
+    "lint": {
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/eslint.config.mjs",
+        {
+          "externalDependencies": ["eslint"]
+        }
+      ]
+    }
+  }
+}

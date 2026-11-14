@@ -6,6 +6,20 @@ Welcome to the dasch.ng library collection! This monorepo contains a curated set
 
 Angular-specific libraries that integrate seamlessly with your Angular applications.
 
+### [Files](/libraries/files)
+
+Download service and directive, file drop zone and a form control for file inputs.
+
+**Key Features:**
+
+- Downloads through `HttpClient` with the file name from `Content-Disposition`
+- Drop zone with drag-over state and `accept` filter
+- File input for reactive and template-driven forms
+
+**Installation:** `npm install @dasch-ng/files`
+
+---
+
 ### [Gravatar](/libraries/gravatar)
 
 Generate Gravatar URLs and integrate Gravatar images into your Angular application.

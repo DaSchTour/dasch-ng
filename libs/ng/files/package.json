@@ -1,0 +1,22 @@
+{
+  "name": "@dasch-ng/files",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaSchTour/dasch-ng.git",
+    "directory": "libs/ng/files"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "private": false,
+  "peerDependencies": {
+    "@angular/common": "^21.0.0 || ^22.0.0",
+    "@angular/core": "^21.0.0 || ^22.0.0",
+    "@angular/forms": "^21.0.0 || ^22.0.0",
+    "@dasch-ng/web-utils": "^1.0.0-rc.2",
+    "rxjs": "^7.0.0"
+  },
+  "sideEffects": false
+}
