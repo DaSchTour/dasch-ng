@@ -156,6 +156,7 @@
       "json-viewer",
       "pdf-viewer",
       "route-signals",
+      "seo",
       "validators",
       "web-utils",
       "decorators",
