@@ -54,6 +54,20 @@ Angular utilities including pipes, directives, and helper functions.
 
 ---
 
+### [Keyboard Shortcuts](api/@dasch-ng/keyboard-shortcuts/README)
+
+App-wide keyboard shortcuts with platform-aware labels.
+
+**Main exports:**
+
+- `KeyboardShortcuts` - Service to register shortcuts
+- `ShortcutPipe` - Renders a shortcut for the current platform
+- `platform`, `formatShortcut`, `modifierLabels` - Platform helpers
+
+[View full documentation →](api/@dasch-ng/keyboard-shortcuts/README)
+
+---
+
 ### [Material Right Sheet](api/@dasch-ng/material-right-sheet/README)
 
 Angular Material right-side sheet component.
