@@ -53,6 +53,12 @@ Over 25 standalone pipes for common operations:
 
 [→ View media pipes documentation](/libraries/ng-utils/media)
 
+### Signal Helpers
+
+`@dasch-ng/utils/signals` offers `persistedSignal` (a signal mirrored to Web Storage), `recentItems` (a persisted most-recent-first list) and `CursorLoadMore` (collects cursor-paged batches from `resource()` or `httpResource()`).
+
+[→ View signal helpers documentation](/libraries/ng-utils/signals)
+
 ### Dependency Injection Helpers
 
 Type-safe provider functions for Angular DI:

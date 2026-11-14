@@ -112,6 +112,16 @@ import { IntlCurrencyPipe, IntlRelativeTimePipe } from '@dasch-ng/utils/intl';
 
 - `frameRate`, `shutterSpeed`, `coordinate`, `aspectRatio`, `codecName`, `pixelFormat`
 
+**Signal Helpers** (`@dasch-ng/utils/signals`):
+
+- `persistedSignal` (signal mirrored to `localStorage`/`sessionStorage`), `recentItems`, `CursorLoadMore` (cursor-paged batches from `resource()`/`httpResource()`)
+
+```typescript
+import { persistedSignal } from '@dasch-ng/utils/signals';
+
+const pageSize = persistedSignal('page-size', 25);
+```
+
 ### Functions
 
 **Dependency Injection Helpers:**
