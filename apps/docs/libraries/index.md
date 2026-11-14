@@ -21,6 +21,21 @@ Generate Gravatar URLs and integrate Gravatar images into your Angular applicati
 
 ---
 
+### [Intersection Observer](/libraries/intersection-observer)
+
+Angular wrapper for the IntersectionObserver API with RxJS integration.
+
+**Key Features:**
+
+- Directive and service API
+- `isIntersecting()` signal
+- Re-check for infinite-scroll sentinels
+- Safe on the server
+
+**Installation:** `npm install @dasch-ng/intersection-observer`
+
+---
+
 ### [JSON Viewer](/libraries/json-viewer)
 
 Interactive JSON viewer component for Angular applications with syntax highlighting and collapsible nodes.

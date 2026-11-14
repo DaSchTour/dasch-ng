@@ -148,6 +148,7 @@
   "release": {
     "projects": [
       "resize-observer",
+      "intersection-observer",
       "mutation-observer",
       "gravatar",
       "material-right-sheet",

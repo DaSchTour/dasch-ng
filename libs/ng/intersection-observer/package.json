@@ -1,0 +1,20 @@
+{
+  "name": "@dasch-ng/intersection-observer",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaSchTour/dasch-ng.git",
+    "directory": "libs/ng/intersection-observer"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "private": false,
+  "peerDependencies": {
+    "@angular/core": "^21.0.0 || ^22.0.0",
+    "rxjs": "^7.0.0",
+    "@angular/common": "22.2.5"
+  },
+  "sideEffects": false
+}

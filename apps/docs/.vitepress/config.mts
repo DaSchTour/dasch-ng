@@ -40,6 +40,7 @@ export default defineConfig({
           text: 'Angular Libraries',
           items: [
             { text: 'Gravatar', link: '/libraries/gravatar' },
+            { text: 'Intersection Observer', link: '/libraries/intersection-observer' },
             { text: 'JSON Viewer', link: '/libraries/json-viewer' },
             {
               text: 'NG Utils',
@@ -78,6 +79,7 @@ export default defineConfig({
           text: 'Angular Libraries',
           items: [
             { text: 'Gravatar', link: '/api/@dasch-ng/gravatar/README' },
+            { text: 'Intersection Observer', link: '/api/@dasch-ng/intersection-observer/README' },
             { text: 'JSON Viewer', link: '/api/@dasch-ng/json-viewer/README' },
             { text: 'NG Utils', link: '/api/@dasch-ng/utils/README' },
             { text: 'Material Right Sheet', link: '/api/@dasch-ng/material-right-sheet/README' },

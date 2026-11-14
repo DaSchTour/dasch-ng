@@ -18,6 +18,9 @@ npm install @dasch-ng/ng-utils
 # Angular Material right-side sheet
 npm install @dasch-ng/material-right-sheet
 
+# IntersectionObserver wrapper
+npm install @dasch-ng/intersection-observer
+
 # MutationObserver wrapper
 npm install @dasch-ng/mutation-observer
 
