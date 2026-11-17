@@ -13,11 +13,10 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["{projectRoot}/{options.outDir}", "{workspaceRoot}/dist/libs/decorators"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/libs/decorators"
+        "outDir": "../../dist/libs/decorators"
       },
       "configurations": {
         "development": {

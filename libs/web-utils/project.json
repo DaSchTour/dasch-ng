@@ -18,11 +18,10 @@
       }
     },
     "build": {
-      "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["{projectRoot}/{options.outDir}", "{workspaceRoot}/dist/libs/web-utils"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/libs/web-utils"
+        "outDir": "../../dist/libs/web-utils"
       },
       "configurations": {
         "development": {

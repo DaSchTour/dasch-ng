@@ -18,10 +18,9 @@
       }
     },
     "build": {
-      "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["{projectRoot}/{options.outDir}", "{workspaceRoot}/dist/libs/rxjs/operators"],
       "options": {
-        "outputPath": "dist/libs/rxjs/operators"
+        "outDir": "../../../dist/libs/rxjs/operators"
       }
     },
     "lint": {
