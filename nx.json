@@ -30,10 +30,6 @@
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
     },
-    "@nx/eslint:lint": {
-      "inputs": ["default", "{workspaceRoot}/.eslintrc.json", "{workspaceRoot}/eslint.config.mjs"],
-      "cache": true
-    },
     "@nx/angular:package": {
       "cache": true,
       "dependsOn": ["^build"],
