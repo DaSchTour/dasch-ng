@@ -57,7 +57,10 @@
           "buildTarget": "pdf-viewer-demo:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "readyWhen": {
+        "signal": true
+      }
     },
     "test": {
       "executor": "@nx/angular:unit-test",
