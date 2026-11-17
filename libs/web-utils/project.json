@@ -34,10 +34,9 @@
       }
     },
     "test": {
-      "executor": "@nx/vitest:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "outputs": ["{projectRoot}/{options.coverage.reportsDirectory}", "{workspaceRoot}/coverage/libs/web-utils"],
       "options": {
-        "reportsDirectory": "{projectRoot}/../../coverage/libs/web-utils"
+        "coverage.reportsDirectory": "../../coverage/libs/web-utils"
       }
     }
   }

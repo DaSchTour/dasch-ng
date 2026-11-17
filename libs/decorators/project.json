@@ -44,10 +44,9 @@
       ]
     },
     "test": {
-      "executor": "@nx/vitest:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "outputs": ["{projectRoot}/{options.coverage.reportsDirectory}", "{workspaceRoot}/coverage/libs/decorators"],
       "options": {
-        "reportsDirectory": "{projectRoot}/../../coverage/libs/decorators"
+        "coverage.reportsDirectory": "../../coverage/libs/decorators"
       }
     }
   }
