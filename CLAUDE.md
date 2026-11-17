@@ -28,7 +28,7 @@ nx build gravatar
 All projects use **Vitest**:
 
 - **Angular libraries/apps** use the `@nx/angular:unit-test` executor (Angular's official Vitest integration)
-- **Non-Angular libraries** (rxjs-operators, web-utils, decorators, postcss-custom-container) use `@nx/vitest:test` with their `vite.config.*`
+- **Non-Angular libraries** (rxjs-operators, web-utils, decorators, postcss-custom-container) get an inferred `test` target from the `@nx/vitest` plugin (runs `vitest` with their `vite.config.*` or `vitest.config.*`)
 - Jest and Karma have been removed from the workspace
 
 ```bash
@@ -148,10 +148,10 @@ apps/
 - Have `ng-package.json` configuration
 - Examples: route-signals, pdf-viewer, gravatar, json-viewer, ng-utils, material-right-sheet, validators
 
-**Vite Libraries** (using `@nx/vite:build`):
+**Vite Libraries** (inferred `build` target from `@nx/vite/plugin`, runs `vite build`):
 
 - Built with Vite
-- Use Vitest (`@nx/vitest:test`) for testing
+- Use Vitest (inferred `test` target from the `@nx/vitest` plugin) for testing
 - Standalone TypeScript/JavaScript utilities
 - Examples: rxjs-operators, web-utils, decorators, postcss-custom-container
 
@@ -202,7 +202,7 @@ Check new code against these rules before choosing a library. Dependencies only 
   - Tests run in jsdom by default; `tsconfig.spec.json` sets `"types": ["vitest/globals"]`
   - `material-right-sheet` runs in headless Chromium (Vitest browser mode via Playwright) because its tests need real layout and focus behaviour
   - `material-right-sheet` also uses `fakeAsync()`: its `src/test-setup.ts` loads `zone.js/plugins/vitest-patch`, and the helper target `test-zone-env` supplies the `zone.js` polyfill (library build targets have none)
-- **Non-Angular projects**: `@nx/vitest:test` with a `test` block in the project's `vite.config.*`; the root `vitest.config.ts` lists them via `test.projects`
+- **Non-Angular projects**: inferred `test` target (`@nx/vitest` plugin) with a `test` block in the project's `vite.config.*`; the root `vitest.config.ts` lists them via `test.projects`
 - Angular component tests may use `@ngneat/spectator/vitest` for cleaner test setup
 
 ### Release Process

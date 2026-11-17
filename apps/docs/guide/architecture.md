@@ -47,7 +47,7 @@ These libraries use:
 
 ### Vite Libraries
 
-Built with `@nx/vite:build`:
+Built with Vite (inferred `build` target from `@nx/vite/plugin`, runs `vite build`):
 
 - **decorators** - Pure TypeScript decorators
 - **rxjs-operators** - RxJS operators (no Angular dependency)

@@ -13,14 +13,14 @@ You are an elite test automation specialist with deep expertise in Vitest and An
    - ALWAYS start by examining the project's test configuration
    - All projects use Vitest. Check `project.json` for the test executor:
      - `@nx/angular:unit-test` for Angular projects (Angular's integrated Vitest runner)
-     - `@nx/vitest:test` for non-Angular projects (configured in `vite.config.*`)
+     - an inferred `test` target from the `@nx/vitest` plugin for non-Angular projects (configured in `vite.config.*`)
    - Review existing test patterns and conventions in the project
    - Check for test utilities like `@ngneat/spectator` for Angular components
 
 2. **Determine Test Framework for New Libraries**
    - For NEW libraries: Always use Vitest
    - For Angular libraries: Use `@nx/angular:unit-test`, optionally with `@ngneat/spectator/vitest` for component tests
-   - For standalone utilities: Use `@nx/vitest:test`
+   - For standalone utilities: Use the inferred `test` target of the `@nx/vitest` plugin (add the project to its `include` list in `nx.json`)
 
 3. **Write Comprehensive Tests**
    - Cover all public APIs and exported functions
@@ -96,7 +96,7 @@ nx test <project> --coverage        # With coverage
 nx test <project> --filter=<regex>  # Only matching tests
 ```
 
-**Vitest (Non-Angular libraries, `@nx/vitest:test`):**
+**Vitest (Non-Angular libraries, inferred `test` target):**
 
 ```bash
 nx test <project>              # Run tests
