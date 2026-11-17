@@ -1,9 +1,7 @@
 /// <reference types="vitest" />
 import { defineConfig, type Plugin } from 'vite';
 
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import dts from 'vite-plugin-dts';
-import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 import * as path from 'path';
 import { cpSync, globSync } from 'node:fs';
 
@@ -32,13 +30,14 @@ function copyAssets(patterns: string[]): Plugin {
 }
 
 export default defineConfig({
+  resolve: {
+    tsconfigPaths: true,
+  },
   root: import.meta.dirname,
   cacheDir: '../../../node_modules/.vite/rxjs-operators',
 
   plugins: [
-    nxCopyAssetsPlugin(['*.md']),
-    copyAssets(['package.json']),
-    nxViteTsPaths(),
+    copyAssets(['package.json', '*.md']),
     dts({ entryRoot: 'src', tsconfigPath: path.join(import.meta.dirname, 'tsconfig.lib.json'), pathsToAliases: false }),
   ],
 

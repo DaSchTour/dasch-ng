@@ -3,7 +3,6 @@ import { defineConfig, type Plugin } from 'vite';
 import dts from 'vite-plugin-dts';
 import * as path from 'path';
 import { cpSync, globSync } from 'node:fs';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
 /**
  * Copies files from the project directory into the build output. Releases are published
@@ -30,22 +29,19 @@ function copyAssets(patterns: string[]): Plugin {
 }
 
 export default defineConfig({
+  resolve: {
+    tsconfigPaths: true,
+  },
   root: __dirname,
   cacheDir: '../../node_modules/.vite/libs/decorators',
 
   plugins: [
-    nxViteTsPaths(),
     copyAssets(['package.json']),
     dts({
       entryRoot: 'src',
       tsconfigPath: path.join(__dirname, 'tsconfig.lib.json'),
     }),
   ],
-
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [ nxViteTsPaths() ],
-  // },
 
   // Configuration for building your library.
   // See: https://vitejs.dev/guide/build.html#library-mode

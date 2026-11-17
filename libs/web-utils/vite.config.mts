@@ -3,8 +3,6 @@ import { defineConfig, type Plugin } from 'vite';
 import dts from 'vite-plugin-dts';
 import * as path from 'path';
 import { cpSync, globSync } from 'node:fs';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
-import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 
 /**
  * Copies files from the project directory into the build output. Releases are published
@@ -31,18 +29,15 @@ function copyAssets(patterns: string[]): Plugin {
 }
 
 export default defineConfig({
+  resolve: {
+    tsconfigPaths: true,
+  },
   root: import.meta.dirname,
   cacheDir: '../../node_modules/.vite/libs/web-utils',
   plugins: [
-    nxViteTsPaths(),
-    nxCopyAssetsPlugin(['*.md']),
-    copyAssets(['package.json']),
+    copyAssets(['package.json', '*.md']),
     dts({ entryRoot: 'src', tsconfigPath: path.join(import.meta.dirname, 'tsconfig.lib.json'), pathsToAliases: false }),
   ],
-  // Uncomment this if you are using workers.
-  // worker: {
-  //   plugins: () => [ nxViteTsPaths() ],
-  // },
   // Configuration for building your library.
   // See: https://vite.dev/guide/build.html#library-mode
   build: {
