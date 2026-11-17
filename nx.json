@@ -196,6 +196,14 @@
       "include": ["libs/decorators/**/*", "libs/postcss-custom-container/**/*", "libs/rxjs/operators/**/*", "libs/web-utils/**/*"]
     },
     {
+      "plugin": "@nx/js/typescript",
+      "options": {
+        "typecheck": {
+          "targetName": "typecheck"
+        }
+      }
+    },
+    {
       "plugin": "@nx/vite/plugin",
       "options": {
         "devTargetName": "dev",
