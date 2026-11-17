@@ -18,6 +18,7 @@
       }
     },
     "build": {
+      "dependsOn": ["^build", "typecheck"],
       "outputs": ["{projectRoot}/{options.outDir}", "{workspaceRoot}/dist/libs/web-utils"],
       "defaultConfiguration": "production",
       "options": {
