@@ -57,14 +57,24 @@
           "buildTarget": "pdf-viewer-demo:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "readyWhen": {
+        "signal": true
+      }
     },
     "test": {
       "executor": "@nx/angular:unit-test",
       "options": {}
     },
     "lint": {
-      "executor": "@nx/eslint:lint"
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/eslint.config.mjs",
+        {
+          "externalDependencies": ["eslint"]
+        }
+      ]
     }
   }
 }

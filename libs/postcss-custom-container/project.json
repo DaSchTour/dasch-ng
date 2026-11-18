@@ -78,10 +78,9 @@
       }
     },
     "test": {
-      "executor": "@nx/vitest:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "outputs": ["{projectRoot}/{options.coverage.reportsDirectory}", "{workspaceRoot}/coverage/libs/postcss-custom-container"],
       "options": {
-        "reportsDirectory": "coverage/libs/postcss-custom-container"
+        "coverage.reportsDirectory": "../../coverage/libs/postcss-custom-container"
       }
     }
   }

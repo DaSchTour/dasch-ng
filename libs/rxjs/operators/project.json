@@ -18,10 +18,10 @@
       }
     },
     "build": {
-      "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
+      "dependsOn": ["^build", "typecheck"],
+      "outputs": ["{projectRoot}/{options.outDir}", "{workspaceRoot}/dist/libs/rxjs/operators"],
       "options": {
-        "outputPath": "dist/libs/rxjs/operators"
+        "outDir": "../../../dist/libs/rxjs/operators"
       }
     },
     "lint": {
@@ -35,10 +35,9 @@
       ]
     },
     "test": {
-      "executor": "@nx/vitest:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "outputs": ["{projectRoot}/{options.coverage.reportsDirectory}", "{workspaceRoot}/coverage/libs/rxjs-operators"],
       "options": {
-        "reportsDirectory": "{projectRoot}/../../../coverage/libs/rxjs-operators"
+        "coverage.reportsDirectory": "../../../coverage/libs/rxjs-operators"
       }
     }
   }

@@ -40,8 +40,14 @@
       "dependsOn": ["^build", "typedoc", "pdf-viewer-demo:build"]
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/eslint.config.mjs",
+        {
+          "externalDependencies": ["eslint"]
+        }
+      ]
     }
   },
   "tags": ["type:app", "scope:docs"],

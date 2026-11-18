@@ -6,24 +6,27 @@
       "inputs": ["production", "^production"],
       "cache": true
     },
-    "test": {
-      "inputs": ["default", "^production"],
-      "cache": true
-    },
+    "test": [
+      {
+        "inputs": ["default", "^production"],
+        "cache": true
+      },
+      {
+        "filter": {
+          "plugin": "@nx/vitest"
+        },
+        "configurations": {
+          "ci": {
+            "coverage": true
+          }
+        }
+      }
+    ],
     "e2e": {
       "inputs": ["default", "^production"],
       "cache": true
     },
     "publish": {
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
-    },
-    "@nx/eslint:lint": {
-      "inputs": ["default", "{workspaceRoot}/.eslintrc.json", "{workspaceRoot}/eslint.config.mjs"],
-      "cache": true
-    },
-    "@nx/vite:build": {
-      "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
     },
@@ -35,15 +38,6 @@
     "nx-release-publish": {
       "options": {
         "packageRoot": "{workspaceRoot}/dist/{projectRoot}"
-      }
-    },
-    "@nx/vitest:test": {
-      "cache": true,
-      "inputs": ["default", "^production"],
-      "configurations": {
-        "ci": {
-          "coverage": true
-        }
       }
     },
     "@nx/angular:unit-test": {
@@ -104,12 +98,6 @@
     },
     "@schematics/angular:service": {
       "type": "service"
-    },
-    "@nx/angular:scam": {
-      "type": "component"
-    },
-    "@nx/angular:scam-directive": {
-      "type": "directive"
     },
     "@nx/angular:guard": {
       "typeSeparator": "."
@@ -188,7 +176,37 @@
       "options": {
         "targetName": "lint"
       }
+    },
+    {
+      "plugin": "@nx/vitest",
+      "options": {
+        "testMode": "watch",
+        "testTargetName": "test"
+      },
+      "include": ["libs/decorators/**/*", "libs/postcss-custom-container/**/*", "libs/rxjs/operators/**/*", "libs/web-utils/**/*"]
+    },
+    {
+      "plugin": "@nx/js/typescript",
+      "options": {
+        "typecheck": {
+          "targetName": "typecheck"
+        }
+      }
+    },
+    {
+      "plugin": "@nx/vite/plugin",
+      "options": {
+        "devTargetName": "dev",
+        "typecheckTargetName": "typecheck",
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview",
+        "serveStaticTargetName": "serve-static"
+      }
     }
   ],
-  "analytics": true
+  "analytics": true,
+  "affected": {
+    "legacy": true
+  }
 }

@@ -1,22 +1,43 @@
 /// <reference types='vitest' />
-import { defineConfig } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
 import dts from 'vite-plugin-dts';
 import * as path from 'path';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
-import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
+import { cpSync, globSync } from 'node:fs';
+
+/**
+ * Copies files from the project directory into the build output. Releases are published
+ * from `dist/`, so `package.json` (and docs) must sit next to the bundle. Replaces what
+ * the `@nx/vite:build` executor and `nxCopyAssetsPlugin` did before Nx 24.
+ */
+function copyAssets(patterns: string[]): Plugin {
+  let root: string;
+  let outDir: string;
+
+  return {
+    name: 'copy-assets',
+    apply: 'build',
+    configResolved(config) {
+      root = config.root;
+      outDir = path.resolve(config.root, config.build.outDir);
+    },
+    closeBundle() {
+      for (const file of globSync(patterns, { cwd: root })) {
+        cpSync(path.resolve(root, file), path.resolve(outDir, file));
+      }
+    },
+  };
+}
 
 export default defineConfig({
+  resolve: {
+    tsconfigPaths: true,
+  },
   root: import.meta.dirname,
   cacheDir: '../../node_modules/.vite/libs/web-utils',
   plugins: [
-    nxViteTsPaths(),
-    nxCopyAssetsPlugin(['*.md']),
+    copyAssets(['package.json', '*.md']),
     dts({ entryRoot: 'src', tsconfigPath: path.join(import.meta.dirname, 'tsconfig.lib.json'), pathsToAliases: false }),
   ],
-  // Uncomment this if you are using workers.
-  // worker: {
-  //   plugins: () => [ nxViteTsPaths() ],
-  // },
   // Configuration for building your library.
   // See: https://vite.dev/guide/build.html#library-mode
   build: {
