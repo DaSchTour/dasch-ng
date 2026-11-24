@@ -3,3 +3,7 @@ export * from './lib/route-param';
 export * from './lib/route-query-param';
 export * from './lib/bind-query-signal';
 export * from './lib/query-param-codecs';
+export * from './lib/router-events';
+export * from './lib/nested-route';
+export * from './lib/query-sort';
+export * from './lib/router-link-active-for';

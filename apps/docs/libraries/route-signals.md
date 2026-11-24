@@ -310,6 +310,80 @@ Ready-made `serialize`/`deserialize` pairs for `bindQuerySignal`:
 
 Dates are written as local calendar dates, so a date never shifts by a day across time zones. Invalid parts deserialize to `undefined` (numbers) or `null` (dates).
 
+### RouterLinkActiveFor
+
+`routerLinkActive` only checks the element's own `routerLink`. `[routerLinkActiveFor]` takes a list of URLs and sets classes when any of them is active, for navigation items that stand for several routes.
+
+| Input                        | Default             | Description                                                                    |
+| ---------------------------- | ------------------- | ------------------------------------------------------------------------------ |
+| `routerLinkActiveFor`        | required            | One URL or a list of URLs                                                      |
+| `routerLinkActiveForClass`   | none (no class set) | Class names, space-separated or as an array                                    |
+| `routerLinkActiveForOptions` | `{ exact: false }`  | `{ exact: boolean }` or `IsActiveMatchOptions`, like `routerLinkActiveOptions` |
+
+`isActive()` is a signal, available through the template reference `#item="routerLinkActiveFor"`.
+
+```html
+<a routerLink="/settings" [routerLinkActiveFor]="['/settings', '/account']" routerLinkActiveForClass="active" #item="routerLinkActiveFor">
+  Settings @if (item.isActive()) { (current) }
+</a>
+```
+
+### querySort / defaultSortGuard
+
+`querySort` keeps a list's sort in two query parameters (`?sort=name&dir=desc`), so it survives reloads and shared links. It returns a writable signal of `{ property, direction } | null` with two extra methods:
+
+- `toggle(property)`: sorts ascending; the same property again flips the direction
+- `reset()`: back to `default`
+
+| Option        | Default | Description                                                        |
+| ------------- | ------- | ------------------------------------------------------------------ |
+| `property`    | `sort`  | Name of the query parameter for the property                       |
+| `direction`   | `dir`   | Name of the query parameter for the direction (`asc` or `desc`)    |
+| `default`     | `null`  | Sort used when the URL has none, and by `reset()`                  |
+| `resetParams` | none    | Query parameters removed on every sort change (for example a page) |
+
+Like `bindQuerySignal`, the URL is read once on creation and changes are written debounced with `replaceUrl`. It is not built on `bindQuerySignal`, because both parameters have to be written in one navigation.
+
+`defaultSortGuard(defaultSort, names?)` is a `CanActivateFn` that redirects to the same URL with the default sort when the sort parameter is missing. Path, other query parameters and fragment are kept.
+
+```typescript
+const defaultSort: Sort = { property: 'name', direction: 'asc' };
+
+export const routes: Routes = [{ path: 'assets', component: AssetListComponent, canActivate: [defaultSortGuard(defaultSort)] }];
+
+export class AssetListComponent {
+  readonly sort = querySort({ default: defaultSort, resetParams: ['page'] });
+}
+// <th (click)="sort.toggle('name')">Name</th>
+```
+
+### nestedRouteData / nestedRouteParams
+
+`routeData` and `routeParam` read the activated route only. These two read the whole active route tree: root to the deepest child, merged, with the child winning on equal names. They update after every `NavigationEnd`, so they suit layouts and shells that sit above the routed page.
+
+```typescript
+// Routes: { path: 'orgs/:orgId', data: { section: 'Orgs' }, children: [{ path: 'projects/:projectId', data: { title: 'Project' } }] }
+export class ShellComponent {
+  readonly data = nestedRouteData<{ section: string; title: string }>(); // { section, title }
+  readonly title = nestedRouteData<string>('title'); // Signal<string | undefined>
+  readonly params = nestedRouteParams(); // { orgId: '7', projectId: '42' }
+}
+```
+
+### Router event guards
+
+Type guards for `router.events`, so `filter()` narrows the event type without a hand-written predicate:
+
+```typescript
+router.events.pipe(filter(isNavigationEnd)).subscribe((event) => {
+  console.log(event.urlAfterRedirects); // event is NavigationEnd
+});
+```
+
+Available: `isNavigationStart`, `isNavigationEnd`, `isNavigationCancel`, `isNavigationError`, `isResolveEnd`.
+
+`navigationEnd()` returns a `Signal<NavigationEnd | null>` with the last finished navigation (`null` before the first one). Call it in an injection context.
+
 ## Common Use Cases
 
 ### Page Titles from Route Data
