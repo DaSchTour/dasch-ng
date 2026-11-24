@@ -104,6 +104,19 @@ Form validators for Angular applications.
 
 [View full documentation →](api/@dasch-ng/validators/README)
 
+---
+
+### [WebMCP](api/@dasch-ng/webmcp/README)
+
+Register app functions as tools for AI agents via WebMCP.
+
+**Main exports:**
+
+- `provideWebMcpTools` - Registers tools in the browser, unregisters on destroy
+- `toolResult`, `toolError` - Helpers for tool return values
+
+[View full documentation →](api/@dasch-ng/webmcp/README)
+
 ## TypeScript Libraries
 
 ### [Decorators](api/@dasch-ng/decorators/README)

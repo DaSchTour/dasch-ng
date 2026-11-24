@@ -126,6 +126,20 @@ Collection of reusable Angular form validators for common validation scenarios.
 
 ---
 
+### [WebMCP](/libraries/webmcp)
+
+Expose app functions as tools to AI agents via the WebMCP browser proposal.
+
+**Key Features:**
+
+- `provideWebMcpTools` provider with automatic cleanup
+- Browser-only, no-op when the API is missing
+- Duplicate tool name guard
+
+**Installation:** `npm install @dasch-ng/webmcp`
+
+---
+
 ## TypeScript Libraries
 
 Framework-agnostic TypeScript utilities that work anywhere.

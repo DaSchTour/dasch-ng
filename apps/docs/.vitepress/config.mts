@@ -57,6 +57,7 @@ export default defineConfig({
             { text: 'Resize Observer', link: '/libraries/resize-observer' },
             { text: 'Route Signals', link: '/libraries/route-signals' },
             { text: 'Validators', link: '/libraries/validators' },
+            { text: 'WebMCP', link: '/libraries/webmcp' },
           ],
         },
         {
@@ -86,6 +87,7 @@ export default defineConfig({
             { text: 'Resize Observer', link: '/api/@dasch-ng/resize-observer/README' },
             { text: 'Route Signals', link: '/api/@dasch-ng/route-signals/README' },
             { text: 'Validators', link: '/api/@dasch-ng/validators/README' },
+            { text: 'WebMCP', link: '/api/@dasch-ng/webmcp/README' },
           ],
         },
         {

@@ -67,6 +67,7 @@ npm install @dasch-ng/web-utils
 - **[Resize Observer](/libraries/resize-observer)** - Angular wrapper for ResizeObserver API
 - **[Route Signals](/libraries/route-signals)** - Angular route state as signals for reactive routing
 - **[Validators](/libraries/validators)** - Form validators for Angular applications
+- **[WebMCP](/libraries/webmcp)** - Expose app functions as tools to AI agents (WebMCP)
 
 ### TypeScript Libraries
 
