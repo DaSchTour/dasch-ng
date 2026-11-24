@@ -4,6 +4,21 @@ Complete API documentation for all libraries in the dasch.ng monorepo, automatic
 
 ## Angular Libraries
 
+### [Files](api/@dasch-ng/files/README)
+
+File download, drop zone and file input form control.
+
+**Main exports:**
+
+- `FileDownloadService` - Download a URL as a file
+- `FileDownloadDirective` - Download links
+- `FileDropDirective` - Drop zone for files
+- `FileSelectDirective` - Form control for file inputs
+
+[View full documentation →](api/@dasch-ng/files/README)
+
+---
+
 ### [Gravatar](api/@dasch-ng/gravatar/README)
 
 Generate Gravatar hashes and URLs for Angular applications.
