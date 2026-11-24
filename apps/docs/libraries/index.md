@@ -36,6 +36,21 @@ Interactive JSON viewer component for Angular applications with syntax highlight
 
 ---
 
+### [Keyboard Shortcuts](/libraries/keyboard-shortcuts)
+
+App-wide keyboard shortcuts with platform-aware labels.
+
+**Key Features:**
+
+- One document listener for all shortcuts
+- Ignores typing in inputs by default
+- Cmd on macOS, Ctrl elsewhere
+- Pipe for `⌘K` or `Ctrl+K` labels
+
+**Installation:** `npm install @dasch-ng/keyboard-shortcuts`
+
+---
+
 ### [Material Right Sheet](/libraries/material-right-sheet)
 
 Angular Material extension providing a right-side sheet component, similar to MatBottomSheet.

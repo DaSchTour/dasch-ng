@@ -118,6 +118,7 @@ libs/
 │   └── right-sheet/     # Angular Material right-side sheet component
 ├── ng/
 │   ├── json-viewer/        # JSON viewer component (Angular)
+│   ├── keyboard-shortcuts/ # App-wide keyboard shortcuts, platform-aware labels (Angular)
 │   ├── mutation-observer/  # Angular MutationObserver wrapper
 │   ├── pdf-viewer/         # PDF viewer component, fork of ng2-pdf-viewer (Angular)
 │   ├── resize-observer/    # Angular ResizeObserver wrapper
@@ -182,6 +183,7 @@ Check new code against these rules before choosing a library. Dependencies only 
 | `validators`                           | Form validators (`ValidatorFn` plus directive)                                                                 | `@angular/forms`   |
 | `resize-observer`, `mutation-observer` | One browser observer API each, as service plus directive                                                       | —                  |
 | `gravatar`                             | Gravatar URLs, pipe, directive                                                                                 | —                  |
+| `keyboard-shortcuts`                   | App-wide shortcut registry (one document listener), platform detection and labels, pipe                        | `@angular/common`  |
 | planned: file handling                 | Download service/directive, file drop and file select, `ControlValueAccessor` for files; builds on `web-utils` | `@angular/forms`   |
 
 **4. Angular components** (own UI and styles)

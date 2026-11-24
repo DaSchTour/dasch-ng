@@ -61,6 +61,7 @@ npm install @dasch-ng/web-utils
 
 - **[Gravatar](/libraries/gravatar)** - Generate Gravatar hashes and URLs
 - **[JSON Viewer](/libraries/json-viewer)** - Interactive JSON viewer component for Angular
+- **[Keyboard Shortcuts](/libraries/keyboard-shortcuts)** - App-wide keyboard shortcuts with platform-aware labels
 - **[Material Right Sheet](/libraries/material-right-sheet)** - Right-side sheet component for Angular Material
 - **[Mutation Observer](/libraries/mutation-observer)** - Angular wrapper for MutationObserver API
 - **[NG Utils](/libraries/ng-utils)** - Angular pipes, directives, and helper functions

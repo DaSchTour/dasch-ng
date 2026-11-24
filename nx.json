@@ -136,6 +136,7 @@
   "release": {
     "projects": [
       "resize-observer",
+      "keyboard-shortcuts",
       "mutation-observer",
       "gravatar",
       "material-right-sheet",
