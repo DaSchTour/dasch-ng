@@ -21,6 +21,8 @@
       "@dasch-ng/mutation-observer": ["libs/ng/mutation-observer/src/index.ts"],
       "@dasch-ng/resize-observer": ["libs/ng/resize-observer/src/index.ts"],
       "@dasch-ng/rxjs-operators": ["libs/rxjs/operators/src/index.ts"],
+      "@dasch-ng/seo": ["libs/ng/seo/src/index.ts"],
+      "@dasch-ng/seo/angular": ["libs/ng/seo/angular/src/index.ts"],
       "@dasch-ng/utils": ["libs/ng/utils/src/index.ts"],
       "@dasch-ng/utils/intl": ["libs/ng/utils/intl/src/index.ts"],
       "@dasch-ng/utils/media": ["libs/ng/utils/media/src/index.ts"],

@@ -111,6 +111,21 @@ Angular route state as signals for reactive routing.
 
 ---
 
+### [SEO](/libraries/seo)
+
+SEO and SSR helpers with a framework-free main entry point and Angular services in a second entry point.
+
+**Key Features:**
+
+- JSON-LD serialization, sitemaps and `robots.txt`
+- Request origin with host allow list
+- Content Security Policy and security headers
+- Canonical, `hreflang` and `noindex` head sync for Angular
+
+**Installation:** `npm install @dasch-ng/seo`
+
+---
+
 ### [Validators](/libraries/validators)
 
 Collection of reusable Angular form validators for common validation scenarios.
