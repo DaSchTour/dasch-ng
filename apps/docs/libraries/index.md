@@ -111,6 +111,20 @@ Angular route state as signals for reactive routing.
 
 ---
 
+### [Unsaved Changes](/libraries/unsaved-changes)
+
+Warn before leaving a page with unsaved changes.
+
+**Key Features:**
+
+- Router guard for in-app navigation
+- Replaceable confirm dialog
+- `beforeunload` directive for closing the tab
+
+**Installation:** `npm install @dasch-ng/unsaved-changes`
+
+---
+
 ### [Validators](/libraries/validators)
 
 Collection of reusable Angular form validators for common validation scenarios.
