@@ -129,6 +129,50 @@ fileTypeOf('notes'); // null
 
 ---
 
+### fuzzySearch
+
+Filters a list with a case- and diacritic-insensitive "contains" match that also accepts one typo (queries under 3 letters get no typo tolerance). Exact matches come first, then plain matches, then typo matches; the original order is kept within each group. An empty query returns all items.
+
+**Use case:** Search boxes over small, in-memory lists. For large lists or ranking by relevance, use a dedicated search library.
+
+#### Example
+
+```typescript
+import { fuzzySearch } from '@dasch-ng/web-utils';
+
+fuzzySearch('cafe', ['Tea', 'Café', 'Cafeteria']); // ['Café', 'Cafeteria']
+fuzzySearch('Zuerich', ['Zürich', 'Bern']); // ['Zürich'] (one typo)
+fuzzySearch('ann', users, { keys: ['firstName', 'email'] }); // objects: search the given properties
+```
+
+[View API Documentation →](../api/@dasch-ng/web-utils/README)
+
+---
+
+### classifyHttpError
+
+Sorts an HTTP error into `'not-found' | 'forbidden' | 'unauthorized' | 'server' | 'network' | 'unknown'`. It only looks at the shape of the error, so it works for Angular `HttpErrorResponse` (`status`, `0` means network), `fetch` (`Response`, or the `TypeError` thrown when offline) and ofetch (`statusCode`, `status`, `response.status`), also during SSR. `hasHttpStatus(error, status)` is a type guard for one code, and `HttpStatus` holds the common codes.
+
+#### Example
+
+```typescript
+import { classifyHttpError, hasHttpStatus, HttpStatus } from '@dasch-ng/web-utils';
+
+try {
+  await $fetch('/api/items/42');
+} catch (error) {
+  if (classifyHttpError(error) === 'not-found') {
+    // show the "not found" page
+  } else if (hasHttpStatus(error, HttpStatus.Conflict)) {
+    // handle the conflict
+  }
+}
+```
+
+[View API Documentation →](../api/@dasch-ng/web-utils/README)
+
+---
+
 ### toSlug
 
 Turns text into a URL slug of `[a-z0-9-]`: lowercased, accents removed, German umlauts written out (`ü` → `ue`), separators collapsed, cut at a word boundary. NFC and NFD spellings give the same slug.
