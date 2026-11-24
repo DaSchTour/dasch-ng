@@ -11,6 +11,7 @@
     "libs/ng/pdf-viewer/",
     "libs/ng/resize-observer/",
     "libs/ng/route-signals/",
+    "libs/ng/testing/",
     "libs/validators/",
     "libs/web-utils/"
   ],
