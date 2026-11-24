@@ -60,6 +60,7 @@ npm install @dasch-ng/web-utils
 ### Angular Libraries
 
 - **[Gravatar](/libraries/gravatar)** - Generate Gravatar hashes and URLs
+- **[Intersection Observer](/libraries/intersection-observer)** - Angular wrapper for IntersectionObserver API
 - **[JSON Viewer](/libraries/json-viewer)** - Interactive JSON viewer component for Angular
 - **[Material Right Sheet](/libraries/material-right-sheet)** - Right-side sheet component for Angular Material
 - **[Mutation Observer](/libraries/mutation-observer)** - Angular wrapper for MutationObserver API

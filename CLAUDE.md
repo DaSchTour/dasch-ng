@@ -117,6 +117,7 @@ libs/
 ├── material/
 │   └── right-sheet/     # Angular Material right-side sheet component
 ├── ng/
+│   ├── intersection-observer/ # Angular IntersectionObserver wrapper
 │   ├── json-viewer/        # JSON viewer component (Angular)
 │   ├── mutation-observer/  # Angular MutationObserver wrapper
 │   ├── pdf-viewer/         # PDF viewer component, fork of ng2-pdf-viewer (Angular)
@@ -176,13 +177,13 @@ Check new code against these rules before choosing a library. Dependencies only 
 
 **3. Angular, one topic each** (may add the Angular package that topic needs)
 
-| Library                                | Scope                                                                                                          | Extra dependencies |
-| -------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------ |
-| `route-signals`                        | Router state as signals, signals written back to the URL                                                       | `@angular/router`  |
-| `validators`                           | Form validators (`ValidatorFn` plus directive)                                                                 | `@angular/forms`   |
-| `resize-observer`, `mutation-observer` | One browser observer API each, as service plus directive                                                       | —                  |
-| `gravatar`                             | Gravatar URLs, pipe, directive                                                                                 | —                  |
-| planned: file handling                 | Download service/directive, file drop and file select, `ControlValueAccessor` for files; builds on `web-utils` | `@angular/forms`   |
+| Library                                                         | Scope                                                                                                          | Extra dependencies |
+| --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------ |
+| `route-signals`                                                 | Router state as signals, signals written back to the URL                                                       | `@angular/router`  |
+| `validators`                                                    | Form validators (`ValidatorFn` plus directive)                                                                 | `@angular/forms`   |
+| `resize-observer`, `mutation-observer`, `intersection-observer` | One browser observer API each, as service plus directive                                                       | —                  |
+| `gravatar`                                                      | Gravatar URLs, pipe, directive                                                                                 | —                  |
+| planned: file handling                                          | Download service/directive, file drop and file select, `ControlValueAccessor` for files; builds on `web-utils` | `@angular/forms`   |
 
 **4. Angular components** (own UI and styles)
 
