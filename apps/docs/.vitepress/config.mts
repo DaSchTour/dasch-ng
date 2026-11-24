@@ -49,6 +49,7 @@ export default defineConfig({
                 { text: 'Intl Pipes', link: '/libraries/ng-utils/intl' },
                 { text: 'Media Pipes', link: '/libraries/ng-utils/media' },
                 { text: 'Provider Helpers', link: '/libraries/ng-utils/provide-helpers' },
+                { text: 'Signal Helpers', link: '/libraries/ng-utils/signals' },
               ],
             },
             { text: 'Material Right Sheet', link: '/libraries/material-right-sheet' },

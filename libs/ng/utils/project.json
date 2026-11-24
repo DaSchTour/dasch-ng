@@ -36,7 +36,7 @@
     "test": {
       "executor": "@nx/angular:unit-test",
       "options": {
-        "include": ["**/*.spec.ts", "../intl/**/*.spec.ts", "../media/**/*.spec.ts"]
+        "include": ["**/*.spec.ts", "../intl/**/*.spec.ts", "../media/**/*.spec.ts", "../signals/**/*.spec.ts"]
       }
     },
     "lint": {
